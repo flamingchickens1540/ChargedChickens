@@ -1,0 +1,1 @@
+<h1 class="text-orange-400 text-center">AutoChargeStation</h1>

@@ -1,0 +1,1 @@
+<h1 class="text-yellow-400 text-center">AutoCommunity</h1>
