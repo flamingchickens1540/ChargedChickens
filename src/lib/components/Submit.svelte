@@ -10,7 +10,7 @@
             data[key] = get(stores[key]);
         });
 
-        fetch("/match-scout/submit", {
+        fetch("/api/submit/match", {
             method: "POST",
             body: JSON.stringify(data),
         }).then(res => res.json()).then(data => console.log(data));
