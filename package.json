@@ -31,6 +31,7 @@
   "type": "module",
   "dependencies": {
     "@types/siema": "^1.4.8",
+    "mysql2": "^3.0.1",
     "siema": "^1.5.1"
   }
 }

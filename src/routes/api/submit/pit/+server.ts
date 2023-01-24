@@ -5,7 +5,7 @@ export const POST: RequestHandler = async (event: RequestEvent) => {
 
     console.log(body)
     
-    return new Response(JSON.stringify({success: true, endpoint: "match-scout"}), {
+    return new Response(JSON.stringify({ message: "success!", endpoint: "match-scout"}), {
         headers: {
             "content-type": "application/json",
         },
