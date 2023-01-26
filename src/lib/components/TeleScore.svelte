@@ -1,32 +1,25 @@
 <script lang="ts">
     import { tele_score } from "$lib/matchScoutStores";
-	let clicked: any;
-    let miliSecondsArr: number[];
-    let miliSeconds: number;
+	
+    let miliSecondsArr: number[] = [];
 
+    let interval : NodeJS.Timer;
+
+    let time = 0;
+    
     function handleMousedown() {
-        console.log("test");
-        clicked = true;
-        miliSeconds = 0;
-        miliSeconds += 1;
-        while ( clicked ) { 
-            setInterval(() => miliSeconds += 1, 1);
-            console.log(miliSeconds);
-        }
-        clearInterval;
-
-        miliSecondsArr.push(miliSeconds);
-        console.log(miliSeconds);
+        interval = setInterval(() => console.log(++time), 1);
+        time = 0;
 	}
 
     function handleMouseup() {
-        clicked = false;
+        miliSecondsArr.push(time);
+        clearInterval(interval);
     }
 </script>
 
-<h1 class="text-red-600 text-center">TeleScore</h1>
-
-<button on:touchstart={handleMousedown} on:touchend={handleMouseup} on:click={handleMousedown}>Test</button>
-
+<center>
+    <button class="text-red-600 text-center" on:touchstart={handleMousedown} on:touchend={handleMouseup}>Test</button>
+</center>
 <style>
 </style>
