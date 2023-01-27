@@ -1,7 +1,7 @@
 <script lang="ts">
     import { end_charge_station } from "$lib/matchScoutStores";
 
-
+    
 </script>
 
 
