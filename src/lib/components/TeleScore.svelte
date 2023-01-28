@@ -3,18 +3,14 @@
 	
     let miliSecondsArr: number[] = [];
 
-    let interval : NodeJS.Timer;
-
-    let time = 0;
+    let initialTime : number;
     
     function handleMousedown() {
-        interval = setInterval(() => console.log(++time), 1);
-        time = 0;
+        initialTime = Date.now();
 	}
 
     function handleMouseup() {
-        miliSecondsArr.push(time);
-        clearInterval(interval);
+        miliSecondsArr.push(Date.now() - initialTime);
     }
 </script>
 
