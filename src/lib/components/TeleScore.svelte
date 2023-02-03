@@ -1,32 +1,74 @@
 <script lang="ts">
-    import { tele_score } from "$lib/matchScoutStores";
-	let clicked: any;
-    let miliSecondsArr: number[];
-    let miliSeconds: number;
-
+    import { tele_score, defense_times } from "$lib/matchScoutStores";
+    import Square from "./Square.svelte";
+    import TriangeSquare from "./TriangeSquare.svelte";
+    import Triangle from "./Triangle.svelte";
+	
+    let miliSecondsArr: number[] = [];
+    let initialTime : number;
+    
     function handleMousedown() {
-        console.log("test");
-        clicked = true;
-        miliSeconds = 0;
-        miliSeconds += 1;
-        while ( clicked ) { 
-            setInterval(() => miliSeconds += 1, 1);
-            console.log(miliSeconds);
-        }
-        clearInterval;
-
-        miliSecondsArr.push(miliSeconds);
-        console.log(miliSeconds);
+        initialTime = Date.now();
 	}
-
     function handleMouseup() {
-        clicked = false;
+        miliSecondsArr.push(Date.now() - initialTime);
+        console.log(miliSecondsArr);
+        defense_times.update(() => miliSecondsArr);
     }
+
+    import { Canvas, Layer, t } from 'svelte-canvas';
+
+    // Grid width
+    var bw = 120;
+    // Grid height
+    var bh = 120;
+    // Padding
+    var p = 10;
+      // @ts-ignore
+    $: render = ({ context, width, height }) => {
+      // The number of boxes is determined by the ratio between the incrementer of x, and the base/height of the grid
+
+      for (let y = 0; y <= bw; y += 40) {
+        context.moveTo(0.5 + y + p, p);
+        context.lineTo(0.5 + y + p, bh + p);
+      }
+    
+      for (let x = 0; x <= bh; x += 40) {
+          context.moveTo(p, 0.5 + x + p);
+          context.lineTo(bw + p, 0.5 + x + p);
+      }
+      context.strokeStyle = "black";
+      context.stroke();
+    };
+    
+    //Jack code
+    // function mouseClicked() {
+    //   if (mouseX < 0 || mouseX > 900 || mouseY < 0 || mouseY > 300) return;
+    //   row = Math.floor(mouseY / 100);
+    //   col = Math.floor(mouseX / 100);
+    //   if (socket != null) socket.emit("click", { row, col });
+    // }
 </script>
 
 <h1 class="text-red-600 text-center">TeleScore</h1>
 
-<button on:touchstart={handleMousedown} on:touchend={handleMouseup} on:click={handleMousedown}>Test</button>
+<!-- <div class="border w-20 grid-flow-row-dense grid-cols-3 grid-rows-3">
+    <Square></Square>
+    <Square></Square>
+    <Square></Square>
+    <Triangle></Triangle>
+    <Triangle></Triangle>
+    <Triangle></Triangle>
+    <TriangeSquare></TriangeSquare>
+    <TriangeSquare></TriangeSquare>
+    <TriangeSquare></TriangeSquare>
+</div> -->
+  
+  <Canvas width={640} height={640} class="object-center">
+    <Layer {render} />
+  </Canvas>
+
+<button on:touchstart={handleMousedown} on:touchend={handleMouseup} class="border">Defense</button>
 
 <style>
 </style>
