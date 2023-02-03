@@ -6,14 +6,13 @@
 	
     let miliSecondsArr: number[] = [];
     let initialTime : number;
+  
     
     function handleMousedown() {
         initialTime = Date.now();
 	}
     function handleMouseup() {
-        miliSecondsArr.push(Date.now() - initialTime);
-        console.log(miliSecondsArr);
-        defense_times.update(() => miliSecondsArr);
+      miliSecondsArr.push(Date.now() - initialTime)
     }
 
     import { Canvas, Layer, t } from 'svelte-canvas';
