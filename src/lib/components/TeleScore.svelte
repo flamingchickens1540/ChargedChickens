@@ -38,7 +38,7 @@
 
       const TeleOpScoreBoard = new Image();
 
-      TeleOpScoreBoard.src = '../assets/TeleOpScoring.png';
+      TeleOpScoreBoard.src = "../assets/TeleOpScoring.png";
       TeleOpScoreBoard.onload = () => {
         context.drawImage(TeleOpScoreBoard, 0, 0);
       };

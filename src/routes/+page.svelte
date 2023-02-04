@@ -2,7 +2,7 @@
     import { goto } from '$app/navigation';
 
     import { admin, login } from '../lib/generalStores';
-    import { user_password, admin_password } from '../../secrets/passwords'
+    import { user_password, admin_password } from '../secrets/passwords'
 
     admin.set(false);
     login.set(false);
