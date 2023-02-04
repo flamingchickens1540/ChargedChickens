@@ -81,13 +81,11 @@ export type Match = {
     eventKey: EventKey,
 }
 
-export type PitScouting = {
+export type PitScoutingData = {
     id?: number,
-    team_key: TeamKey,
-    event_key: EventKey,
     width: number,
     length: number,
-    drive_train: number,
+    drivetrain: number,
     polish: number,
     notes: string,
 }

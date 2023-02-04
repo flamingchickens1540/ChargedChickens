@@ -1,11 +1,11 @@
-import mysql, { type RowDataPacket } from "mysql2";
+import mysql from "mysql2";
 import {
   MYSQL_HOST,
   MYSQL_USER,
   MYSQL_PASSWORD,
   MYSQL_DATABASE,
 } from "$env/static/private";
-import type { Team, TeamKey, TeamMatch } from "$lib/types";
+import type { CycleTime, DefenseTime, EventKey, Match, MatchKey, PitScoutingData, Team, TeamKey, TeamMatch } from "$lib/types";
 
 const db = mysql
   .createPool({
@@ -17,9 +17,17 @@ const db = mysql
   })
   .promise();
 
+export function isAuthed(): boolean {
+  if (MYSQL_HOST && MYSQL_USER && MYSQL_PASSWORD && MYSQL_DATABASE) {
+    return true;
+  }
+  
+  return false;
+}
+
 export async function insertTeamMatch(
-  matchKey: string,
-  teamKey: string,
+  matchKey: MatchKey,
+  teamKey: TeamKey,
   teamData: TeamMatch
 ): Promise<boolean> {
   try {
@@ -100,7 +108,28 @@ export async function getTeamMatch(
   }
 }
 
-async function getTeams(team_key: TeamKey): Promise<Team | null> {
+export async function insertTeam(Team: Team): Promise<boolean> {
+  try {
+    await db.query(
+      `
+  INSERT INTO Teams (team_key, nickname, team_number, website)
+  VALUES (?,?,?,?)`,
+      [
+        Team.team_key,
+        Team.nickname,
+        Team.team_number,
+        Team.website,
+      ]
+    );
+
+    return true;
+  } catch (error) {
+    console.error(error);
+    return false;
+  }
+}
+
+export async function getTeam(team_key: TeamKey): Promise<Team | null> {
   try {
     const [rows] = await db.query(
       `
@@ -112,5 +141,123 @@ async function getTeams(team_key: TeamKey): Promise<Team | null> {
   } catch (error) {
     console.error(error);
     return null;
+  }
+}
+
+export async function insertCycleTime(match_key: MatchKey, team_key: TeamKey, cycleTime: CycleTime): Promise<boolean> {
+  try {
+    await db.query(
+      `
+  INSERT INTO CycleTimes (time, team_key, match_key)
+  VALUES (?,?,?)`,
+      [cycleTime, team_key, match_key]
+    );
+
+    return true;
+  } catch (error) {
+    console.error(error);
+    return false;
+  }
+}
+
+export async function insertDefenseTime(match_key: MatchKey, team_key: TeamKey, defenseTime: DefenseTime): Promise<boolean> {
+  try {
+    await db.query(
+      `
+  INSERT INTO DefenseTimes (time, team_key, match_key)
+  VALUES (?,?,?)`,
+      [defenseTime, team_key, match_key]
+    );
+
+    return true;
+  } catch (error) {
+    console.error(error);
+    return false;
+  }
+}
+
+export async function insertEvent(eventKey: EventKey): Promise<boolean> {
+  try {
+    await db.query(
+      `
+  INSERT INTO Events (event_key)
+  VALUES (?)`,
+      [eventKey]
+    );
+
+    return true;
+  } catch (error) {
+    console.error(error);
+    return false;
+  }
+}
+
+export async function insertMatch(matchKey: MatchKey, eventKey: EventKey): Promise<boolean> {
+  try {
+    await db.query(
+      `
+  INSERT INTO Matches (match_key, event_key)
+  VALUES (?,?)`,
+      [matchKey, eventKey]
+    );
+
+    return true;
+  } catch (error) {
+    console.error(error);
+    return false;
+  }
+}
+
+export async function getMatch(matchKey: MatchKey): Promise<Match | null> {
+  try {
+    const [rows] = await db.query(
+      `
+  SELECT * FROM Matches WHERE match_key = ?`,
+      [matchKey]
+    );
+
+    return rows[0];
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+}
+
+export async function getEvent(eventKey: EventKey): Promise<Event | null> {
+  try {
+    const [rows] = await db.query(
+      `
+  SELECT * FROM Events WHERE event_key = ?`,
+      [eventKey]
+    );
+
+    return rows[0];
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+}
+
+export async function insertPitScouting(match_key: MatchKey, team_key: TeamKey, data: PitScoutingData): Promise<boolean> {
+  try {
+    await db.query(
+      `
+  INSERT INTO PitScouting (team_key, event_key, width, drivetrain, polish, notes, length)
+  VALUES (?,?, ?, ?, ?, ?, ?)`,
+      [
+        team_key,
+        match_key,
+        data.width,
+        data.drivetrain,
+        data.polish,
+        data.notes,
+        data.length,
+      ]
+    );
+
+    return true;
+  } catch (error) {
+    console.error(error);
+    return false;
   }
 }
