@@ -1,9 +1,10 @@
 <script lang="ts">
     import { goto } from '$app/navigation';
 
-    import { damien, login } from '../lib/generalStores';
+    import { admin, login } from '../lib/generalStores';
+    import { user_password, admin_password } from '../../secrets/passwords'
 
-    damien.set(false);
+    admin.set(false);
     login.set(false);
 
     //TODO: Properly Type Auth Code
@@ -18,13 +19,13 @@
             data[key] = value;
         }
         if(isFormValid(data)){
-            if(data.password == "flaminghot") {
+            if(data.password == user_password) {
                 login.set(true);
-            } else if(data.password == "ireland" && data.name == "damien") {
-                damien.set(true);
+            } else if(data.password == admin_password) {
+                admin.set(true);
             } else {
                 login.set(false);
-                damien.set(false);
+                admin.set(false);
                 console.log("Failed login by " + data.name + " with password " + data.password);
             }
         } else {

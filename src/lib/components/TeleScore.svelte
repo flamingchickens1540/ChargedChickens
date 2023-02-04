@@ -14,27 +14,34 @@
 
     import { Canvas, Layer, t } from 'svelte-canvas';
 
-    // Grid width
-    var bw = 120;
-    // Grid height
-    var bh = 120;
-    // Padding
-    var p = 10;
+    // // Grid width
+    // var bw = 120;
+    // // Grid height
+    // var bh = 120;
+    // // Padding
+    // var p = 10;
       // @ts-ignore
     $: render = ({ context, width, height }) => {
       // The number of boxes is determined by the ratio between the incrementer of x, and the base/height of the grid
 
-      for (let y = 0; y <= bw; y += 40) {
-        context.moveTo(0.5 + y + p, p);
-        context.lineTo(0.5 + y + p, bh + p);
-      }
+      // for (let y = 0; y <= bw; y += 40) {
+      //   context.moveTo(0.5 + y + p, p);
+      //   context.lineTo(0.5 + y + p, bh + p);
+      // }
     
-      for (let x = 0; x <= bh; x += 40) {
-          context.moveTo(p, 0.5 + x + p);
-          context.lineTo(bw + p, 0.5 + x + p);
-      }
-      context.strokeStyle = "black";
-      context.stroke();
+      // for (let x = 0; x <= bh; x += 40) {
+      //     context.moveTo(p, 0.5 + x + p);
+      //     context.lineTo(bw + p, 0.5 + x + p);
+      // }
+      // context.strokeStyle = "black";
+      // context.stroke();
+
+      const TeleOpScoreBoard = new Image();
+
+      TeleOpScoreBoard.src = '../assets/TeleOpScoring.png';
+      TeleOpScoreBoard.onload = () => {
+        context.drawImage(TeleOpScoreBoard, 0, 0);
+      };
     };
     
     //Jack code
@@ -47,18 +54,6 @@
 </script>
 
 <h1 class="text-red-600 text-center">TeleScore</h1>
-
-<!-- <div class="border w-20 grid-flow-row-dense grid-cols-3 grid-rows-3">
-    <Square></Square>
-    <Square></Square>
-    <Square></Square>
-    <Triangle></Triangle>
-    <Triangle></Triangle>
-    <Triangle></Triangle>
-    <TriangeSquare></TriangeSquare>
-    <TriangeSquare></TriangeSquare>
-    <TriangeSquare></TriangeSquare>
-</div> -->
   
   <Canvas width={640} height={640} class="object-center">
     <Layer {render} />
