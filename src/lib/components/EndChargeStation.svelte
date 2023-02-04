@@ -1,6 +1,6 @@
 <script lang="ts">
     import { end_charge_station } from "$lib/matchScoutStores";
-    let promisingOptionOneOfTheManyOnes = "Current Selected: Not Attempted";
+    let changeStationStatus = "Current Selected: Not Attempted";
 </script>
 
 <h1 class="text-red-600 text-center">EndChargeStation</h1>
@@ -10,7 +10,7 @@
             <label>
                 <input
                     type="radio"
-                    bind:group={promisingOptionOneOfTheManyOnes}
+                    bind:group={changeStationStatus}
                     value={"Current Selected: Not Attempted"}
                 />
                 Not Attempted
@@ -20,7 +20,7 @@
             <label>
                 <input
                     type="radio"
-                    bind:group={promisingOptionOneOfTheManyOnes}
+                    bind:group={changeStationStatus}
                     value={"Current Selected: Failed"}
                 />
                 Failed
@@ -30,7 +30,7 @@
             <label>
                 <input
                     type="radio"
-                    bind:group={promisingOptionOneOfTheManyOnes}
+                    bind:group={changeStationStatus}
                     value={"Current Selected: Docked"}
                 />
                 Docked
@@ -40,7 +40,7 @@
             <label>
                 <input
                     type="radio"
-                    bind:group={promisingOptionOneOfTheManyOnes}
+                    bind:group={changeStationStatus}
                     value={"Current Selected: Engaged"}
                 />
                 Engaged
@@ -52,7 +52,7 @@
 
 <div class = "centerButtonsValue">
     <h1>
-        {promisingOptionOneOfTheManyOnes}
+        {changeStationStatus}
     </h1>
 </div>
 
@@ -69,6 +69,3 @@
         justify-content: center;
     }
 </style>
-
-    
-</script>
