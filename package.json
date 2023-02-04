@@ -11,6 +11,7 @@
     "lint": "eslint ."
   },
   "devDependencies": {
+    "@colorfuldots/svelteit": "^1.0.0-alpha.7",
     "@sveltejs/adapter-auto": "^1.0.0",
     "@sveltejs/kit": "^1.0.0",
     "@typescript-eslint/eslint-plugin": "^5.45.0",
@@ -32,7 +33,9 @@
   "type": "module",
   "dependencies": {
     "@types/siema": "^1.4.8",
-    "siema": "^1.5.1",
     "svelte-stars-hover-rating": "^1.0.7"
+    "mysql2": "^3.0.1",
+    "siema": "^1.5.1",
+    "svelte-canvas": "^0.8.1"
   }
 }
