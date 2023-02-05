@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { auto_community } from "$lib/matchScoutStores";
+    import { tele_score, defense_times } from "$lib/matchScoutStores";
 </script>
 
-<h1 class="text-red-600 text-center">AutoScore</h1>
+<h1 class="text-red-600 text-center">TeleScore</h1>

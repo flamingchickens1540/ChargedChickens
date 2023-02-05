@@ -33,6 +33,7 @@
   "dependencies": {
     "@types/siema": "^1.4.8",
     "siema": "^1.5.1",
-    "svelte-stars-hover-rating": "^1.0.7"
+    "svelte-stars-hover-rating": "^1.0.7",
+    "svelte-switch": "^0.0.5"
   }
 }
