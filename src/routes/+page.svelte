@@ -2,6 +2,7 @@
     import { goto } from '$app/navigation';
 
     import { admin, login } from '../lib/generalStores';
+    import { user_password, admin_password } from '../secrets/passwords';
 
     admin.set(false);
     login.set(false);
@@ -18,9 +19,9 @@
             data[key] = value;
         }
         if(isFormValid(data)){
-            if(data.password == "flaminghot") {
+            if(data.password == user_password) {
                 login.set(true);
-            } else if(data.password == "ireland" && data.name == "damien") {
+            } else if(data.password == admin_password) {
                 admin.set(true);
             } else {
                 login.set(false);
