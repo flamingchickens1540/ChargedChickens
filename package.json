@@ -24,6 +24,7 @@
     "svelte": "^3.54.0",
     "svelte-check": "^3.0.1",
     "svelte-preprocess": "^4.10.7",
+    "svelte-star-rating": "^2.0.1",
     "tailwindcss": "^3.1.5",
     "tslib": "^2.4.1",
     "typescript": "^4.9.3",
@@ -32,6 +33,7 @@
   "type": "module",
   "dependencies": {
     "@types/siema": "^1.4.8",
+    "svelte-stars-hover-rating": "^1.0.7"
     "mysql2": "^3.0.1",
     "siema": "^1.5.1",
     "svelte-canvas": "^0.8.1"
