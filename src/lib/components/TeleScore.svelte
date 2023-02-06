@@ -1,26 +1,20 @@
 <script lang="ts">
-    import { tele_score, defense_times } from "$lib/matchScoutStores";
+    import TeleOpScoring from "$lib/assets/TeleOpScoring.png"
+    import { tele_score } from "../matchScoutStores";
 
-    let miliSecondsArr: number[] = [];
-    let initialTime : number;
-  
-    
-    function handleMousedown() {
-        initialTime = Date.now();
-	}
-    function handleMouseup() {
-      miliSecondsArr.push(Date.now() - initialTime)
-    }
+    let innerHeight = 0;
+    let innerWidth = 0;
 
     import { Canvas, Layer } from 'svelte-canvas';
+    import DefenceButton from "./DefenceButton.svelte";
 
       // @ts-ignore
     $: render = ({ context, width, height }) => {
       const TeleOpScoreBoard = new Image();
 
-      TeleOpScoreBoard.src = "../assets/TeleOpScoring.png";
+      TeleOpScoreBoard.src = TeleOpScoring;
       TeleOpScoreBoard.onload = () => {
-        context.drawImage(TeleOpScoreBoard, 0, 0);
+        context.drawImage(TeleOpScoreBoard, 0, 0, width, height);
       };
     };
     
@@ -33,13 +27,14 @@
     // }
 </script>
 
+<svelte:window bind:innerHeight bind:innerWidth />
+
 <h1 class="text-red-600 text-center">TeleScore</h1>
-  
-  <Canvas width={640} height={640} class="object-center">
-    <Layer {render} />
-  </Canvas>
 
-<button on:touchstart={handleMousedown} on:touchend={handleMouseup} class="border">Defense</button>
+<Canvas width={innerWidth} height={450} class="object-center">
+  <Layer {render} />
+</Canvas>
 
+<DefenceButton></DefenceButton>
 <style>
 </style>
