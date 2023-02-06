@@ -11,6 +11,7 @@
   import Siema from "siema";
   import { onMount } from "svelte";
   import Submit from "$lib/components/Submit.svelte";
+  import { damien, login} from "../../lib/generalStores";
   
   onMount(() => {
     new Siema({
@@ -30,25 +31,32 @@
   })
 </script>
 
-<h1 class="text-red-600 text-4xl text-center font-bold">Match Scout</h1>
+{#if $login || $damien}
+  <h1 class="text-red-600 text-4xl text-center font-bold">Match Scout</h1>  
+  <div id="carousel" class="h-screen w-full">
+    <div id="auto">
+      <AutoScore />
+      <AutoChargeStation />
+      <AutoCommunity />
+    </div>
+    <div id="tele">
+      <TeleScore />
+    </div>
+    <div id="end">
+      <EndChargeStation />
+      <EndDriverSkill />
+      <EndBroke />
+      <EndDied />
+      <EndNotes />
+    </div>
+    <div id=submit>
+      <Submit />
+    </div>
+  </div>
 
-<div id="carousel" class="h-screen w-full">
-  <div id="auto">
-    <AutoScore />
-    <AutoChargeStation />
-    <AutoCommunity />
-  </div>
-  <div id="tele">
-    <TeleScore />
-  </div>
-  <div id="end">
-    <EndChargeStation />
-    <EndDriverSkill />
-    <EndBroke />
-    <EndDied />
-    <EndNotes />
-  </div>
-  <div id=submit>
-    <Submit />
-  </div>
-</div>
+{:else}
+
+<h1 class="text-red-600 text-4xl text-center font-bold">Please log in before attempting to scout</h1>
+  
+
+{/if}

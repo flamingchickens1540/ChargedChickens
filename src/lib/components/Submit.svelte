@@ -1,14 +1,16 @@
 <script lang="ts">
     import { get } from "svelte/store";
-    import { stores } from "$lib/matchScoutStores";
+    import { team_matches_stores } from "$lib/matchScoutStores";
 
     async function submit() {
         let data = {};
 
-        Object.keys(stores).map((key) => {
+        Object.keys(team_matches_stores).map((key) => {
             // @ts-ignore
-            data[key] = get(stores[key]);
+            data[key] = get(team_matches_stores[key]);
         });
+
+        console.log(Object.keys(data).length);
 
         fetch("/api/submit/match", {
             method: "POST",

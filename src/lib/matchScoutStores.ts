@@ -100,13 +100,11 @@ export const tele_score = {
 }
 
 //object with all stores
-export const stores = {
+export const team_matches_stores = {
     broke,
     died,
     notes,
     skill,
-    cycle_times,
-    defense_times,
     auto_charge_station,
     end_charge_station,
     auto_high_left_succeed,
