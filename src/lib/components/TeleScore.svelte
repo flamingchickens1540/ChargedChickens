@@ -1,8 +1,5 @@
 <script lang="ts">
     import { tele_score, defense_times } from "$lib/matchScoutStores";
-    import Square from "./Square.svelte";
-    import TriangeSquare from "./TriangeSquare.svelte";
-    import Triangle from "./Triangle.svelte";
 	
     let miliSecondsArr: number[] = [];
     let initialTime : number;

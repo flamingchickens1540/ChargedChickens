@@ -11,7 +11,7 @@
   import Siema from "siema";
   import { onMount } from "svelte";
   import Submit from "$lib/components/Submit.svelte";
-  import { damien, login} from "../../lib/generalStores";
+  import { admin, login} from "../../lib/generalStores";
   
   onMount(() => {
     new Siema({
@@ -31,7 +31,7 @@
   })
 </script>
 
-{#if $login || $damien}
+{#if $login || $admin}
   <h1 class="text-red-600 text-4xl text-center font-bold">Match Scout</h1>  
   <div id="carousel" class="h-screen w-full">
     <div id="auto">

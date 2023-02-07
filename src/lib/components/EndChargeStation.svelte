@@ -10,7 +10,9 @@
             <label>
                 <input
                     type="radio"
-                    bind:group={$end_charge_station}
+                       
+                    bind:group={changeStationStatus}
+                       
                     value={"Current Selected: Not Attempted"}
                 />
                 Not Attempted
@@ -20,8 +22,10 @@
             <label>
                 <input
                     type="radio"
-                    bind:group={$end_charge_station}
-                    value={"Current Selected: Failed"}
+
+                       bind:group={changeStationStatus}
+
+                       value={"Current Selected: Failed"}
                 />
                 Failed
             </label>
@@ -30,8 +34,10 @@
             <label>
                 <input
                     type="radio"
-                    bind:group={$end_charge_station}
-                    value={"Current Selected: Docked"}
+
+                       bind:group={changeStationStatus}
+
+                       value={"Current Selected: Docked"}
                 />
                 Docked
             </label>
@@ -40,8 +46,11 @@
             <label>
                 <input
                     type="radio"
-                    bind:group={$end_charge_station}
-                    value={"Current Selected: Engaged"}
+                       
+                    bind:group={changeStationStatus}
+
+                       
+                       ={"Current Selected: Engaged"}
                 />
                 Engaged
             </label>
@@ -49,7 +58,7 @@
     </div>
 </div>
 
-<div class="centerButtonsValue">
+<div class="centerButtons">
     <h1>
         {$end_charge_station}
     </h1>
@@ -61,8 +70,25 @@
         justify-content: center;
     }
 
-    .centerButtonsValue {
+</div>
+
+<div class = "centerButtonsValue">
+    <h1>
+        {changeStationStatus}
+    </h1>
+</div>
+
+
+<style>
+    .centerButtons {
         display: flex;
+        justify-content: center;  
+        
+    }
+
+    .centerButtonsValue{
+
+      display: flex;
         justify-content: center;
     }
 </style>

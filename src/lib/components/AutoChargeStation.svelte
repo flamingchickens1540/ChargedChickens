@@ -59,9 +59,4 @@
         display: flex;
         justify-content: center;
     }
-
-    .centerButtonsValue {
-        display: flex;
-        justify-content: center;
-    }
 </style>

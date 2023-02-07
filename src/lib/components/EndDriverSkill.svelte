@@ -2,7 +2,9 @@
     import { applyAction } from "$app/forms";
     import { skill } from "$lib/matchScoutStores";
     import { Rating } from "svelte-stars-hover-rating";
-    var isOne = false;
+
+  var isOne = false;
+
 </script>
 
 <h1 class="text-orange-400 text-center">EndDriverSkill</h1>
@@ -15,7 +17,7 @@
 </div>
 
 <style>
-    .centerStars {
+    .centerStars{
         display: flex;
         justify-content: center;
         flex-direction: row;
@@ -27,5 +29,4 @@
     .centerRatingStar {
         display: flex;
         justify-content: center;
-    }
 </style>
