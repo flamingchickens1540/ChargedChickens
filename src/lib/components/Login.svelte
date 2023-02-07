@@ -8,10 +8,7 @@
         const formData = new FormData(e.target);
 
         const data: any = {};
-        for (let field of formData) {
-            const [key, value] = field;
-            data[key] = value;
-        }
+        for (let key in formData) { data[key] = formData[key]; }    
         if(isFormValid(data)){
             if(data.password == user_password) {
                 login.set(true);
