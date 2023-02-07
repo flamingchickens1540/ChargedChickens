@@ -1,16 +1,17 @@
 <script lang="ts">
     import { died } from "$lib/matchScoutStores";
+    import Switch from "svelte-switch";
 
-    function toggleDied(die : boolean) {
-        died.set(die);
+    let checkedValue = false;
+    function handleChange() {
+        checkedValue = !checkedValue;
+        died.set(checkedValue)
     }
+
 </script>
 
 <h1 class="text-blue-500 text-center">EndDied</h1>
-    
-    
-<center>
-    <h1 class="text-blue-500 text-center">EndDied</h1>
-    <button on:touchend={() => toggleDied(true)}>Yes</button>
-    <button on:touchend={() => toggleDied(false)}>No</button>
-</center>
+
+<div class="flex justify-center">
+    <Switch on:change={handleChange} offColor = {"#9be7f2"} onColor = {"#9be7f2"}/>
+</div>
