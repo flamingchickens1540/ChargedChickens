@@ -56,7 +56,7 @@
 
 {:else}
 
-<h1 class="text-red-600 text-4xl text-center font-bold">Please log in before attempting to scout</h1>
+  <h1 class="text-red-600 text-4xl text-center font-bold">Please log in before attempting to scout</h1>
   
 
 {/if}

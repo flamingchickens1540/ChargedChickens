@@ -3,7 +3,7 @@
     let changeStationStatus = "Current Selected: Not Attempted";
 </script>
 
-<h1 class="text-red-600 text-center">EndChargeStation</h1>
+<h1 class="text-red-600 text-center">How Well Did They Dock The Charge Station?</h1>
 <div class="centerButtons">
     <div class="content-center">
         <div>
@@ -47,10 +47,9 @@
                 <input
                     type="radio"
                        
-                    bind:group={changeStationStatus}
+                        bind:group={changeStationStatus}
 
-                       
-                       ={"Current Selected: Engaged"}
+                       value = {"Current Selected: Engaged"}
                 />
                 Engaged
             </label>
@@ -70,25 +69,10 @@
         justify-content: center;
     }
 
-</div>
+</style>
 
 <div class = "centerButtonsValue">
     <h1>
         {changeStationStatus}
     </h1>
 </div>
-
-
-<style>
-    .centerButtons {
-        display: flex;
-        justify-content: center;  
-        
-    }
-
-    .centerButtonsValue{
-
-      display: flex;
-        justify-content: center;
-    }
-</style>

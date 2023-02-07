@@ -2,7 +2,7 @@
     import { auto_charge_station } from "$lib/matchScoutStores";
 </script>
 
-<h1 class="text-orange-400 text-center">AutoChargeStation</h1>
+<h1 class="text-orange-400 text-center">How Well Did They Dock the Charged Station During Auto?</h1>
 <div class="centerButtons">
     <div class="content-center">
         <div>
@@ -49,7 +49,7 @@
 </div>
 
 <div class="centerButtonsValue">
-    <h1>
+    <h1 class="text-center">
         {$auto_charge_station}
     </h1>
 </div>

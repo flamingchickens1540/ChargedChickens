@@ -1,6 +1,6 @@
 <script lang="ts">
   import TeleOpScoring from "$lib/assets/TeleOpScoring.png";
-  import { tele_score } from "../matchScoutStores";
+  import { tele_high_left_succeed, tele_score } from "../matchScoutStores";
 
   import { Canvas, Layer } from "svelte-canvas";
   import DefenceButton from "./DefenceButton.svelte";
@@ -19,16 +19,30 @@
       context.drawImage(TeleOpScoreBoard, 0, 0, width, height);
     };
   };
+
+  //@ts-ignore
+  function getMousePos(canvas: Canvas, evt) {
+  var rect = canvas.getBoundingClientRect();
+  return {
+      x: evt.clientX - rect.left,
+      y: evt.clientY - rect.top
+    };
+  }
   // TODO: Jack code to be implemented on canvas
-  function mouseClicked() {
+  //@ts-ignore
+  function mouseClicked(e) {
+    mouse = getMousePos(Canvas, e);
     if (mouse.x < 0 || mouse.x > innerWidth || mouse.y < 0 || mouse.y > elementHeight)
       return;
     let row = Math.floor(mouse.y / elementHeight);
+    console.log(row);
     let col = Math.floor(mouse.x / innerWidth);
     
     if (col == 1) {
       if (row == 1) {
         tele_score.tele_high_left_succeed.update(n => n++);
+        console.log("Upper Left");
+        console.log($tele_high_left_succeed);
       } else if (row == 2) {
         tele_score.tele_mid_left_succeed.update(n => n++);
       } else if (row == 3) {

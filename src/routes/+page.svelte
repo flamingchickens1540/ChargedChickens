@@ -6,7 +6,7 @@
     import { user_password, admin_password } from '../secrets/passwords';
 
     admin.set(false);
-    login.set(false);
+    login.set(true);
 
     //TODO: Properly Type Auth Code
 
