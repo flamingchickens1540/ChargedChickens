@@ -10,15 +10,10 @@
         const data: any = {};
         for (let key in formData) { data[key] = formData[key]; }    
         if(isFormValid(data)){
-            if(data.password == user_password) {
-                login.set(true);
-            } else if(data.password == admin_password) {
-                admin.set(true);
-            } else {
-                login.set(false);
-                admin.set(false);
-                console.log("Failed login by " + data.name + " with password " + data.password);
-            }
+            
+            login.set(data.password == user_password);
+            admin.set(data.password == admin_password);
+            
         } else {
             console.log("Invalid Form")
         }
