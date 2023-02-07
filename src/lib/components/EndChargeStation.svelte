@@ -10,7 +10,9 @@
             <label>
                 <input
                     type="radio"
+                       
                     bind:group={changeStationStatus}
+                       
                     value={"Current Selected: Not Attempted"}
                 />
                 Not Attempted
@@ -20,8 +22,10 @@
             <label>
                 <input
                     type="radio"
-                    bind:group={changeStationStatus}
-                    value={"Current Selected: Failed"}
+
+                       bind:group={changeStationStatus}
+
+                       value={"Current Selected: Failed"}
                 />
                 Failed
             </label>
@@ -30,8 +34,10 @@
             <label>
                 <input
                     type="radio"
-                    bind:group={changeStationStatus}
-                    value={"Current Selected: Docked"}
+
+                       bind:group={changeStationStatus}
+
+                       value={"Current Selected: Docked"}
                 />
                 Docked
             </label>
@@ -40,13 +46,29 @@
             <label>
                 <input
                     type="radio"
+                       
                     bind:group={changeStationStatus}
-                    value={"Current Selected: Engaged"}
+
+                       
+                       ={"Current Selected: Engaged"}
                 />
                 Engaged
             </label>
         </div>
     </div>
+</div>
+
+<div class="centerButtons">
+    <h1>
+        {$end_charge_station}
+    </h1>
+</div>
+
+<style>
+    .centerButtons {
+        display: flex;
+        justify-content: center;
+    }
 
 </div>
 
@@ -65,7 +87,8 @@
     }
 
     .centerButtonsValue{
-        display: flex;
+
+      display: flex;
         justify-content: center;
     }
 </style>
