@@ -9,6 +9,7 @@ export const connection = await mysql.createConnection({
 
 connection.connect();
 
+//@ts-ignore
 connection.query('SELECT * FROM table', function (error, results, fields) {
     if (error) throw error;
     console.log('The solution is: ', results[0].solution);
