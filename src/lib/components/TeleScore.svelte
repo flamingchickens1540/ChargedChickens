@@ -20,10 +20,10 @@
     };
   };
 
-  //@ts-ignore
-  function getMousePos(canvas: Canvas, evt) {
-  var rect = canvas.getBoundingClientRect();
-  return {
+  function getMousePos(evt: { clientX: number; clientY: number; }) {
+    let canvas: HTMLCollection = document.getElementsByClassName("object-center");
+    var rect: DOMRect = canvas[0].getBoundingClientRect();
+    return {
       x: evt.clientX - rect.left,
       y: evt.clientY - rect.top
     };
@@ -31,7 +31,7 @@
   // TODO: Jack code to be implemented on canvas
   //@ts-ignore
   function mouseClicked(e) {
-    mouse = getMousePos(Canvas, e);
+    mouse = getMousePos(e);
     if (mouse.x < 0 || mouse.x > innerWidth || mouse.y < 0 || mouse.y > elementHeight)
       return;
     let row = Math.floor(mouse.y / elementHeight);
