@@ -2,7 +2,7 @@
     import { auto_charge_station } from "$lib/matchScoutStores";
 </script>
 
-<h1 class="text-orange-400 text-center">How Well Did They Dock the Charged Station During Auto?</h1>
+<h1 class="text-orange-400 text-center">Charge Station Docking - Auto</h1>
 <div class="centerButtons">
     <div class="content-center">
         <div>
