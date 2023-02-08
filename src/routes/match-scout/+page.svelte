@@ -31,12 +31,15 @@
   })
 </script>
 
-{#if $login || $admin}
+<body>
+  {#if $login || $admin}
   <h1 class="text-red-600 text-4xl text-center font-bold">Match Scout</h1>  
   <div id="carousel" class="h-screen w-full">
     <div id="auto">
       <AutoScore />
+      <br>
       <AutoChargeStation />
+      <br>
       <AutoCommunity />
     </div>
     <div id="tele">
@@ -44,9 +47,13 @@
     </div>
     <div id="end">
       <EndChargeStation />
+      <br>
       <EndDriverSkill />
+      <br>
       <EndBroke />
+      <br>
       <EndDied />
+      <br>
       <EndNotes />
     </div>
     <div id=submit>
@@ -56,7 +63,25 @@
 
 {:else}
 
-  <h1 class="text-red-600 text-4xl text-center font-bold">Please log in before attempting to scout</h1>
-  
+  <h1 class="text-red-600 text-4xl text-center font-bold outline-1">Please log in before attempting to scout</h1>
 
 {/if}
+
+</body>
+
+<style>
+  @supports (-webkit-text-stroke: 1px black) {
+    body {
+      background-color: rgb(85, 163, 218);
+    }
+
+    h1 {
+      color: rgb(242, 185, 69 );
+      -webkit-text-stroke-width: 2px;
+      -webkit-text-stroke-color: black;
+    }
+  }
+</style>
+
+
+

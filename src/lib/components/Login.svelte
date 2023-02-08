@@ -1,14 +1,13 @@
 <script lang="ts">
-    
+    import type { LoginData } from "../types";
     import { login, admin } from "../generalStores";
     import { admin_password, user_password } from "../../secrets/passwords";
 
     //@ts-ignore
     function onSubmit(e) {
-        const formData = new FormData(e.target);
-
-        const data: any = {};
-        for (let key in formData) { data[key] = formData[key]; }    
+        const formData: FormData = new FormData(e.target);
+        let data: any = {};
+        for (let key in formData) { data[key] = formData.get(key); }    
         if(!isFormValid(data)) { console.log("Invalid Form"); return }
             
             login.set(data.password == user_password);

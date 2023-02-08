@@ -92,7 +92,7 @@ export type PitScouting = {
     notes: string,
 }
 
-export type login = {
+export type LoginData = {
     name: string,
     password: string
 }

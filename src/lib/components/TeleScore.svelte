@@ -1,6 +1,6 @@
 <script lang="ts">
   import TeleOpScoring from "$lib/assets/TeleOpScoring.png";
-  import { tele_high_left_succeed, tele_score } from "../matchScoutStores";
+  import { tele_high_center_fail, tele_high_center_succeed, tele_high_left_fail, tele_high_left_succeed, tele_high_right_fail, tele_high_right_succeed, tele_low_center_fail, tele_low_center_succeed, tele_low_left_fail, tele_low_left_succeed, tele_low_right_fail, tele_low_right_succeed, tele_mid_center_fail, tele_mid_center_succeed, tele_mid_left_fail, tele_mid_left_succeed, tele_mid_right_fail, tele_mid_right_succeed, tele_score } from "../matchScoutStores";
 
   import { Canvas, Layer } from "svelte-canvas";
   import DefenseButton from "./DefenseButton.svelte";
@@ -9,6 +9,9 @@
   let innerWidth = 0;
   let elementHeight = 0;
 
+  let teleScoreSucced = [tele_high_left_succeed, tele_high_center_succeed, tele_high_right_succeed, tele_mid_left_succeed, tele_mid_center_succeed, tele_mid_right_succeed, tele_low_left_succeed, tele_low_center_succeed, tele_low_right_succeed];
+  let teleScoreFail = [tele_high_left_fail, tele_high_center_fail, tele_high_right_fail, tele_mid_left_fail, tele_mid_center_fail, tele_mid_right_fail, tele_low_left_fail, tele_low_center_fail, tele_low_right_fail]
+  
   let mouse = { x: 0, y: 0 };
   // @ts-ignore
   $: render = ({ context, width, height }) => {
@@ -38,68 +41,16 @@
     console.log(row);
     let col = Math.floor(mouse.x / innerWidth);
     
-    if (col == 1) {
-      if (row == 1) {
-        tele_score.tele_high_left_succeed.update(n => n++);
-        console.log("Upper Left");
-        console.log($tele_high_left_succeed);
-      } else if (row == 2) {
-        tele_score.tele_mid_left_succeed.update(n => n++);
-      } else if (row == 3) {
-        tele_score.tele_low_left_succeed.update(n => n++);
-      } 
-    } else if (col == 2) {
-      if (row == 1) {
-        tele_score.tele_high_center_succeed.update(n => n++);
-      } else if (row == 2) {
-        tele_score.tele_mid_center_succeed.update(n => n++);
-      } else if (row == 3) {
-        tele_score.tele_low_center_succeed.update(n => n++);
-      }
-    } else if (col == 2) {
-      if (row == 1) {
-        tele_score.tele_high_right_succeed.update(n => n++);
-      } else if (row == 2) {
-        tele_score.tele_mid_right_succeed.update(n => n++);
-      } else if (row == 3) {
-        tele_score.tele_low_right_succeed.update(n => n++);
-      }
-    } 
-    console.log("clicked");
-    console.log(tele_score);
+    teleScoreSucced[(row-1)*3+(col-1)].update(n => n++);
   }
-
   function mouseDoubleClicked() {
     if (mouse.x < 0 || mouse.x > innerWidth || mouse.y < 0 || mouse.y > elementHeight)
       return;
     let row = Math.floor(mouse.y / innerHeight);
     let col = Math.floor(mouse.x / innerWidth);
     
-    if (col == 1) {
-      if (row == 1) {
-        tele_score.tele_high_left_fail.update(n => n++);
-      } else if (row == 2) {
-        tele_score.tele_mid_left_fail.update(n => n++);
-      } else if (row == 3) {
-        tele_score.tele_low_left_fail.update(n => n++);
-      } 
-    } else if (col == 2) {
-      if (row == 1) {
-        tele_score.tele_high_center_fail.update(n => n++);
-      } else if (row == 2) {
-        tele_score.tele_mid_center_fail.update(n => n++);
-      } else if (row == 3) {
-        tele_score.tele_low_center_fail.update(n => n++);
-      }
-    } else if (col == 2) {
-      if (row == 1) {
-        tele_score.tele_high_right_fail.update(n => n++);
-      } else if (row == 2) {
-        tele_score.tele_mid_right_fail.update(n => n++);
-      } else if (row == 3) {
-        tele_score.tele_low_right_fail.update(n => n++);
-      }
-    }
+    teleScoreFail[(row-1)*3+(col-1)].update(n => n++);
+
     console.log("clicked");
     console.log(tele_score);
   }
