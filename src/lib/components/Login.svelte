@@ -9,14 +9,11 @@
 
         const data: any = {};
         for (let key in formData) { data[key] = formData[key]; }    
-        if(isFormValid(data)){
+        if(!isFormValid(data)) { console.log("Invalid Form"); return }
             
             login.set(data.password == user_password);
             admin.set(data.password == admin_password);
-            
-        } else {
-            console.log("Invalid Form")
-        }
+           
     }
 
     function isFormValid(data: {[fieldName: string]: any}): boolean {
