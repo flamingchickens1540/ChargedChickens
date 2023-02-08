@@ -3,7 +3,7 @@
   import { tele_high_left_succeed, tele_score } from "../matchScoutStores";
 
   import { Canvas, Layer } from "svelte-canvas";
-  import DefenceButton from "./DefenceButton.svelte";
+  import DefenseButton from "./DefenseButton.svelte";
 
   let innerHeight = 0;
   let innerWidth = 0;
