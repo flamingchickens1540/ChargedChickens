@@ -119,7 +119,7 @@
   <Layer {render} />
 </Canvas>
 
-<DefenceButton />
+<DefenseButton />
 
 <style>
 </style>
