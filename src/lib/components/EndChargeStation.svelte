@@ -50,7 +50,7 @@
                     bind:group={changeStationStatus}
 
                        
-                       ={"Current Selected: Engaged"}
+                    value ={"Current Selected: Engaged"}
                 />
                 Engaged
             </label>
@@ -70,25 +70,10 @@
         justify-content: center;
     }
 
-</div>
+</style>
 
 <div class = "centerButtonsValue">
     <h1>
         {changeStationStatus}
     </h1>
 </div>
-
-
-<style>
-    .centerButtons {
-        display: flex;
-        justify-content: center;  
-        
-    }
-
-    .centerButtonsValue{
-
-      display: flex;
-        justify-content: center;
-    }
-</style>
