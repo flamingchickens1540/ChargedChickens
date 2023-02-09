@@ -91,3 +91,8 @@ export type PitScouting = {
     polish: number,
     notes: string,
 }
+
+export type login = {
+    name: string,
+    password: string
+}
