@@ -13,7 +13,7 @@
                        
                     bind:group={changeStationStatus}
                        
-                    value={"Current Selected: Not Attempted"}
+                    value = {"Current Selected: Not Attempted"}
                 />
                 Not Attempted
             </label>
@@ -25,7 +25,7 @@
 
                        bind:group={changeStationStatus}
 
-                       value={"Current Selected: Failed"}
+                       value = {"Current Selected: Failed"}
                 />
                 Failed
             </label>
@@ -37,7 +37,7 @@
 
                        bind:group={changeStationStatus}
 
-                       value={"Current Selected: Docked"}
+                       value = {"Current Selected: Docked"}
                 />
                 Docked
             </label>
@@ -50,7 +50,7 @@
                     bind:group={changeStationStatus}
 
                        
-                       ={"Current Selected: Engaged"}
+                       value = {"Current Selected: Engaged"}
                 />
                 Engaged
             </label>
@@ -64,13 +64,7 @@
     </h1>
 </div>
 
-<style>
-    .centerButtons {
-        display: flex;
-        justify-content: center;
-    }
 
-</div>
 
 <div class = "centerButtonsValue">
     <h1>
@@ -89,6 +83,10 @@
     .centerButtonsValue{
 
       display: flex;
+        justify-content: center;
+    }
+    .centerButtons {
+        display: flex;
         justify-content: center;
     }
 </style>
