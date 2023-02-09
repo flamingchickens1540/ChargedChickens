@@ -1,17 +1,23 @@
 <script lang="ts">
-    import { tele_score, defense_times } from "$lib/matchScoutStores";
-	
-    let miliSecondsArr: number[] = [];
-    let initialTime : number;
-  
-    
-    function handleMousedown() {
-        initialTime = Date.now();
-	}
-    function handleMouseup() {
-      miliSecondsArr.push(Date.now() - initialTime)
-    }
+  import TeleOpScoring from "$lib/assets/TeleOpScoring.png";
+  import { tele_high_center_fail, tele_high_center_succeed, tele_high_left_fail, tele_high_left_succeed, tele_high_right_fail, tele_high_right_succeed, tele_low_center_fail, tele_low_center_succeed, tele_low_left_fail, tele_low_left_succeed, tele_low_right_fail, tele_low_right_succeed, tele_mid_center_fail, tele_mid_center_succeed, tele_mid_left_fail, tele_mid_left_succeed, tele_mid_right_fail, tele_mid_right_succeed, tele_score } from "../matchScoutStores";
 
+  import { Canvas, Layer } from "svelte-canvas";
+  import DefenseButton from "./DefenseButton.svelte";
+
+  let innerHeight = 0;
+  let innerWidth = 0;
+  let elementHeight = 0;
+
+  let teleScoreSucced = [tele_high_left_succeed, tele_high_center_succeed, tele_high_right_succeed, tele_mid_left_succeed, tele_mid_center_succeed, tele_mid_right_succeed, tele_low_left_succeed, tele_low_center_succeed, tele_low_right_succeed];
+  let teleScoreFail = [tele_high_left_fail, tele_high_center_fail, tele_high_right_fail, tele_mid_left_fail, tele_mid_center_fail, tele_mid_right_fail, tele_low_left_fail, tele_low_center_fail, tele_low_right_fail]
+  
+  let mouse = { x: 0, y: 0 };
+  // @ts-ignore
+  $: render = ({ context, width, height }) => {
+    const TeleOpScoreBoard = new Image();
+
+<<<<<<< HEAD
     import { Canvas, Layer, t } from 'svelte-canvas';
 
     // Grid width
@@ -40,36 +46,61 @@
 
       context.strokeStyle = "black";
       context.stroke();
+=======
+    TeleOpScoreBoard.src = TeleOpScoring;
+    TeleOpScoreBoard.onload = () => {
+      context.drawImage(TeleOpScoreBoard, 0, 0, width, height);
+>>>>>>> 4963ad064a08fda9f51e659e6998f2b4aceada6c
     };
+  };
+
+  function getMousePos(evt: { clientX: number; clientY: number; }) {
+    let canvas: HTMLCollection = document.getElementsByClassName("object-center");
+    var rect: DOMRect = canvas[0].getBoundingClientRect();
+    return {
+      x: evt.clientX - rect.left,
+      y: evt.clientY - rect.top
+    };
+  }
+  // TODO: Jack code to be implemented on canvas
+  //@ts-ignore
+  function mouseClicked(e) {
+    mouse = getMousePos(e);
+    if (mouse.x < 0 || mouse.x > innerWidth || mouse.y < 0 || mouse.y > elementHeight)
+      return;
+    let row = Math.floor(mouse.y / elementHeight);
+    console.log(row);
+    let col = Math.floor(mouse.x / innerWidth);
     
-    //Jack code
-    // function mouseClicked() {
-    //   if (mouseX < 0 || mouseX > 900 || mouseY < 0 || mouseY > 300) return;
-    //   row = Math.floor(mouseY / 100);
-    //   col = Math.floor(mouseX / 100);
-    //   if (socket != null) socket.emit("click", { row, col });
-    // }
+    teleScoreSucced[(row-1)*3+(col-1)].update(n => n++);
+  }
+  function mouseDoubleClicked() {
+    if (mouse.x < 0 || mouse.x > innerWidth || mouse.y < 0 || mouse.y > elementHeight)
+      return;
+    let row = Math.floor(mouse.y / innerHeight);
+    let col = Math.floor(mouse.x / innerWidth);
+    
+    teleScoreFail[(row-1)*3+(col-1)].update(n => n++);
+
+    console.log("clicked");
+    console.log(tele_score);
+  }
+  
 </script>
 
-<h1 class="text-red-600 text-center">TeleScore</h1>
+<svelte:window bind:innerHeight bind:innerWidth />
+<strong><h1 class="text-red-600 text-center text-5xl">TeleScore</h1></strong>
 
-<!-- <div class="border w-20 grid-flow-row-dense grid-cols-3 grid-rows-3">
-    <Square></Square>
-    <Square></Square>
-    <Square></Square>
-    <Triangle></Triangle>
-    <Triangle></Triangle>
-    <Triangle></Triangle>
-    <TriangeSquare></TriangeSquare>
-    <TriangeSquare></TriangeSquare>
-    <TriangeSquare></TriangeSquare>
-</div> -->
-  
-  <Canvas width={640} height={640} class="object-center">
-    <Layer {render} />
-  </Canvas>
+<Canvas
+  width={innerWidth}
+  height={350}
+  class="object-center"
+  on:click={mouseClicked} on:dblclick={mouseDoubleClicked}
+>
+  <Layer {render} />
+</Canvas>
 
-<button on:touchstart={handleMousedown} on:touchend={handleMouseup} class="border">Defense</button>
+<DefenseButton />
 
 <style>
 </style>
