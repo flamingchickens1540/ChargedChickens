@@ -1,6 +1,6 @@
 <script lang="ts">
     import { broke } from "$lib/matchScoutStores";
-    import Switch from "svelte-switch";
+    import Switch from "./Switch.svelte";
 
     let checkedValue = false;
     function handleChange() {
@@ -11,5 +11,5 @@
 
 <h1 class="text-yellow-400 text-center">EndBroke</h1>
 <div class="flex justify-center">
-    <Switch on:change={handleChange} offColor = {"#9be7f2"} onColor = {"#9be7f2"}/>
+    <Switch bind:checked={checkedValue} />
 </div>
