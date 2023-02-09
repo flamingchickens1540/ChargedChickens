@@ -15,24 +15,29 @@
     import { Canvas, Layer, t } from 'svelte-canvas';
 
     // Grid width
-    var bw = 120;
+    const bw = 120;
     // Grid height
-    var bh = 120;
-    // Padding
-    var p = 10;
+    const bh = 120;
+    // Padding X and Y
+    const py = 10;
+    const px = 10;
+
+    const ROWS = 3;
+    const COLUMNS = 3;
+
       // @ts-ignore
     $: render = ({ context, width, height }) => {
-      // The number of boxes is determined by the ratio between the incrementer of x, and the base/height of the grid
+      // The number of boxes is determined by the ratio between the incrementer of x, and the base/height of the grid    
+      for (let y = 0; y <= ROWS; y++) {
+          context.moveTo(px, 0.5 + py + (y * bh / ROWS));
+          context.lineTo(px, 0.5 + py + (y * bh / ROWS));
+      }
 
-      for (let y = 0; y <= bw; y += 40) {
-        context.moveTo(0.5 + y + p, p);
-        context.lineTo(0.5 + y + p, bh + p);
+      for (let x = 0; x <= COLUMNS; x++) {
+        context.moveTo(0.5 + px + (x * bw / COLUMNS), py);
+        context.lineTo(0.5 + px + (x * bw / COLUMNS), bh + py);
       }
-    
-      for (let x = 0; x <= bh; x += 40) {
-          context.moveTo(p, 0.5 + x + p);
-          context.lineTo(bw + p, 0.5 + x + p);
-      }
+
       context.strokeStyle = "black";
       context.stroke();
     };
