@@ -3,6 +3,8 @@
     import { team_matches_stores } from "$lib/matchScoutStores";
 
     async function submit() {
+
+        
         let data = {};
 
         Object.keys(team_matches_stores).map((key) => {

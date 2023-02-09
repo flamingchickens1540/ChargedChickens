@@ -3,17 +3,17 @@
     import { skill } from "$lib/matchScoutStores";
     import { Rating } from "svelte-stars-hover-rating";
 
-  var isOne = false;
+
 
 </script>
 
-<h1 class="text-orange-400 text-center">EndDriverSkill</h1>
+<h1 class="text-orange-400 text-center">How Skilled was the Driver in the EndGame?</h1>
 
 <div class="centerStars">
     <Rating bind:rating={$skill}/>
 </div>
 <div class="centerRatingStar">
-    {$skill} Star(s)
+    {$skill} Star{#if $skill != 1}s{/if}
 </div>
 
 <style>
@@ -23,7 +23,7 @@
         flex-direction: row;
         rotate: -90deg;
         height: 21px;
-        width: 423px;
+        width: 427px;
     }
 
     .centerRatingStar {
