@@ -39,8 +39,10 @@
             <label>
                 <input
                     type="radio"
+
                     bind:group={$end_charge_station}
                     value=3
+
                 />
                 Engaged
             </label>
