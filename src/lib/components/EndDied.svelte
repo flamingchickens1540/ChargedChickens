@@ -3,14 +3,11 @@
     import Switch from "./Switch.svelte";
 
     let checkedValue = false;
-    function handleChange() {
-        checkedValue = !checkedValue;
-        died.set(checkedValue)
-    }
+    died.set(checkedValue);
 
 </script>
 
-<h1 class="text-blue-500 text-center">EndDied</h1>
+<h1 class="text-blue-500 text-center">Did the Robot Die in the Endgame?</h1>
 
 <div class="flex justify-center">
     <Switch bind:checked={checkedValue}/>

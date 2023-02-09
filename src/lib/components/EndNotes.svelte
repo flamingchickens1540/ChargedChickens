@@ -2,4 +2,4 @@
     import { notes } from "$lib/matchScoutStores";
 </script>
 
-<h1 class="text-red-600 text-center">EndNotes</h1>
+<h1 class="text-red-600 text-center">Notes about the Endgame</h1>
