@@ -69,19 +69,4 @@
 
 </body>
 
-<style>
-  @supports (-webkit-text-stroke: 1px black) {
-    body {
-      background-color: rgb(85, 163, 218);
-    }
-
-    h1 {
-      color: rgb(242, 185, 69 );
-      -webkit-text-stroke-width: 2px;
-      -webkit-text-stroke-color: black;
-    }
-  }
-</style>
-
-
 

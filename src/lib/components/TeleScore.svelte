@@ -58,12 +58,11 @@
 </script>
 
 <svelte:window bind:innerHeight bind:innerWidth />
-
-<h1 class="text-red-600 text-center">TeleScore</h1>
+<strong><h1 class="text-red-600 text-center text-5xl">TeleScore</h1></strong>
 
 <Canvas
   width={innerWidth}
-  height={450}
+  height={350}
   class="object-center"
   on:click={mouseClicked} on:dblclick={mouseDoubleClicked}
 >
