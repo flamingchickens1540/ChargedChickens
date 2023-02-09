@@ -1,19 +1,16 @@
 <script lang="ts">
     import { end_charge_station } from "$lib/matchScoutStores";
-    let changeStationStatus = "Current Selected: Not Attempted";
 </script>
 
-<h1 class="text-red-600 text-center">How Well Did They Dock The Charge Station?</h1>
+<h1 class="text-orange-400 text-center">Charge Station Docking - Endgame</h1>
 <div class="centerButtons">
     <div class="content-center">
         <div>
             <label>
                 <input
                     type="radio"
-                       
-                    bind:group={changeStationStatus}
-                    
-                    value={"Current Selected: Not Attempted"}
+                    bind:group={$end_charge_station}
+                    value=0
                 />
                 Not Attempted
             </label>
@@ -22,10 +19,8 @@
             <label>
                 <input
                     type="radio"
-
-                       bind:group={changeStationStatus}
-
-                       value={"Current Selected: Failed"}
+                    bind:group={$end_charge_station}
+                    value=1
                 />
                 Failed
             </label>
@@ -34,10 +29,8 @@
             <label>
                 <input
                     type="radio"
-
-                       bind:group={changeStationStatus}
-
-                       value={"Current Selected: Docked"}
+                    bind:group={$end_charge_station}
+                    value=2
                 />
                 Docked
             </label>
@@ -46,10 +39,8 @@
             <label>
                 <input
                     type="radio"
-                       
-                        bind:group={changeStationStatus}
-
-                       value = {"Current Selected: Engaged"}
+                    bind:group={$end_charge_station}
+                    value=3
                 />
                 Engaged
             </label>
@@ -57,9 +48,17 @@
     </div>
 </div>
 
-<div class="centerButtons">
-    <h1>
-        {$end_charge_station}
+<div class="centerButtonsValue">
+    <h1 class="text-center">
+        {#if $end_charge_station == 0}
+            Not Attempted
+        {:else if $end_charge_station == 1}
+            Failed
+        {:else if $end_charge_station == 2}
+            Docked
+        {:else if $end_charge_station == 3}
+            Engaged
+        {/if}
     </h1>
 </div>
 
@@ -68,11 +67,4 @@
         display: flex;
         justify-content: center;
     }
-
 </style>
-
-<div class = "centerButtonsValue">
-    <h1>
-        {changeStationStatus}
-    </h1>
-</div>
