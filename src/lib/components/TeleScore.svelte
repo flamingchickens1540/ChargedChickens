@@ -35,10 +35,7 @@
     tele_low_right_fail
   ];
   
-  let mouse : {
-    x : number,
-    y : number
-  };
+  let mouse : MouseEvent;
   // @ts-ignore
   $: render = ({ context, width, height }) => {
     const TeleOpScoreBoard = new Image();
@@ -49,22 +46,14 @@
     };
   };
 
-  function getMousePos(evt: { clientX: number; clientY: number; }) {
-    const canvas: HTMLCollection = document.getElementsByClassName("object-center");
-    const rect: DOMRect = canvas[0].getBoundingClientRect();
-    return {
-      x: evt.clientX - rect.left,
-      y: evt.clientY - rect.top
-    };
-  }
-  // TODO: Jack code to be implemented on canvas
+ // TODO: Jack code to be implemented on canvas
   //@ts-ignore
   function mouseWithinBounds() : boolean {
     return mouse.x <= 0 && mouse.x >= innerWidth && mouse.y <= 0 && mouse.y >= elementHeight;
   }
 
   function mouseClicked(e : MouseEvent) {
-    mouse = getMousePos(e);
+    mouse = e;
     if (!mouseWithinBounds())
       return;
     const row = Math.floor(mouse.y / elementHeight * ROWS);
