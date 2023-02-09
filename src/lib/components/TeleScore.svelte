@@ -60,7 +60,7 @@
   // TODO: Jack code to be implemented on canvas
   //@ts-ignore
   function mouseWithinBounds() : boolean {
-    return mouse.x < 0 && mouse.x > innerWidth && mouse.y < 0 && mouse.y > elementHeight;
+    return mouse.x <= 0 && mouse.x >= innerWidth && mouse.y <= 0 && mouse.y >= elementHeight;
   }
 
   function mouseClicked(e : MouseEvent) {
