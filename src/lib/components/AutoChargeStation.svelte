@@ -2,7 +2,7 @@
     import { auto_charge_station } from "$lib/matchScoutStores";
 </script>
 
-<h1 class="text-orange-400 text-center">AutoChargeStation</h1>
+<h1 class="text-orange-400 text-center">Charge Station Docking - Auto</h1>
 <div class="centerButtons">
     <div class="content-center">
         <div>
@@ -10,7 +10,7 @@
                 <input
                     type="radio"
                     bind:group={$auto_charge_station}
-                    value={"Current Selected: Not Attempted"}
+                    value=0
                 />
                 Not Attempted
             </label>
@@ -20,7 +20,7 @@
                 <input
                     type="radio"
                     bind:group={$auto_charge_station}
-                    value={"Current Selected: Failed"}
+                    value=1
                 />
                 Failed
             </label>
@@ -30,7 +30,7 @@
                 <input
                     type="radio"
                     bind:group={$auto_charge_station}
-                    value={"Current Selected: Docked"}
+                    value=2
                 />
                 Docked
             </label>
@@ -40,7 +40,7 @@
                 <input
                     type="radio"
                     bind:group={$auto_charge_station}
-                    value={"Current Selected: Engaged"}
+                    value=3
                 />
                 Engaged
             </label>
@@ -49,8 +49,16 @@
 </div>
 
 <div class="centerButtonsValue">
-    <h1>
-        {$auto_charge_station}
+    <h1 class="text-center">
+        {#if $auto_charge_station == 0}
+            Not Attempted
+        {:else if $auto_charge_station == 1}
+            Failed
+        {:else if $auto_charge_station == 2}
+            Docked
+        {:else if $auto_charge_station == 3}
+            Engaged
+        {/if}
     </h1>
 </div>
 
