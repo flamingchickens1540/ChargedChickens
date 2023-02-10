@@ -43,7 +43,9 @@
   // TODO: Jack code to be implemented on canvas
   //@ts-ignore
   function mouseWithinBounds(mouse : MouseEvent) : boolean {
-    return mouse.offsetX >= 0 && mouse.offsetX <= outerWidth && mouse.offsetY >= 0 && mouse.offsetY <= outerWidth;
+    console.log(mouse.offsetX);
+    console.log(mouse.offsetY);
+    return mouse.offsetX > 0 && mouse.offsetX < outerWidth && mouse.offsetY > 0 && mouse.offsetY < outerWidth;
   }
 
   function mouseClicked(mouse : MouseEvent) {
