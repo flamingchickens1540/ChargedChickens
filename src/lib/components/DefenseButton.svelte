@@ -3,10 +3,22 @@
 
     let miliSecondsArr: number[] = [];
     let initialTime : number;
-
+    /**
+     * Gets the current time
+     * 
+     * @complete
+     */
     function handleMousedown() {
         initialTime = Date.now();
-	}
+	  }
+    
+    /**
+     * Gets the amount of time in miliseconds that the button has been held for
+     * 
+     * Pushes this value to an array and updates the defense_times store
+     * 
+     * @complete
+     */
     function handleMouseup() {
       miliSecondsArr.push(Date.now() - initialTime)
       defense_times.update(() => miliSecondsArr);

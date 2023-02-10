@@ -4,10 +4,6 @@
 	export let rating = 0;
 	export let num = 5;
 	let hoverRating = null;
-
-	const handleHover = (id) => () => {
-		hoverRating = id;
-	};
 	const handleRate = (id) => () => {
 		if (rating == 1 && id == 1) {
 			rating = 0;
@@ -20,7 +16,7 @@
 
 <div class="feedback">
 	<span class="starContainer">
-		<div>
+		<div class = "flex flex-row">
 			{#each stars as star}
 				<Star
 					filled={hoverRating ? hoverRating >= star : rating >= star}

@@ -18,10 +18,6 @@
     .centerStars{
         display: flex;
         justify-content: center;
-        flex-direction: row;
-        rotate: -90deg;
-        height: 41px;
-        width: 196px;
     }
 
     .centerRatingStar {

@@ -74,6 +74,8 @@ export type Team = {
     nickname: string,
     team_number: number,
     website: string,
+    logo: string | undefined,
+    // details : string
 }
 
 export type Match = {
