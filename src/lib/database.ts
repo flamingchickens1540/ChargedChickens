@@ -17,6 +17,15 @@ const db = mysql
   })
   .promise();
 
+
+  /**
+   * Inserts all match scouting data into a SQL database
+   * 
+   * @param matchKey 
+   * @param teamKey 
+   * @param teamData 
+   * @returns A promise of a boolean representing whether the insertion was successful or not
+   */
 export async function insertTeamMatch(
   matchKey: string,
   teamKey: string,

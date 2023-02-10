@@ -3,9 +3,20 @@
     import { login, admin } from "../generalStores";
     import { admin_password, user_password } from "../../secrets/passwords";
 
+    /**
+     * Handles the login submission
+     *  
+     * Checks if the given password is the admin_password, user_password, neither
+     * Sets the login and admin stores to be equal to the boolean results
+     * 
+     * @param e
+     * 
+     * @todo
+     * Properly type the parameters
+     */
     //@ts-ignore
     function onSubmit(e) {
-        const formData: FormData = new FormData(e.target);
+        const formData: FormData = new FormData(e);
         let data: any = {};
         for (let key in formData) { data[key] = formData.get(key); }    
         if(!isFormValid(data)) { console.log("Invalid Form"); return }
@@ -15,9 +26,31 @@
            
     }
 
+    /**
+     * @description
+     * Checks if the name a password are both present in the submitted data
+     * 
+     * @param data
+     * 
+     * @returns
+     * A boolean stating if name and password are both present in the submited data
+     * 
+     * @todo
+     * Properly type the parameters
+     */
     function isFormValid(data: {[fieldName: string]: any}): boolean {
         return isRequiredFieldValid(data.password) && isRequiredFieldValid(data.name);
     }
+
+    /**
+     * @description
+     * Checks if the given value is exists
+     * 
+     * @param value
+     * 
+     * @returns
+     * A boolean stating if the value isn't null or an empty string
+     */
     function isRequiredFieldValid(value: any){
         return value != null && value !== ""
     }
