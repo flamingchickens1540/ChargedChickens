@@ -6,12 +6,14 @@
   import { Canvas, Layer } from "svelte-canvas";
   import DefenseButton from "./DefenseButton.svelte";
 
-  let innerHeight: number;
-  let innerWidth: number;
+  // let innerHeight: number;
+  // let innerWidth: number;
   let elementHeight = 400;
 
   const ROWS = 3;
   const COLUMNS = 3;
+  let outerHeight : number;
+  let outerWidth : number;
 
   const teleScoreSucceed = [
     tele_high_left_succeed, 
@@ -87,8 +89,11 @@
       return;
     }
 
-    const row = Math.floor(mouse.y / elementHeight * ROWS) - 1; 
-    const col = Math.floor(mouse.x / innerWidth * COLUMNS);
+    // const row = Math.floor(mouse.y / elementHeight * ROWS) - 1; 
+    // const col = Math.floor(mouse.x / innerWidth * COLUMNS);
+
+    const row = Math.floor(mouse.offsetY / outerWidth * 3);
+    const col = Math.floor(mouse.offsetX / outerWidth * 3);
 
     if (DEBUG) {
       console.log("x");
@@ -128,8 +133,11 @@
       return;
     }
 
-    const row = Math.floor(mouse.y / elementHeight * ROWS) - 1; 
-    const col = Math.floor(mouse.x / innerWidth * COLUMNS);
+    // const row = Math.floor(mouse.y / elementHeight * ROWS) - 1; 
+    // const col = Math.floor(mouse.x / innerWidth * COLUMNS);
+
+    const row = Math.floor(mouse.offsetY / outerWidth * 3);
+    const col = Math.floor(mouse.offsetX / outerWidth * 3); 
 
     if (DEBUG) {
       console.log("x");
@@ -144,18 +152,16 @@
     
     teleScoreFail[col + row * COLUMNS].update(n => n++);
   }
-    
-  
 </script>
 
-<svelte:window bind:innerHeight bind:innerWidth />
+<svelte:window bind:outerHeight bind:outerWidth/>
 <strong><h1 class="text-red-600 text-center text-5xl">TeleScore</h1></strong>
 
 <Canvas
-  width={innerWidth}
-  height={elementHeight}
+  width={outerWidth}
+  height={outerWidth}
   class="object-center"
-  on:click={mouseClicked} on:dblclick={mouseDoubleClicked}
+  on:mousedown={mouseClicked} on:dblclick={mouseDoubleClicked}
 >
   <Layer {render} />
 </Canvas>
