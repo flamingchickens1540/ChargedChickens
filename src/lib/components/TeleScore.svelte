@@ -42,14 +42,8 @@
   }; 
   // TODO: Jack code to be implemented on canvas
   //@ts-ignore
-  function mouseWithinBounds(mouse : MouseEvent) : boolean {
-    // console.log(mouse);
-    return mouse.offsetX > 0 && mouse.offsetX < outerWidth && mouse.offsetY > 0 && mouse.offsetY < outerWidth;
-  }
 
   function mouseClicked(mouse : MouseEvent) {
-    if (!mouseWithinBounds(mouse))
-      return;
 
     const row = Math.floor(mouse.offsetY / outerWidth * 3);
     const col = Math.floor(mouse.offsetX / outerWidth * 3);
@@ -58,8 +52,6 @@
   } 
 
   function mouseDoubleClicked(mouse : MouseEvent) {
-    if (!mouseWithinBounds(mouse))
-      return;
 
     const row = Math.floor(mouse.offsetY / outerWidth * 3);
     const col = Math.floor(mouse.offsetX / outerWidth * 3);
@@ -79,7 +71,6 @@
 <Canvas
   width={outerWidth}
   height={outerWidth}
-  pixelRatio={1}
 
   on:click={mouseClicked} on:dblclick={mouseDoubleClicked}
 >
