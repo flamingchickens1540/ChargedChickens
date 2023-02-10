@@ -7,7 +7,6 @@
 
   let outerHeight : number;
   let outerWidth : number;
-  const canvas = document.getElementsByTagName("canvas")[0];
 
   const teleScoreSucceed = [
     tele_high_left_succeed, 
@@ -50,9 +49,10 @@
   function mouseClicked(mouse : MouseEvent) {
     if (!mouseWithinBounds(mouse))
       return;
+
     const row = Math.floor(mouse.offsetY / outerWidth * 3);
     const col = Math.floor(mouse.offsetX / outerWidth * 3);
-    
+    // console.log(col + row * 3)
     teleScoreSucceed[col + row * 3].update(n => n++);
   }
 
