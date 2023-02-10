@@ -43,8 +43,7 @@
   // TODO: Jack code to be implemented on canvas
   //@ts-ignore
   function mouseWithinBounds(mouse : MouseEvent) : boolean {
-    console.log(mouse.offsetX);
-    console.log(mouse.offsetY);
+    // console.log(mouse);
     return mouse.offsetX > 0 && mouse.offsetX < outerWidth && mouse.offsetY > 0 && mouse.offsetY < outerWidth;
   }
 
@@ -64,7 +63,7 @@
 
     const row = Math.floor(mouse.offsetY / outerWidth * 3);
     const col = Math.floor(mouse.offsetX / outerWidth * 3);
-    console.log(row);
+    // console.log(row);
     
     teleScoreFail[col + row * 3].update(n => n++);
 
@@ -80,10 +79,11 @@
 <Canvas
   width={outerWidth}
   height={outerWidth}
-  class="object-center"
-  on:mousedown={mouseClicked} on:dblclick={mouseDoubleClicked}
+  pixelRatio={1}
+
+  on:click={mouseClicked} on:dblclick={mouseDoubleClicked}
 >
-  <Layer {render} />
+  <Layer {render}/>
 </Canvas>
 
 <DefenseButton />
