@@ -5,17 +5,7 @@
 
   import { Canvas, Layer } from "svelte-canvas";
   import DefenseButton from "./DefenseButton.svelte";
-<<<<<<< HEAD
  
-=======
-
-  // let innerHeight: number;
-  // let innerWidth: number;
-  let elementHeight = 400;
-
-  const ROWS = 3;
-  const COLUMNS = 3;
->>>>>>> 4049c52fede32080daf68f27b962524b1160d924
   let outerHeight : number;
   let outerWidth : number;
 
