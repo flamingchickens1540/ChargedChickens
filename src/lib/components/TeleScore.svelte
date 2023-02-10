@@ -44,7 +44,8 @@
   //@ts-ignore
 
   function mouseClicked(mouse : MouseEvent) {
-
+    if(mouse.offsetY == outerWidth || mouse.offsetX == outerWidth)
+      return;
     const row = Math.floor(mouse.offsetY / outerWidth * 3);
     const col = Math.floor(mouse.offsetX / outerWidth * 3);
     console.log(col + row * 3)
@@ -52,6 +53,8 @@
   } 
 
   function mouseDoubleClicked(mouse : MouseEvent) {
+    if(mouse.offsetY == outerWidth || mouse.offsetX == outerWidth)
+      return;
 
     const row = Math.floor(mouse.offsetY / outerWidth * 3);
     const col = Math.floor(mouse.offsetX / outerWidth * 3);
