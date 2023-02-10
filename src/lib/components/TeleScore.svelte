@@ -54,7 +54,7 @@
     const col = Math.floor(mouse.offsetX / outerWidth * 3);
     // console.log(col + row * 3)
     teleScoreSucceed[col + row * 3].update(n => n++);
-  }
+  } 
 
   function mouseDoubleClicked(mouse : MouseEvent) {
     if (!mouseWithinBounds(mouse))
