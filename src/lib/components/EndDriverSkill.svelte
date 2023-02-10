@@ -1,9 +1,7 @@
 <script lang="ts">
     import { applyAction } from "$app/forms";
     import { skill } from "$lib/matchScoutStores";
-    import { Rating } from "svelte-stars-hover-rating";
-
-
+    import Rating from "./Rating.svelte";
 
 </script>
 
@@ -13,7 +11,7 @@
     <Rating bind:rating={$skill}/>
 </div>
 <div class="centerRatingStar">
-    {$skill} Star{#if $skill != 1}s{/if}
+    {$skill}/5 Stars {#if $skill == 0} (They are bad :D) {/if} 
 </div>
 
 <style>
@@ -22,8 +20,8 @@
         justify-content: center;
         flex-direction: row;
         rotate: -90deg;
-        height: 21px;
-        width: 427px;
+        height: 41px;
+        width: 196px;
     }
 
     .centerRatingStar {

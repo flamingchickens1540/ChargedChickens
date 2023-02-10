@@ -12,6 +12,7 @@
   import { onMount } from "svelte";
   import Submit from "$lib/components/Submit.svelte";
   import { admin, login} from "../../lib/generalStores";
+  import { confetti } from "@neoconfetti/svelte";
   
   onMount(() => {
     new Siema({
