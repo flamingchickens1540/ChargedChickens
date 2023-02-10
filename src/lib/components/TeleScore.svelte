@@ -39,17 +39,9 @@
     TeleOpScoreBoard.onload = () => {
       context.drawImage(TeleOpScoreBoard, 0, 0, width, height);
     };
-  }; 
-  // TODO: Jack code to be implemented on canvas
-  //@ts-ignore
-  function mouseWithinBounds(mouse : MouseEvent) : boolean {
-    return mouse.offsetX >= 0 && mouse.offsetX <= outerWidth && mouse.offsetY >= 0 && mouse.offsetY <= outerHeight;
-  }
+  };
 
   function mouseClicked(mouse : MouseEvent) {
-    if (!mouseWithinBounds(mouse))
-      return;
-
     const row = Math.floor(mouse.offsetY / outerWidth * 3);
     const col = Math.floor(mouse.offsetX / outerWidth * 3);
     // console.log(col + row * 3)
@@ -57,9 +49,6 @@
   } 
 
   function mouseDoubleClicked(mouse : MouseEvent) {
-    if (!mouseWithinBounds(mouse))
-      return;
-
     const row = Math.floor(mouse.offsetY / outerWidth * 3);
     const col = Math.floor(mouse.offsetX / outerWidth * 3);
     console.log(row);
