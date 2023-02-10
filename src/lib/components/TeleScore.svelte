@@ -4,7 +4,7 @@
 
   import { Canvas, Layer } from "svelte-canvas";
   import DefenseButton from "./DefenseButton.svelte";
-
+ 
   let outerHeight : number;
   let outerWidth : number;
 
