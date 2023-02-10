@@ -33,7 +33,7 @@
 
 <body>
   {#if $login || $admin}
-  <h1 class="text-red-600 text-4xl text-center font-bold">Match Scout</h1>  
+  <!-- <h1 class="text-red-600 text-4xl text-center font-bold">Match Scout</h1>   -->
   <div id="carousel" class="h-screen w-full">
     <div id="auto">
       <AutoScore />
@@ -68,5 +68,11 @@
 {/if}
 
 </body>
+
+<style>
+  body {
+    background-color: rgb(85, 163, 218);
+  }
+</style>
 
 

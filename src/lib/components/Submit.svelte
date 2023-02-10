@@ -2,8 +2,15 @@
     import { get } from "svelte/store";
     import { team_matches_stores } from "$lib/matchScoutStores";
 
+
+    /**
+     * Iterates through all matchScoutStores and puts them into a JSON Object
+     * Then it makes a POST request to the backend, which stores the match data
+     * 
+     * @complete
+     */
     async function submit() {
-        let data = {};
+        const data = {};
 
         Object.keys(team_matches_stores).map((key) => {
             // @ts-ignore
