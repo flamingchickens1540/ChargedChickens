@@ -5,12 +5,9 @@
   import { Canvas, Layer } from "svelte-canvas";
   import DefenseButton from "./DefenseButton.svelte";
 
-  let innerHeight : number;
-  let innerWidth : number;
-  let elementHeight = 0;
-
-  const ROWS = 3;
-  const COLUMNS = 3;
+  let outerHeight : number;
+  let outerWidth : number;
+  const canvas = document.getElementsByTagName("canvas")[0];
 
   const teleScoreSucceed = [
     tele_high_left_succeed, 
@@ -34,8 +31,7 @@
     tele_low_center_fail, 
     tele_low_right_fail
   ];
-  
-  let mouse : MouseEvent;
+
   // @ts-ignore
   $: render = ({ context, width, height }) => {
     const TeleOpScoreBoard = new Image();
@@ -44,33 +40,31 @@
     TeleOpScoreBoard.onload = () => {
       context.drawImage(TeleOpScoreBoard, 0, 0, width, height);
     };
-  };
+  }; 
   // TODO: Jack code to be implemented on canvas
   //@ts-ignore
-  function mouseWithinBounds() : boolean {
-    return mouse.x >= 0 && mouse.x <= innerWidth && mouse.y >= 0 && mouse.y <= elementHeight;
+  function mouseWithinBounds(mouse : MouseEvent) : boolean {
+    return mouse.offsetX >= 0 && mouse.offsetX <= outerWidth && mouse.offsetY >= 0 && mouse.offsetY <= outerHeight;
   }
 
-  function mouseClicked(e : MouseEvent) {
-    mouse = e;
-    if (!mouseWithinBounds())
+  function mouseClicked(mouse : MouseEvent) {
+    if (!mouseWithinBounds(mouse))
       return;
-    const row = Math.floor(mouse.y / elementHeight * ROWS);
-    const col = Math.floor(mouse.x / innerWidth * COLUMNS);
-    console.log(row);
+    const row = Math.floor(mouse.offsetY / outerWidth * 3);
+    const col = Math.floor(mouse.offsetX / outerWidth * 3);
     
-    teleScoreSucceed[col + row * COLUMNS].update(n => n++);
+    teleScoreSucceed[col + row * 3].update(n => n++);
   }
 
-  function mouseDoubleClicked() {
-    if (!mouseWithinBounds())
+  function mouseDoubleClicked(mouse : MouseEvent) {
+    if (!mouseWithinBounds(mouse))
       return;
 
-    const row = Math.floor(mouse.y / elementHeight * ROWS);
-    const col = Math.floor(mouse.x / innerWidth * COLUMNS);
+    const row = Math.floor(mouse.offsetY / outerWidth * 3);
+    const col = Math.floor(mouse.offsetX / outerWidth * 3);
     console.log(row);
     
-    teleScoreFail[col + row * COLUMNS].update(n => n++);
+    teleScoreFail[col + row * 3].update(n => n++);
 
     console.log("clicked");
     console.log(tele_score);
@@ -78,14 +72,14 @@
   
 </script>
 
-<svelte:window bind:innerHeight bind:innerWidth />
+<svelte:window bind:outerHeight bind:outerWidth/>
 <strong><h1 class="text-red-600 text-center text-5xl">TeleScore</h1></strong>
 
 <Canvas
-  width={innerWidth}
-  height={350}
+  width={outerWidth}
+  height={outerWidth}
   class="object-center"
-  on:click={mouseClicked} on:dblclick={mouseDoubleClicked}
+  on:mousedown={mouseClicked} on:dblclick={mouseDoubleClicked}
 >
   <Layer {render} />
 </Canvas>
