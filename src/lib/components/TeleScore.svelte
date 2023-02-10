@@ -43,7 +43,7 @@
   // TODO: Jack code to be implemented on canvas
   //@ts-ignore
   function mouseWithinBounds(mouse : MouseEvent) : boolean {
-    return mouse.offsetX >= 0 && mouse.offsetX <= outerWidth && mouse.offsetY >= 0 && mouse.offsetY <= outerHeight;
+    return mouse.offsetX >= 0 && mouse.offsetX <= outerWidth && mouse.offsetY >= 0 && mouse.offsetY <= outerWidth;
   }
 
   function mouseClicked(mouse : MouseEvent) {
@@ -52,7 +52,7 @@
 
     const row = Math.floor(mouse.offsetY / outerWidth * 3);
     const col = Math.floor(mouse.offsetX / outerWidth * 3);
-    // console.log(col + row * 3)
+    console.log(col + row * 3)
     teleScoreSucceed[col + row * 3].update(n => n++);
   } 
 
