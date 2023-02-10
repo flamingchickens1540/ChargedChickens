@@ -6,12 +6,9 @@
   import { Canvas, Layer } from "svelte-canvas";
   import DefenseButton from "./DefenseButton.svelte";
 
-  // let innerHeight: number;
-  // let innerWidth: number;
-  let elementHeight = 400;
-
-  const ROWS = 3;
   const COLUMNS = 3;
+
+  let elementHeight = 400;
   let outerHeight : number;
   let outerWidth : number;
 
@@ -89,17 +86,10 @@
       return;
     }
 
-    // const row = Math.floor(mouse.y / elementHeight * ROWS) - 1; 
-    // const col = Math.floor(mouse.x / innerWidth * COLUMNS);
-
     const row = Math.floor(mouse.offsetY / outerWidth * 3);
     const col = Math.floor(mouse.offsetX / outerWidth * 3);
 
     if (DEBUG) {
-      console.log("x");
-      console.log(mouse.x);
-      console.log("y");
-      console.log(mouse.y);
       console.log("Row: ");
       console.log(row);
       console.log("Column:");
@@ -133,17 +123,10 @@
       return;
     }
 
-    // const row = Math.floor(mouse.y / elementHeight * ROWS) - 1; 
-    // const col = Math.floor(mouse.x / innerWidth * COLUMNS);
-
     const row = Math.floor(mouse.offsetY / outerWidth * 3);
     const col = Math.floor(mouse.offsetX / outerWidth * 3); 
 
     if (DEBUG) {
-      console.log("x");
-      console.log(mouse.x);
-      console.log("y");
-      console.log(mouse.y);
       console.log("Row: ");
       console.log(row);
       console.log("Column:");
