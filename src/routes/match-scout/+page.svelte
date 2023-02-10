@@ -69,4 +69,10 @@
 
 </body>
 
+<style>
+  body {
+    background-color: rgb(85, 163, 218);
+  }
+</style>
+
 

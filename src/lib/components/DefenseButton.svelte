@@ -24,9 +24,14 @@
       defense_times.update(() => miliSecondsArr);
       console.log($defense_times);
     }
+
+    /**
+     * @todo
+     * - Make things responsively scale
+    */
 </script>
-  <div class="p-10 grid grid-cols-1 grid-rows-1 ">
-    <button class="h-36 w-36 rounded-full outline outline-10" on:touchstart={handleMousedown} on:touchend={handleMouseup} on:mousedown={handleMousedown} on:mouseup={handleMouseup}>Defense</button>
+  <div class="p-10 grid grid-cols-1 grid-rows-1 place-items-center">
+    <button class="h-36 w-36 lg:flex-grow sm:flex-shrink rounded-full outline outline-10" on:touchstart={handleMousedown} on:touchend={handleMouseup} on:mousedown={handleMousedown} on:mouseup={handleMouseup}>Defense</button>
 
   </div>
 
