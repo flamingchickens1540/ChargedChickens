@@ -45,8 +45,7 @@
       context.drawImage(TeleOpScoreBoard, 0, 0, width, height);
     };
   };
-
- // TODO: Jack code to be implemented on canvas
+  // TODO: Jack code to be implemented on canvas
   //@ts-ignore
   function mouseWithinBounds() : boolean {
     return mouse.x <= 0 && mouse.x >= innerWidth && mouse.y <= 0 && mouse.y >= elementHeight;
