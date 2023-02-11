@@ -1,10 +1,10 @@
-<script>
+<script lang="ts">
 	import Star from "./Star.svelte";
 
 	export let rating = 0;
 	export let num = 5;
-	let hoverRating = null;
-	const handleRate = (id) => () => {
+	let hoverRating: number | null = null;
+	const handleRate = (id: number) => () => {
 		if (rating == 1 && id == 1) {
 			rating = 0;
 		} else {

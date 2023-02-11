@@ -33,11 +33,10 @@
   },
   "type": "module",
   "dependencies": {
-    "@esbuild/darwin-x64": "^0.17.6",
     "@neoconfetti/svelte": "^1.0.0",
     "@types/siema": "^1.4.8",
     "mysql2": "^3.0.1",
-    "package.json": "^2.0.1",
+    "package.json": "^0.0.0",
     "siema": "^1.5.1",
     "svelte-canvas": "^0.8.1",
     "svelte-confetti-explosion": "^0.4.0",

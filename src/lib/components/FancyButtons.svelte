@@ -1,8 +1,8 @@
-<script>
+<script lang="ts">
     // Declaring props
-    export let bgColor;
-    export let text;
-    export let fontSize;
+    export let bgColor: string;
+    export let text: string;
+    export let fontSize: string;
 </script>
 
 <div>
