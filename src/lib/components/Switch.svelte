@@ -1,5 +1,6 @@
 <script land="ts">
   export let checked = false;
+  export let color = "#2196F3";
 </script>
 
 <style>
@@ -23,7 +24,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #ff1414;
+    background-color: #ccc;
     -webkit-transition: 0.4s;
     transition: 0.4s;
     border-radius: 34px;
@@ -43,11 +44,11 @@
   }
 
   input:checked + .slider {
-    background-color: #34eb34;
+    background-color: #e61414;
   }
 
   input:checked + .slider {
-    box-shadow: 0 0 1px #2323ff;
+    box-shadow: 0 0 1px #e61414;
   }
 
   input:checked + .slider:before {

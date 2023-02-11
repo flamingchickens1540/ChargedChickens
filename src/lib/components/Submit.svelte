@@ -1,12 +1,6 @@
 <script lang="ts">
     import { get } from "svelte/store";
     import { team_matches_stores } from "$lib/matchScoutStores";
-    import { confetti } from "@neoconfetti/svelte";
-    import { tick } from "svelte";
-    import FancyButtons from "./FancyButtons.svelte";
-    let isVisible = false;
-    let submitVisible = false;
-    let hasSumbit = false;
 
 
     /**
@@ -28,43 +22,11 @@
         fetch("/api/submit/match", {
             method: "POST",
             body: JSON.stringify(data),
-        })
-            .then((res) => res.json())
-            .then((data) => console.log(data));
+        }).then(res => res.json()).then(data => console.log(data));
     }
+
 </script>
 
 <div class="flex flex-col items-center">
-    <FancyButtons
-        text={"Submit :D"}
-        on:click={submit}
-        bgColor={"#39c41f"}
-        fontSize={"47px"}
-        amountOfRound={"100px"}
-    />
-    {#if submitVisible}
-        <div>
-            <div use:confetti />
-        </div>
-    {/if}
-    {#if isVisible}
-        <div>
-            <div use:confetti />
-        </div>
-    {/if}
-    <div class="downButtons">
-        {#if hasSumbit == true}
-        <FancyButtons
-            on:click={async () => {
-                isVisible = false;
-                await tick();
-                isVisible = true;
-            }}
-            text={"Go Ahead And Click This For More Confetti :D Your Welcome -David :D"}
-            bgColor={"#39c41f"}
-            fontSize={"11px"}
-            amountOfRound={"100px"}
-        />
-        {/if}
-    </div>
+    <button class="rounded-full bg-green-500 p-8 m-4" on:click={submit}>Submit</button>
 </div>

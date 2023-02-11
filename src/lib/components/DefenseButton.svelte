@@ -1,6 +1,5 @@
 <script lang="ts">
     import { defense_times } from "$lib/matchScoutStores";
-    import FancyButtons from "./FancyButtons.svelte"
 
     let miliSecondsArr: number[] = [];
     let initialTime : number;

@@ -146,11 +146,10 @@
   class="object-center"
   on:mousedown={mouseClicked} on:dblclick={mouseDoubleClicked}
 >
-  <Layer {render}/>
+  <Layer {render} />
 </Canvas>
-<div class = "flex justify-center">
-  <DefenseButton />
-</div>
+
+<DefenseButton />
 
 <style>
 </style>
