@@ -2,26 +2,43 @@
     import { applyAction } from "$app/forms";
     import { skill } from "$lib/matchScoutStores";
     import Rating from "./Rating.svelte";
-
 </script>
 
-<h1 class="text-orange-400 text-center">How Skilled was the Driver in the EndGame?</h1>
-
-<div class="centerStars">
-    <Rating bind:rating={$skill}/>
-</div>
-<div class="centerRatingStar">
-    {$skill}/5 Stars {#if $skill == 0} (They are bad :D) {/if} 
+<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
+<div class = "makeBorder">
+    <div class="testBorder"> Driver Skills</div>
+    <div class="centerStars">
+        <Rating bind:rating={$skill} />
+    </div>
 </div>
 
 <style>
-    .centerStars{
+    .makeBorder{
         display: flex;
-        justify-content: center;
+        background-color: #dae5e8;
+        border-color: black;
+        border-width: 4px;
+        border-radius: 0.5rem;
+    }
+    .centerStars {
+        display: flex;
+        justify-content: space-around;
+        align-content: center;
+        width: 50%;
+        border-left: none;
+        font-family: "Poppins";
+        font-size: 17px;
+        height: 47px;
     }
 
-    .centerRatingStar {
+    .testBorder {
         display: flex;
-        justify-content: center;
+        float: left;
+        justify-content: space-around;
+        width: 50%;
+        font-family: "Poppins";
+        align-items: center;
+        font-size: 23px;
+        border-right: none;
     }
 </style>

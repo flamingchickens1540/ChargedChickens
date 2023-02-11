@@ -52,7 +52,6 @@
       <EndDriverSkill />
       <br>
       <EndBroke />
-      <br>
       <EndDied />
       <br>
       <EndNotes />

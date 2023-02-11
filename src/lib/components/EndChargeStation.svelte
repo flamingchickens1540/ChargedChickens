@@ -5,9 +5,9 @@
         "Not Attempted",
         "Failed",
         "Docked",
-        "Engaged"
-    ]
-</script> 
+        "Engaged",
+    ];
+</script>
 
 <h1 class="text-orange-400 text-center">Charge Station Docking - Endgame</h1>
 <div class="centerButtons">
@@ -17,7 +17,7 @@
                 <input
                     type="radio"
                     bind:group={$end_charge_station}
-                    value=0
+                    value="0"
                 />
                 Not Attempted
             </label>
@@ -27,7 +27,7 @@
                 <input
                     type="radio"
                     bind:group={$end_charge_station}
-                    value=1
+                    value="1"
                 />
                 Failed
             </label>
@@ -37,7 +37,7 @@
                 <input
                     type="radio"
                     bind:group={$end_charge_station}
-                    value=2
+                    value="2"
                 />
                 Docked
             </label>
@@ -46,10 +46,8 @@
             <label>
                 <input
                     type="radio"
-
                     bind:group={$end_charge_station}
-                    value=3
-
+                    value="3"
                 />
                 Engaged
             </label>

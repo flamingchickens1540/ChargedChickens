@@ -16,7 +16,7 @@
 
 <div class="feedback">
 	<span class="starContainer">
-		<div class = "flex flex-row">
+		<div class="flex flex-row">
 			{#each stars as star}
 				<Star
 					filled={hoverRating ? hoverRating >= star : rating >= star}
@@ -34,7 +34,7 @@
 		position: relative;
 	}
 
-	.starContainer { 
+	.starContainer {
 		display: inline-block;
 		border-radius: 8px;
 		padding: 4px 6px 0;
