@@ -1,5 +1,6 @@
 <script lang="ts">
     import { defense_times } from "$lib/matchScoutStores";
+    import FancyButtons from "./FancyButtons.svelte"
 
     let miliSecondsArr: number[] = [];
     let initialTime : number;
@@ -26,8 +27,7 @@
     }
 </script>
   <div class="p-10 grid grid-cols-1 grid-rows-1 ">
-    <button class="h-36 w-36 rounded-full outline outline-10" on:touchstart={handleMousedown} on:touchend={handleMouseup} on:mousedown={handleMousedown} on:mouseup={handleMouseup}>Defense</button>
-
+    <FancyButtons on:touchstart={handleMousedown} on:touchend={handleMouseup} on:mousedown={handleMousedown} on:mouseup={handleMouseup} text = {"Defense"} bgColor = {"rgb(55, 5, 177)"} height = {"9rem"} width = {"9rem"} amountOfRound = {"50%"}/>
   </div>
 
 <style>
