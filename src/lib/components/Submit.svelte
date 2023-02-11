@@ -8,16 +8,15 @@
     let submitVisible = false;
     let hasSumbit = false;
 
+
     /**
      * Iterates through all matchScoutStores and puts them into a JSON Object
      * Then it makes a POST request to the backend, which stores the match data
-     *
+     * 
      * @complete
      */
     async function submit() {
-        let data = {};
-        isVisible = true;
-        hasSumbit = true;
+        const data = {};
 
         Object.keys(team_matches_stores).map((key) => {
             // @ts-ignore

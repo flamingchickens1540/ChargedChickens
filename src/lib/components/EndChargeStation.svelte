@@ -7,7 +7,7 @@
         "Docked",
         "Engaged"
     ]
-</script> 
+</script>
 
 <h1 class="text-orange-400 text-center">Charge Station Docking - Endgame</h1>
 <div class="centerButtons">
