@@ -6,7 +6,7 @@
 </script>
 
 <div>
-    <button on:click style="background-color: {bgColor};font-size: {fontSize}">
+    <button on:click on:touchstart on:touchend on:mousedown style="background-color: {bgColor};font-size: {fontSize}; border-radius: {amountOfRound}; height: {height}; width: {width}"  >
         {text}
     </button>
 </div>
@@ -16,7 +16,6 @@
         border: none;
         padding: 0.5rem 2rem;
         color: #fff;
-        border-radius: 1rem;
         transition: all 250ms;
         transform-origin: center;
         box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25),

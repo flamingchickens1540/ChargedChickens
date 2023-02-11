@@ -41,6 +41,7 @@
         on:click={submit}
         bgColor={"#39c41f"}
         fontSize={"47px"}
+        amountOfRound={"100px"}
     />
     {#if submitVisible}
         <div>
@@ -63,6 +64,7 @@
             text={"Go Ahead And Click This For More Confetti :D Your Welcome -David :D"}
             bgColor={"#39c41f"}
             fontSize={"11px"}
+            amountOfRound={"100px"}
         />
         {/if}
     </div>
