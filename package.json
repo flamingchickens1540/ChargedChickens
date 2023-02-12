@@ -25,6 +25,7 @@
     "svelte-check": "^3.0.1",
     "svelte-preprocess": "^4.10.7",
     "svelte-star-rating": "^2.0.1",
+    "svelte-stars-hover-rating": "^1.0.7",
     "tailwindcss": "^3.1.5",
     "tslib": "^2.4.1",
     "typescript": "^4.9.3",
@@ -32,11 +33,14 @@
   },
   "type": "module",
   "dependencies": {
+    "@neoconfetti/svelte": "^1.0.0",
     "@types/siema": "^1.4.8",
     "esbuild": "0.17.6",
     "mysql2": "^3.0.1",
+    "package.json": "^0.0.0",
     "siema": "^1.5.1",
     "svelte-canvas": "^0.8.1",
+    "svelte-confetti-explosion": "^0.4.0",
     "svelte-stars-hover-rating": "^1.0.7",
     "svelte-switch": "^0.0.5"
   }

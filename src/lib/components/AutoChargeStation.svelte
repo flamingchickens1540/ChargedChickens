@@ -1,5 +1,12 @@
 <script lang="ts">
     import { auto_charge_station } from "$lib/matchScoutStores";
+
+    const autoChargeStationMessages = [
+        "Not Attempted",
+        "Failed",
+        "Docked",
+        "Engaged"
+    ]
 </script>
 
 <h1 class="text-orange-400 text-center">Charge Station Docking - Auto</h1>
@@ -50,15 +57,7 @@
 
 <div class="centerButtonsValue">
     <h1 class="text-center">
-        {#if $auto_charge_station == 0}
-            Not Attempted
-        {:else if $auto_charge_station == 1}
-            Failed
-        {:else if $auto_charge_station == 2}
-            Docked
-        {:else if $auto_charge_station == 3}
-            Engaged
-        {/if}
+        {autoChargeStationMessages[$auto_charge_station]}
     </h1>
 </div>
 
@@ -66,5 +65,10 @@
     .centerButtons {
         display: flex;
         justify-content: center;
+    }
+
+    .centerButtonsValue {
+        margin: 2vw;
+        font-size: large;
     }
 </style>
