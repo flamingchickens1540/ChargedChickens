@@ -98,3 +98,22 @@ export type LoginData = {
     name: string,
     password: string
 }
+
+export type Robot = {
+    "team_key": TeamKey,
+    "alliance": "red" | "blue",
+}
+
+export type RobotMatch = {
+    "robot": Robot,
+    "match": Match,
+}
+
+export type AssignData = {
+    "event_key": EventKey,
+    "match_key": MatchKey,
+    "robots": {
+        "red": TeamKey[],
+        "blue": TeamKey[],
+    }
+}
