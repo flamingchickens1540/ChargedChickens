@@ -1,17 +1,11 @@
 <script lang="ts">
 	import Star from "./Star.svelte";
 
-	export let rating = 0;
+	export let rating = 3;
 	export let num = 5;
 	let hoverRating: number | null = null;
-	const handleRate = (id: number) => () => {
-		if (rating == 1 && id == 1) {
-			rating = 0;
-		} else {
-			rating = id;
-		}
-	};
-	let stars = Array.from({ length: num }, (__, i) => i + 1);
+	const handleRate = (id: number) => () => rating = id;
+	let stars = Array.from({ length: num }, (__, i) => i);
 </script>
 
 <div class="feedback">
@@ -21,7 +15,6 @@
 				<Star
 					filled={hoverRating ? hoverRating >= star : rating >= star}
 					starValue={star}
-					on:mouseleave={() => (hoverRating = null)}
 					on:click={handleRate(star)}
 				/>
 			{/each}
