@@ -21,6 +21,6 @@ export function setRobots(matchKey: MatchKey, eventkey: EventKey, robots: Robot[
   });
 }
 
-export function getRobotMatch(): RobotMatch | null {
+export function pollNextRobot(): RobotMatch | null {
   return robotMatches.shift() ?? null;
 }

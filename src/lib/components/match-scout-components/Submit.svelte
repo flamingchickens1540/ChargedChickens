@@ -1,7 +1,6 @@
 <script lang="ts">
     import { get } from "svelte/store";
-    import { team_matches_stores } from "$lib/matchScoutStores";
-
+    import { team_matches_stores } from "$lib/stores/matchScoutStores";
 
     /**
      * Iterates through all matchScoutStores and puts them into a JSON Object

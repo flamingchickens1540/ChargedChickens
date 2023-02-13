@@ -1,15 +1,5 @@
 <script lang="ts">
     import { goto } from '$app/navigation';
-    import Login from '$lib/components/Login.svelte';
-
-    import { admin, login } from '../lib/generalStores';
-    import { user_password, admin_password } from '../secrets/passwords';
-
-    admin.set(false);
-    login.set(true);
-
-    //TODO: Properly Type Auth Code
-
 </script>
 
 <!-- {#if $login} -->

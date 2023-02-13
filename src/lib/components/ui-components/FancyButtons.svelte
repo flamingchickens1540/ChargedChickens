@@ -6,7 +6,7 @@
 </script>
 
 <div>
-    <button on:click on:touchstart on:touchend on:mousedown style="background-color: {bgColor};font-size: {fontSize}; border-radius: {amountOfRound}; height: {height}; width: {width}"  >
+    <button on:click on:touchstart on:touchend on:mousedown style="background-color: {bgColor};font-size: {fontSize};"  >
         {text}
     </button>
 </div>

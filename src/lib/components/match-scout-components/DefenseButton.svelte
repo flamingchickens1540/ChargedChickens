@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { defense_times } from "$lib/matchScoutStores";
+    import { defense_times } from "$lib/stores/matchScoutStores";
 
     let miliSecondsArr: number[] = [];
     let initialTime : number;
