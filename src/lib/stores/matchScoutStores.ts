@@ -105,6 +105,7 @@ export const team_matches_stores = {
     died,
     notes,
     skill,
+    auto_community,
     auto_charge_station,
     end_charge_station,
     auto_high_left_succeed,

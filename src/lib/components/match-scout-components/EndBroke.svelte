@@ -1,11 +1,10 @@
 <script lang="ts">
-    import { broke } from "$lib/matchScoutStores";
-    import Switch from "./Switch.svelte";
+    import { broke } from "$lib/stores/matchScoutStores";
+    import Switch from "$lib/components/ui-components/Switch.svelte";
 
     let broken = false;
     
-    broke.set(broken);
-    
+    broke.set(broken); 
 </script>
 
 <h1 class="text-yellow-400 text-center">EndBroke</h1>

@@ -1,6 +1,6 @@
 <script lang="ts">
-    import { died } from "$lib/matchScoutStores";
-    import Switch from "./Switch.svelte";
+    import { died } from "$lib/stores/matchScoutStores";
+    import Switch from "$lib/components/ui-components/Switch.svelte";
 
     let checkedValue = false;
     died.set(checkedValue);

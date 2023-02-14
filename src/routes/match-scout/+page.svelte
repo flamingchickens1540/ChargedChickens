@@ -1,17 +1,16 @@
 <script lang="ts">
-  import AutoChargeStation from "$lib/components/AutoChargeStation.svelte";
-  import AutoCommunity from "$lib/components/AutoCommunity.svelte";
-  import EndBroke from "$lib/components/EndBroke.svelte";
-  import EndChargeStation from "$lib/components/EndChargeStation.svelte";
-  import EndDied from "$lib/components/EndDied.svelte";
-  import EndDriverSkill from "$lib/components/EndDriverSkill.svelte";
-  import EndNotes from "$lib/components/EndNotes.svelte";
-  import AutoScore from "$lib/components/AutoScore.svelte";
-  import TeleScore from "$lib/components/TeleScore.svelte";
+  import AutoChargeStation from "$lib/components/match-scout-components/AutoChargeStation.svelte";
+  import AutoCommunity from "$lib/components/match-scout-components/AutoCommunity.svelte";
+  import EndBroke from "$lib/components/match-scout-components/EndBroke.svelte";
+  import EndChargeStation from "$lib/components/match-scout-components/EndChargeStation.svelte";
+  import EndDied from "$lib/components/match-scout-components/EndDied.svelte";
+  import EndDriverSkill from "$lib/components/match-scout-components/EndDriverSkill.svelte";
+  import EndNotes from "$lib/components/match-scout-components/EndNotes.svelte";
+  import AutoScore from "$lib/components/match-scout-components/AutoScore.svelte";
+  import TeleScore from "$lib/components/match-scout-components/TeleScore.svelte";
   import Siema from "siema";
   import { onMount } from "svelte";
-  import Submit from "$lib/components/Submit.svelte";
-  import { admin, login} from "../../lib/generalStores";
+  import Submit from "$lib/components/match-scout-components/Submit.svelte";
   
   onMount(() => {
     new Siema({
@@ -32,7 +31,6 @@
 </script>
 
 <body>
-  {#if $login || $admin}
   <!-- <h1 class="text-red-600 text-4xl text-center font-bold">Match Scout</h1>   -->
   <div id="carousel" class="h-screen w-full">
     <div id="auto">
@@ -60,12 +58,6 @@
       <Submit />
     </div>
   </div>
-
-{:else}
-
-  <h1 class="text-red-600 text-4xl text-center font-bold outline-1">Please log in before attempting to scout</h1>
-
-{/if}
 
 </body>
 

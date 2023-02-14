@@ -1,10 +1,11 @@
 <script lang="ts">
   import TeleOpScoring from "$lib/assets/Teleop.png";
-  import { tele_high_center_fail, tele_high_center_succeed, tele_high_left_fail, tele_high_left_succeed, tele_high_right_fail, tele_high_right_succeed, tele_low_center_fail, tele_low_center_succeed, tele_low_left_fail, tele_low_left_succeed, tele_low_right_fail, tele_low_right_succeed, tele_mid_center_fail, tele_mid_center_succeed, tele_mid_left_fail, tele_mid_left_succeed, tele_mid_right_fail, tele_mid_right_succeed, tele_score } from "../matchScoutStores";
+  import { tele_high_center_fail, tele_high_center_succeed, tele_high_left_fail, tele_high_left_succeed, tele_high_right_fail, tele_high_right_succeed, tele_low_center_fail, tele_low_center_succeed, tele_low_left_fail, tele_low_left_succeed, tele_low_right_fail, tele_low_right_succeed, tele_mid_center_fail, tele_mid_center_succeed, tele_mid_left_fail, tele_mid_left_succeed, tele_mid_right_fail, tele_mid_right_succeed, tele_score } from "$lib/stores/matchScoutStores";
   // import { DEBUG } from "../generalStores";
 
   import { Canvas, Layer } from "svelte-canvas";
-  import DefenseButton from "./DefenseButton.svelte";
+  import DefenseButton from "$lib/components/match-scout-components/DefenseButton.svelte";
+	import { onMount } from 'svelte';
 
   let outerHeight : number;
   let outerWidth : number;
@@ -100,10 +101,16 @@
     
     teleScoreFail[col + row * 3].update(n => n++);
   }
+
+  onMount(() => {
+    outerWidth = document.getElementById("header")?.clientWidth || window.outerWidth
+    outerHeight = document.getElementById("header")?.clientHeight || window.outerHeight
+  })
+
 </script>
 
-<svelte:window bind:outerHeight bind:outerWidth/>
-<strong><h1 class="text-red-600 text-center text-5xl">TeleScore</h1></strong>
+<!-- <svelte:window bind:outerHeight bind:outerWidth/> -->
+<h1 id="header" class="text-red-600 text-center text-5xl font-extrabold">TeleScore</h1>
 
 <Canvas
   width={outerWidth}
