@@ -5,11 +5,7 @@
 	export let num = 5;
 	let hoverRating = null;
 	const handleRate = (id) => () => {
-		if (rating == 1 && id == 1) {
-			rating = 0;
-		} else {
-			rating = id;
-		}
+		rating = id;
 	};
 	let stars = Array.from({ length: num }, (__, i) => i + 1);
 </script>

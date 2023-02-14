@@ -22,6 +22,7 @@
 		data-starid={starValue}
 		class="starPath"
 		d="m25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z"
+		stroke-width = "3px"
 	/>
 </svg>
 
@@ -32,9 +33,9 @@
 	.starPath {
 		fill: none;
 		width: 4px;
-		stroke: #ffff00;
+		stroke: #F4C01E;
 	}
 	.filled {
-		fill: #ffff00;
+		fill: #F4C01E;
 	}
 </style>

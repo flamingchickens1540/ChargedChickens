@@ -51,14 +51,17 @@
       <br>
       <EndDriverSkill />
       <br>
-      <EndBroke />
-      <EndDied />
+      <div class = "makeBorder">
+        <EndBroke />
+        <EndDied />
+      </div>
       <br>
       <EndNotes />
     </div>
     <div id=submit>
       <Submit />
     </div>
+    <dive></dive>
   </div>
 
 {:else}
@@ -68,5 +71,16 @@
 {/if}
 
 </body>
+
+<style>
+  .makeBorder{
+        display: flex;
+        flex-direction: column;
+        background-color: #efdcdc;
+        border-color: black;
+        border-width: 2px;
+        border-radius: 0.5rem;
+    }
+</style>
 
 

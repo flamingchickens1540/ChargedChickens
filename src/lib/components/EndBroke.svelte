@@ -22,23 +22,30 @@
     .makeBorder{
         display: flex;
         align-items: center;
-        background-color: #babab8;
-        border-color: gray;
         font-family: "Poppins";
         font-size: 23px;
-        border-width: 4px;
         height: 47px;
     }
     .brokeSwitchRight{
         display: flex;
         justify-content: right;
         width: 50%;
+        border-bottom-width: 2px;
+        border-color: black;
+        height: 47px;
+        padding-top: 6px;
+        padding-left: 6px;
     }
     .testBorder{
         display: flex;
         align-items: right;
-        justify-content: center;
+        justify-content: left;
+        margin-left: 11px;
         width: 50%; 
+        padding-top: 6px;
+        border-bottom-width: 2px;
+        border-color: black;
+        height: 47px;
     }
 
 </style>

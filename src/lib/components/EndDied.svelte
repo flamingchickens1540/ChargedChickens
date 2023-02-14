@@ -22,11 +22,8 @@
     .makeBorder{
         display: flex;
         align-items: center;
-        background-color: #babab8;
-        border-color: gray;
         font-family: "Poppins";
         font-size: 23px;
-        border-width: 4px;
         height: 47px;
         border-top: none;
     }
@@ -38,8 +35,9 @@
     .testBorder{
         display: flex;
         align-items: right;
-        justify-content: center;
-        width: 50%; 
+        margin-left: 11px;
+        justify-content: left;
+        width: 46%; 
     }
 
 </style>
