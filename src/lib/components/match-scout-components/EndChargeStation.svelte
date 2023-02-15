@@ -56,12 +56,6 @@
     <div class = "endgameTitle"> Endgame </div>
     <div class = "endgameTitleNumbers"> 1540 </div>
 </div>
-<div class="centerButtonsValue">
-    <h1 class="text-center">
-        {endChargeStationMessages[$end_charge_station]}
-    </h1>
-</div>
-
 
 <div class = "makeColumnButtons">
     <div class = "buttonsTitle"> 
