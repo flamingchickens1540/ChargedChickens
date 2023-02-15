@@ -35,6 +35,7 @@
   "type": "module",
   "dependencies": {
     "@neoconfetti/svelte": "^1.0.0",
+    "@sveltejs/vite-plugin-svelte": "^2.0.2",
     "@types/siema": "^1.4.8",
     "esbuild": "0.17.6",
     "mysql2": "^3.0.1",
