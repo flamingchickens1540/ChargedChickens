@@ -4,7 +4,6 @@
     import Rating from "$lib/components/ui-components/Rating.svelte";
 </script>
 
-<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
 <div class = "makeBorder">
     <div class="testBorder"> 
         <b> Driver Skills </b>
@@ -35,6 +34,7 @@
         font-family: "Poppins";
         font-size: 17px;
         height: 43px;
+        padding-right: 11px;
     }
 
     .testBorder {
