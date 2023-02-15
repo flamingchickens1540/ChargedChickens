@@ -1,6 +1,6 @@
 <script lang="ts">
-    import { died } from "$lib/matchScoutStores";
-    import Switch from "./Switch.svelte";
+    import { died } from "$lib/stores/matchScoutStores";
+    import Switch from "$lib/components/ui-components/Switch.svelte";
 
     let checkedValue = false;
     died.set(checkedValue);
@@ -29,6 +29,7 @@
     }
     .brokeSwitchRight{
         display: flex;
+        padding-right: 6px;
         justify-content: right;
         width: 50%;
     }
@@ -37,7 +38,7 @@
         align-items: right;
         margin-left: 11px;
         justify-content: left;
-        width: 46%; 
+        width: 50%; 
     }
 
 </style>

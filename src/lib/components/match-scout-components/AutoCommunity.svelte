@@ -1,6 +1,6 @@
 <script lang="ts">
-    import { auto_community } from "$lib/matchScoutStores";
-    import Switch from "./Switch.svelte";
+    import { auto_community } from "$lib/stores/matchScoutStores";
+    import Switch from "$lib/components/ui-components/Switch.svelte";
 
     let checkedValue = false;
 

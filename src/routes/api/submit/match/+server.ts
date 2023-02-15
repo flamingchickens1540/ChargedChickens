@@ -1,5 +1,6 @@
+import { json } from "@sveltejs/kit";
 import type { RequestEvent, RequestHandler } from "./$types";
-import { insertTeamMatch } from "$lib/database";
+import { insertTeamMatch } from "$lib/server-assets/database";
 import type { TeamMatch } from "$lib/types";
 const DBTESTING = false;
 
@@ -12,13 +13,5 @@ export const POST: RequestHandler = async (event: RequestEvent) => {
     console.log(body)
   }
 
-  return new Response(
-    JSON.stringify({ message: "success", endpoint: "match-scout" }),
-    {
-      headers: {
-        "content-type": "application/json",
-      },
-      status: 200,
-    }
-  );
+  return json({"success": true, "endpoint": "submit"})
 };

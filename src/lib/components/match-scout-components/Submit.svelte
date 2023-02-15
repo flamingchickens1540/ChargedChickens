@@ -1,9 +1,9 @@
 <script lang="ts">
     import { get } from "svelte/store";
-    import { team_matches_stores } from "$lib/matchScoutStores";
+    import { team_matches_stores } from "$lib/stores/matchScoutStores";
     import { confetti } from "@neoconfetti/svelte";
     import { tick } from "svelte";
-    import FancyButtons from "./FancyButtons.svelte";
+    import FancyButtons from "$lib/components/ui-components/FancyButtons.svelte";
     let isVisible = false;
     let submitVisible = false;
     let hasSumbit = false;

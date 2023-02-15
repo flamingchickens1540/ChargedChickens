@@ -1,12 +1,12 @@
-<script lang="ts">
-    import { auto_charge_station } from "$lib/matchScoutStores";
+<script>
+    import { auto_charge_station } from "$lib/stores/matchScoutStores";
 
     const autoChargeStationMessages = [
         "Not Attempted",
         "Failed",
         "Docked",
-        "Engaged",
-    ];
+        "Engaged"
+    ]
 </script>
 
 <h1 class="text-orange-400 text-center">Charge Station Docking - Auto</h1>

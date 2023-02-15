@@ -1,7 +1,7 @@
 <script lang="ts">
     import { applyAction } from "$app/forms";
-    import { skill } from "$lib/matchScoutStores";
-    import Rating from "./Rating.svelte";
+    import { skill } from "$lib/stores/matchScoutStores";
+    import Rating from "$lib/components/ui-components/Rating.svelte";
 </script>
 
 <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
@@ -23,6 +23,9 @@
         border-color: black;
         border-width: 2px;
         border-radius: 0.5rem;
+        height: 61px;
+        align-content: center;
+        align-items: center;
     }
     .centerStars {
         display: flex;

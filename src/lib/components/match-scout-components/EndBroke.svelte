@@ -1,10 +1,10 @@
 <script lang="ts">
-    import { broke } from "$lib/matchScoutStores";
-    import Switch from "./Switch.svelte";
+    import { broke } from "$lib/stores/matchScoutStores";
+    import Switch from "$lib/components/ui-components/Switch.svelte";
+
     let broken = false;
     
-    broke.set(broken);
-    
+    broke.set(broken); 
 </script>
 
 <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
@@ -30,18 +30,19 @@
         display: flex;
         justify-content: right;
         width: 50%;
+        padding-right: 6px;
         border-bottom-width: 2px;
         border-color: black;
         height: 47px;
-        padding-top: 6px;
-        padding-left: 6px;
+        align-content: center;
+        align-items: center;
     }
     .testBorder{
         display: flex;
         align-items: right;
         justify-content: left;
-        margin-left: 11px;
         width: 50%; 
+        text-indent: 11px;
         padding-top: 6px;
         border-bottom-width: 2px;
         border-color: black;
