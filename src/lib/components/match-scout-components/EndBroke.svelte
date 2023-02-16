@@ -10,7 +10,7 @@
 <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 <div class="makeBorder">
     <div class = "testBorder">
-        <h1> Is Broke</h1>
+        <h1> Is Broken?</h1>
     </div> 
     <div class= "brokeSwitchRight">
         <Switch bind:checked={broken} />
