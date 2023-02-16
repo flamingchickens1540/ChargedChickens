@@ -117,3 +117,9 @@ export type AssignData = {
         "blue": TeamKey[],
     }
 }
+
+export type MatchScoutInfo = {
+    success: boolean,
+    robot?: Robot,
+    match?: Match,
+}
