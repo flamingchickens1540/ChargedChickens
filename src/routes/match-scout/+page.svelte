@@ -5,6 +5,35 @@
 
   let controller: AbortController;
   let promise: Promise<void> = err();
+<body>
+  <!-- <h1 class="text-red-600 text-4xl text-center font-bold">Match Scout</h1>   -->
+  <div id="carousel" class="h-screen w-full">
+    <div id="auto">
+      <AutoScore />
+      <br>
+      <AutoChargeStation />
+      <br>
+      <AutoCommunity />
+    </div>
+    <div id="tele">
+      <TeleScore />
+    </div>
+    <div id="end" class = "endBackground">
+      <EndChargeStation />
+      <br>
+      <EndDriverSkill />
+      <br>
+      <div class = "makeBorder">
+        <EndBroke />
+        <EndDied />
+      </div>
+      <br>
+      <EndNotes />
+    </div>
+    <div id=submit>
+      <Submit />
+    </div>
+  </div>
 
   async function err() {
     throw new Error();
@@ -18,6 +47,7 @@
       resolve();
     });
   }
+
 
   async function recursivePoll(): Promise<MatchScoutInfo> {
     return await fetch("/api/scout", {
@@ -60,3 +90,23 @@
     >
   {/await}
 </div>
+
+<style>
+  .makeBorder{
+        display: flex;
+        flex-direction: column;
+        background-color: #efdcdc;
+        border-color: black;
+        border-width: 2px;
+        border-radius: 0.5rem;
+    }
+  body {
+    background-color: rgb(85, 163, 218);
+  }
+
+    .endBackground{
+      background-image: linear-gradient(to top right,#DBD6D6, #DBD6D6);
+      padding-left: 17px;
+      padding-right: 17px;
+    }
+</style>
