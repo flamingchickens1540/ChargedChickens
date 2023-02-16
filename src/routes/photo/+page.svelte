@@ -22,6 +22,10 @@
   }
 </script>
 
+<svelte:head>
+	<title>Photo Upload</title>
+</svelte:head>
+
 <div class="text-center grid grid-cols-1 grid-rows-3 place-items-center gap-1">
   <h1 class="text-red-600 text-4xl text-center font-bold">Upload a photo</h1>
   <!--- TODO: regex match this input and prevent submission with invalid team_key --->
