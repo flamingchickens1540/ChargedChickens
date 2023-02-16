@@ -1,12 +1,11 @@
-<script lang="ts">
+<script>
     // Declaring props
-    export let bgColor: string;
-    export let text: string;
-    export let fontSize: string;
+    export let bgColor = "", text = "", fontSize = "", height = "", width = "";
+    export let amountOfRound = "1rem"; 
 </script>
 
 <div>
-    <button on:click on:touchstart on:touchend on:mousedown style="background-color: {bgColor};font-size: {fontSize};"  >
+    <button on:click on:touchstart on:touchend on:mousedown style="background-color: {bgColor};font-size: {fontSize}; border-radius: {amountOfRound}; height: {height}; width: {width}"  >
         {text}
     </button>
 </div>

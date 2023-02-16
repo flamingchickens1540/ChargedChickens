@@ -1,26 +1,52 @@
 <script lang="ts">
+    import { applyAction } from "$app/forms";
     import { skill } from "$lib/stores/matchScoutStores";
     import Rating from "$lib/components/ui-components/Rating.svelte";
-
 </script>
 
-<h1 class="text-orange-400 text-center">How Skilled was the Driver in the EndGame?</h1>
-
-<div class="centerStars">
-    <Rating bind:rating={$skill}/>
-</div>
-<div class="centerRatingStar">
-    {$skill}/5 Stars {#if $skill == 0} (They are bad :D) {/if} 
+<div class = "makeBorder">
+    <div class="testBorder"> 
+        <b> Driver Skills </b>
+    </div>
+    <div class="centerStars">
+        <div class = "testThings">
+            <Rating bind:rating={$skill} />
+        </div>
+    </div>
 </div>
 
 <style>
-    .centerStars{
+    .makeBorder{
         display: flex;
-        justify-content: center;
+        background-color: #efdcdc;
+        border-color: black;
+        border-width: 2px;
+        border-radius: 0.5rem;
+        height: 61px;
+        align-content: center;
+        align-items: center;
+    }
+    .centerStars {
+        display: flex;
+        justify-content: space-around;
+        align-content: center;
+        width: 50%;
+        font-family: "Poppins";
+        font-size: 17px;
+        height: 43px;
+        padding-right: 11px;
     }
 
-    .centerRatingStar {
+    .testBorder {
         display: flex;
-        justify-content: center;
+        float: left;
+        justify-content: left;
+        text-indent: 11px;
+        width: 50%;
+        font-family: "Poppins";
+        align-items: center;
+        font-size: 23px;
+        border-right: none;
+        font-weight: 100;
     }
 </style>

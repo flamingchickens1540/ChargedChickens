@@ -9,7 +9,6 @@
 
 <h1 class="text-yellow-400 text-center">AutoCommunity</h1>
 
-
 <div class="flex justify-center">
-    <Switch bind:checked={checkedValue}/>
+    <Switch bind:checked={checkedValue} />
 </div>
