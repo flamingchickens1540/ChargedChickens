@@ -1,5 +1,12 @@
 <script lang="ts">
-    import { goto } from '$app/navigation';
+  import { goto } from '$app/navigation';
+
+  let inputPhrase = "";
+
+  function setPassphrase() {
+    localStorage.setItem("passphrase", inputPhrase);
+    inputPhrase = "";
+  }
 </script>
 
 <svelte:head>
@@ -7,9 +14,12 @@
 </svelte:head>
 
 <body>
-    <button class="text-red-600 text-lg p-2 rounded bg-yellow-300" on:click={() => goto("match-scout")}>Match Scout</button>
-    <button class="text-red-600 text-lg p-2 rounded bg-yellow-300" on:click={() => goto("pit-scout")}>Pit Scout</button>
-    <button class="text-red-600 text-lg p-2 rounded bg-yellow-300" on:click={() => goto("photo")}>Photo</button>
+  <button class="text-red-600 text-lg p-2 rounded bg-yellow-300" on:click={() => goto("match-scout")}>Match Scout</button>
+  <button class="text-red-600 text-lg p-2 rounded bg-yellow-300" on:click={() => goto("pit-scout")}>Pit Scout</button>
+  <button class="text-red-600 text-lg p-2 rounded bg-yellow-300" on:click={() => goto("photo")}>Photo</button>
+  <br>
+  <input type="text" bind:value={inputPhrase}>
+  <button class="text-red-600 text-lg p-2 rounded bg-yellow-300" on:click={() => setPassphrase()}>AUTH</button>
 </body>
 
 <style>
