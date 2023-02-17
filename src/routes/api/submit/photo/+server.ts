@@ -12,7 +12,11 @@ export const POST: RequestHandler = async (event: RequestEvent) => {
 
   //for every photo is photos
   photos.forEach(async (photo) => {
+
+    //photo size check
     if (photo.size > 1000000000) return;
+    //teamkey regex check
+    if (team_key.match(/^frc\d{3,5}$/) === null) return;
     
     writeFileSync(
       IMAGE_PATH +
