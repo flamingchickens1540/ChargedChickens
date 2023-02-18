@@ -4,36 +4,7 @@
   import { info } from "$lib/stores/generalStores";
 
   let controller: AbortController;
-  let promise: Promise<void> = err();
-<body>
-  <!-- <h1 class="text-red-600 text-4xl text-center font-bold">Match Scout</h1>   -->
-  <div id="carousel" class="h-screen w-full">
-    <div id="auto">
-      <AutoScore />
-      <br>
-      <AutoChargeStation />
-      <br>
-      <AutoCommunity />
-    </div>
-    <div id="tele">
-      <TeleScore />
-    </div>
-    <div id="end" class = "endBackground">
-      <EndChargeStation />
-      <br>
-      <EndDriverSkill />
-      <br>
-      <div class = "makeBorder">
-        <EndBroke />
-        <EndDied />
-      </div>
-      <br>
-      <EndNotes />
-    </div>
-    <div id=submit>
-      <Submit />
-    </div>
-  </div>
+  let promise: Promise<void>; // = err();
 
   async function err() {
     throw new Error();
