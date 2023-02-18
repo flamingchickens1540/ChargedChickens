@@ -3,6 +3,7 @@
     import type { AssignData, MatchKey, Team, TeamKey } from '../../lib/types';
     import { Button, Dropdown, DropdownItem, Chevron } from 'flowbite-svelte';
     import { redirect } from '@sveltejs/kit';
+    import { APPKEY } from "$lib/generalStores";
     let match_key: string = '';
     let robots_red: string[] = [];
     let robots_blue: string[] = [];
@@ -51,6 +52,8 @@
             }),
             headers: {
                 "Content-type": "application/json; charset=UTF-8",
+                "passphrase": localStorage.getItem("passphrase") || "",
+                "APPKEY": $APPKEY,
             }
         })
         .then(res => res.json())

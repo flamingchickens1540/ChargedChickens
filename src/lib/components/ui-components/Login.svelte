@@ -1,8 +1,8 @@
 
-<script lang="ts">
+<!-- <script lang="ts">
     import type { LoginData } from "../types";
     import { login, admin } from "../../generalStores";
-    import { admin_password, user_password } from "../";
+    import { admin_password, user_password } from "";
     //@ts-ignore
     function onSubmit(e) {
         const formData: FormData = new FormData(e.target);
@@ -22,7 +22,6 @@
     }
 </script>
 
-
 <div class="flex items-center h-screen w-full">
     <div class="w-full bg-red-600 rounded shadow-lg p-8 m-4">
       <form class="mb-4" on:submit={onSubmit}>
@@ -40,4 +39,4 @@
         </div>
       </form>
     </div>
-</div>
+</div> -->
