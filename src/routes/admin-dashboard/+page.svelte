@@ -1,7 +1,6 @@
 <script lang="ts">
     import { user } from "../../lib/stores/generalStores";
     import type { AssignData, MatchKey, Team, TeamKey } from '../../lib/types';
-    import { Button, Dropdown, DropdownItem, Chevron } from 'flowbite-svelte';
     import { redirect } from '@sveltejs/kit';
     let match_key: string = '';
     let robots_red: string[] = [];

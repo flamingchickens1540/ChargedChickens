@@ -1,5 +1,4 @@
 <script lang="ts">
-    import { applyAction } from "$app/forms";
     import { skill } from "$lib/stores/matchScoutStores";
     import Rating from "$lib/components/ui-components/Rating.svelte";
 </script>
