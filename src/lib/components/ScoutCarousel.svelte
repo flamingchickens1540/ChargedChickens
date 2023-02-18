@@ -8,9 +8,9 @@
   import EndNotes from "$lib/components/match-scout-components/EndNotes.svelte";
   import AutoScore from "$lib/components/match-scout-components/AutoScore.svelte";
   import TeleScore from "$lib/components/match-scout-components/TeleScore.svelte";
+  import Submit from "$lib/components/match-scout-components/Submit.svelte";
   import Siema from "siema";
   import { onMount } from "svelte";
-  import Submit from "$lib/components/match-scout-components/Submit.svelte";
   
   onMount(() => {
     new Siema({
@@ -60,3 +60,23 @@
   </div>
 
 </body>
+
+<style>
+  .makeBorder{
+        display: flex;
+        flex-direction: column;
+        background-color: #efdcdc;
+        border-color: black;
+        border-width: 2px;
+        border-radius: 0.5rem;
+    }
+  body {
+    background-color: rgb(85, 163, 218);
+  }
+
+  .endBackground{
+    background-image: linear-gradient(to top right,#DBD6D6, #DBD6D6);
+    padding-left: 17px;
+    padding-right: 17px;
+  }
+</style>

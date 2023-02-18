@@ -4,6 +4,7 @@
     import { confetti } from "@neoconfetti/svelte";
     import { tick } from "svelte";
     import FancyButtons from "$lib/components/ui-components/FancyButtons.svelte";
+  import { APPKEY } from "$lib/generalStores";
     let isVisible = false;
     let submitVisible = false;
     let hasSumbit = false;
@@ -28,6 +29,11 @@
 
         fetch("/api/submit/match", {
             method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "passphrase": localStorage.getItem("passphrase") || "",
+                "APPKEY": $APPKEY,
+            },
             body: JSON.stringify(data),
         })
             .then((res) => res.json())
@@ -41,7 +47,6 @@
         on:click={submit}
         bgColor={"#39c41f"}
         fontSize={"47px"}
-        amountOfRound={"100px"}
     />
     {#if submitVisible}
         <div>
@@ -64,7 +69,6 @@
             text={"Go Ahead And Click This For More Confetti :D Your Welcome -David :D"}
             bgColor={"#39c41f"}
             fontSize={"11px"}
-            amountOfRound={"100px"}
         />
         {/if}
     </div>

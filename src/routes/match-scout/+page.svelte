@@ -2,11 +2,11 @@
   import ScoutCarousel from "$lib/components/ScoutCarousel.svelte";
   import type { MatchScoutInfo } from "$lib/types";
   import { info } from "$lib/stores/generalStores";
+  import { APPKEY } from "$lib/generalStores";
 
   let controller: AbortController;
-  let promise: Promise<void>; // = err();
-
-  async function err() {
+  let promise: Promise<void> = err();
+    async function err() {
     throw new Error();
   }
 
@@ -19,12 +19,13 @@
     });
   }
 
-
   async function recursivePoll(): Promise<MatchScoutInfo> {
     return await fetch("/api/scout", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "passphrase": localStorage.getItem("passphrase") || "",
+        "APPKEY": $APPKEY,
       },
       signal: controller.signal,
     })
@@ -61,23 +62,3 @@
     >
   {/await}
 </div>
-
-<style>
-  .makeBorder{
-        display: flex;
-        flex-direction: column;
-        background-color: #efdcdc;
-        border-color: black;
-        border-width: 2px;
-        border-radius: 0.5rem;
-    }
-  body {
-    background-color: rgb(85, 163, 218);
-  }
-
-    .endBackground{
-      background-image: linear-gradient(to top right,#DBD6D6, #DBD6D6);
-      padding-left: 17px;
-      padding-right: 17px;
-    }
-</style>

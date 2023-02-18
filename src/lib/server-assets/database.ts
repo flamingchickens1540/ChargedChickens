@@ -11,8 +11,7 @@ const db = mysql
   .createPool({
     host: MYSQL_HOST,
     user: MYSQL_USER,
-    //we dont talk about this, but the env is not importing properly
-    password: "$j" + MYSQL_PASSWORD,
+    password: MYSQL_PASSWORD,
     database: MYSQL_DATABASE,
   })
   .promise();
