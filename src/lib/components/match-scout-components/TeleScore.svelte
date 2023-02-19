@@ -34,12 +34,12 @@
   ];
   
   // @ts-ignore
-  $: render = ({ context, width, height }) => {
+  $: render = ({ context }) => {
     const TeleOpScoreBoard = new Image();
 
     TeleOpScoreBoard.src = TeleOpScoring;
     TeleOpScoreBoard.onload = () => {
-      context.drawImage(TeleOpScoreBoard, 0, 0, width, height);
+      context.drawImage(TeleOpScoreBoard, 0, 0, outerWidth, outerWidth);
     };
   };
 
