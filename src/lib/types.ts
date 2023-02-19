@@ -123,3 +123,9 @@ export type MatchScoutInfo = {
     robot?: Robot,
     match?: Match,
 }
+
+export type RGB = {
+    red: number,
+    green: number,
+    blue: number
+}

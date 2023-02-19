@@ -6,6 +6,7 @@
     let match_key: string = '';
     let robots_red: string[] = [];
     let robots_blue: string[] = [];
+    
     /**
      * Creates a new match
      * 
