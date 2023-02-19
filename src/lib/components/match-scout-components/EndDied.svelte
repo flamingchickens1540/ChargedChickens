@@ -3,8 +3,10 @@
     import Switch from "$lib/components/ui-components/Switch.svelte";
 
     let checkedValue = false;
-    died.set(checkedValue);
-
+    
+    function clickHandle() {
+        died.set(!checkedValue);
+    }
 </script>
 
 
@@ -15,7 +17,7 @@
         <h1> Is Dead</h1>
     </div> 
     <div class= "brokeSwitchRight">
-        <Switch bind:checked={checkedValue} />
+        <Switch bind:checked={checkedValue} on:click={clickHandle}/>
     </div>
 </div>
 <style>
