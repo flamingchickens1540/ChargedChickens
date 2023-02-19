@@ -2,6 +2,8 @@ import { json } from "@sveltejs/kit";
 import { setRobots } from "$lib/server-assets/scoutQueue";
 import type { AssignData, Robot } from "$lib/types";
 import type { RequestEvent } from "./$types";
+import { DEBUG } from "$lib/generalStores";
+import type  { TeamKey } from "$lib/types";
 
 export const POST = async ({request}: RequestEvent) => {
   const data: AssignData = await request.json()
@@ -9,6 +11,8 @@ export const POST = async ({request}: RequestEvent) => {
   const robots: Robot[] = [];
 
   data.robots.red.forEach(teamKey => {
+    if (DEBUG) console.log(data.robots.red);
+    // TODO: Fix TypeError: Cannot read properties of undefined (reading 'red')
     robots.push({
       "team_key": teamKey,
       "alliance": "red"

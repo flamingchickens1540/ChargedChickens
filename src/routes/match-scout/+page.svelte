@@ -6,7 +6,7 @@
 
   let controller: AbortController;
   let promise: Promise<void> = err();
-    async function err() {
+  async function err() {
     throw new Error();
   }
 
@@ -19,6 +19,11 @@
     });
   }
 
+  /**
+   * Recursively makes a POST request for a new team to scout
+   * 
+   * @returns A promise for MatchScoutInfo
+   */
   async function recursivePoll(): Promise<MatchScoutInfo> {
     return await fetch("/api/scout", {
       method: "POST",
@@ -53,7 +58,9 @@
       class="text-blue-500 font-bold text-4xl p-8 rounded bg-red-500"
       on:click={() => controller.abort()}>Log Out</button
     >
+    <h1 class="text-5xl"><strong>Waiting for Match Assignment</strong></h1>
   {:then}
+    <h1><strong>You've Been Assigned To Team {$info.robot?.team_key}</strong></h1>
     <ScoutCarousel />
   {:catch}
     <button

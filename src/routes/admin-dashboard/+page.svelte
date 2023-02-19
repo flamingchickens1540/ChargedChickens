@@ -17,16 +17,16 @@
         let rb = parseRobots(robots_blue);
         
         let match: AssignData = {
-            event_key: '2022org',
-            match_key:  match_key as MatchKey,
+            event_key: '2023test',
+            match_key: match_key as MatchKey,
             robots:  {
                 red: rr,
                 blue: rb
             }
         }
-        console.log(match);
         sendMatch(match);
     }
+
     /**
      * Formats arrays strings into arrays of teamkeys
      * 
@@ -39,25 +39,25 @@
         robots.forEach(robot => new_robots.push(`frc${robot as unknown as number}` as TeamKey));
         return new_robots;
     }
+    
     /**
-     * POSTs the match data
+     * POSTs the match data to the api/assign endpoint
      * 
      * @param match
      */
     async function sendMatch(match: AssignData) {
+
         fetch('/api/assign', {
-            method: "POST",
-            body: JSON.stringify({
-                body: match,
-            }),
+            method: 'POST',
             headers: {
-                "Content-type": "application/json; charset=UTF-8",
-                "passphrase": localStorage.getItem("passphrase") || "",
-                "APPKEY": $APPKEY,
-            }
+                'Content-type': 'application/json; charset=UTF-8',
+                passphrase: localStorage.getItem("passphrase") || "",
+                APPKEY: $APPKEY
+            },
+            body: JSON.stringify(match)
         })
-        .then(res => res.json())
-        .then(data => console.log(data));
+            .then(res => res.json())
+            .then(data => console.log(data));
     }
 </script>
 
