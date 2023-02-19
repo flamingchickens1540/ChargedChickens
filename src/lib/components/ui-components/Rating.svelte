@@ -1,8 +1,7 @@
 <script lang="ts">
 	import Star from "./Star.svelte";
-
 	export let rating = 3;
-	let hoverRating: number | null = null;
+
 	const handleRate = (id: number) => () => rating = id;
 	let stars = Array.from({ length: 5 }, (__, i) => i+1);
 </script>
