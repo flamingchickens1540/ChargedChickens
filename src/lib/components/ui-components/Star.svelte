@@ -13,7 +13,7 @@
 	}
 
 	.starFill {
-		fill:#ffff00;
+		fill:#f4c01e;
 		transition: clip-path 0.4s ease-out;
 	}
 </style>
