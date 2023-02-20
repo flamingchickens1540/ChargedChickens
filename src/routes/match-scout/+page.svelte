@@ -2,7 +2,7 @@
   import ScoutCarousel from "$lib/components/ScoutCarousel.svelte";
   import type { MatchScoutInfo } from "$lib/types";
   import { info } from "$lib/stores/generalStores";
-  import { APPKEY } from "$lib/generalStores";
+  import { APPKEY } from "$lib/stores/generalStores";
 
   let controller: AbortController;
   let promise: Promise<void> = err();

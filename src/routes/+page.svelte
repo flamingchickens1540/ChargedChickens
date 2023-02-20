@@ -1,7 +1,7 @@
 <script lang="ts">
   import { goto } from '$app/navigation';
 
-  let inputPhrase = "supersecretpassphrasethatnoonewilleverguess";
+  let inputPhrase = "";
 
   function setPassphrase() {
     localStorage.setItem("passphrase", inputPhrase);
