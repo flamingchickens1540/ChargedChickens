@@ -4,7 +4,7 @@
     import { confetti } from "@neoconfetti/svelte";
     import { tick } from "svelte";
     import FancyButtons from "$lib/components/ui-components/FancyButtons.svelte";
-    import { APPKEY } from "$lib/generalStores";
+    import { APPKEY } from "$lib/stores/generalStores";
     let isVisible = false;
     let submitVisible = false;
     let hasSumbit = false;
