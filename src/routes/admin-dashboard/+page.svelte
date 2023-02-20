@@ -2,6 +2,7 @@
     import { user } from "$lib/stores/generalStores";
     import type { AssignData, MatchKey, Team, TeamKey } from '$lib/types';
     import { APPKEY } from "$lib/generalStores";
+    
     let match_key: string = '';
     let robots_red: string[] = [];
     let robots_blue: string[] = [];
@@ -60,7 +61,7 @@
     }
 </script>
 
-<h1 class="text-center text-3xl">Welcome {$user}</h1>
+<h1 class="text-center text-3xl">Welcome Admin</h1>
 <br>
 <div class="grid grid-cols-2 grid-row-2 text-center">
 
