@@ -4,7 +4,10 @@
 
     let broken = false;
     
-    broke.set(broken); 
+    function clickHandle() {
+        //!broken is used because onclick is triggered before the bind
+        broke.set(!broken);
+    }
 </script>
 
 <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
@@ -13,7 +16,7 @@
         <h1> Is Broken?</h1>
     </div> 
     <div class= "brokeSwitchRight">
-        <Switch bind:checked={broken} />
+        <Switch bind:checked={broken} on:click={clickHandle}/>
     </div>
 </div>
 
