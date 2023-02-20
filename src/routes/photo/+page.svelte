@@ -1,9 +1,10 @@
 <script lang="ts">
   import { APPKEY } from "$lib/generalStores";
-  import type { TeamKey } from "$lib/types";
+  import type { EventKey, TeamKey } from "$lib/types";
 
   let photos: FileList;
   let team_key: TeamKey;
+  let event_key: EventKey;
 
   function removeFile(photo: File) {
     const file = Array.from(photos).indexOf(photo);
@@ -18,6 +19,7 @@
       removeFile(file);
     });
     data.append("team_key", team_key);
+    data.append("match_key", event_key);
     fetch("/api/submit/photo", {
       method: "POST",
       headers: {
@@ -25,7 +27,7 @@
         "APPKEY": $APPKEY,
       },
       body: data,
-    });
+    }).then(data => data.json()).then(res => console.log(res));
   }
 </script>
 
@@ -36,7 +38,8 @@
 <div class="text-center grid grid-cols-1 grid-rows-3 place-items-center gap-1">
   <h1 class="text-red-600 text-4xl text-center font-bold">Upload a photo</h1>
   <!--- TODO: regex match this input and prevent submission with invalid team_key --->
-  <input class="bg-yellow-300" bind:value={team_key} />
+  <label>Event Key: <input class="bg-yellow-300" bind:value={event_key} /></label>
+  <label>Team Key: <input class="bg-yellow-300" bind:value={team_key} /></label>
   <!--- TODO: make the number of files update correct --->
   <input type="file" multiple accept="image/*" bind:files={photos} />
 </div>

@@ -79,8 +79,8 @@ export type Team = {
 }
 
 export type Match = {
-    matchKey: MatchKey,
-    eventKey: EventKey,
+    match_key: MatchKey,
+    event_key: EventKey,
 }
 
 export type PitScouting = {

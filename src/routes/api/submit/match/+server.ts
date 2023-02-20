@@ -1,17 +1,12 @@
 import { json } from "@sveltejs/kit";
 import type { RequestEvent, RequestHandler } from "./$types";
 import { insertTeamMatch } from "$lib/server-assets/database";
-import type { TeamMatch } from "$lib/types";
-const DBTESTING = false;
+import type { Match, Robot, TeamMatch } from "$lib/types";
 
 export const POST: RequestHandler = async (event: RequestEvent) => {
-  const body: object = await event.request.json();
+  const body: { match: Match, robot: Robot, data: TeamMatch } = await event.request.json();
 
-  if (DBTESTING) {
-    const result = await insertTeamMatch("2022orore_qm5", "frc1540", body as TeamMatch)
-  } else {
-    console.log(body)
-  }
+  const result = await insertTeamMatch(body.match.match_key, body.robot.team_key, body.data);
 
-  return json({"success": true, "endpoint": "submit"})
+  return json({"success": result, "endpoint": "submit"})
 };
