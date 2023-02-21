@@ -1,53 +1,13 @@
 <script lang="ts">
     import { info } from "$lib/stores/generalStores";
     import { end_charge_station } from "$lib/stores/matchScoutStores";
+    import ChargeStationOption from "../ui-components/ChargeStationOption.svelte";
     var backgroundColorsButtons = ["#efdcdc","#efdcdc","#efdcdc","#efdcdc"]
-    const endChargeStationMessages = [
-        "Not Attempted",
-        "Failed",
-        "Docked",
-        "Engaged",
-    ];
+    
+    let selectedOption = 0;
 
-    function handleNot(){
-        end_charge_station.set(0);
-        for (let i = 0; i < 4; i++){
-            if (i == 0){
-                backgroundColorsButtons[i] = "#7ED957";
-            }else{
-                backgroundColorsButtons[i] = "#efdcdc"; 
-            }
-        }
-    }
-    function handleFailed(){
-        end_charge_station.set(1);
-        for (let i = 0; i < 4; i++){
-            if (i == 1){
-                backgroundColorsButtons[i] = "#7ED957";
-            }else{
-                backgroundColorsButtons[i] = "#efdcdc"; 
-            }
-        }
-    }
-    function handleDocked(){
-        end_charge_station.set(2);
-        for (let i = 0; i < 4; i++){
-            if (i == 2){
-                backgroundColorsButtons[i] = "#7ED957";
-            }else{
-                backgroundColorsButtons[i] = "#efdcdc"; 
-            }
-        }
-    }
-    function handleEngaged(){
-        end_charge_station.set(3);
-        for (let i = 0; i < 4; i++){
-            if (i == 3){
-                backgroundColorsButtons[i] = "#7ED957";
-            }else{
-                backgroundColorsButtons[i] = "#efdcdc"; 
-            }
-        }
+    function onOption(id : number) {
+        end_charge_station.set(selectedOption = id);
     }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -62,10 +22,10 @@
     <div class = "buttonsTitle"> 
         Charge Station End 
     </div>
-    <button class = "optionButtons" on:click = {handleNot} style = "background-color: {backgroundColorsButtons[0]}"> Not Attempted </button>
-    <button class = "optionButtons" on:click = {handleFailed} style = "background-color: {backgroundColorsButtons[1]}"> Failed </button>
-    <button class = "optionButtons" on:click = {handleDocked} style = "background-color: {backgroundColorsButtons[2]}"> Docked </button>
-    <button class = "optionSpecialButtons" on:click = {handleEngaged} style = "background-color: {backgroundColorsButtons[3]}"> Engaged </button>
+    <ChargeStationOption selectedOption={selectedOption} id={0} name="Not Attempted" clickHandler={onOption}></ChargeStationOption>
+    <ChargeStationOption selectedOption={selectedOption} id={1} name="Failed" clickHandler={onOption}></ChargeStationOption>
+    <ChargeStationOption selectedOption={selectedOption} id={2} name="Docked" clickHandler={onOption}></ChargeStationOption>
+    <ChargeStationOption selectedOption={selectedOption} id={3} name="Engaged" clickHandler={onOption}></ChargeStationOption>
 </div>
 
 <style>
@@ -73,6 +33,8 @@
     .makeColumnButtons{
         display: flex;
         flex-direction: column;
+        background-color:  #efdcdc;
+        
     }
     
     .buttonsTitle{
