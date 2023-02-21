@@ -1,6 +1,8 @@
 <script lang="ts">
-    import type { AssignData, MatchKey, TeamKey } from '$lib/types';
-    import { APPKEY } from "$lib/stores/generalStores";
+    import { user } from "$lib/stores/generalStores";
+    import type { AssignData, MatchKey, Team, TeamKey } from '$lib/types';
+    import { APPKEY } from "$lib/generalStores";
+    
     let match_key: string = '';
     let robots_red: string[] = [];
     let robots_blue: string[] = [];
@@ -78,8 +80,8 @@
     </div>
 
     <div class="p-10 grid grid-cols-1 grid-rows-2 gap-5 place-items-center border-4">
-        <label for="matchKey">Match Key</label>
-        <input type="text" class="border" name="matchKey" bind:value={match_key}>
+        <label for="match_key">Match Key</label>
+        <input type="text" class="border" name="match_key" bind:value={match_key}>
     </div>
     <div class="grid grid-cols-1 grid-rows-1 place-items-center border-4">
         <button class="h-36 w-36 lg:flex-grow sm:flex-shrink rounded-full outline outline-10" on:click={createMatch}>Create Match</button>

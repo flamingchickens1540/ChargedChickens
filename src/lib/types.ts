@@ -74,13 +74,13 @@ export type Team = {
     nickname: string,
     team_number: number,
     website: string,
-    logo: string | undefined,
+    // logo: string | undefined,
     // details : string
 }
 
 export type Match = {
-    matchKey: MatchKey,
-    eventKey: EventKey,
+    match_key: MatchKey,
+    event_key: EventKey,
 }
 
 export type PitScouting = {
