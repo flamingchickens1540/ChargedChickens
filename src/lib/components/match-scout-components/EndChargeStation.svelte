@@ -48,6 +48,7 @@
             }
         }
     }
+
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -114,7 +115,7 @@
         padding-right: 11px;
     }
     .optionButtons{
-        height: 47px;
+        height: 43px;
         border-bottom-width: 2px;
         border-color: black;
         text-align: left;
@@ -125,7 +126,7 @@
         border-right-width: 2px;
     }
     .optionSpecialButtons{
-        height: 47px; 
+        height: 43px; 
         text-align: left;
         text-indent: 10px;
         font-family: "Poppins";

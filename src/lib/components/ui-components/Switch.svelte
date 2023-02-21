@@ -59,6 +59,6 @@
 </style>
 
 <label class="switch">
-  <input type="checkbox" bind:checked />
+  <input type="checkbox" on:click bind:checked />
   <span class="slider" />
 </label>

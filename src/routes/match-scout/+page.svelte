@@ -11,7 +11,7 @@
   import Siema from "siema";
   import { onMount } from "svelte";
   import Submit from "$lib/components/match-scout-components/Submit.svelte";
-  
+
   onMount(() => {
     new Siema({
       selector: "#carousel",
@@ -27,59 +27,81 @@
       onInit: () => {},
       onChange: () => {},
     });
-  })
+  });
 </script>
 
 <body>
   <!-- <h1 class="text-red-600 text-4xl text-center font-bold">Match Scout</h1>   -->
   <div id="carousel" class="h-screen w-full">
-    <div id="auto">
+    <div id="auto" class = "endBackground">
       <AutoScore />
-      <br>
+      <br />
+
       <AutoChargeStation />
-      <br>
-      <AutoCommunity />
+      <br />
+      <div class = "makeBorder">
+        <AutoCommunity />
+      </div>
     </div>
     <div id="tele">
       <TeleScore />
     </div>
     <div id="end" class = "endBackground">
-      <EndChargeStation />
-      <br>
-      <EndDriverSkill />
-      <br>
-      <div class = "makeBorder">
-        <EndBroke />
-        <EndDied />
+      <div class="makeWide">
+        <EndChargeStation />
       </div>
-      <br>
-      <EndNotes />
+      <div class = "makeWideSkills">
+        <EndDriverSkill />
+      </div>
+      <div class = "makeWideSwitches">
+        <div class="makeBorder">
+          <EndBroke />
+          <EndDied />
+        </div>
+      </div>
+      <div class = "makeWideNotes">
+        <EndNotes />
+      </div>
     </div>
-    <div id=submit>
+    <div id="submit">
       <Submit />
     </div>
   </div>
-
 </body>
 
 <style>
-  .makeBorder{
-        display: flex;
-        flex-direction: column;
-        background-color: #efdcdc;
-        border-color: black;
-        border-width: 2px;
-        border-radius: 0.5rem;
-    }
+  .makeBorder {
+    display: flex;
+    flex-direction: column;
+    background-color: #efdcdc;
+    border-color: black;
+    border-width: 2px;
+    border-radius: 0.5rem;
+  }
   body {
     background-color: rgb(85, 163, 218);
   }
 
-    .endBackground{
-      background-image: linear-gradient(to top right,#DBD6D6, #DBD6D6);
-      padding-left: 17px;
-      padding-right: 17px;
-    }
+  .endBackground {
+    background-image: linear-gradient(to top right, #dbd6d6, #dbd6d6);
+    padding-left: 17px;
+    padding-right: 17px;
+    padding: 17px;
+  }
+
+  .makeWide {
+    height: 302px;
+  }
+
+  .makeWideSkills {
+    height: 82px;
+  }
+
+  .makeWideSwitches{
+    height: 103px;  
+  }
+
+  .makeWideNotes{
+    height: 98px;
+  }
 </style>
-
-
