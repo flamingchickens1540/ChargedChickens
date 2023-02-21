@@ -21,14 +21,8 @@
     };
 
     /**
-     * Handles the double clicking of the mouse on the telescore canvas
-     * The purpose is to increment one of the teleScoreFail stores based on which cell on the canvas grid was clicked
-     * 
-     * @remarks
-     * For some reason, the rows calculation starts at 1, when it should start at 0, so we decrement the value by 1
-     * This is most likely because the elementHeight var actual measures from the top of the screen, not the top of the canvas
-     * This means that the 0th row is treated like the 1st row, even though clicks made on the 1st row are disregarded.
-     * 
+     * Handles the clicking of the mouse on the telescore canvas
+     * Increments a given telescore (Success) by 1 based on the row and column.
      * @param mouse - type: MouseEvent
      * 
      */
@@ -52,11 +46,6 @@
     /**
      * Handles the double clicking of the mouse on the telescore canvas
      * The purpose is to increment one of the teleScoreFail stores based on which cell on the canvas grid was clicked
-     * 
-     * @remarks
-     * For some reason, the rows calculation starts at 1, when it should start at 0, so we decrement the value by 1
-     * This is most likely because the elementHeight var actual measures from the top of the screen, not the top of the canvas
-     * This means that the 0th row is treated like the 1st row, even though clicks made on the 1st row are disregarded.
      * 
      * @param mouse - type: MouseEvent
      * 
