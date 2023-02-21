@@ -15,11 +15,12 @@
 <style>
     button {
         font-family: "Poppins";
+        font-size: 6vw;
         text-align: left;
         border-width: 2px;
         border-top-width: 1px;
         border-color: black;
-        padding-left: 3px;
+        padding-left: 2vw;
     }
 
     .edgeOption {
