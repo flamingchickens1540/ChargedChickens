@@ -6,7 +6,7 @@
         "Failed",
         "Docked",
         "Engaged"
-    ]
+    ];
 </script>
 
 <h1 class="text-orange-400 text-center">Charge Station Docking - Auto</h1>
@@ -53,12 +53,6 @@
             </label>
         </div>
     </div>
-</div>
-
-<div class="centerButtonsValue">
-    <h1 class="text-center">
-        {autoChargeStationMessages[$auto_charge_station]}
-    </h1>
 </div>
 
 <style>

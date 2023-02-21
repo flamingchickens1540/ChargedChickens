@@ -4,6 +4,7 @@
 
     let miliSecondsArr: number[] = [];
     let initialTime : number;
+    let pressed = false;
     let color: RGB = {
       red: 55, 
       green: 5, 
@@ -16,6 +17,7 @@
      */
     function handleMousedown() {
         initialTime = Date.now();
+        pressed = true;
 	  }
     
     /**
@@ -28,7 +30,9 @@
     function handleMouseup() {
       miliSecondsArr.push(Date.now() - initialTime)
       defense_times.update(() => miliSecondsArr);
+
       console.log($defense_times);
+      pressed = false;
     }
 
     /**
@@ -36,10 +40,10 @@
      * - Make things responsively scale
     */
 </script>
-  <div style="--red: {color.red} --green: {color.green} --blue: {color.blue}" class="p-10 grid grid-cols-1 grid-rows-1 place-items-center">
-    <button class="h-36 w-36 lg:flex-grow sm:flex-shrink rounded-full outline outline-10 unselectable" on:touchstart={handleMousedown} on:touchend={handleMouseup} on:mousedown={handleMousedown} on:mouseup={handleMouseup}>Defense</button>
+<div style="--red: {color.red} --green: {color.green} --blue: {color.blue}" class="p-10 grid grid-cols-1 grid-rows-1 place-items-center">
+  <button class:pressed class="h-36 w-36 lg:flex-grow sm:flex-shrink rounded-full outline outline-10 unselectable" on:touchstart={handleMousedown} on:touchend={handleMouseup} on:mousedown={handleMousedown} on:mouseup={handleMouseup}>Defense</button>
 
-  </div>
+</div>
 
 <style>
   .unselectable {
@@ -55,5 +59,9 @@
     color: rgb(255, 255, 255);
     background-color: rgb(var(--red), var(--green), var(--blue));
     outline-color:rgb(55, 5, 177, .3);
+  }
+
+  .pressed {
+    background-color: #000033;
   }
 </style>
