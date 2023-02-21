@@ -19,6 +19,7 @@
         border-width: 2px;
         border-top-width: 1px;
         border-color: black;
+        padding-left: 3px;
     }
 
     .edgeOption {
