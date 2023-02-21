@@ -1,7 +1,6 @@
 <script lang="ts">
-    import { user } from "$lib/stores/generalStores";
     import type { AssignData, MatchKey, Team, TeamKey } from '$lib/types';
-    import { APPKEY } from "$lib/generalStores";
+    import { APPKEY } from "$lib/stores/generalStores";
     
     let match_key: string = '';
     let robots_red: string[] = [];
