@@ -17,16 +17,11 @@
         font-family: "Poppins";
         font-size: 6vw;
         text-align: left;
-        border-width: 2px;
-        border-top-width: 1px;
-        border-color: black;
+        border-top-width: 2px;
+        border-top-color: black;
         padding-left: 2vw;
         background-color:  #efdcdc;
-    }
-
-    .edgeOption {
-        border-bottom-left-radius: 0.5em;
-        border-bottom-right-radius: 0.5em;
+        z-index: -1;
     }
     
     .selected {

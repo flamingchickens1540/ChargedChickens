@@ -72,6 +72,7 @@
         outerWidth = document.getElementById("header")?.clientWidth || window.outerWidth
         outerHeight = document.getElementById("header")?.clientHeight || window.outerHeight
 
+        // Working like vw padding
         outerWidth *= 0.8;
         outerHeight *= 0.8;
     })

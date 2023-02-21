@@ -31,6 +31,9 @@
         display: flex;
         flex-direction: column;
         border-radius: 0.5vw;
+        border-color: black;
+        border-width: 4px;
+        border-radius: 0.5rem;
     }
     
     .buttonsTitle{
@@ -38,14 +41,11 @@
         font-weight: 700;
         font-family: "Poppins";
         font-size: 23px;
-        border-bottom-width: 2px;
         height: 51px;
         border-color: black;
         padding-top: 6px;
         background-color: #efdcdc;
-        border-width: 2px;
-        border-top-right-radius: 0.3rem;
-        border-top-left-radius: 0.3rem;
+        z-index: -1;
     }
 
     .endgameTitle{
