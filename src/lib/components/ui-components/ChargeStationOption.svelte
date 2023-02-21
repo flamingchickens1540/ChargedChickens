@@ -28,5 +28,6 @@
     
     .selected {
         background-color: #7ED957;
+        font-weight: bold;
     }
 </style>

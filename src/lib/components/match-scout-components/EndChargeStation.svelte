@@ -2,17 +2,14 @@
     import { info } from "$lib/stores/generalStores";
     import { end_charge_station } from "$lib/stores/matchScoutStores";
     import ChargeStationOption from "../ui-components/ChargeStationOption.svelte";
-    var backgroundColorsButtons = ["#efdcdc","#efdcdc","#efdcdc","#efdcdc"]
-    
+
     let selectedOption = 0;
 
     function onOption(id : number) {
         end_charge_station.set(selectedOption = id);
     }
 </script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
 <div class = "alignTitle">
     <div class = "endgameTitle"> Endgame </div>
     <div class = "endgameTitleNumbers"> {$info.robot?.team_key} </div>
@@ -25,7 +22,7 @@
     <ChargeStationOption selectedOption={selectedOption} id={0} name="Not Attempted" clickHandler={onOption}></ChargeStationOption>
     <ChargeStationOption selectedOption={selectedOption} id={1} name="Failed" clickHandler={onOption}></ChargeStationOption>
     <ChargeStationOption selectedOption={selectedOption} id={2} name="Docked" clickHandler={onOption}></ChargeStationOption>
-    <ChargeStationOption selectedOption={selectedOption} id={3} name="Engaged" clickHandler={onOption}></ChargeStationOption>
+    <ChargeStationOption selectedOption={selectedOption} id={3} name="Engaged" clickHandler={onOption} edgeOption={true}></ChargeStationOption>
 </div>
 
 <style>
@@ -34,7 +31,7 @@
         display: flex;
         flex-direction: column;
         background-color:  #efdcdc;
-        
+        border-radius: 0.5em;
     }
     
     .buttonsTitle{
@@ -75,34 +72,5 @@
         width: 50%;
         justify-content: right;
         padding-right: 11px;
-    }
-    .optionButtons{
-        height: 47px;
-        border-bottom-width: 2px;
-        border-color: black;
-        text-align: left;
-        text-indent: 10px;
-        font-family: "Poppins";
-        font-size: 23px;
-        border-left-width: 2px;
-        border-right-width: 2px;
-    }
-    .optionSpecialButtons{
-        height: 47px; 
-        text-align: left;
-        text-indent: 10px;
-        font-family: "Poppins";
-        font-size: 23px;
-        border-bottom-right-radius: 0.3rem;
-        border-bottom-left-radius: 0.3rem;
-        border-left-width: 2px;
-        border-right-width: 2px;
-        border-bottom-width: 2px;
-        border-color: black;
-    }
-
-    .centerButtonsValue {
-        margin: 2vw;
-        font-size: large;
     }
 </style>
