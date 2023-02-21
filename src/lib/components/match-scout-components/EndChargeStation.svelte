@@ -30,8 +30,7 @@
     .makeColumnButtons{
         display: flex;
         flex-direction: column;
-        background-color:  #efdcdc;
-        border-radius: 0.5em;
+        border-radius: 0.5vw;
     }
     
     .buttonsTitle{

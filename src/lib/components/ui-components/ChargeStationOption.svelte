@@ -21,6 +21,7 @@
         border-top-width: 1px;
         border-color: black;
         padding-left: 2vw;
+        background-color:  #efdcdc;
     }
 
     .edgeOption {
