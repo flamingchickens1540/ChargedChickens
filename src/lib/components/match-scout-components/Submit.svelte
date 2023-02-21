@@ -78,7 +78,7 @@
                 "passphrase": localStorage.getItem("passphrase") || "",
                 "APPKEY": $APPKEY,
             },
-            body: JSON.stringify({match: $info?.match, robot: $info?.robot, data: data}),
+            body: JSON.stringify({match: $info?.match, robot: $info?.robot, data}),
         })
             .then((res) => res.json())
             .then((data) => console.log(data));
