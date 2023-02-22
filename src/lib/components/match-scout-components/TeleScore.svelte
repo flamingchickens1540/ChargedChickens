@@ -161,7 +161,7 @@
   width={outerWidth}
   height={outerWidth}
   class="object-center"
-  on:click={mouseClicked} on:dblclick={mouseDoubleClicked}
+  on:click={mouseClicked}
 >
   <Layer {render} />
 </Canvas>
