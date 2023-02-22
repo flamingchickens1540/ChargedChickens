@@ -4,11 +4,7 @@
 
     let miliSecondsArr: number[] = [];
     let initialTime : number;
-    let color: RGB = {
-      red: 55, 
-      green: 5, 
-      blue: 177
-    }
+    let color: string = "#3705B1";
     /**
      * Gets the current time
      * 
@@ -36,7 +32,7 @@
      * - Make things responsively scale
     */
 </script>
-  <div style="--red: {color.red} --green: {color.green} --blue: {color.blue}" class="p-10 grid grid-cols-1 grid-rows-1 place-items-center">
+  <div style="--button-color: {color}" class="p-10 grid grid-cols-1 grid-rows-1 place-items-center">
     <button class="h-36 w-36 lg:flex-grow sm:flex-shrink rounded-full outline outline-10 unselectable" on:touchstart={handleMousedown} on:touchend={handleMouseup} on:mousedown={handleMousedown} on:mouseup={handleMouseup}>Defense</button>
 
   </div>
@@ -53,7 +49,7 @@
 
   button {
     color: rgb(255, 255, 255);
-    background-color: rgb(var(--red), var(--green), var(--blue));
+    background-color: var(--button-color);
     outline-color:rgb(55, 5, 177, .3);
   }
 </style>
