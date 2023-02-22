@@ -22,7 +22,7 @@
     <ChargeStationOption selectedOption={selectedOption} id={0} name="Not Attempted" clickHandler={onOption}></ChargeStationOption>
     <ChargeStationOption selectedOption={selectedOption} id={1} name="Failed" clickHandler={onOption}></ChargeStationOption>
     <ChargeStationOption selectedOption={selectedOption} id={2} name="Docked" clickHandler={onOption}></ChargeStationOption>
-    <ChargeStationOption selectedOption={selectedOption} id={3} name="Engaged" clickHandler={onOption} edgeOption={true}></ChargeStationOption>
+    <ChargeStationOption selectedOption={selectedOption} id={3} name="Engaged" clickHandler={onOption}></ChargeStationOption>
 </div>
 
 <style>
