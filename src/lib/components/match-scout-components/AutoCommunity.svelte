@@ -7,6 +7,10 @@
 
     let broken = false;
 
+    function clickHandle() {
+        //!checkedValue is used because onclick is triggered before the bind
+        auto_community.set(!checkedValue);
+    }
     function handleChangeBroke(){
         auto_community.set(!broken); 
     }

@@ -1,13 +1,9 @@
 <script lang="ts">
 	import Star from "./Star.svelte";
+	export let rating = 3;
 
-	export let rating = 0;
-	export let num = 5;
-	let hoverRating = null;
-	const handleRate = (id) => () => {
-		rating = id;
-	};
-	let stars = Array.from({ length: num }, (__, i) => i + 1);
+	const handleRate = (id: number) => () => rating = id;
+	let stars = Array.from({ length: 5 }, (__, i) => i+1);
 </script>
 
 <div class="feedback">
@@ -15,7 +11,7 @@
 		<div class="flex flex-row">
 			{#each stars as star}
 				<Star
-					filled={hoverRating ? hoverRating >= star : rating >= star}
+					bind:starRating={rating}
 					starValue={star}
 					on:mouseleave={() => (hoverRating = null)}
 					on:click={handleRate(star)}

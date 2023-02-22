@@ -1,8 +1,14 @@
 <script lang="ts">
     import { defense_times } from "$lib/stores/matchScoutStores";
+    import type { RGB } from "$lib/types";
 
     let miliSecondsArr: number[] = [];
     let initialTime : number;
+    let color: RGB = {
+      red: 55, 
+      green: 5, 
+      blue: 177
+    }
     /**
      * Gets the current time
      * 
@@ -30,15 +36,24 @@
      * - Make things responsively scale
     */
 </script>
-  <div class="p-10 grid grid-cols-1 grid-rows-1 place-items-center">
-    <button class="h-36 w-36 lg:flex-grow sm:flex-shrink rounded-full outline outline-10" on:touchstart={handleMousedown} on:touchend={handleMouseup} on:mousedown={handleMousedown} on:mouseup={handleMouseup}>Defense</button>
+  <div style="--red: {color.red} --green: {color.green} --blue: {color.blue}" class="p-10 grid grid-cols-1 grid-rows-1 place-items-center">
+    <button class="h-36 w-36 lg:flex-grow sm:flex-shrink rounded-full outline outline-10 unselectable" on:touchstart={handleMousedown} on:touchend={handleMouseup} on:mousedown={handleMousedown} on:mouseup={handleMouseup}>Defense</button>
 
   </div>
 
 <style>
+  .unselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
   button {
     color: rgb(255, 255, 255);
-    background-color: rgb(55, 5, 177);
+    background-color: rgb(var(--red), var(--green), var(--blue));
     outline-color:rgb(55, 5, 177, .3);
   }
 </style>

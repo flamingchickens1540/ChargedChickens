@@ -1,107 +1,71 @@
 <script lang="ts">
-  import AutoChargeStation from "$lib/components/match-scout-components/AutoChargeStation.svelte";
-  import AutoCommunity from "$lib/components/match-scout-components/AutoCommunity.svelte";
-  import EndBroke from "$lib/components/match-scout-components/EndBroke.svelte";
-  import EndChargeStation from "$lib/components/match-scout-components/EndChargeStation.svelte";
-  import EndDied from "$lib/components/match-scout-components/EndDied.svelte";
-  import EndDriverSkill from "$lib/components/match-scout-components/EndDriverSkill.svelte";
-  import EndNotes from "$lib/components/match-scout-components/EndNotes.svelte";
-  import AutoScore from "$lib/components/match-scout-components/AutoScore.svelte";
-  import TeleScore from "$lib/components/match-scout-components/TeleScore.svelte";
-  import Siema from "siema";
-  import { onMount } from "svelte";
-  import Submit from "$lib/components/match-scout-components/Submit.svelte";
+  import ScoutCarousel from "$lib/components/ScoutCarousel.svelte";
+  import type { MatchScoutInfo } from "$lib/types";
+  import { info } from "$lib/stores/generalStores";
+  import { APPKEY } from "$lib/stores/generalStores";
 
-  onMount(() => {
-    new Siema({
-      selector: "#carousel",
-      duration: 200,
-      easing: "ease-in-out",
-      perPage: 1,
-      startIndex: 0,
-      draggable: true,
-      multipleDrag: false,
-      threshold: 20,
-      loop: false,
-      rtl: false,
-      onInit: () => {},
-      onChange: () => {},
+  let controller: AbortController;
+  let promise: Promise<void> = err();
+  async function err() {
+    throw new Error();
+  }
+
+  async function reqScoutInfo() {
+    controller = new AbortController();
+    promise = new Promise(async (resolve, reject) => {
+      controller.signal.addEventListener("abort", reject);
+      $info = await recursivePoll();
+      resolve();
     });
-  });
+  }
+
+  /**
+   * Recursively makes a POST request for a new team to scout
+   * 
+   * @returns A promise for MatchScoutInfo
+   */
+  async function recursivePoll(): Promise<MatchScoutInfo> {
+    return await fetch("/api/scout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "passphrase": localStorage.getItem("passphrase") || "",
+        "APPKEY": $APPKEY,
+      },
+      signal: controller.signal,
+    })
+      .then((res) => res.json())
+      .then(async (data: MatchScoutInfo) => {
+        if (data.success) {
+          return data;
+        } else {
+          return await recursivePoll();
+        }
+      })
+      .catch(err => {
+        return {"success": false};
+      });
+  }
 </script>
 
-<body>
-  <!-- <h1 class="text-red-600 text-4xl text-center font-bold">Match Scout</h1>   -->
-  <div id="carousel" class="h-screen w-full">
-    <div id="auto" class = "endBackground">
-      <AutoScore />
-      <br />
+<svelte:head>
+  <title>Match Scout</title>
+</svelte:head>
 
-      <AutoChargeStation />
-      <br />
-      <div class = "makeBorder">
-        <AutoCommunity />
-      </div>
-    </div>
-    <div id="tele">
-      <TeleScore />
-    </div>
-    <div id="end" class = "endBackground">
-      <div class="makeWide">
-        <EndChargeStation />
-      </div>
-      <div class = "makeWideSkills">
-        <EndDriverSkill />
-      </div>
-      <div class = "makeWideSwitches">
-        <div class="makeBorder">
-          <EndBroke />
-          <EndDied />
-        </div>
-      </div>
-      <div class = "makeWideNotes">
-        <EndNotes />
-      </div>
-    </div>
-    <div id="submit">
-      <Submit />
-    </div>
-  </div>
-</body>
-
-<style>
-  .makeBorder {
-    display: flex;
-    flex-direction: column;
-    background-color: #efdcdc;
-    border-color: black;
-    border-width: 2px;
-    border-radius: 0.5rem;
-  }
-  body {
-    background-color: rgb(85, 163, 218);
-  }
-
-  .endBackground {
-    background-image: linear-gradient(to top right, #dbd6d6, #dbd6d6);
-    padding-left: 17px;
-    padding-right: 17px;
-    padding: 17px;
-  }
-
-  .makeWide {
-    height: 302px;
-  }
-
-  .makeWideSkills {
-    height: 82px;
-  }
-
-  .makeWideSwitches{
-    height: 103px;  
-  }
-
-  .makeWideNotes{
-    height: 98px;
-  }
-</style>
+<div class="text-center">
+  {#await promise}
+    <button
+      class="text-blue-500 font-bold text-4xl p-8 rounded bg-red-500"
+      on:click={() => controller.abort()}>Log Out</button
+    >
+    <h1 class="text-5xl"><strong>Waiting for Match Assignment</strong></h1>
+  {:then}
+    <h1><strong>You've Been Assigned To Team {$info.robot?.team_key}</strong></h1>
+    <ScoutCarousel />
+  {:catch}
+    <button
+      class="text-blue-500 font-bold text-4xl p-8 rounded bg-green-500"
+      on:click={() => reqScoutInfo()}>Log In</button
+    >
+  {/await}
+</div>

@@ -8,7 +8,7 @@
 </script>
 <div class = "makeBorder">
     Notes
-    <textarea bind:value = {notesText} type="text" class = "notesBox" on:input={handleText}> </textarea>
+    <input bind:value = {notesText} type="text" class = "notesBox" on:input={handleText}>
 </div>
 <style>
     .notesBox{

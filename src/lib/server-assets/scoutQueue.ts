@@ -2,10 +2,10 @@ import type { EventKey, MatchKey, RobotMatch, Robot, Match } from "$lib/types";
 
 let robotMatches: RobotMatch[] = [];
 
-export function setRobots(matchKey: MatchKey, eventkey: EventKey, robots: Robot[]) {
+export function setRobots(match_key: MatchKey, event_key: EventKey, robots: Robot[]) {
   const match: Match = {
-    "matchKey": matchKey,
-    "eventKey": eventkey,
+    "match_key": match_key,
+    "event_key": event_key,
   }
 
   robotMatches = [];

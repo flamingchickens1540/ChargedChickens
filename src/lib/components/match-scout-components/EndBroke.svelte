@@ -3,6 +3,11 @@
     import Switch from "$lib/components/ui-components/Switch.svelte";
 
     let broken = false;
+    
+    function clickHandle() {
+        //!broken is used because onclick is triggered before the bind
+        broke.set(!broken);
+    }
 
     function handleChangeBroke(){
         broke.set(!broken); 

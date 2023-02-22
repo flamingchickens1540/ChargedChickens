@@ -8,16 +8,16 @@ export const POST = async ({request}: RequestEvent) => {
 
   const robots: Robot[] = [];
 
-  data.robots.red.forEach(teamKey => {
+  data.robots.red.forEach(team_key => {
     robots.push({
-      "team_key": teamKey,
+      "team_key": team_key,
       "alliance": "red"
     })
   })
 
-  data.robots.blue.forEach(teamKey => {
+  data.robots.blue.forEach(team_key => {
     robots.push({
-      "team_key": teamKey,
+      "team_key": team_key,
       "alliance": "blue"
     })
   })
