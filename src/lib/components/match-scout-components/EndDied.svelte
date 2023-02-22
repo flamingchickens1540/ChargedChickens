@@ -1,12 +1,6 @@
 <script lang="ts">
     import { died } from "$lib/stores/matchScoutStores";
     import Switch from "$lib/components/ui-components/Switch.svelte";
-
-    let checkedValue = false;
-    
-    function clickHandle() {
-        died.set(!checkedValue);
-    }
 </script>
 
 
@@ -17,7 +11,7 @@
         <h1> Is Dead</h1>
     </div> 
     <div class= "brokeSwitchRight">
-        <Switch bind:checked={checkedValue} on:click={clickHandle}/>
+        <Switch bind:checked={$died}/>
     </div>
 </div>
 <style>

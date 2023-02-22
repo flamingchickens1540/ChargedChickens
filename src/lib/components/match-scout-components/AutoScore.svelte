@@ -3,6 +3,7 @@
     import TeleOpScoring from "$lib/assets/Teleop.png";
     import { Canvas, Layer } from "svelte-canvas";
     import { onMount } from 'svelte';
+    import { DEBUG } from "$lib/stores/generalStores";
 
     let outerHeight : number;
     let outerWidth : number;
@@ -59,14 +60,14 @@
         const row = Math.floor(mouse.offsetY / outerWidth * 3);
         const col = Math.floor(mouse.offsetX / outerWidth * 3);
 
-        // if (DEBUG) {
-        //   console.log("Row: ");
-        //   console.log(row);
-        //   console.log("Column:");
-        //   console.log(col);
-        // }
+        if (DEBUG) {
+          console.log("Row: ");
+          console.log(row);
+          console.log("Column:");
+          console.log(col);
+        }
         
-        autoScoreSucceed[col + row * 3].update(n => n++);
+        autoScoreSucceed[col + row * 3].update(n => n + 1);
     }
 
     /**
@@ -89,33 +90,37 @@
         const row = Math.floor(mouse.offsetY / outerWidth * 3);
         const col = Math.floor(mouse.offsetX / outerWidth * 3); 
 
-        // if (DEBUG) {
-        //   console.log("Row: ");
-        //   console.log(row);
-        //   console.log("Column:");
-        //   console.log(col);
-        // }
+        if (DEBUG) {
+          console.log("Row: ");
+          console.log(row);
+          console.log("Column:");
+          console.log(col);
+        }
         
-        autoScoreFail[col + row * 3].update(n => n++);
+        autoScoreFail[col + row * 3].update(n => n += 1);
     }
 
     onMount(() => {
         outerWidth = document.getElementById("header")?.clientWidth || window.outerWidth
         outerHeight = document.getElementById("header")?.clientHeight || window.outerHeight
 
-        outerWidth -= 1;
-        outerHeight -= 1;
+        // outerWidth -= 20;
+        // outerHeight -= 20;
+        outerHeight /= 1.2;
+        outerWidth /= 1.2
     })
 
 </script>
 
 <!-- <svelte:window bind:outerHeight bind:outerWidth/> -->
 <h1 id="header" class="text-red-600 text-center text-5xl font-extrabold">AutoScore</h1>
-<Canvas
-width={outerWidth}
-height={outerWidth}
-class="object-center"
-on:click={mouseClicked} on:dblclick={mouseDoubleClicked}
->
-    <Layer {render} />
-</Canvas>
+<div class="grid grid-rows-1 grid-cols-1 place-items-center">
+    <Canvas
+    width={outerWidth}
+    height={outerWidth}
+    class="object-center"
+    on:click={mouseClicked} on:dblclick={mouseDoubleClicked}
+    >
+        <Layer {render} />
+    </Canvas>
+</div>

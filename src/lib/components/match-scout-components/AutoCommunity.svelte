@@ -2,16 +2,10 @@
     import { auto_community } from "$lib/stores/matchScoutStores";
     import Switch from "$lib/components/ui-components/Switch.svelte";
 
-    let checkedValue = false;
-
-    function clickHandle() {
-        //!checkedValue is used because onclick is triggered before the bind
-        auto_community.set(!checkedValue);
-    }
 </script>
 
-<h1 class="text-yellow-400 text-center">AutoCommunity</h1>
 
-<div class="flex justify-center">
-    <Switch bind:checked={checkedValue} on:click={clickHandle}/>
+<div class="grid grid-rows-2 grid-cols-1 place-items-center">
+    <h1 class="text-purple-500 text-center">AutoCommunity</h1>
+    <Switch bind:checked={$auto_community}/>
 </div>

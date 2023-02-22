@@ -2,12 +2,6 @@
     import { broke } from "$lib/stores/matchScoutStores";
     import Switch from "$lib/components/ui-components/Switch.svelte";
 
-    let broken = false;
-    
-    function clickHandle() {
-        //!broken is used because onclick is triggered before the bind
-        broke.set(!broken);
-    }
 </script>
 
 <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
@@ -16,7 +10,7 @@
         <h1> Is Broken?</h1>
     </div> 
     <div class= "brokeSwitchRight">
-        <Switch bind:checked={broken} on:click={clickHandle}/>
+        <Switch bind:checked={$broke}/>
     </div>
 </div>
 

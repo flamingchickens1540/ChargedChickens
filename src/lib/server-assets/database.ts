@@ -24,9 +24,11 @@ const db = mysql
  * @param match_key
  * @param team_key
  * @param team_data
+ * 
  * @returns A promise of a boolean representing whether the insertion was successful or not
+ * 
  */
-export async function insertTeamMatch(
+export async function insertTeamMatch (
   match_key: MatchKey,
   team_key: TeamKey,
   team_data: TeamMatch

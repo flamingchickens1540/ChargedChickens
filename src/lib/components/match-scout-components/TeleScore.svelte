@@ -2,10 +2,12 @@
   import TeleOpScoring from "$lib/assets/Teleop.png";
   import { tele_high_center_fail, tele_high_center_succeed, tele_high_left_fail, tele_high_left_succeed, tele_high_right_fail, tele_high_right_succeed, tele_low_center_fail, tele_low_center_succeed, tele_low_left_fail, tele_low_left_succeed, tele_low_right_fail, tele_low_right_succeed, tele_mid_center_fail, tele_mid_center_succeed, tele_mid_left_fail, tele_mid_left_succeed, tele_mid_right_fail, tele_mid_right_succeed, tele_score } from "$lib/stores/matchScoutStores";
   // import { DEBUG } from "../generalStores";
+  import SucceedFail from "$lib/assets/SuccessFail.png";
 
   import { Canvas, Layer } from "svelte-canvas";
   import DefenseButton from "$lib/components/match-scout-components/DefenseButton.svelte";
 	import { onMount } from 'svelte';
+  import { DEBUG, info } from "$lib/stores/generalStores"
 
   let outerHeight : number;
   let outerWidth : number;
@@ -36,11 +38,19 @@
   // @ts-ignore
   $: render = ({ context, width, height }) => {
     const TeleOpScoreBoard = new Image();
+    const SuccessFailBoard = new Image();
 
     TeleOpScoreBoard.src = TeleOpScoring;
+    SuccessFailBoard.src = SucceedFail;
+
     TeleOpScoreBoard.onload = () => {
       context.drawImage(TeleOpScoreBoard, 0, 0, width, height);
     };
+
+    function testFunction() {
+      console.log("test");
+    }
+
   };
 
  /**
@@ -54,6 +64,9 @@
    * 
    * @param mouse - type: MouseEvent
    * 
+   * @todo
+   * Make clicking display a success/fail choice component
+   * 
    */
   function mouseClicked(mouse : MouseEvent) {
     if(mouse.offsetY == outerWidth || mouse.offsetX == outerWidth)
@@ -62,24 +75,23 @@
     const row = Math.floor(mouse.offsetY / outerWidth * 3);
     const col = Math.floor(mouse.offsetX / outerWidth * 3);
 
-    // if (DEBUG) {
-    //   console.log("Row: ");
-    //   console.log(row);
-    //   console.log("Column:");
-    //   console.log(col);
-    // }
+    if (DEBUG) {
+      console.log("Row: ");
+      console.log(row);
+      console.log("Column:");
+      console.log(col);
+    }
+
+    // Write SuccessFail
     
-    teleScoreSucceed[col + row * 3].update(n => n++);
+    
+    teleScoreSucceed[col + row * 3].update(n => n + 1);
+    // console.log(value);
   }
 
  /**
    * Handles the double clicking of the mouse on the telescore canvas
    * The purpose is to increment one of the teleScoreFail stores based on which cell on the canvas grid was clicked
-   * 
-   * @remarks
-   * For some reason, the rows calculation starts at 1, when it should start at 0, so we decrement the value by 1
-   * This is most likely because the elementHeight var actual measures from the top of the screen, not the top of the canvas
-   * This means that the 0th row is treated like the 1st row, even though clicks made on the 1st row are disregarded.
    * 
    * @param mouse - type: MouseEvent
    * 
@@ -92,14 +104,14 @@
     const row = Math.floor(mouse.offsetY / outerWidth * 3);
     const col = Math.floor(mouse.offsetX / outerWidth * 3); 
 
-    // if (DEBUG) {
-    //   console.log("Row: ");
-    //   console.log(row);
-    //   console.log("Column:");
-    //   console.log(col);
-    // }
+    if (DEBUG) {
+      console.log("Row: ");
+      console.log(row);
+      console.log("Column:");
+      console.log(col);
+    }
     
-    teleScoreFail[col + row * 3].update(n => n++);
+    teleScoreFail[col + row * 3].update(n => n += 1);
   }
 
   onMount(() => {
@@ -109,8 +121,14 @@
 
 </script>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 <!-- <svelte:window bind:outerHeight bind:outerWidth/> -->
-<h1 id="header" class="text-red-600 text-center text-5xl font-extrabold">TeleScore</h1>
+<div class = "grid grid-rows-1 grid-cols-2 place-items-center">
+  <div class = ""> Endgame </div>
+  <div class = ""> {$info.robot?.team_key} </div>
+</div>
 
 <Canvas
   width={outerWidth}
@@ -121,7 +139,26 @@
   <Layer {render} />
 </Canvas>
 
-<DefenseButton />
-
 <style>
+      /* .endgameTitle{
+        display: flex;
+        font-family: "Poppins";
+        font-size: 36px; 
+        padding-top: 11px;
+        padding-left: 2px;      
+        width: 50%;
+      }
+
+    .endgameTitleNumbers{
+        display: flex;
+        font-family: "Poppins";
+        font-size: 36px; 
+        padding-top: 11px;
+        width: 50%;
+        justify-content: right;
+        padding-right: 11px;
+    } */
+    div {
+      font-family: "Poppins";
+    }
 </style>
