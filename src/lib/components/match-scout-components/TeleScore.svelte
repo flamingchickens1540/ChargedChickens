@@ -12,6 +12,15 @@
   let outerHeight : number;
   let outerWidth : number;
 
+  let clicked: boolean = false;
+  let row: number;
+  let col: number;
+
+  let success: boolean = false;
+  let fail: boolean = false;
+  let successColor = "#fcf7f7";
+  let failColor = "#fcf7f7";
+
   const teleScoreSucceed = [
     tele_high_left_succeed, 
     tele_high_center_succeed, 
@@ -72,8 +81,8 @@
     if(mouse.offsetY == outerWidth || mouse.offsetX == outerWidth)
       return;
 
-    const row = Math.floor(mouse.offsetY / outerWidth * 3);
-    const col = Math.floor(mouse.offsetX / outerWidth * 3);
+    row = Math.floor(mouse.offsetY / outerWidth * 3);
+    col = Math.floor(mouse.offsetX / outerWidth * 3);
 
     if (DEBUG) {
       console.log("Row: ");
@@ -81,37 +90,55 @@
       console.log("Column:");
       console.log(col);
     }
+    
+    clicked = true;
 
-    // Write SuccessFail
-    
-    
-    teleScoreSucceed[col + row * 3].update(n => n + 1);
-    // console.log(value);
   }
 
- /**
-   * Handles the double clicking of the mouse on the telescore canvas
-   * The purpose is to increment one of the teleScoreFail stores based on which cell on the canvas grid was clicked
-   * 
-   * @param mouse - type: MouseEvent
+  /**
+   * Toggles the success boolean, and changes the color of the success button
+   */
+  function handleSuccessClick() {
+    if (DEBUG) console.log("Success changed to " + !success)
+    success = !success;
+    if (success) {
+      successColor = "#0fdb1a"
+    } else {
+      successColor = "#fcf7f7"
+    }
+  }
+
+  /**
+   * Toggles the fail boolean, and changes the color of the fail button
    * 
    */
-
-  function mouseDoubleClicked(mouse: MouseEvent) {
-    if(mouse.offsetY == outerWidth || mouse.offsetX == outerWidth)
-      return;
-
-    const row = Math.floor(mouse.offsetY / outerWidth * 3);
-    const col = Math.floor(mouse.offsetX / outerWidth * 3); 
-
-    if (DEBUG) {
-      console.log("Row: ");
-      console.log(row);
-      console.log("Column:");
-      console.log(col);
+  function handleFailClick() {
+    if (DEBUG) console.log("Fail changed to " + !fail);
+    fail = !fail;
+    if (fail) {
+      failColor = "#db0f0f"
+    } else {
+      failColor = "#fcf7f7"
     }
-    
-    teleScoreFail[col + row * 3].update(n => n += 1);
+  }
+  /**
+   * Increments fail or succeed for a given tile based on if success and/or fail was clicked
+   * Resets clicked to false, removing success/fail/button elements
+   * 
+   * @complete
+   */
+  function handleBackClick() {
+    if (fail) {
+      teleScoreFail[col + row * 3].update(n => n + 1);
+      if (DEBUG) console.log("Incremented TeleScore Fail By One");
+    }
+    if (success) {
+      teleScoreSucceed[col + row * 3].update(n => n + 1);
+      if (DEBUG) console.log("Incremented TeleScore Succed By One");
+    }
+    clicked = false;
+    success = false;
+    fail = false;
   }
 
   onMount(() => {
@@ -139,7 +166,32 @@
   <Layer {render} />
 </Canvas>
 
+{#if clicked}
+  <div class="grid grid-rows-1 grid-cols-2 place-items-center" style="">
+    <button id="successBtn" class="w-40 h-24 outline" style="--success-color:{successColor}" on:click={handleSuccessClick}>Success</button>
+    <button id="failBtn" class="w-40 h-24 outline" style="--fail-color:{failColor}" on:click={handleFailClick}>Failure</button>
+  </div>
+  <br>
+  <div class="grid grid-rows-1 grid-cols-1 place-items-center">
+    <button id="backBtn" class="w-40 h-12 outline" on:click={handleBackClick}>Back</button>
+  </div>
+{:else}
+  <DefenseButton />
+{/if}
 <style>
+    #successBtn {
+      background-color: var(--success-color);
+    }
+
+    #failBtn {
+      background-color: var(--fail-color);
+    }
+
+    #backBtn {
+      background-color: beige;
+    }
+    
+
       /* .endgameTitle{
         display: flex;
         font-family: "Poppins";
