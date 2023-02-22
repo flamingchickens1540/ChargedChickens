@@ -4,7 +4,7 @@
 
     let selectedOption = 0;
 
-    function onOption(id : number) {
+    export function onOption(id : number) {
         auto_charge_station.set(selectedOption = id);
     }
 </script>
@@ -28,6 +28,8 @@
         border-color: black;
         border-width: 4px;
         border-radius: 0.5rem;
+        pointer-events: none;
+        z-index: 0;
     }
     
     .buttonsTitle{

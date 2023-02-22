@@ -21,7 +21,8 @@
         border-top-color: black;
         padding-left: 2vw;
         background-color:  #efdcdc;
-        z-index: -1;
+        z-index: 1;
+        pointer-events:all;
     }
     
     .selected {

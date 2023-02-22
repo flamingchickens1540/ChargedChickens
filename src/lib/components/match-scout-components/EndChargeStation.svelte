@@ -34,6 +34,8 @@
         border-color: black;
         border-width: 4px;
         border-radius: 0.5rem;
+        pointer-events: none;
+        z-index: 0;
     }
     
     .buttonsTitle{
