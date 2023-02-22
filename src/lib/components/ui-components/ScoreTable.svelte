@@ -11,12 +11,12 @@
     export let scoreFail : Writable<number>[];
 
     // @ts-ignore
-    $: render = ({ context, width, height }) => {
+    $: render = ({ context }) => {
         const ScoreBoard = new Image();
 
         ScoreBoard.src = TeleOpScoring;
         ScoreBoard.onload = () => {
-            context.drawImage(ScoreBoard, 0, 0, width, height);
+            context.drawImage(ScoreBoard, 0, 0, outerWidth, outerWidth);
         };
     };
 
