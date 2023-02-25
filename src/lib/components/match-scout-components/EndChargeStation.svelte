@@ -1,7 +1,7 @@
 <script lang="ts">
     import { info } from "$lib/stores/generalStores";
     import { end_charge_station } from "$lib/stores/matchScoutStores";
-    import ChargeStationOption from "$lib/components/ui-components/ChargeStationOption.svelte";
+    import ChargeStationOption from "../ui-components/ChargeStationOption.svelte";
 
     let selectedOption = 0;
 
