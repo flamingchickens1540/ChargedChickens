@@ -3,3 +3,7 @@
 </script>
 
 <h1 class="text-red-600 text-xl text-center">Dimensions</h1>
+
+<div class="grid grid-rows-1 grid-cols-2">
+  
+</div>
