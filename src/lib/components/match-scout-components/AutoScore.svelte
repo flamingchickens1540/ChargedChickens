@@ -109,4 +109,4 @@
 
 <!-- <svelte:window bind:outerHeight bind:outerWidth/> -->
 <h1 id="header" class="text-red-600 text-center text-5xl font-extrabold">AutoScore</h1>
-<ScoreTable scoreSucceed={autoScoreSucceed} scoreFail={autoScoreFail}/>
+<!-- <ScoreTable scoreSucceed={autoScoreSucceed} scoreFail={autoScoreFail}/> -->
