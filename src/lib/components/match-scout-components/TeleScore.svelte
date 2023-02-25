@@ -100,11 +100,14 @@
    */
   function handleSuccessClick() {
     if (DEBUG) console.log("Success changed to " + !success)
-    success = !success;
+    fail = false;
+    success = true;
     if (success) {
-      successColor = "#0fdb1a"
+      successColor = "#0fdb1a";
+      failColor = "#fcf7f7";
     } else {
-      successColor = "#fcf7f7"
+      successColor = "#fcf7f7";
+      failColor = "#db0f0f";
     }
   }
 
@@ -114,11 +117,14 @@
    */
   function handleFailClick() {
     if (DEBUG) console.log("Fail changed to " + !fail);
-    fail = !fail;
+    fail = true;
+    success = false;
     if (fail) {
-      failColor = "#db0f0f"
+      successColor = "#fcf7f7";
+      failColor = "#db0f0f";
     } else {
-      failColor = "#fcf7f7"
+      successColor = "#0fdb1a";
+      failColor = "#fcf7f7";
     }
   }
   /**
@@ -138,7 +144,9 @@
     }
     clicked = false;
     success = false;
+    successColor = "#fcf7f7";
     fail = false;
+    failColor = "#fcf7f7";
   }
 
   onMount(() => {
@@ -157,26 +165,24 @@
   <div class = ""> {$info.robot?.team_key} </div>
 </div>
 
-<Canvas
+{#if clicked}
+  <div class="grid grid-rows-1 grid-cols-2 place-items-center" style="">
+    <button id="successBtn" class="w-40 h-40 outline" style="--success-color:{successColor}" on:click={handleSuccessClick}>Success</button>
+    <button id="failBtn" class="w-40 h-40 outline" style="--fail-color:{failColor}" on:click={handleFailClick}>Failure</button>
+  </div>
+  <br>
+  <div class="grid grid-rows-1 grid-cols-1 place-items-center">
+    <button id="backBtn" class="w-40 h-40 outline" on:click={handleBackClick}>Back</button>
+  </div>
+{:else}
+  <Canvas
   width={outerWidth}
   height={outerWidth}
   class="object-center"
   on:click={mouseClicked}
->
+  >
   <Layer {render} />
-</Canvas>
-
-{#if clicked}
-  <div class="grid grid-rows-1 grid-cols-2 place-items-center" style="">
-    <button id="successBtn" class="w-40 h-24 outline" style="--success-color:{successColor}" on:click={handleSuccessClick}>Success</button>
-    <button id="failBtn" class="w-40 h-24 outline" style="--fail-color:{failColor}" on:click={handleFailClick}>Failure</button>
-  </div>
-  <br>
-  <div class="grid grid-rows-1 grid-cols-1 place-items-center">
-    <button id="backBtn" class="w-40 h-12 outline" on:click={handleBackClick}>Back</button>
-  </div>
-{:else}
-  <DefenseButton />
+  </Canvas>
 {/if}
 <style>
     #successBtn {

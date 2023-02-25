@@ -20,7 +20,7 @@
         for (let i = 0; i < 4; i++){
             if (i == value){
                 backgroundColorsButtons[i] = "#7ED957";
-            }else{
+            } else {
                 backgroundColorsButtons[i] = "#efdcdc"; 
             }
         }

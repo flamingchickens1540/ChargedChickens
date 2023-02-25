@@ -79,9 +79,7 @@
       console.log("Column:");
       console.log(col);
     }
-    
     clicked = true;
-
   }
 
   /**
@@ -89,11 +87,14 @@
    */
   function handleSuccessClick() {
     if (DEBUG) console.log("Success changed to " + !success)
-    success = !success;
+    success = true;
+    fail = false;
     if (success) {
-      successColor = "#0fdb1a"
+      successColor = "#0fdb1a";
+      failColor = "#fcf7f7";
     } else {
-      successColor = "#fcf7f7"
+      successColor = "#fcf7f7";
+      failColor = "#db0f0f";
     }
   }
 
@@ -103,11 +104,14 @@
    */
   function handleFailClick() {
     if (DEBUG) console.log("Fail changed to " + !fail);
-    fail = !fail;
+    success = false;
+    fail = true;
     if (fail) {
-      failColor = "#db0f0f"
+      successColor = "#fcf7f7";
+      failColor = "#db0f0f";
     } else {
-      failColor = "#fcf7f7"
+      successColor = "#0fdb1a";
+      failColor = "#fcf7f7";
     }
   }
   /**
@@ -120,14 +124,15 @@
     if (fail) {
       autoScoreFail[col + row * 3].update(n => n + 1);
       if (DEBUG) console.log("Incremented TeleScore Fail By One");
-    }
-    if (success) {
+    } else if (success) {
       autoScoreSucceed[col + row * 3].update(n => n + 1);
       if (DEBUG) console.log("Incremented TeleScore Succed By One");
     }
     clicked = false;
     success = false;
+    successColor = "#fcf7f7";
     fail = false;
+    failColor = "#fcf7f7";
   }
 
     onMount(() => {
@@ -137,33 +142,34 @@
         // outerWidth -= 20;
         // outerHeight -= 20;
         outerHeight /= 1.2;
-        outerWidth /= 1.2
+        outerWidth /= 1.2;
     })
 
 </script>
 
 <!-- <svelte:window bind:outerHeight bind:outerWidth/> -->
-<h1 id="header" class="text-red-600 text-center text-5xl font-extrabold">AutoScore</h1>
-<div class="grid grid-rows-1 grid-cols-1 place-items-center">
-    <Canvas
-    width={outerWidth}
-    height={outerWidth}
-    class="object-center"
-    on:click={mouseClicked}
-    >
-        <Layer {render} />
-    </Canvas>
-</div>
-
 {#if clicked}
+<br>
   <div class="grid grid-rows-1 grid-cols-2 place-items-center" style="">
-    <button id="successBtn" class="w-40 h-24 outline" style="--success-color:{successColor}" on:click={handleSuccessClick}>Success</button>
-    <button id="failBtn" class="w-40 h-24 outline" style="--fail-color:{failColor}" on:click={handleFailClick}>Failure</button>
+    <button id="successBtn" class="w-40 h-40 outline" style="--success-color:{successColor}" on:click={handleSuccessClick}>Success</button>
+    <button id="failBtn" class="w-40 h-40 outline" style="--fail-color:{failColor}" on:click={handleFailClick}>Failure</button>
   </div>
   <br>
   <div class="grid grid-rows-1 grid-cols-1 place-items-center">
-    <button id="backBtn" class="w-40 h-12 outline" on:click={handleBackClick}>Back</button>
-  </div>  
+    <button id="backBtn" class="w-40 h-20 outline" on:click={handleBackClick}>Back</button>
+  </div>
+  {:else}
+  <h1 id="header" class="text-red-600 text-center text-5xl font-extrabold">AutoScore</h1>
+  <div class="grid grid-rows-1 grid-cols-1 place-items-center">
+      <Canvas
+      width={outerWidth}
+      height={outerWidth}   
+      class="object-center"
+      on:click={mouseClicked}
+      >
+          <Layer {render} />
+      </Canvas>
+  </div>
 {/if}
 <style>
     #successBtn {

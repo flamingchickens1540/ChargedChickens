@@ -43,6 +43,8 @@
     </div>
     <div id="tele">
       <TeleScore />
+      <br>
+      <DefenseButton />
     </div>
     <div id="end">
       <EndChargeStation />
