@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { APPKEY } from "$lib/stores/generalStores";
+  import { APPKEY } from "$lib/generalStores";
   import type { EventKey, TeamKey } from "$lib/types";
 
   let photos: FileList;

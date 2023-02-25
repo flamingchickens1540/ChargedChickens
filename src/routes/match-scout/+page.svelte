@@ -3,13 +3,9 @@
   import type { MatchScoutInfo } from "$lib/types";
   import { info } from "$lib/stores/generalStores";
   import { APPKEY } from "$lib/stores/generalStores";
-  import { beforeNavigate } from "$app/navigation";
 
   let controller: AbortController;
   let promise: Promise<void> = err();
-  
-  beforeNavigate(() => controller.abort());
-
   async function err() {
     throw new Error();
   }

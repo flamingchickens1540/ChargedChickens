@@ -83,24 +83,14 @@ export type Match = {
     event_key: EventKey,
 }
 
-export type PitScoutData = {
-    length: number,
+export type PitScouting = {
+    id?: number,
+    team_key: TeamKey,
+    event_key: EventKey,
     width: number,
-    drivetrain: number,
-    slippery_wheels: boolean,
+    length: number,
+    drive_train: number,
     polish: number,
-    high_left: boolean,
-    high_center: boolean,
-    high_right: boolean,
-    mid_left: boolean,
-    mid_center: boolean,
-    mid_right: boolean,
-    low_left: boolean,
-    low_center: boolean,
-    low_right: boolean,
-    intake: number,
-    automation: number,
-    est_cycle_time: number,
     notes: string,
 }
 

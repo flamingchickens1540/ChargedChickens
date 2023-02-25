@@ -5,9 +5,9 @@ import {
   MYSQL_PASSWORD,
   MYSQL_DATABASE,
 } from "$env/static/private";
-import type { EventKey, MatchKey, PitScoutData, Team, TeamEvent, TeamKey, TeamMatch } from "$lib/types";
+import type { EventKey, MatchKey, Team, TeamEvent, TeamKey, TeamMatch } from "$lib/types";
 
-const useDB = true;
+const DBTESTING = false;
 
 const db = mysql
   .createPool({
@@ -31,7 +31,7 @@ export async function insertTeamMatch(
   team_key: TeamKey,
   team_data: TeamMatch
 ): Promise<boolean> {
-  if (!useDB) return true;
+  if (!DBTESTING) return true;
 
   try {
     await db.query(
@@ -98,7 +98,7 @@ export async function insertImage(
   team_key: TeamKey,
   url: string
 ): Promise<boolean> {
-  if (!useDB) return true;
+  if (!DBTESTING) return true;
 
   try {
     await db.query(
@@ -115,54 +115,11 @@ export async function insertImage(
   }
 }
 
-export async function insertPitScoutingData(
-  event_key: EventKey,
-  team_key: TeamKey,
-  pit_data: PitScoutData
-): Promise<boolean> {
-  if (!useDB) return true;
-
-  try {
-    await db.query(
-      `
-  INSERT INTO PitScouting (event_key, team_key, length, width, drivetrain, slippery_wheels, polish, high_left, high_center, high_right, mid_left, mid_center, mid_right, low_left, low_center, low_right, intake, automation, est_cycle_time, notes)
-  VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`,
-      [
-        event_key,
-        team_key,
-        pit_data.length,
-        pit_data.width,
-        pit_data.drivetrain,
-        pit_data.slippery_wheels,
-        pit_data.polish,
-        pit_data.high_left,
-        pit_data.high_center,
-        pit_data.high_right,
-        pit_data.mid_left,
-        pit_data.mid_center,
-        pit_data.mid_right,
-        pit_data.low_left,
-        pit_data.low_center,
-        pit_data.low_right,
-        pit_data.intake,
-        pit_data.automation,
-        pit_data.est_cycle_time,
-        pit_data.notes,
-      ]
-    );
-    
-    return true;
-  } catch (error) {
-    console.error(error);
-    return false;
-  }
-}
-
 export async function getTeamMatch(
   match_key: MatchKey,
   team_key: TeamKey
 ): Promise<TeamMatch | null> {
-  if (!useDB) return Promise.resolve({
+  if (!DBTESTING) return Promise.resolve({
 		"broke": false,
 		"died": false,
 		"notes": "these are notes",
@@ -222,7 +179,7 @@ export async function getTeamMatch(
 }
 
 export async function getEvent(event_key: EventKey): Promise<TeamEvent | null> {
-  if (!useDB) return Promise.resolve({id: 1, team_key: "frc1540", event_key: "1540test"} as TeamEvent);
+  if (!DBTESTING) return Promise.resolve({id: 1, team_key: "frc1540", event_key: "1540test"} as TeamEvent);
 
   try {
     const [rows] = await db.query(`SELECT * FROM Events WHERE event_key = ?`, [
@@ -237,7 +194,7 @@ export async function getEvent(event_key: EventKey): Promise<TeamEvent | null> {
 }
 
 export async function getTeam(team_key: TeamKey): Promise<Team | null> {
-  if (!useDB) return Promise.resolve({ team_key: "frc1540", nickname: "Team 1540", team_number: 1540, website: "team1540.org"} as Team);
+  if (!DBTESTING) return Promise.resolve({ team_key: "frc1540", nickname: "Team 1540", team_number: 1540, website: "team1540.org"} as Team);
   try {
     const [rows] = await db.query(`SELECT * FROM Teams WHERE team_key = ?`, [
       team_key,
