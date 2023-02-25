@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { goto } from '$app/navigation';
+  import { goto, disableScrollHandling } from '$app/navigation';
 
   let inputPhrase = "";
 

@@ -4,8 +4,8 @@
 
 </script>
 
-<h1 class="text-yellow-400 text-center">AutoCommunity</h1>
 
-<div class="flex justify-center">
+<div class="grid grid-rows-2 grid-cols-1 place-items-center">
+    <h1 class="text-purple-500 text-center">AutoCommunity</h1>
     <Switch bind:checked={$auto_community}/>
 </div>
