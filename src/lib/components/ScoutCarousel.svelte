@@ -11,7 +11,6 @@
   import Submit from "$lib/components/match-scout-components/Submit.svelte";
   import Siema from "siema";
   import { onMount } from "svelte";
-import DefenseButton from "$lib/match-scout-components/DefenseButton.svelte"
   
   onMount(() => {
     new Siema({
@@ -34,17 +33,15 @@ import DefenseButton from "$lib/match-scout-components/DefenseButton.svelte"
 <body class="bg-blue-500">
   <!-- <h1 class="text-red-600 text-4xl text-center font-bold">Match Scout</h1>   -->
   <div id="carousel" class="h-screen w-full">
-    <div id="auto" >
+    <div id="auto">
       <AutoScore />
-      <div class="grid grid-rows-1 grid-cols-2 place-items-center">
-        <AutoChargeStation />
-        <AutoCommunity />
-      </div>
+      <br>
+      <AutoChargeStation />
+      <br>
+      <AutoCommunity />
     </div>
     <div id="tele">
       <TeleScore />
-      <br>
-      <DefenseButton />
     </div>
     <div id="end">
       <EndChargeStation />

@@ -13,7 +13,7 @@
 </script>
 
 <svelte:head>
-    <title>Pit Scout</title>
+	<title>Pit Scout</title>
 </svelte:head>
 
 <body>

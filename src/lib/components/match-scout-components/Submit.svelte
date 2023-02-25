@@ -4,7 +4,7 @@
     import { confetti } from "@neoconfetti/svelte";
     import { tick } from "svelte";
     import FancyButtons from "$lib/components/ui-components/FancyButtons.svelte";
-    import { APPKEY, DEBUG, info } from "$lib/stores/generalStores";
+    import { APPKEY, info } from "$lib/stores/generalStores";
     import type { TeamMatch } from "$lib/types";
     let isVisible = false;
     let submitVisible = false;
@@ -69,9 +69,7 @@
             data[key] = get(team_matches_stores[key]);
         });
 
-        if (DEBUG) console.log(Object.keys(data).length);
-
-        console.log(data);
+        console.log(Object.keys(data).length);
 
         fetch("/api/submit/match", {
             method: "POST",
