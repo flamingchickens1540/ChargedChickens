@@ -138,9 +138,4 @@
         border-bottom-width: 2px;
         border-color: black;
     }
-
-    .centerButtonsValue {
-        margin: 2vw;
-        font-size: large;
-    }
 </style>
