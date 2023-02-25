@@ -82,8 +82,7 @@
             },
             body: JSON.stringify({match: $info?.match, robot: $info?.robot, data}),
         })
-            .then((res) => res.json())
-            .then((data) => console.log(data));
+            .then(() => location.reload());
     }
 </script>
 

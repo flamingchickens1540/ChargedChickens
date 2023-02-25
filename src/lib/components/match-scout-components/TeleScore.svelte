@@ -45,7 +45,7 @@
   ];
   
   // @ts-ignore
-  $: render = ({ context, width, height }) => {
+  $: render = ({ context }) => {
     const TeleOpScoreBoard = new Image();
     const SuccessFailBoard = new Image();
 
@@ -53,7 +53,7 @@
     SuccessFailBoard.src = SucceedFail;
 
     TeleOpScoreBoard.onload = () => {
-      context.drawImage(TeleOpScoreBoard, 0, 0, width, height);
+      context.drawImage(TeleOpScoreBoard, 0, 0, outerWidth, outerWidth);
     };
 
     function testFunction() {

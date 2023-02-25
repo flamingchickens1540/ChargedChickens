@@ -10,7 +10,7 @@
         <h1> Is Broken?</h1>
     </div> 
     <div class= "brokeSwitchRight">
-        <Switch bind:checked={$broke}/>
+        <Switch bind:checked={$broke} />
     </div>
 </div>
 
