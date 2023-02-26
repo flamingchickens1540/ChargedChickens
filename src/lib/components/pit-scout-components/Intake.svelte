@@ -119,30 +119,6 @@
       border-top-left-radius: 0.3rem;
   }
 
-  .endgameTitle{
-      display: flex;
-      font-family: "Poppins";
-      font-size: 36px; 
-      padding-top: 11px;
-      padding-left: 2px;      
-      width: 50%;
-  }
-
-  .alignTitle{
-      display: flex;
-      flex-direction: row;
-      justify-content: space-around;
-  }
-
-  .endgameTitleNumbers{
-      display: flex;
-      font-family: "Poppins";
-      font-size: 36px; 
-      padding-top: 11px;
-      width: 50%;
-      justify-content: right;
-      padding-right: 11px;
-  }
   .optionButtons{
       height: 47px;
       border-bottom-width: 2px;

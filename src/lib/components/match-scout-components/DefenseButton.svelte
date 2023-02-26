@@ -10,7 +10,7 @@
 
     let miliSecondsArr: number[] = [];
     let initialTime : number;
-    let color: string = "#3705B1"
+    let color: string = "#3705B1";
 
     /**
      * Sets initial time to the current time
@@ -18,6 +18,7 @@
      * @complete
      */
     function handleMousedown() {
+        color = "#000033";
         initialTime = Date.now();
 	  }
     
@@ -31,6 +32,7 @@
     function handleMouseup() {
       miliSecondsArr.push(Date.now() - initialTime)
       defense_times.update(() => miliSecondsArr);
+      color = "#3705B1";
       console.log($defense_times);
     }
 
