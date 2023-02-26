@@ -95,6 +95,50 @@ export async function insertTeamMatch (
   }
 }
 
+export async function insertCycleTime(
+  time: number,
+  team_key: TeamKey,
+  match_key: MatchKey
+): Promise<boolean> {
+  if (!useDB) return true;
+
+  try {
+    await db.query(
+      `
+  INSERT INTO CycleTimes (time, team_key, match_key)
+  VALUES (?,?,?)`,
+      [time, team_key, match_key]
+    );
+
+    return true;
+  } catch (error) {
+    console.error(error);
+    return false;
+  }
+}
+
+export async function insertDefenseTime(
+  time: number,
+  team_key: TeamKey,
+  match_key: MatchKey
+): Promise<boolean> {
+  if (!useDB) return true;
+
+  try {
+    await db.query(
+      `
+  INSERT INTO DefenseTimes (time, team_key, match_key)
+  VALUES (?,?,?)`,
+      [time, team_key, match_key]
+    );
+
+    return true;
+  } catch (error) {
+    console.error(error);
+    return false;
+  }
+}
+
 export async function insertImage(
   event_key: EventKey,
   team_key: TeamKey,
