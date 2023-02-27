@@ -1,58 +1,15 @@
 <script lang="ts">
     import { info } from "$lib/stores/generalStores";
     import { end_charge_station } from "$lib/stores/matchScoutStores";
-    var backgroundColorsButtons = ["#efdcdc","#efdcdc","#efdcdc","#efdcdc"]
-    const endChargeStationMessages = [
-        "Not Attempted",
-        "Failed",
-        "Docked",
-        "Engaged",
-    ];
+    import ChargeStationOption from "../ui-components/ChargeStationOption.svelte";
 
-    function handleNot(){
-        end_charge_station.set(0);
-        for (let i = 0; i < 4; i++){
-            if (i == 0){
-                backgroundColorsButtons[i] = "#7ED957";
-            }else{
-                backgroundColorsButtons[i] = "#efdcdc"; 
-            }
-        }
-    }
-    function handleFailed(){
-        end_charge_station.set(1);
-        for (let i = 0; i < 4; i++){
-            if (i == 1){
-                backgroundColorsButtons[i] = "#7ED957";
-            }else{
-                backgroundColorsButtons[i] = "#efdcdc"; 
-            }
-        }
-    }
-    function handleDocked(){
-        end_charge_station.set(2);
-        for (let i = 0; i < 4; i++){
-            if (i == 2){
-                backgroundColorsButtons[i] = "#7ED957";
-            }else{
-                backgroundColorsButtons[i] = "#efdcdc"; 
-            }
-        }
-    }
-    function handleEngaged(){
-        end_charge_station.set(3);
-        for (let i = 0; i < 4; i++){
-            if (i == 3){
-                backgroundColorsButtons[i] = "#7ED957";
-            }else{
-                backgroundColorsButtons[i] = "#efdcdc"; 
-            }
-        }
+    let selectedOption = 0;
+
+    function onOption(id : number) {
+        end_charge_station.set(selectedOption = id);
     }
 </script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
 <div class = "alignTitle">
     <div class = "endgameTitle"> Endgame </div>
     <div class = "endgameTitleNumbers"> {$info.robot?.team_key} </div>
@@ -62,10 +19,10 @@
     <div class = "buttonsTitle"> 
         Charge Station End 
     </div>
-    <button class = "optionButtons" on:click = {handleNot} style = "background-color: {backgroundColorsButtons[0]}"> Not Attempted </button>
-    <button class = "optionButtons" on:click = {handleFailed} style = "background-color: {backgroundColorsButtons[1]}"> Failed </button>
-    <button class = "optionButtons" on:click = {handleDocked} style = "background-color: {backgroundColorsButtons[2]}"> Docked </button>
-    <button class = "optionSpecialButtons" on:click = {handleEngaged} style = "background-color: {backgroundColorsButtons[3]}"> Engaged </button>
+    <ChargeStationOption selectedOption={selectedOption} id={0} name="Not Attempted" clickHandler={onOption}></ChargeStationOption>
+    <ChargeStationOption selectedOption={selectedOption} id={1} name="Failed" clickHandler={onOption}></ChargeStationOption>
+    <ChargeStationOption selectedOption={selectedOption} id={2} name="Docked" clickHandler={onOption}></ChargeStationOption>
+    <ChargeStationOption selectedOption={selectedOption} id={3} name="Engaged" clickHandler={onOption}></ChargeStationOption>
 </div>
 
 <style>
@@ -73,6 +30,12 @@
     .makeColumnButtons{
         display: flex;
         flex-direction: column;
+        border-radius: 0.5vw;
+        border-color: black;
+        border-width: 4px;
+        border-radius: 0.5rem;
+        pointer-events: none;
+        z-index: 0;
     }
     
     .buttonsTitle{
@@ -80,20 +43,17 @@
         font-weight: 700;
         font-family: "Poppins";
         font-size: 23px;
-        border-bottom-width: 2px;
         height: 51px;
         border-color: black;
         padding-top: 6px;
         background-color: #efdcdc;
-        border-width: 2px;
-        border-top-right-radius: 0.3rem;
-        border-top-left-radius: 0.3rem;
+        z-index: -1;
     }
 
     .endgameTitle{
         display: flex;
         font-family: "Poppins";
-        font-size: 24px; 
+        font-size: 36px; 
         padding-top: 11px;
         padding-left: 2px;      
         width: 50%;
@@ -108,34 +68,10 @@
     .endgameTitleNumbers{
         display: flex;
         font-family: "Poppins";
-        font-size: 24px; 
+        font-size: 36px; 
         padding-top: 11px;
         width: 50%;
         justify-content: right;
         padding-right: 11px;
-    }
-    .optionButtons{
-        height: 47px;
-        border-bottom-width: 2px;
-        border-color: black;
-        text-align: left;
-        text-indent: 10px;
-        font-family: "Poppins";
-        font-size: 23px;
-        border-left-width: 2px;
-        border-right-width: 2px;
-    }
-    .optionSpecialButtons{
-        height: 47px; 
-        text-align: left;
-        text-indent: 10px;
-        font-family: "Poppins";
-        font-size: 23px;
-        border-bottom-right-radius: 0.3rem;
-        border-bottom-left-radius: 0.3rem;
-        border-left-width: 2px;
-        border-right-width: 2px;
-        border-bottom-width: 2px;
-        border-color: black;
     }
 </style>
