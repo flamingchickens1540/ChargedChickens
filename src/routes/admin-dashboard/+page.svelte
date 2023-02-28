@@ -63,7 +63,7 @@
      */
     async function sendMatch(match: AssignData) {
 
-        fetch('/api/assign', {
+        fetch('/api/admin/assign', {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
