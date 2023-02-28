@@ -55,7 +55,7 @@
       <br>
       <EndNotes />
     </div>
-    <div id=submit>
+    <div id='submit'>
       <Submit />
     </div>
   </div>

@@ -3,6 +3,7 @@
     import SucceessFailure from '$lib/assets/SuccessFailure.png'
     import {
     cycle_times,
+        team_number,
         tele_high_center_fail,
         tele_high_center_succeed,
         tele_high_left_fail,
@@ -122,8 +123,8 @@
         outerHeight =
             document.getElementById('header')?.clientHeight ||
             window.outerHeight  
-        outerHeight *= 1.1
-        outerWidth *= 1.1
+        outerHeight /= 1.1
+        outerWidth /= 1.1
     })
 </script>
 
@@ -135,7 +136,7 @@
 />
 
 <div class="grid grid-rows-1 grid-cols-1 place-items-center">
-    <h1 id="header" class="text-purple-600 text-center text-5xl font-extrabold">Telescore {$info.robot?.team_key}</h1>
+    <h1 id="header" class="text-purple-600 text-center text-5xl font-extrabold">Telescore {$team_number}</h1>
 </div>
 
 <div class="grid grid-rows-1 grid-cols-1 place-items-center">

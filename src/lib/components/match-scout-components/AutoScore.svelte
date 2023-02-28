@@ -1,16 +1,16 @@
 <script lang="ts">
-    import { auto_high_center_fail, auto_high_center_succeed, auto_high_left_fail, auto_high_left_succeed, auto_high_right_fail, auto_high_right_succeed, auto_low_center_fail, auto_low_center_succeed, auto_low_left_fail, auto_low_left_succeed, auto_low_right_fail, auto_low_right_succeed, auto_mid_center_fail, auto_mid_center_succeed, auto_mid_left_fail, auto_mid_left_succeed, auto_mid_right_fail, auto_mid_right_succeed, auto_score, cycle_times, defense_times } from "$lib/stores/matchScoutStores";
+    import { team_number, auto_high_center_fail, auto_high_center_succeed, auto_high_left_fail, auto_high_left_succeed, auto_high_right_fail, auto_high_right_succeed, auto_low_center_fail, auto_low_center_succeed, auto_low_left_fail, auto_low_left_succeed, auto_low_right_fail, auto_low_right_succeed, auto_mid_center_fail, auto_mid_center_succeed, auto_mid_left_fail, auto_mid_left_succeed, auto_mid_right_fail, auto_mid_right_succeed, auto_score, cycle_times, defense_times } from "$lib/stores/matchScoutStores";
     import Teleop from "$lib/assets/Teleop.png";
     import SucceessFailure from '$lib/assets/SuccessFailure.png'
     import { Canvas, Layer } from "svelte-canvas";
     import { onMount } from 'svelte';
     import { DEBUG, info } from "$lib/stores/generalStores";
 
-    let outerHeight : number;
-    let outerWidth : number;
+    let outerHeight : number
+    let outerWidth : number
 
-    let click: { row: number, col: number } | null = null;
-
+    let click: { row: number, col: number } | null = null
+    team_number.set($info.robot?.team_key.split("").filter((_e, i) => i >= 3).join(''));
     let initialDefenseTime: number
     let lastCycleTimestamp: number
 
@@ -88,15 +88,15 @@
 
         // outerWidth -= 20;
         // outerHeight -= 20;
-        outerHeight /= 1.05;
-        outerWidth /= 1.05;
+        outerHeight /= 1.2;
+        outerWidth /= 1.2;
     })
 
 </script>
 
 <!-- <svelte:window bind:outerHeight bind:outerWidth/> -->
 <div class="grid grid-rows-1 grid-cols-1 place-items-center">
-  <h1 id="header" class="text-purple-600 text-center text-5xl font-extrabold">AutoScore {$info.robot?.team_key}</h1>
+  <h1 id="header" class="text-purple-600 text-center text-5xl font-extrabold">AutoScore {$team_number}</h1>
 </div>
   
   <div class="grid grid-rows-1 grid-cols-1 place-items-center">
