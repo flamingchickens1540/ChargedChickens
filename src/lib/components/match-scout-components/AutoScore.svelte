@@ -1,21 +1,18 @@
 <script lang="ts">
-    import { auto_high_center_fail, auto_high_center_succeed, auto_high_left_fail, auto_high_left_succeed, auto_high_right_fail, auto_high_right_succeed, auto_low_center_fail, auto_low_center_succeed, auto_low_left_fail, auto_low_left_succeed, auto_low_right_fail, auto_low_right_succeed, auto_mid_center_fail, auto_mid_center_succeed, auto_mid_left_fail, auto_mid_left_succeed, auto_mid_right_fail, auto_mid_right_succeed, auto_score } from "$lib/stores/matchScoutStores";
+    import { auto_high_center_fail, auto_high_center_succeed, auto_high_left_fail, auto_high_left_succeed, auto_high_right_fail, auto_high_right_succeed, auto_low_center_fail, auto_low_center_succeed, auto_low_left_fail, auto_low_left_succeed, auto_low_right_fail, auto_low_right_succeed, auto_mid_center_fail, auto_mid_center_succeed, auto_mid_left_fail, auto_mid_left_succeed, auto_mid_right_fail, auto_mid_right_succeed, auto_score, cycle_times, defense_times } from "$lib/stores/matchScoutStores";
     import Teleop from "$lib/assets/Teleop.png";
+    import SucceessFailure from '$lib/assets/SuccessFailure.png'
     import { Canvas, Layer } from "svelte-canvas";
     import { onMount } from 'svelte';
-    import { DEBUG } from "$lib/stores/generalStores";
+    import { DEBUG, info } from "$lib/stores/generalStores";
 
     let outerHeight : number;
     let outerWidth : number;
 
-    let clicked: boolean = false;
-    let row: number;
-    let col: number;
+    let click: { row: number, col: number } | null = null;
 
-    let success: boolean = false;
-    let fail: boolean = false;
-    let successColor = "#fcf7f7";
-    let failColor = "#fcf7f7";
+    let initialDefenseTime: number
+    let lastCycleTimestamp: number
 
     const autoScoreSucceed = [
         auto_high_left_succeed, 
@@ -44,96 +41,46 @@
     $: render = ({ context }) => {
 
         const AutoScoreBoard = new Image();
+        const SuccessFailureImage = new Image();
 
         AutoScoreBoard.src = Teleop;
-        AutoScoreBoard.onload = () => {
-            context.drawImage(AutoScoreBoard, 0, 0, outerWidth, outerWidth);
-        };
-    };
+        SuccessFailureImage.src = SucceessFailure;
+        
+        if (click) {
+            SuccessFailureImage.onload = () => {
+                context.drawImage(SuccessFailureImage, 0, 0, outerWidth, outerWidth)
+            }
+        } else {
+            AutoScoreBoard.onload = () => {
+                context.drawImage(AutoScoreBoard, 0, 0, outerWidth, outerWidth)
+          }
+      }       
+  };
 
-  /**
-   * Handles the double clicking of the mouse on the telescore canvas
-   * The purpose is to increment one of the teleScoreFail stores based on which cell on the canvas grid was clicked
-   * 
-   * @remarks
-   * For some reason, the rows calculation starts at 1, when it should start at 0, so we decrement the value by 1
-   * This is most likely because the elementHeight var actual measures from the top of the screen, not the top of the canvas
-   * This means that the 0th row is treated like the 1st row, even though clicks made on the 1st row are disregarded.
-   * 
-   * @param mouse - type: MouseEvent
-   * 
-   * @todo
-   * Make clicking display a success/fail choice component
-   * 
-   */
-  function mouseClicked(mouse : MouseEvent) {
-    if(mouse.offsetY == outerWidth || mouse.offsetX == outerWidth)
-      return;
-
-    row = Math.floor(mouse.offsetY / outerWidth * 3);
-    col = Math.floor(mouse.offsetX / outerWidth * 3);
-
-    if (DEBUG) {
-      console.log("Row: ");
-      console.log(row);
-      console.log("Column:");
-      console.log(col);
+    function handleBackClick() {
+      click = null;
     }
-    clicked = true;
-  }
 
-  /**
-   * Toggles the success boolean, and changes the color of the success button
-   */
-  function handleSuccessClick() {
-    if (DEBUG) console.log("Success changed to " + !success)
-    success = true;
-    fail = false;
-    if (success) {
-      successColor = "#0fdb1a";
-      failColor = "#fcf7f7";
-    } else {
-      successColor = "#fcf7f7";
-      failColor = "#db0f0f";
-    }
-  }
+    function mouseClicked(mouse: MouseEvent) {
+        
+        if (mouse.offsetY == outerWidth || mouse.offsetX == outerWidth) return
 
-  /**
-   * Toggles the fail boolean, and changes the color of the fail button
-   * 
-   */
-  function handleFailClick() {
-    if (DEBUG) console.log("Fail changed to " + !fail);
-    success = false;
-    fail = true;
-    if (fail) {
-      successColor = "#fcf7f7";
-      failColor = "#db0f0f";
-    } else {
-      successColor = "#0fdb1a";
-      failColor = "#fcf7f7";
+        if (!click) {
+            click = { row: Math.floor(mouse.offsetY / outerWidth * 3), col: Math.floor(mouse.offsetX / outerWidth * 3) }
+        } else {
+            if (mouse.offsetX < outerWidth / 2) {
+                autoScoreSucceed[click.col + click.row * 3].update(n => n + 1);
+
+                const timestamp = Date.now();
+                if (lastCycleTimestamp != null) $cycle_times.push((timestamp - lastCycleTimestamp) / 1000);
+                lastCycleTimestamp = timestamp;
+            }
+            else {
+                autoScoreFail[click.col + click.row * 3].update(n => n + 1);
+            }
+            click = null;
+        }
     }
-  }
-  /**
-   * Increments fail or succeed for a given tile based on if success and/or fail was clicked
-   * Resets clicked to false, removing success/fail/button elements
-   * 
-   * @complete
-   */
-  function handleBackClick() {
-    if (fail) {
-      autoScoreFail[col + row * 3].update(n => n + 1);
-      if (DEBUG) console.log("Incremented TeleScore Fail By One");
-    } else if (success) {
-      autoScoreSucceed[col + row * 3].update(n => n + 1);
-      if (DEBUG) console.log("Incremented TeleScore Succed By One");
-    }
-    clicked = false;
-    success = false;
-    successColor = "#fcf7f7";
-    fail = false;
-    failColor = "#fcf7f7";
-  }
 
     onMount(() => {
         outerWidth = document.getElementById("header")?.clientWidth || window.outerWidth
@@ -141,25 +88,17 @@
 
         // outerWidth -= 20;
         // outerHeight -= 20;
-        outerHeight /= 1.2;
-        outerWidth /= 1.2;
+        outerHeight /= 1.05;
+        outerWidth /= 1.05;
     })
 
 </script>
 
 <!-- <svelte:window bind:outerHeight bind:outerWidth/> -->
-{#if clicked}
-<br>
-  <div class="grid grid-rows-1 grid-cols-2 place-items-center" style="">
-    <button id="successBtn" class="w-40 h-40 outline" style="--success-color:{successColor}" on:click={handleSuccessClick}>Success</button>
-    <button id="failBtn" class="w-40 h-40 outline" style="--fail-color:{failColor}" on:click={handleFailClick}>Failure</button>
-  </div>
-  <br>
-  <div class="grid grid-rows-1 grid-cols-1 place-items-center">
-    <button id="backBtn" class="w-40 h-20 outline" on:click={handleBackClick}>Back</button>
-  </div>
-  {:else}
-  <h1 id="header" class="text-red-600 text-center text-5xl font-extrabold">AutoScore</h1>
+<div class="grid grid-rows-1 grid-cols-1 place-items-center">
+  <h1 id="header" class="text-purple-600 text-center text-5xl font-extrabold">AutoScore {$info.robot?.team_key}</h1>
+</div>
+  
   <div class="grid grid-rows-1 grid-cols-1 place-items-center">
       <Canvas
       width={outerWidth}
@@ -170,7 +109,13 @@
           <Layer {render} />
       </Canvas>
   </div>
-{/if}
+
+  {#if click}
+    <div class="grid grid-rows-1 grid-cols-1 place-items-center">
+      <button id="backBtn" class="w-40 h-20 outline" on:click={handleBackClick}>Back</button>
+    </div>
+  {/if}
+
 <style>
     #successBtn {
       background-color: var(--success-color);

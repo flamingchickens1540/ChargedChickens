@@ -32,7 +32,8 @@
     let outerWidth: number
 
     let click: { row: number, col: number } | null = null;
-    let isDefense: boolean = true;
+
+    let btnColor = "#3705B1";
 
     let initialDefenseTime: number
     let lastCycleTimestamp: number
@@ -81,13 +82,17 @@
 
     function handleMouseup() {
         if (!click) {
+            btnColor = "#3705B1"; 
             const time = Date.now() - initialDefenseTime
             if (time > 500) $defense_times.push(time / 1000)
         } else { click = null }
     }
 
     function handleMousedown() {
-        if (!click) initialDefenseTime = Date.now()
+        if (!click) {
+            initialDefenseTime = Date.now()
+            btnColor = "#000033"
+        }
     }
 
     function mouseClicked(mouse: MouseEvent) {
@@ -95,7 +100,6 @@
 
         if (!click) {
             click = { row: Math.floor(mouse.offsetY / outerWidth * 3), col: Math.floor(mouse.offsetX / outerWidth * 3) }
-            isDefense = false
         } else {
             if (mouse.offsetX < outerWidth / 2) {
                 teleScoreSucceed[click.col + click.row * 3].update(n => n + 1);
@@ -109,7 +113,6 @@
             }
 
             click = null;
-            isDefense = true;
         }
     }
 
@@ -118,7 +121,9 @@
             document.getElementById('header')?.clientWidth || window.outerWidth
         outerHeight =
             document.getElementById('header')?.clientHeight ||
-            window.outerHeight
+            window.outerHeight  
+        outerHeight *= 1.1
+        outerWidth *= 1.1
     })
 </script>
 
@@ -129,23 +134,24 @@
     rel="stylesheet"
 />
 
-<div class="grid grid-rows-1 grid-cols-2 place-items-center">
-    <div class="">Tele</div>
-    <div class="">{$info.robot?.team_key}</div>
+<div class="grid grid-rows-1 grid-cols-1 place-items-center">
+    <h1 id="header" class="text-purple-600 text-center text-5xl font-extrabold">Telescore {$info.robot?.team_key}</h1>
 </div>
 
-<Canvas
-    width={outerWidth}
-    height={outerWidth}
-    class="object-center"
-    on:click={mouseClicked}
->
-    <Layer {render} />
-</Canvas>
+<div class="grid grid-rows-1 grid-cols-1 place-items-center">
+    <Canvas
+        width={outerWidth}
+        height={outerWidth}
+        class="object-center"
+        on:click={mouseClicked}
+    >
+        <Layer {render} />
+    </Canvas>
+</div>
 
 <div
-    style="--btn-color: #3705B1"
-    class="p-10 grid grid-cols-1 grid-rows-1 place-items-center"
+    style="--btn-color: {btnColor}"
+    class="p-5 grid grid-cols-1 grid-rows-1 place-items-center"
 >
     <button
         class="h-32 w-80 lg:flex-grow sm:flex-shrink rounded-full outline outline-10 unselectable"
