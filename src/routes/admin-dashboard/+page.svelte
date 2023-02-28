@@ -121,7 +121,7 @@
 
 <h1 class="text-center text-3xl">Welcome Admin</h1>
 <br>
-<div class="grid grid-cols-2 grid-row-2 text-center">
+<div class="grid grid-rows-1 grid-cols-2 text-center">
 
     <div class="p-10 grid grid-cols-1 grid-rows-2 gap-5 place-self-center border-4">
         <h1 class="text-blue-600">Blue Robots</h1>
@@ -131,12 +131,14 @@
     </div>
 
     <div class="p-10 grid grid-cols-1 grid-rows-2 gap-5 place-self-center border-4">
-        <h1>Red Robots</h1>
+        <h1 class="text-red-600">Red Robots</h1>
         <input type="text" class="border" bind:value={robots_red[0]}>
         <input type="text" class="border" bind:value={robots_red[1]}>
         <input type="text" class="border" bind:value={robots_red[2]}>
     </div>
+</div>
 
+<div class="grid grid-rows-1 grid-cols-2 text-center">
     <div class="p-10 grid grid-cols-1 grid-rows-2 gap-5 place-items-center border-4">
         <label for="match_key">Match Key</label>
         <input type="text" class="border" name="match_key" bind:value={match_key}>
@@ -145,15 +147,16 @@
         <button class="h-36 w-36 lg:flex-grow sm:flex-shrink rounded-full outline outline-10" on:click={createMatch}>Create Match</button>
         <p>Last Created Match: {lastCreatedMatch}</p>
     </div>
-    <div>
+    <div class="grid grid-cols-1 grid-rows-2 place-items-center border-4">
         <input type="text" bind:value={inputPassword}>
         <button class="text-red-600 text-lg p-2 rounded bg-yellow-300" on:click={() => setPassword()}>AUTH</button>
     </div>  
     <button on:click={autoPopulate}> AUTOPOPULATE </button>
-    <div>
+    <div class="grid grid-cols-1 grid-rows-2 place-items-center border-4">
         <input type="text" bind:value={event_key}>
         <button class="text-red-600 text-lg p-2 rounded bg-yellow-300" on:click={() => createEvent()}> create event </button>
     </div>  
+
 </div>
 
 <style>
@@ -161,8 +164,5 @@
         color: rgb(255, 255, 255);
         background-color: rgb(118, 218, 99);
         outline-color:rgb(118, 218, 99, .3);
-    }
-    h1 {
-        color: rgb(280, 30, 30);
     }
 </style>
