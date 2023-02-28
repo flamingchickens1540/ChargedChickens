@@ -1,6 +1,8 @@
 <script lang="ts">
     import type { AssignData, MatchKey, TeamKey } from '$lib/types';
     import { APPKEY } from "$lib/stores/generalStores";
+    import { team_matches_stores } from '$lib/stores/matchScoutStores';
+    import { select_option } from 'svelte/internal';
     
     let match_key: string = '';
     let event_key: string = '';
@@ -9,12 +11,20 @@
     let lastCreatedMatch: string = '';
     let inputPassword = "";
 
+    let color = "#76DA63";
+    let edgeColor: string = "#76da634d";
+
+    function sleep(ms: number) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
     /**
      * Creates a new match
      * 
      * @params e: on:click event
     */
     async function createMatch(e: any) {
+        color = "#000000";
+        edgeColor = "#000000";  
         let rr = parseRobots(robots_red);
         let rb = parseRobots(robots_blue);
         
@@ -28,6 +38,9 @@
         }
 
         sendMatch(match);
+        await sleep(1000);
+        color = "#76DA63";
+        edgeColor = "#76da634d";
     }
 
     /**
@@ -144,7 +157,7 @@
         <input type="text" class="border" name="match_key" bind:value={match_key}>
     </div>
     <div class="grid grid-cols-1 grid-rows-1 place-items-center border-4">
-        <button class="h-36 w-36 lg:flex-grow sm:flex-shrink rounded-full outline outline-10" on:click={createMatch}>Create Match</button>
+        <button class="h-36 w-36 lg:flex-grow sm:flex-shrink rounded-full outline outline-10" style="--btn-color:{color}; --btn-edge-color:{edgeColor}" on:click={createMatch}>Create Match</button>
         <p>Last Created Match: {lastCreatedMatch}</p>
     </div>
     <div class="grid grid-cols-1 grid-rows-2 place-items-center border-4">
