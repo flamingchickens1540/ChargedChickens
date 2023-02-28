@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { AssignData, MatchKey, TeamKey } from '$lib/types';
+    import type { AssignData, EventKey, MatchKey, TeamKey } from '$lib/types';
     import { APPKEY } from "$lib/stores/generalStores";
     import { team_matches_stores } from '$lib/stores/matchScoutStores';
     import { select_option } from 'svelte/internal';
@@ -29,7 +29,7 @@
         let rb = parseRobots(robots_blue);
         
         let match: AssignData = {
-            event_key: '2023test',
+            event_key: match_key.split("_")[0] as EventKey,
             match_key: match_key as MatchKey,
             robots:  {
                 red: rr,
@@ -52,7 +52,7 @@
      */
     function parseRobots(robots:string[]): TeamKey[] {
         let new_robots: TeamKey[] = [];
-        robots.forEach(robot => new_robots.push(`frc${robot as unknown as number}` as TeamKey));
+        robots.forEach(robot => new_robots.push(`frc${robot.replace(/\s/g, "") as unknown as number}` as TeamKey));
         return new_robots;
     }
     
@@ -62,7 +62,6 @@
      * @param match
      */
     async function sendMatch(match: AssignData) {
-
         fetch('/api/admin/assign', {
             method: 'POST',
             headers: {
@@ -78,7 +77,6 @@
     }
 
     function autoPopulate() {
-        console.log(match_key)
         fetch('/api/admin/teams', {
             method: 'POST',
             headers: {

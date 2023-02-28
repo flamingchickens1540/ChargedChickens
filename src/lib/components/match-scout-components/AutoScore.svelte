@@ -11,9 +11,6 @@
 
     let click: { row: number, col: number } | null = null;
 
-    let initialDefenseTime: number
-    let lastCycleTimestamp: number
-
     const autoScoreSucceed = [
         auto_high_left_succeed, 
         auto_high_center_succeed, 
@@ -70,10 +67,6 @@
         } else {
             if (mouse.offsetX < outerWidth / 2) {
                 autoScoreSucceed[click.col + click.row * 3].update(n => n + 1);
-
-                const timestamp = Date.now();
-                if (lastCycleTimestamp != null) $cycle_times.push((timestamp - lastCycleTimestamp) / 1000);
-                lastCycleTimestamp = timestamp;
             }
             else {
                 autoScoreFail[click.col + click.row * 3].update(n => n + 1);
@@ -84,12 +77,7 @@
 
     onMount(() => {
         outerWidth = document.getElementById("header")?.clientWidth || window.outerWidth
-        outerHeight = document.getElementById("header")?.clientHeight || window.outerHeight
-
-        // outerWidth -= 20;
-        // outerHeight -= 20;
-        outerHeight /= 1.05;
-        outerWidth /= 1.05;
+        outerHeight = document.getElementById("header")?.clientHeight || window.outerHeight 
     })
 
 </script>
