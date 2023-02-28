@@ -51,9 +51,8 @@
       <br>
       <EndDriverSkill />
       <br>
-      <EndBroke />
-      <br>
-      <EndDied />
+      <EndBroke/>
+      <EndDied/>
       <br>
       <EndNotes />
     </div>
