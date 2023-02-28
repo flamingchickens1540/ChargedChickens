@@ -4,6 +4,10 @@
     import { onMount } from 'svelte';
     import { info } from "$lib/stores/generalStores";
     import type { Writable } from "svelte/store";
+    
+    const margin = 5;
+    const padding = 2;
+    const borderWidth = 2;
 
     export let fail : Writable<number>[];
     export let success : Writable<number>[];
@@ -78,8 +82,7 @@
     }
 
     onMount(() => {
-    outerWidth = document.getElementById("header")?.clientWidth || window.outerWidth
-    outerHeight = document.getElementById("header")?.clientHeight || window.outerHeight
+    outerWidth = window.outerWidth * (100 - margin - padding - borderWidth)/100;
     })
 
 </script>
@@ -108,7 +111,14 @@ width={outerWidth}
 height={outerWidth}
 class="object-center"
 on:click={mouseClicked}
->
+style="
+background: #F0E6E6;
+padding: {padding}vw;
+margin: {margin}vw;
+border-width:{borderWidth}vw;
+border-color: black;
+border-radius: 5vw;
+">
 <Layer {render} />
 </Canvas>
 {/if}

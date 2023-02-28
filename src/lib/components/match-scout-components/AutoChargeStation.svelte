@@ -1,7 +1,7 @@
 <script lang="ts">
     import { auto_charge_station } from "$lib/stores/matchScoutStores";
-    import ChargeStationOption from "../ui-components/ChargeStationOption.svelte";
-
+    import ChargeStation from "../ui-components/ChargeStation.svelte"
+    
     let selectedOption = 0;
 
     export function onOption(id : number) {
@@ -9,18 +9,9 @@
     }
 </script>
 
-<div class = "makeColumnButtons">
-    <div class = "buttonsTitle"> 
-        Charge Station End 
-    </div>
-    <ChargeStationOption selectedOption={selectedOption} id={0} name="Not Attempted" clickHandler={onOption}></ChargeStationOption>
-    <ChargeStationOption selectedOption={selectedOption} id={1} name="Failed" clickHandler={onOption}></ChargeStationOption>
-    <ChargeStationOption selectedOption={selectedOption} id={2} name="Docked" clickHandler={onOption}></ChargeStationOption>
-    <ChargeStationOption selectedOption={selectedOption} id={3} name="Engaged" clickHandler={onOption}></ChargeStationOption>
-</div>
+<ChargeStation handleClick={onOption}></ChargeStation>
 
 <style>
-
     .makeColumnButtons{
         display: flex;
         flex-direction: column;
@@ -42,30 +33,5 @@
         padding-top: 6px;
         background-color: #efdcdc;
         z-index: -1;
-    }
-
-    .endgameTitle{
-        display: flex;
-        font-family: "Poppins";
-        font-size: 36px; 
-        padding-top: 11px;
-        padding-left: 2px;      
-        width: 50%;
-    }
-
-    .alignTitle{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-    }
-
-    .endgameTitleNumbers{
-        display: flex;
-        font-family: "Poppins";
-        font-size: 36px; 
-        padding-top: 11px;
-        width: 50%;
-        justify-content: right;
-        padding-right: 11px;
     }
 </style>

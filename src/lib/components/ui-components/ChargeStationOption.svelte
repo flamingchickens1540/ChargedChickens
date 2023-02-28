@@ -1,15 +1,11 @@
 <script lang="ts"> 
-    export let clickHandler : (id : number) => void;
     export let name : string;
+    export let selected: boolean;
+    export let click : any;
     export let id : number;
-    export let selectedOption : number;
 </script>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-
-<button class:selected={selectedOption == id} on:mousedown={() => clickHandler(id)}>{name}</button>
+<button class:selected on:mousedown={() => click(id)}>{name}</button>
 
 <style>
     button {
@@ -18,9 +14,9 @@
         text-align: left;
         border-top-width: 2px;
         border-top-color: black;
+        background-color: #efdcdc;
         padding-left: 2vw;
-        background-color:  #efdcdc;
-        z-index: -1;
+        z-index: 0;
         pointer-events:all;
     }
     

@@ -36,7 +36,7 @@
   <div id="carousel" class="h-screen w-full">
     <div id="auto" >
       <AutoScore />
-      <div class="grid grid-rows-1 grid-cols-2 place-items-center">
+      <div class="place-items-center">
         <AutoChargeStation />
         <AutoCommunity />
       </div>
