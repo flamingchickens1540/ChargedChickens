@@ -1,11 +1,14 @@
 <script lang="ts">
-    import type { AssignData, MatchKey, Team, TeamKey } from '$lib/types';
+    import type { AssignData, MatchKey, TeamKey } from '$lib/types';
     import { APPKEY } from "$lib/stores/generalStores";
     
     let match_key: string = '';
-    let robots_red: string[] = [];
-    let robots_blue: string[] = [];
-    
+    let event_key: string = '';
+    let robots_red: string[] = [" ", " ", " "];
+    let robots_blue: string[] = [" ", " ", " "];
+    let lastCreatedMatch: string = '';
+    let inputPassword = "";
+
     /**
      * Creates a new match
      * 
@@ -23,6 +26,7 @@
                 blue: rb
             }
         }
+
         sendMatch(match);
     }
 
@@ -51,12 +55,67 @@
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
                 passphrase: localStorage.getItem("passphrase") || "",
+                ADMIN_PASSWORD: localStorage.getItem("ADMIN_PASSWORD") || "",
                 APPKEY: $APPKEY
             },
             body: JSON.stringify(match)
         })
             .then(res => res.json())
-            .then(data => console.log(data));
+            .then(data => { if (!data.success) alert("ERROR"); else lastCreatedMatch = match.match_key; });
+    }
+
+    function autoPopulate() {
+        console.log(match_key)
+        fetch('/api/admin/teams', {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+                passphrase: localStorage.getItem("passphrase") || "",
+                ADMIN_PASSWORD: localStorage.getItem("ADMIN_PASSWORD") || "",
+                APPKEY: $APPKEY
+            },
+            body: JSON.stringify({
+                match_key: match_key,
+            })
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+
+                if (!data.success) alert("ERROR");
+
+                robots_red = [data.red[0].slice(3), data.red[1].slice(3), data.red[2].slice(3)];
+                robots_blue = [data.blue[0].slice(3), data.blue[1].slice(3), data.blue[2].slice(3)];
+
+            })
+            .catch(err => alert("ERROR"));
+    }
+
+    function createEvent() {
+        fetch('/api/admin/make-event', {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+                passphrase: localStorage.getItem("passphrase") || "",
+                ADMIN_PASSWORD: localStorage.getItem("ADMIN_PASSWORD") || "",
+                APPKEY: $APPKEY
+            },
+            body: JSON.stringify({
+                event_key: event_key,
+            })
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+
+                if (!data.success) alert("ERROR");
+            })
+            .catch(err => alert("ERROR"));
+    }
+
+    function setPassword() {
+        localStorage.setItem("ADMIN_PASSWORD", inputPassword);
+        inputPassword = "";
     }
 </script>
 
@@ -84,7 +143,17 @@
     </div>
     <div class="grid grid-cols-1 grid-rows-1 place-items-center border-4">
         <button class="h-36 w-36 lg:flex-grow sm:flex-shrink rounded-full outline outline-10" on:click={createMatch}>Create Match</button>
+        <p>Last Created Match: {lastCreatedMatch}</p>
     </div>
+    <div>
+        <input type="text" bind:value={inputPassword}>
+        <button class="text-red-600 text-lg p-2 rounded bg-yellow-300" on:click={() => setPassword()}>AUTH</button>
+    </div>  
+    <button on:click={autoPopulate}> AUTOPOPULATE </button>
+    <div>
+        <input type="text" bind:value={event_key}>
+        <button class="text-red-600 text-lg p-2 rounded bg-yellow-300" on:click={() => createEvent()}> create event </button>
+    </div>  
 </div>
 
 <style>
