@@ -8,10 +8,11 @@
   import EndNotes from "$lib/components/match-scout-components/EndNotes.svelte";
   import AutoScore from "$lib/components/match-scout-components/AutoScore.svelte";
   import TeleScore from "$lib/components/match-scout-components/TeleScore.svelte";
+  import Submit from "$lib/components/match-scout-components/Submit.svelte";
   import Siema from "siema";
   import { onMount } from "svelte";
-  import Submit from "$lib/components/match-scout-components/Submit.svelte";
-
+  import DefenseButton from "./match-scout-components/DefenseButton.svelte";  
+  
   onMount(() => {
     new Siema({
       selector: "#carousel",
@@ -27,19 +28,17 @@
       onInit: () => {},
       onChange: () => {},
     });
-  });
+  })
 </script>
 
-<body>
-  <!-- <h1 class="text-red-600 text-4xl text-center font-bold">Match Scout</h1>   -->
+
   <div id="carousel" class="h-screen w-full">
     <div id="auto" class="endBackground">
       <AutoScore />
-      <br />
-
-      <AutoChargeStation />
-      <br />
-      <div class="makeBorder">
+      <div class="">
+        <AutoChargeStation />
+      </div>
+      <div class = "makeWideWider">
         <AutoCommunity />
       </div>
     </div>
@@ -51,7 +50,6 @@
         <EndChargeStation />
       </div>
       <div class="makeWideSkills">
-        <EndDriverSkill />
       </div>
       <div class="makeWideSwitches">
         <div class="makeBorder">
@@ -66,9 +64,7 @@
     <div id="submit">
       <Submit />
     </div>
-  </div>
-</body>
-
+</div>
 <style>
   .makeBorder {
     display: flex;
@@ -78,15 +74,17 @@
     border-width: 2px;
     border-radius: 0.5rem;
   }
-  body {
-    background-color: rgb(85, 163, 218);
-  }
-
   .endBackground {
-    background-image: linear-gradient(to top right, #dbd6d6, #dbd6d6);
+    background-image: linear-gradient(to top right, #fce644, #ee5a49  );
     padding-left: 17px;
     padding-right: 17px;
     padding: 17px;
+  }
+
+  .makeWideWider{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height: 71px;
   }
 
   .makeWide {

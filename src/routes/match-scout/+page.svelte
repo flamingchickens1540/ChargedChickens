@@ -3,9 +3,13 @@
   import type { MatchScoutInfo } from "$lib/types";
   import { info } from "$lib/stores/generalStores";
   import { APPKEY } from "$lib/stores/generalStores";
+  import { beforeNavigate } from "$app/navigation";
 
   let controller: AbortController;
   let promise: Promise<void> = err();
+  
+  beforeNavigate(() => controller.abort());
+
   async function err() {
     throw new Error();
   }
@@ -60,7 +64,7 @@
     >
     <h1 class="text-5xl"><strong>Waiting for Match Assignment</strong></h1>
   {:then}
-    <h1><strong>You've Been Assigned To Team {$info.robot?.team_key}</strong></h1>
+    <!-- <h1><strong>You've Been Assigned To Team {$info.robot?.team_key}</strong></h1> -->
     <ScoutCarousel />
   {:catch}
     <button

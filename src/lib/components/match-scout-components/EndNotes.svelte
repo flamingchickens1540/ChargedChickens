@@ -1,14 +1,9 @@
 <script lang="ts">
     import { notes } from "$lib/stores/matchScoutStores";
-    let notesText : string;
-    function handleText(){
-        notes.set(notesText);
-    }
-
 </script>
 <div class = "makeBorder">
     Notes
-    <input bind:value = {notesText} type="text" class = "notesBox" on:input={handleText}>
+        <textarea bind:value={$notes} class = "notesBox"></textarea>
 </div>
 <style>
     .notesBox{
@@ -16,7 +11,6 @@
         resize: none;
         height: 63px;
     }
-
     .makeBorder{
         display: flex;
         font-family: "Poppins";

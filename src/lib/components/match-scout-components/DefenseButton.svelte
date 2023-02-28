@@ -1,20 +1,24 @@
 <script lang="ts">
+
+    /**
+     * 
+     * @todo
+     * - Make things responsively scale
+    */
+
     import { defense_times } from "$lib/stores/matchScoutStores";
-    import type { RGB } from "$lib/types";
 
     let miliSecondsArr: number[] = [];
     let initialTime : number;
-    let color: RGB = {
-      red: 55, 
-      green: 5, 
-      blue: 177
-    }
+    let color: string = "#3705B1";
+
     /**
-     * Gets the current time
+     * Sets initial time to the current time
      * 
      * @complete
      */
     function handleMousedown() {
+        color = "#000033";
         initialTime = Date.now();
 	  }
     
@@ -28,17 +32,13 @@
     function handleMouseup() {
       miliSecondsArr.push(Date.now() - initialTime)
       defense_times.update(() => miliSecondsArr);
+      color = "#3705B1";
       console.log($defense_times);
     }
 
-    /**
-     * @todo
-     * - Make things responsively scale
-    */
 </script>
-  <div style="--red: {color.red} --green: {color.green} --blue: {color.blue}" class="p-10 grid grid-cols-1 grid-rows-1 place-items-center">
-    <button class="h-36 w-36 lg:flex-grow sm:flex-shrink rounded-full outline outline-10 unselectable" on:touchstart={handleMousedown} on:touchend={handleMouseup} on:mousedown={handleMousedown} on:mouseup={handleMouseup}>Defense</button>
-
+  <div style="--btn-color: {color}" class="p-10 grid grid-cols-1 grid-rows-1 place-items-center">
+    <button class="h-32 w-80 lg:flex-grow sm:flex-shrink rounded-full outline outline-10 unselectable" on:touchstart={handleMousedown} on:touchend={handleMouseup} on:mousedown={handleMousedown} on:mouseup={handleMouseup}>Defense</button>
   </div>
 
 <style>
@@ -53,7 +53,7 @@
 
   button {
     color: rgb(255, 255, 255);
-    background-color: rgb(var(--red), var(--green), var(--blue));
+    background-color: var(--btn-color);
     outline-color:rgb(55, 5, 177, .3);
   }
 </style>

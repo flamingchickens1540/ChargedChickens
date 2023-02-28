@@ -4,7 +4,7 @@
     import { confetti } from "@neoconfetti/svelte";
     import { tick } from "svelte";
     import FancyButtons from "$lib/components/ui-components/FancyButtons.svelte";
-    import { APPKEY, info } from "$lib/stores/generalStores";
+    import { APPKEY, DEBUG, info } from "$lib/stores/generalStores";
     import type { TeamMatch } from "$lib/types";
     let isVisible = false;
     let submitVisible = false;
@@ -69,7 +69,9 @@
             data[key] = get(team_matches_stores[key]);
         });
 
-        console.log(Object.keys(data).length);
+        if (DEBUG) console.log(Object.keys(data).length);
+
+        console.log(data);
 
         fetch("/api/submit/match", {
             method: "POST",
@@ -80,8 +82,7 @@
             },
             body: JSON.stringify({match: $info?.match, robot: $info?.robot, data}),
         })
-            .then((res) => res.json())
-            .then((data) => console.log(data));
+            .then(() => location.reload());
     }
 </script>
 

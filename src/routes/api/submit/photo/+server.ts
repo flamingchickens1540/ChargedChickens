@@ -1,5 +1,5 @@
 import { json } from "@sveltejs/kit";
-import { IMAGE_PATH } from "$env/static/private";
+import { IMAGE_HOST_PATH, IMAGE_STORAGE_PATH } from "$env/static/private";
 import { writeFile } from "fs";
 import { randomUUID } from "crypto";
 import type { RequestEvent, RequestHandler } from "./$types";
@@ -21,15 +21,17 @@ export const POST: RequestHandler = async (event: RequestEvent) => {
 
       if (!validatePhoto(photo, fileType)) return;
 
-      const path = IMAGE_PATH + randomUUID() + "." + fileType;
+      const fileName = randomUUID() + "." + fileType;
+
+      console.log(IMAGE_STORAGE_PATH + fileName)
 
       await writeFile(
-        path,
+        IMAGE_STORAGE_PATH + fileName,
         Buffer.from(await photo.arrayBuffer()),
         () => { /* empty */ } //this is a required input, but we don't care if it fails
       );
 
-      insertImage(event_key, team_key, event.url.origin + "/robot-photos" + path)
+      insertImage(event_key, team_key, IMAGE_HOST_PATH + fileName)
     })
   );
 

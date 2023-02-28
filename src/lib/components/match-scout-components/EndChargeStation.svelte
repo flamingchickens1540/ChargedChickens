@@ -93,7 +93,7 @@
     .endgameTitle{
         display: flex;
         font-family: "Poppins";
-        font-size: 36px; 
+        font-size: 24px; 
         padding-top: 11px;
         padding-left: 2px;      
         width: 50%;
@@ -108,7 +108,7 @@
     .endgameTitleNumbers{
         display: flex;
         font-family: "Poppins";
-        font-size: 36px; 
+        font-size: 24px; 
         padding-top: 11px;
         width: 50%;
         justify-content: right;
@@ -137,10 +137,5 @@
         border-right-width: 2px;
         border-bottom-width: 2px;
         border-color: black;
-    }
-
-    .centerButtonsValue {
-        margin: 2vw;
-        font-size: large;
     }
 </style>
