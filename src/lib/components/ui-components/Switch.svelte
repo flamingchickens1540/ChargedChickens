@@ -1,4 +1,11 @@
 <script land="ts">
+  /**
+   * This component is a toggle switch that changs color depending on if it's clicked or not. 
+   * It also toggles a variable that gets binded what this element is called.
+   * 
+   * @complete
+   */
+
   export let checked = false;
   export const color = "#2196F3";
 </script>

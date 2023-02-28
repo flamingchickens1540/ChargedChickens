@@ -2,8 +2,8 @@
   import { high_left, high_center, high_right, mid_left, mid_center, mid_right, low_left, low_center, low_right } from "$lib/stores/pitScoutStores";
   import { Canvas, Layer } from "svelte-canvas";
   import { onMount } from 'svelte';
-  import TeleOpScoring from "$lib/assets/TeleOpScoring.png"
-    import { DEBUG } from "$lib/stores/generalStores";
+  import TeleOpScoring from "$lib/assets/Teleop.png"
+  import { DEBUG } from "$lib/stores/generalStores";
 
   let outerHeight : number;
   let outerWidth : number;
@@ -62,9 +62,6 @@
   onMount(() => {
     outerWidth = document.getElementById("header")?.clientWidth || window.outerWidth
     outerHeight = document.getElementById("header")?.clientHeight || window.outerHeight
-
-    outerHeight /= 1.2;
-    outerWidth /= 1.2;
   })
 
 </script>

@@ -8,7 +8,7 @@
   let controller: AbortController;
   let promise: Promise<void> = err();
   
-  beforeNavigate(() => controller.abort());
+  beforeNavigate(() => controller != null ? controller.abort() : null);
 
   async function err() {
     throw new Error();
@@ -64,7 +64,6 @@
     >
     <h1 class="text-5xl"><strong>Waiting for Match Assignment</strong></h1>
   {:then}
-    <!-- <h1><strong>You've Been Assigned To Team {$info.robot?.team_key}</strong></h1> -->
     <ScoutCarousel />
   {:catch}
     <button

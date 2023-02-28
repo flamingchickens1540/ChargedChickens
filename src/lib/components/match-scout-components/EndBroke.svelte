@@ -1,7 +1,6 @@
 <script lang="ts">
     import { broke } from "$lib/stores/matchScoutStores";
     import Switch from "$lib/components/ui-components/Switch.svelte";
-
 </script>
 
 <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
