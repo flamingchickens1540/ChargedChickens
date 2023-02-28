@@ -32,10 +32,10 @@
         flex-direction: column;
         border-radius: 0.5vw;
         border-color: black;
+        background-color: #efdcdc;
         border-width: 4px;
         border-radius: 0.5rem;
         pointer-events: none;
-        z-index: 0;
     }
     
     .buttonsTitle{
@@ -46,7 +46,5 @@
         height: 51px;
         border-color: black;
         padding-top: 6px;
-        background-color: #efdcdc;
-        z-index: -1;
     }
 </style>

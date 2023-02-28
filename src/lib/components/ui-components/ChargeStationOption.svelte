@@ -14,9 +14,7 @@
         text-align: left;
         border-top-width: 2px;
         border-top-color: black;
-        background-color: #efdcdc;
         padding-left: 2vw;
-        z-index: 0;
         pointer-events:all;
     }
     
