@@ -6,4 +6,4 @@
     }
 </script>
 
-<ChargeStation handleClick={onOption}></ChargeStation>
+<ChargeStation handleClick={onOption} name="Auto Charge Station"></ChargeStation>

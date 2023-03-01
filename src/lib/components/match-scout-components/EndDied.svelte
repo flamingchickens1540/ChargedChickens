@@ -3,4 +3,4 @@
     import SwitchToggle from "../ui-components/SwitchToggle.svelte"
 </script>
 
-<SwitchToggle bind:checked={$died} name="Is Dead" bottom={true}></SwitchToggle>
+<SwitchToggle bind:checked={$died} name="Is Dead" stack={true}></SwitchToggle>

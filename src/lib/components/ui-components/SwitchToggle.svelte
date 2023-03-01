@@ -2,11 +2,11 @@
     import Switch from "$lib/components/ui-components/Switch.svelte";
     export let checked : boolean;
     export let name : string;
-    export let bottom = false;
+    export let stack = false;
 </script>
 
 <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
-<div class="makeBorder" class:bottom>
+<div class="makeBorder" class:stack>
     <div class = "testBorder">
         <h1>{name}</h1>
     </div> 

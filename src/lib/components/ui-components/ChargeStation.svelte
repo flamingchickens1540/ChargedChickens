@@ -8,6 +8,7 @@
         "Engaged"
     ]
     export let handleClick : (option : number) => void;
+    export let name : string;
 
     let selectedOption: number = 0;
 
@@ -19,7 +20,7 @@
 
 <div class="makeColumnButtons">
     <div class="buttonsTitle"> 
-        Charge Station End 
+        {name}
     </div>
     {#each options as name, index}
         <ChargeStationOption selected={selectedOption == index} name={name} id={index} click={onClick}></ChargeStationOption>
