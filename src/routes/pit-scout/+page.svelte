@@ -9,7 +9,6 @@
   import Polish from "$lib/components/pit-scout-components/Polish.svelte";
   import Scoring from "$lib/components/pit-scout-components/Scoring.svelte";
   import Submit from "$lib/components/pit-scout-components/Submit.svelte";
-  import Wheels from "$lib/components/pit-scout-components/Wheels.svelte";
 </script>
 
 <svelte:head>
@@ -23,8 +22,6 @@
 	<Dimensions />
 	<br>
 	<Drivetrain />
-	<br>
-	<Wheels />
 	<br>
 	<Polish />
 	<br>
