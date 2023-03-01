@@ -38,17 +38,17 @@
   <div id="carousel" class="h-screen w-full" style="margin-top:-1.5rem; padding-top:1.5rem">
     <div id="auto" >
       <AutoScore />
-      <div class="place-items-center">
+      <div class="place-items-center" style="padding:10px;">
         <AutoChargeStation />
         <AutoCommunity />
       </div>
     </div>
-    <div id="tele">
+    <div id="tele" style="padding:10px;">
       <TeleScore />
       <DefenseButton/>
       <br>
     </div>
-    <div id="end">
+    <div id="end" style="padding:10px;">
       <EndChargeStation />
       <br>
       <EndDriverSkill />
@@ -58,7 +58,7 @@
       <br>
       <EndNotes />
     </div>
-    <div id=submit>
+    <div id=submit style="padding:10px;">
       <Submit />
     </div>
   </div>
