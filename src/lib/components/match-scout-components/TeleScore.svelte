@@ -34,8 +34,6 @@
 
     let click: { row: number, col: number } | null = null;
 
-    let btnColor = "#3705B1";
-
     let initialDefenseTime: number
     let lastCycleTimestamp: number
 
@@ -83,7 +81,6 @@
 
     function handleMouseup() {
         if (!click) {
-            btnColor = "#3705B1"; 
             const time = Date.now() - initialDefenseTime
             if (time > 500) $defense_times.push(time / 1000)
         } else { click = null }
@@ -92,7 +89,6 @@
     function handleMousedown() {
         if (!click) {
             initialDefenseTime = Date.now()
-            btnColor = "#000033"
         }
     }
 
@@ -122,9 +118,7 @@
             document.getElementById('header')?.clientWidth || window.outerWidth
         outerHeight =
             document.getElementById('header')?.clientHeight ||
-            window.outerHeight  
-        outerHeight /= 1.1
-        outerWidth /= 1.1
+            window.outerHeight
     })
 </script>
 
@@ -151,11 +145,11 @@
 </div>
 
 <div
-    style="--btn-color: {btnColor}"
     class="p-5 grid grid-cols-1 grid-rows-1 place-items-center"
 >
     <button
-        class="h-32 w-80 lg:flex-grow sm:flex-shrink rounded-full outline outline-10 unselectable"
+    style="background-color: blueviolet"
+        class="h-32 w-80 lg:flex-grow sm:flex-shrink rounded-full unselectable"
         on:touchstart={handleMousedown}
         on:touchend={handleMouseup}
         >{click ? "Back" : "Defense"}</button

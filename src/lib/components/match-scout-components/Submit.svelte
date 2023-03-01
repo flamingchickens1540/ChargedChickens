@@ -71,7 +71,7 @@
 
         if (DEBUG) console.log(Object.keys(data).length);
 
-        console.log(data);
+        console.log($info);
 
         fetch("/api/submit/match", {
             method: "POST",
