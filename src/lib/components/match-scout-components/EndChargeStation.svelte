@@ -12,4 +12,4 @@
     <div class = "endgameTitleNumbers"> {$info.robot?.team_key} </div>
 </div>
 
-<ChargeStation handleClick={onOption}></ChargeStation>
+<ChargeStation handleClick={onOption} name="End Charge Station"></ChargeStation>
