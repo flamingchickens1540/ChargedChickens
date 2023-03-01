@@ -5,9 +5,9 @@
     import { info } from "$lib/stores/generalStores";
     import type { Writable } from "svelte/store";
     
-    const margin = 5;
-    const padding = 2;
-    const borderWidth = 2;
+    const margin = 0.5;
+    const padding = 0.25;
+    const borderWidth = 0.15;
 
     export let fail : Writable<number>[];
     export let success : Writable<number>[];
@@ -106,9 +106,9 @@
 {:else}
 <div on:mousedown={mouseClicked} style="
 background: #F0E6E6;
-padding: {padding}vw;
-margin: {margin}vw;
-border-width:{borderWidth}vw;
+padding: {padding}rem;
+margin: {margin}rem;
+border-width:{borderWidth}rem;
 border-color: black;
 border-radius: 5vw;
 ">

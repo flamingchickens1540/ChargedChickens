@@ -30,10 +30,9 @@
     .makeColumnButtons{
         display: flex;
         flex-direction: column;
-        border-radius: 0.5vw;
         border-color: black;
         background-color: #efdcdc;
-        border-width: 4px;
+        border-width: 0.15rem;
         border-radius: 0.5rem;
         pointer-events: none;
     }
