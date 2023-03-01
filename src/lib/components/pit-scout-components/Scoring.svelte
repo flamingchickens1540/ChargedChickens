@@ -65,7 +65,7 @@
   })
 
 </script>
-<h1 class="text-orange-600 text-xl text-center">Scoring</h1>
+<h1 id="header" class="text-orange-600 text-xl text-center">Scoring</h1>
 
 <div class="grid place-items-center">
   <Canvas

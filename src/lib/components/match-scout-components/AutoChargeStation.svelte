@@ -90,17 +90,17 @@
     .makeColumnButtons{
         display: flex;
         flex-direction: column;
-        height: 50px;
-        width: 200px;
+        height: 30vh;
+        width: 50vw;
     }
     
     .buttonsTitle{
         text-align: center;
         font-weight: 700;
         font-family: "Poppins";
-        font-size: 23px;
+        font-size: 4vh;
         border-bottom-width: 2px;
-        height: 51px;
+        height: 8vh;
         border-color: black;
         padding-top: 6px;
         background-color: #efdcdc;
@@ -109,47 +109,23 @@
         border-top-left-radius: 0.3rem;
     }
 
-    .autogameTitle{
-        display: flex;
-        font-family: "Poppins";
-        font-size: 36px; 
-        padding-top: 11px;
-        padding-left: 2px;      
-        width: 50%;
-    }
-
-    .alignTitle{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-    }
-
-    .autogameTitleNumbers{
-        display: flex;
-        font-family: "Poppins";
-        font-size: 36px; 
-        padding-top: 11px;
-        width: 50%;
-        justify-content: right;
-        padding-right: 11px;
-    }
     .optionButtons{
-        height: 47px;
+        height: 6vh;
         border-bottom-width: 2px;
         border-color: black;
         text-align: left;
         text-indent: 10px;
         font-family: "Poppins";
-        font-size: 23px;
+        font-size: 4vh/2;
         border-left-width: 2px;
         border-right-width: 2px;
     }
     .optionSpecialButtons{
-        height: 47px; 
+        height: 6vh; 
         text-align: left;
         text-indent: 10px;
         font-family: "Poppins";
-        font-size: 23px;
+        font-size: 4vh/2;
         border-bottom-right-radius: 0.3rem;
         border-bottom-left-radius: 0.3rem;
         border-left-width: 2px;
@@ -158,8 +134,4 @@
         border-color: black;
     }
 
-    .centerButtonsValue {
-        margin: 2vw;
-        font-size: large;
-    }
 </style>

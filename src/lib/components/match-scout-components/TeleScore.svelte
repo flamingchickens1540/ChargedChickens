@@ -117,8 +117,7 @@
         outerWidth =
             document.getElementById('header')?.clientWidth || window.outerWidth
         outerHeight =
-            document.getElementById('header')?.clientHeight ||
-            window.outerHeight
+            document.getElementById('header')?.clientHeight || window.outerHeight
     })
 </script>
 

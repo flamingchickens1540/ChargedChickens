@@ -48,11 +48,8 @@
       <EndChargeStation />
       <br>
       <EndDriverSkill />
-      <br>
       <EndBroke />
-      <br>
       <EndDied />
-      <br>
       <EndNotes />
     </div>
     <div id='submit'>

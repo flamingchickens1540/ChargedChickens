@@ -81,6 +81,9 @@
     onMount(() => {
         outerWidth = document.getElementById("header")?.clientWidth || window.outerWidth
         outerHeight = document.getElementById("header")?.clientHeight || window.outerHeight 
+
+        // outerHeight /= 1.1
+        // outerWidth /= 1.1
     })
 
 </script>

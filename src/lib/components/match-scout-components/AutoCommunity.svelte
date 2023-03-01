@@ -6,6 +6,6 @@
 
 
 <div class="grid grid-rows-2 grid-cols-1 place-items-center">
-    <h1 class="text-purple-500 text-center">AutoCommunity</h1>
+    <h1 class="text-purple-500 text-center"><strong>Left Community?</strong></h1>
     <Switch bind:checked={$auto_community}/>
 </div>
