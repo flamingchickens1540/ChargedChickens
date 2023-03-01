@@ -12,7 +12,6 @@
     export let fail : Writable<number>[];
     export let success : Writable<number>[];
 
-    let outerHeight : number;
     let outerWidth : number;
 
     let clicked: boolean = false;
@@ -52,7 +51,6 @@
             return;
 
         gridIndex = Math.floor(mouse.offsetX / outerWidth * 3) + Math.floor(mouse.offsetY / outerWidth * 3) * 3;
-
         clicked = true;
     }
 
@@ -98,20 +96,15 @@
 
 {#if clicked}
 <div class="grid grid-rows-1 grid-cols-2 place-items-center" style="">
-<button id="successBtn" class="w-40 h-40 outline failSuccessssssssssssssssButton" class:succeededButton={succeed} on:click={handleSuccessClick}>Success</button>
-<button id="failBtn" class="w-40 h-40 outline failSuccessssssssssssssssButton"  class:failedButton={!succeed} on:click={handleFailClick}>Failure</button>
+<button id="successBtn" class="w-40 h-40 outline failSuccessButton" class:succeededButton={succeed} on:click={handleSuccessClick}>Success</button>
+<button id="failBtn" class="w-40 h-40 outline failSuccessButton"  class:failedButton={!succeed} on:click={handleFailClick}>Failure</button>
 </div>
 <br>
 <div class="grid grid-rows-1 grid-cols-1 place-items-center">
 <button id="backBtn" class="w-40 h-40 outline" on:click={handleBackClick}>Back</button>
 </div>
 {:else}
-<Canvas
-width={outerWidth}
-height={outerWidth}
-class="object-center"
-on:click={mouseClicked}
-style="
+<div on:mousedown={mouseClicked} style="
 background: #F0E6E6;
 padding: {padding}vw;
 margin: {margin}vw;
@@ -119,13 +112,22 @@ border-width:{borderWidth}vw;
 border-color: black;
 border-radius: 5vw;
 ">
+<img src={TeleOpScoring} alt=""/>
+</div>
+<!-- <Canvas
+width={outerWidth}
+height={outerWidth}
+class="object-center"
+on:click={mouseClicked}
+style="
+>
 <Layer {render} />
-</Canvas>
+</Canvas> -->
 {/if}
 
 <style>
     /* LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL KMS */
-    .failSuccessssssssssssssssButton {
+    .failSuccessButton {
         background-color: #fcf7f7;
     }
 
