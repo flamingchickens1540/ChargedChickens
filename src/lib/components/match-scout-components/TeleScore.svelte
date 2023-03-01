@@ -28,7 +28,13 @@
     import { onMount } from 'svelte'
     import { info } from '$lib/stores/generalStores'
     import { defense_times } from '$lib/stores/matchScoutStores'
+    import { Canvas, Layer } from 'svelte-canvas'
+    import { onMount } from 'svelte'
+    import { info } from '$lib/stores/generalStores'
+    import { defense_times } from '$lib/stores/matchScoutStores'
 
+    let outerHeight: number
+    let outerWidth: number
     let outerHeight: number
     let outerWidth: number
 
