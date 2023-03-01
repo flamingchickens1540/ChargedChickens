@@ -13,7 +13,6 @@
 	<title>Charged Chickens!</title>
 </svelte:head>
 
-<body>
   <div class="grid grid-cols-1 grid-rows-3 place-items-center gap-2">
     <button class="text-red-600 text-lg p-2 rounded bg-yellow-300" on:click={() => goto("match-scout")}>Match Scout</button>
     <button class="text-red-600 text-lg p-2 rounded bg-yellow-300" on:click={() => goto("pit-scout")}>Pit Scout</button>
@@ -24,7 +23,6 @@
     <input type="text" bind:value={inputPhrase}>
     <button class="text-red-600 text-lg p-2 rounded bg-yellow-300" on:click={() => setPassphrase()}>AUTH</button>
   </div>  
-</body>
 
 <style>
   
@@ -33,6 +31,7 @@
     -webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: black;
   } */
-    
   </style>
+
+
   

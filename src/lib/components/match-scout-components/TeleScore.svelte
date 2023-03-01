@@ -1,5 +1,5 @@
 <script lang="ts">
-  import TeleOpScoring from "$lib/assets/Teleop.png";
+  import TeleOpScoring from "$lib/assets/TeleopScoring-removebg-preview.png";
   import { tele_high_center_fail, tele_high_center_succeed, tele_high_left_fail, tele_high_left_succeed, tele_high_right_fail, tele_high_right_succeed, tele_low_center_fail, tele_low_center_succeed, tele_low_left_fail, tele_low_left_succeed, tele_low_right_fail, tele_low_right_succeed, tele_mid_center_fail, tele_mid_center_succeed, tele_mid_left_fail, tele_mid_left_succeed, tele_mid_right_fail, tele_mid_right_succeed, tele_score } from "$lib/stores/matchScoutStores";
   // import { DEBUG } from "../generalStores";
   import SucceedFail from "$lib/assets/SuccessFail.png";
@@ -154,9 +154,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 <!-- <svelte:window bind:outerHeight bind:outerWidth/> -->
-<div class = "grid grid-rows-1 grid-cols-2 place-items-center">
-  <div class = ""> Endgame </div>
-  <div class = ""> {$info.robot?.team_key} </div>
+<div class = "makeFont">
+  <div class = "grid grid-rows-1 grid-cols-2 place-items-center">
+    <div class = ""> Telescore </div>
+    <div class = ""> {$info.robot?.team_key} </div>
+  </div>
 </div>
 
 {#if clicked}
@@ -179,6 +181,12 @@
   </Canvas>
 {/if}
 <style>
+
+    .makeFont{
+      font-weight: 700;
+      font-family: "Poppins";
+      font-size: 23px;
+    }
     #successBtn {
       background-color: var(--success-color);
     }

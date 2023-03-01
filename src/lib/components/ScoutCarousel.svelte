@@ -31,10 +31,12 @@
   })
 </script>
 
-
+<div class = "bigMans">
   <div id="carousel" class="h-screen w-full">
     <div id="auto" class="endBackground">
-      <AutoScore />
+      <div class = "makeWiderWideWider">
+        <AutoScore />
+      </div>
       <div class="">
         <AutoChargeStation />
       </div>
@@ -50,6 +52,7 @@
         <EndChargeStation />
       </div>
       <div class="makeWideSkills">
+        <EndDriverSkill />
       </div>
       <div class="makeWideSwitches">
         <div class="makeBorder">
@@ -65,6 +68,7 @@
       <Submit />
     </div>
 </div>
+</div>
 <style>
   .makeBorder {
     display: flex;
@@ -75,10 +79,13 @@
     border-radius: 0.5rem;
   }
   .endBackground {
-    background-image: linear-gradient(to top right, #fce644, #ee5a49  );
     padding-left: 17px;
     padding-right: 17px;
     padding: 17px;
+  }
+
+  .bigMans{
+
   }
 
   .makeWideWider{
@@ -101,5 +108,9 @@
 
   .makeWideNotes {
     height: 98px;
+  }
+
+  .makeWiderWideWider{
+    height: 341px
   }
 </style>

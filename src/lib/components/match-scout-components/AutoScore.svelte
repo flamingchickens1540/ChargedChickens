@@ -1,6 +1,6 @@
 <script lang="ts">
     import { auto_high_center_fail, auto_high_center_succeed, auto_high_left_fail, auto_high_left_succeed, auto_high_right_fail, auto_high_right_succeed, auto_low_center_fail, auto_low_center_succeed, auto_low_left_fail, auto_low_left_succeed, auto_low_right_fail, auto_low_right_succeed, auto_mid_center_fail, auto_mid_center_succeed, auto_mid_left_fail, auto_mid_left_succeed, auto_mid_right_fail, auto_mid_right_succeed, auto_score } from "$lib/stores/matchScoutStores";
-    import TeleOpScoring from "$lib/assets/Teleop.png";
+    import TeleOpScoring from "$lib/assets/TeleOpScoring-removebg-preview.png";
     import { Canvas, Layer } from "svelte-canvas";
     import { onMount } from 'svelte';
     import { DEBUG } from "$lib/stores/generalStores";

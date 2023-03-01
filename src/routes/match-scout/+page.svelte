@@ -56,7 +56,7 @@
   <title>Match Scout</title>
 </svelte:head>
 
-<div class="text-center">
+<div class="text-center bigMans">
   {#await promise}
     <button
       class="text-blue-500 font-bold text-4xl p-8 rounded bg-red-500"
@@ -67,9 +67,21 @@
     <!-- <h1><strong>You've Been Assigned To Team {$info.robot?.team_key}</strong></h1> -->
     <ScoutCarousel />
   {:catch}
+    <div class = "helpMe">
+      <img src = "favicon.png" alt = "help me">
+    </div>
     <button
       class="text-blue-500 font-bold text-4xl p-8 rounded bg-green-500"
+      
       on:click={() => reqScoutInfo()}>Log In</button
     >
   {/await}
 </div>
+
+
+<style>
+  .helpMe{
+    display: flex;
+    justify-content: center;
+  }
+</style>
