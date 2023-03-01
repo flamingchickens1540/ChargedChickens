@@ -62,13 +62,7 @@
   onMount(() => {
     outerWidth = document.getElementById("header")?.clientWidth || window.outerWidth
     outerHeight = document.getElementById("header")?.clientHeight || window.outerHeight
-<<<<<<< HEAD
-=======
-
-    outerHeight /= 1.2;
-    outerWidth /= 1.2;
->>>>>>> 8ec3214e0ab1ebd31bad2cfdba45ed5eec19dff7
-  })
+  });
 
 </script>
 <h1 class="text-orange-600 text-xl text-center">Scoring</h1>
