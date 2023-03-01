@@ -31,9 +31,11 @@
   })
 </script>
 
-<body class="bg-blue-500">
+<body>
   <!-- <h1 class="text-red-600 text-4xl text-center font-bold">Match Scout</h1>   -->
-  <div id="carousel" class="h-screen w-full">
+
+  <!-- fix margin -->
+  <div id="carousel" class="h-screen w-full" style="margin-top:-1.5rem; padding-top:1.5rem">
     <div id="auto" >
       <AutoScore />
       <div class="place-items-center">
@@ -65,6 +67,6 @@
 
 <style>
   body {
-    background-color: rgb(85, 163, 218);
+    background: #dbd6d6;
   }
 </style>
