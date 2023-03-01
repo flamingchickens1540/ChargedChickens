@@ -81,7 +81,6 @@
 
 <h1 class="text-yellow-500 text-xl text-center">Intake</h1>
 
-<div class="grid place-items-center">
   <div class = "makeColumnButtons">
     <div class = "buttonsTitle"> 
         Intake Ability
@@ -94,14 +93,13 @@
     <button class = "optionButtons" on:click = {handleCubeShelf} style = "background-color: {backgroundColorsButtons[5]}"> Cube Shelf </button>
     <button class = "optionSpecialButtons" on:click = {handleConeShelf} style = "background-color: {backgroundColorsButtons[6]}"> Cone Shelf </button>
   </div>
-</div>
 
 <style>
 
   .makeColumnButtons{
       display: flex;
       flex-direction: column;
-      width: 300px;
+      width: 341px;
   }
   
   .buttonsTitle{

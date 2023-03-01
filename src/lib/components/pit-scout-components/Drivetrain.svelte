@@ -35,9 +35,7 @@ function handleSwerve(){
   }
 </script>
 
-<h1 class="text-yellow-500 text-xl text-center">Drivetrain</h1>
 
-<div class="grid place-items-center">
 <div class = "makeColumnButtons">
   <div class = "buttonsTitle"> 
       Drivetrain Type
@@ -46,53 +44,82 @@ function handleSwerve(){
   <button class = "optionButtons" on:click = {handleTank} style = "background-color: {backgroundColorsButtons[1]}"> Tank </button>
   <button class = "optionSpecialButtons" on:click = {handleOther} style = "background-color: {backgroundColorsButtons[2]}"> Other </button>
 </div>
-</div>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin = "">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
 <style>
 
 .makeColumnButtons{
-    display: flex;
-    flex-direction: column;
-    width: 300px;
-}
+        display: flex;
+        flex-direction: column;
+        width: 341px;
+    }
+    
+    .buttonsTitle{
+        text-align: center;
+        font-weight: 700;
+        font-family: "Poppins";
+        font-size: 23px;
+        border-bottom-width: 2px;
+        height: 51px;
+        border-color: black;
+        padding-top: 6px;
+        background-color: #efdcdc;
+        border-width: 2px;
+        border-top-right-radius: 0.3rem;
+        border-top-left-radius: 0.3rem;
+    }
 
-.buttonsTitle{
-    text-align: center;
-    font-weight: 700;
-    font-family: "Poppins";
-    font-size: 23px;
-    border-bottom-width: 2px;
-    height: 51px;
-    border-color: black;
-    padding-top: 6px;
-    background-color: #efdcdc;
-    border-width: 2px;
-    border-top-right-radius: 0.3rem;
-    border-top-left-radius: 0.3rem;
-}
+    .endgameTitle{
+        display: flex;
+        font-family: "Poppins";
+        font-size: 36px; 
+        padding-top: 11px;
+        padding-left: 2px;      
+        width: 50%;
+    }
 
-.optionButtons{
-    height: 47px;
-    border-bottom-width: 2px;
-    border-color: black;
-    text-align: left;
-    text-indent: 10px;
-    font-family: "Poppins";
-    font-size: 23px;
-    border-left-width: 2px;
-    border-right-width: 2px;
-}
-.optionSpecialButtons{
-    height: 47px; 
-    text-align: left;
-    text-indent: 10px;
-    font-family: "Poppins";
-    font-size: 23px;
-    border-bottom-right-radius: 0.3rem;
-    border-bottom-left-radius: 0.3rem;
-    border-left-width: 2px;
-    border-right-width: 2px;
-    border-bottom-width: 2px;
-    border-color: black;
-}
+    .alignTitle{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    
+
+    .endgameTitleNumbers{
+        display: flex;
+        font-family: "Poppins";
+        font-size: 36px; 
+        padding-top: 11px;
+        width: 50%;
+        justify-content: right;
+        padding-right: 11px;
+    }
+    .optionButtons{
+        height: 43px;
+        border-bottom-width: 2px;
+        border-color: black;
+        text-align: left;
+        text-indent: 10px;
+        font-family: "Poppins";
+        font-size: 23px;
+        border-left-width: 2px;
+        border-right-width: 2px;
+    }
+    .optionSpecialButtons{
+        height: 43px; 
+        text-align: left;
+        text-indent: 10px;
+        font-family: "Poppins";
+        font-size: 23px;
+        border-bottom-right-radius: 0.3rem;
+        border-bottom-left-radius: 0.3rem;
+        border-left-width: 2px;
+        border-right-width: 2px;
+        border-bottom-width: 2px;
+        border-color: black;
+    }
 </style>

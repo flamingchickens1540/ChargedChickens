@@ -12,12 +12,17 @@
   import Wheels from "$lib/components/pit-scout-components/Wheels.svelte";
 </script>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin = "">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+
 <svelte:head>
     <title>Pit Scout</title>
 </svelte:head>
 
-<body>
-	<h1 class="text-red-600 text-4xl text-center font-bold">Pit Scout</h1>
+<body class = "endBackground">
+	<h1 class="makeFont">Pit Scout</h1>
 	<Info />
 	<br>
 	<Dimensions />
@@ -40,3 +45,22 @@
 	<br>
 	<Submit />
 </body>
+
+
+<style>
+	.endBackground{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+    	padding-left: 17px;
+    	padding-right: 17px;
+    	padding: 17px;
+		font-family: "Poppins";
+  }
+  	.makeFont{
+		font-size: 41px;
+		font-weight: 401;
+		color: blue;
+	}
+</style>

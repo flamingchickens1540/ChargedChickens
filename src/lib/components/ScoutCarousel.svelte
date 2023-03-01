@@ -44,7 +44,7 @@
         <AutoCommunity />
       </div>
     </div>
-    <div id="tele">
+    <div id="tele" class = "bigMans">
       <TeleScore />
     </div>
     <div id="end" class="endBackground">
@@ -84,9 +84,7 @@
     padding: 17px;
   }
 
-  .bigMans{
 
-  }
 
   .makeWideWider{
     padding-top: 10px;

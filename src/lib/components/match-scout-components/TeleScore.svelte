@@ -156,8 +156,8 @@
 <!-- <svelte:window bind:outerHeight bind:outerWidth/> -->
 <div class = "makeFont">
   <div class = "grid grid-rows-1 grid-cols-2 place-items-center">
-    <div class = ""> Telescore </div>
-    <div class = ""> {$info.robot?.team_key} </div>
+    <div class = "leftSide"> Telescore </div>
+    <div class = "rightSide"> {$info.robot?.team_key} </div>
   </div>
 </div>
 
@@ -183,9 +183,23 @@
 <style>
 
     .makeFont{
-      font-weight: 700;
       font-family: "Poppins";
-      font-size: 23px;
+      font-size: 24px;
+    }
+    
+    
+    .leftSide{
+      width: 40vw;
+      display: flex;
+      text-indent: 2px;
+      justify-content: left;
+    }
+    .rightSide{
+      width: 40vw;
+      padding-right: 2px;
+      display: flex;
+      justify-content: right; 
+
     }
     #successBtn {
       background-color: var(--success-color);
