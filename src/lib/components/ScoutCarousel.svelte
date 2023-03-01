@@ -11,7 +11,6 @@
   import Submit from "$lib/components/match-scout-components/Submit.svelte";
   import Siema from "siema";
   import { onMount } from "svelte";
-  import DefenseButton from "./match-scout-components/DefenseButton.svelte";  
   
   onMount(() => {
     new Siema({
@@ -46,7 +45,6 @@
     <div id="tele">
       <TeleScore />
       <br>
-      <DefenseButton />
     </div>
     <div id="end">
       <EndChargeStation />

@@ -42,9 +42,9 @@
   <h1 class="text-red-600 text-4xl text-center font-bold">Upload a photo</h1>
   <!--- TODO: regex match this input and prevent submission with invalid team_key --->
   <label
-    >Event Key: <input class="bg-yellow-300" bind:value={event_key} /></label
+    >Event Key: <input class="bg-yellow-300" placeholder={"2023demo"} bind:value={event_key} /></label
   >
-  <label>Team Key: <input class="bg-yellow-300" bind:value={team_key} /></label>
+  <label>Team Key: <input class="bg-yellow-300" placeholder={"frc1540"} bind:value={team_key} /></label>
   <!--- TODO: make the number of files update correct --->
   <input type="file" multiple accept="image/*" bind:files={photos} />
 </div>
