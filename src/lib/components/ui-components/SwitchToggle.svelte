@@ -27,7 +27,7 @@
         padding: 2vw;
     }
 
-    .bottom {
+    .stack {
         border-top-right-radius: 0px;
         border-top-left-radius: 0px;
         margin-top: -1.5vw;

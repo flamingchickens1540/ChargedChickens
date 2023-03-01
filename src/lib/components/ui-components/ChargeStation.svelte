@@ -13,7 +13,6 @@
     let selectedOption: number = 0;
 
     function onClick(id : number) {
-        console.log("f")
         handleClick(selectedOption = id);
     }
 </script>
