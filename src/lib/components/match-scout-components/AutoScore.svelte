@@ -1,7 +1,4 @@
 <script lang="ts">
-    import { auto_high_center_fail, auto_high_center_succeed, auto_high_left_fail, auto_high_left_succeed, auto_high_right_fail, auto_high_right_succeed, auto_low_center_fail, auto_low_center_succeed, auto_low_left_fail, auto_low_left_succeed, auto_low_right_fail, auto_low_right_succeed, auto_mid_center_fail, auto_mid_center_succeed, auto_mid_left_fail, auto_mid_left_succeed, auto_mid_right_fail, auto_mid_right_succeed, auto_score, cycle_times, defense_times } from "$lib/stores/matchScoutStores";
-    import Teleop from "$lib/assets/Teleop.png";
-    import SucceessFailure from '$lib/assets/SuccessFailure.png'
     import { team_number, auto_high_center_fail, auto_high_center_succeed, auto_high_left_fail, auto_high_left_succeed, auto_high_right_fail, auto_high_right_succeed, auto_low_center_fail, auto_low_center_succeed, auto_low_left_fail, auto_low_left_succeed, auto_low_right_fail, auto_low_right_succeed, auto_mid_center_fail, auto_mid_center_succeed, auto_mid_left_fail, auto_mid_left_succeed, auto_mid_right_fail, auto_mid_right_succeed, auto_score, cycle_times, defense_times } from "$lib/stores/matchScoutStores";
     import Teleop from "$lib/assets/Teleop.png";
     import SucceessFailure from '$lib/assets/SuccessFailure.png'

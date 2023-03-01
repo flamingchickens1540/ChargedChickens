@@ -2,7 +2,7 @@
     import TeleOpScoring from '$lib/assets/Teleop.png'
     import SucceessFailure from '$lib/assets/SuccessFailure.png'
     import {
-    cycle_times,
+        cycle_times,
         team_number,
         tele_high_center_fail,
         tele_high_center_succeed,
@@ -28,15 +28,11 @@
     import { onMount } from 'svelte'
     import { info } from '$lib/stores/generalStores'
     import { defense_times } from '$lib/stores/matchScoutStores'
-    import { Canvas, Layer } from 'svelte-canvas'
-    import { onMount } from 'svelte'
-    import { info } from '$lib/stores/generalStores'
-    import { defense_times } from '$lib/stores/matchScoutStores'
 
-    let outerHeight: number
-    let outerWidth: number
-    let outerHeight: number
-    let outerWidth: number
+    // let outerHeight: number
+    // let outerWidth: number
+    // let outerHeight: number
+    // let outerWidth: number
 
     let click: { row: number, col: number } | null = null;
 
