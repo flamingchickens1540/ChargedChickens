@@ -5,5 +5,6 @@
         auto_charge_station.set(id);
     }
 </script>
-
-<ChargeStation handleClick={onOption} name="Auto Charge Station"></ChargeStation>
+<div style="padding-bottom:4vw">
+    <ChargeStation handleClick={onOption} name="Auto Charge Station"></ChargeStation>
+</div>

@@ -15,6 +15,14 @@
     </div>
 </div>
 <style>
+    .testBorder{
+        /* Credit: David */
+        display: flex;
+        align-items: right;
+        justify-content: left;
+        width: 75%; 
+        text-indent: 11px;
+    }
     .makeBorder{
         display: flex;
         align-items: center;
@@ -25,6 +33,13 @@
         border-radius: 0.5rem;
         background-color: #efdcdc;
         padding: 2vw;
+    }
+
+    .brokeSwitchRight{
+        display: flex;
+        padding-right: 1vw;
+        justify-content: right;
+        width: 25%;
     }
 
     .stack {
