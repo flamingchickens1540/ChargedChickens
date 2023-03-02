@@ -69,6 +69,7 @@
     <div class = "helpMe">
       <img src = "favicon.png" alt = "help me">
     </div>
+    <br>
     <button
       class="text-blue-500 font-bold text-4xl p-8 rounded bg-green-500"
       
