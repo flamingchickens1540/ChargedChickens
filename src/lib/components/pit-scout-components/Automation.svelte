@@ -5,6 +5,7 @@
   import Range from "../ui-components/Range.svelte"
 </script>
 
+
 <h1 class="text-red-600 text-xl text-center">Automation Scale(1-5)</h1>
 <div class = "makeBorder">
     <h1>Fully Auto</h1>

@@ -37,7 +37,7 @@
     });
   
     function resizeWindow() {
-      elementX = element.getBoundingClientRect().left;
+      elementX = element?.getBoundingClientRect().left;
     }
   
     // Allows both bind:value and on:change for parent value retrieval
@@ -52,7 +52,7 @@
       onDragStart(e);
     }
   
-    function onHover(e) {
+    function onHover(_e) {
       thumbHover = thumbHover ? false : true;
     }
   
@@ -186,7 +186,8 @@
     >
       <div class="range__track" bind:this={container}>
         <div class="range__track--highlighted" bind:this={progressBar} />
-        <div
+        <!-- svelte-ignore a11y-mouse-events-have-key-events -->
+        <div  
           class="range__thumb"
           class:range__thumb--holding={holding}
           bind:this={thumb}

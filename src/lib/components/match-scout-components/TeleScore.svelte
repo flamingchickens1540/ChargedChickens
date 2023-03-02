@@ -35,6 +35,8 @@
     // let outerWidth: number
 
     let click: { row: number, col: number } | null = null;
+    let initialDefenseTime: number;
+    let lastCycleTimestamp: number;
 
  
 
