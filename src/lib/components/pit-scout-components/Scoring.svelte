@@ -55,7 +55,7 @@ onMount(() => {
   <h1 id="header" class="text-purple-600 text-center text-4xl font-extrabold">Where can it score?</h1>
 </div>
 
-<div class="grid grid-rows-1 grid-cols-1 place-items-center outline">
+<div class="makeGood">
     <Canvas
     class=""
     width={outerWidth}

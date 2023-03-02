@@ -73,7 +73,6 @@
     }
 </script>
 
-<h1 class="text-yellow-500 text-xl text-center">Intake</h1>
 
 <div class="grid place-items-center">
   <div class = "makeColumnButtons">
