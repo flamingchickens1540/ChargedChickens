@@ -1,6 +1,3 @@
-
-
-
 <script lang="ts">
     import { auto_community } from "$lib/stores/matchScoutStores";
     import Switch from "$lib/components/ui-components/Switch.svelte";
@@ -14,7 +11,7 @@
 
 <div class="makeBorder">
     <div class = "testBorder">
-        <h1> Is Broke</h1>
+        <h1> Left Community?</h1>
     </div> 
     <div class= "brokeSwitchRight">
         <Switch bind:checked={$auto_community}/>
@@ -26,7 +23,7 @@
         background-color: #efdcdc;
         border-color: black;
         border-width: 2px;
-        font-size: 23px;
+        font-size: 18px;
         font-family: "Poppins";
         border-radius: 0.5rem;
     }

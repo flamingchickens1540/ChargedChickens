@@ -4,8 +4,6 @@
     import SuccessFailure from "$lib/assets/SuccessFailure.png";
     import { Canvas, Layer } from "svelte-canvas";
     import { onMount } from 'svelte';
-    import { DEBUG } from "$lib/stores/generalStores";
-    import DefenseButton from "./DefenseButton.svelte"
     import { info } from "$lib/stores/generalStores";
 
     let outerHeight : number
@@ -13,17 +11,6 @@
 
     let click: { row: number, col: number } | null = null
     team_number.set($info.robot?.team_key.split("").filter((_e, i) => i >= 3).join(''));
-    let initialDefenseTime: number
-    let lastCycleTimestamp: number
-
-    let clicked: boolean = false;
-    let row: number;
-    let col: number;
-
-    let success: boolean = false;
-    let fail: boolean = false;
-    let successColor = "#fcf7f7";
-    let failColor = "#fcf7f7";
 
     const autoScoreSucceed = [
         auto_high_left_succeed, 
@@ -66,7 +53,7 @@
                 context.drawImage(AutoScoreBoard, 0, 0, outerWidth, outerWidth)
           }
       }       
-  };
+    };
 
     function handleBackClick() {
       click = null;
@@ -90,38 +77,21 @@
         }
     }
 
-  /**
-   * Toggles the fail boolean, and changes the color of the fail button
-   * 
-   */
-  function handleFailClick() {
-    if (DEBUG) console.log("Fail changed to " + !fail);
-    success = false;
-    fail = true;
-    if (fail) {
-      successColor = "#fcf7f7";
-      failColor = "#db0f0f";
-    } else {
-      successColor = "#0fdb1a";
-      failColor = "#fcf7f7";
-    }
-  }
-
     onMount(() => {
         outerWidth = document.getElementById("header")?.clientWidth || window.outerWidth
         outerHeight = document.getElementById("header")?.clientHeight || window.outerHeight 
 
         // outerWidth -= 20;
         // outerHeight -= 20;
-        outerHeight /= 1.2;
-        outerWidth /= 1.2;
+        // outerHeight /= 1.2;
+        // outerWidth /= 1.2;
     })
 
 </script>
 
 <!-- <svelte:window bind:outerHeight bind:outerWidth/> -->
 <div class="grid grid-rows-1 grid-cols-1 place-items-center">
-  <h1 id="header" class="text-purple-600 text-center text-5xl font-extrabold">AutoScore {$team_number}</h1>
+  <h1 id="header" class="text-purple-600 text-center text-4xl font-extrabold">AutoScore {$team_number}</h1>
 </div>
   
   <div class="grid grid-rows-1 grid-cols-1 place-items-center">
@@ -142,13 +112,6 @@
   {/if}
 
 <style>
-    #successBtn {
-      background-color: var(--success-color);
-    }
-
-    #failBtn {
-      background-color: var(--fail-color);
-    }
 
     #backBtn {
       background-color: beige;

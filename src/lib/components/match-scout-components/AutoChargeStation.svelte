@@ -65,6 +65,8 @@
     .makeColumnButtons{
         display: flex;
         flex-direction: column;
+        height: 20vh;
+        width: 50vw;
     }
     
     .buttonsTitle{

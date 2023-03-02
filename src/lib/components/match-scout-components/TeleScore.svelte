@@ -1,5 +1,5 @@
 <script lang="ts">
-    import TeleOpScoring from '$lib/assets/Teleop.png'
+    import TeleOpScoring from '$lib/assets/TeleOpScoring-removebg-preview.png'
     import SucceessFailure from '$lib/assets/SuccessFailure.png'
     import {
         cycle_times,
@@ -125,7 +125,17 @@
 </script>
 
 <!-- <svelte:window bind:outerHeight bind:outerWidth/> -->
-<h1 id="header" class="text-red-600 text-center text-5xl font-extrabold">TeleScore</h1>
+<h1 id="header" class="text-red-600 text-center text-5xl font-extrabold makeFont">TeleScoring</h1>
+<div class="grid grid-cols-1 grid-rows-1 place-items-center">
+    <Canvas
+        width={outerWidth}
+        height={outerWidth}
+        on:click={mouseClicked}
+        >
+        <Layer {render} />
+    </Canvas>
+</div>
+
 
 <div
     class="p-5 grid grid-cols-1 grid-rows-1 place-items-center"
@@ -138,47 +148,13 @@
         >{click ? "Back" : "Defense"}</button
     >
 </div>
-  <Canvas
-  width={outerWidth}
-  height={outerWidth}
-  class="object-center"
-  on:click={mouseClicked}
-  >
-  <Layer {render} />
-  </Canvas>
 <style>
 
     .makeFont{
       font-family: "Poppins";
-      font-size: 24px;
-    }
-    
-    
-    .leftSide{
-      width: 40vw;
-      display: flex;
-      text-indent: 2px;
-      justify-content: left;
-    }
-    .rightSide{
-      width: 40vw;
-      padding-right: 2px;
-      display: flex;
-      justify-content: right; 
-
-    }
-    #successBtn {
-      background-color: var(--success-color);
+      font-size: 64px;
     }
 
-    #failBtn {
-      background-color: var(--fail-color);
-    }
-
-    #backBtn {
-      background-color: beige;
-    }
-    
 
       /* .endgameTitle{
         display: flex;
