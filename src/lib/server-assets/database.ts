@@ -15,8 +15,7 @@ import type {
     TeamMatch,
 } from '$lib/types'
 
-// TODO: Change back
-const useDB = false; 
+const useDB = true; 
 
 const db = mysql
     .createPool({
