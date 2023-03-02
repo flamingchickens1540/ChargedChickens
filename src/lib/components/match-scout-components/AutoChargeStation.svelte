@@ -133,8 +133,15 @@
         border-color: black;
     }
 
-    .centerButtonsValue {
-        margin: 2vw;
-        font-size: large;
+    .optionButtons{
+        height: 6vh;
+        border-bottom-width: 2px;
+        border-color: black;
+        text-align: left;
+        text-indent: 10px;
+        font-family: "Poppins";
+        font-size: 4vh/2;
+        border-left-width: 2px;
+        border-right-width: 2px;
     }
 </style>

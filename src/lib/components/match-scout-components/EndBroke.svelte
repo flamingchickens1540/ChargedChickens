@@ -1,12 +1,6 @@
 <script lang="ts">
     import { broke } from "$lib/stores/matchScoutStores";
     import Switch from "$lib/components/ui-components/Switch.svelte";
-
-    let broken = false;
-    
-    function handleChangeBroke(){
-        broke.set(!broken); 
-    }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin = "">
@@ -17,7 +11,7 @@
         <h1> Is Broke</h1>
     </div> 
     <div class= "brokeSwitchRight">
-        <Switch bind:checked={broken} on:click = {handleChangeBroke}/>
+        <Switch bind:checked={$broke} />
     </div>
 </div>
 

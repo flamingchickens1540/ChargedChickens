@@ -1,3 +1,4 @@
+
 <script lang="ts">
   import { automation } from "$lib/stores/pitScoutStores";
   import Rating from "../ui-components/Rating.svelte";

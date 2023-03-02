@@ -46,6 +46,7 @@
     </div>
     <div id="tele" class = "bigMans">
       <TeleScore />
+      <br>
     </div>
     <div id="end" class="endBackground">
       <div class="makeWide">

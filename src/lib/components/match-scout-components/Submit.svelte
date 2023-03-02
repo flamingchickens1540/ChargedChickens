@@ -1,6 +1,6 @@
 <script lang="ts">
     import { get } from "svelte/store";
-    import { team_matches_stores } from "$lib/stores/matchScoutStores";
+    import { cycle_times, defense_times, team_matches_stores } from "$lib/stores/matchScoutStores";
     import { confetti } from "@neoconfetti/svelte";
     import { tick } from "svelte";
     import FancyButtons from "$lib/components/ui-components/FancyButtons.svelte";
@@ -71,7 +71,7 @@
 
         if (DEBUG) console.log(Object.keys(data).length);
 
-        console.log(data);
+        console.log($info);
 
         fetch("/api/submit/match", {
             method: "POST",
@@ -80,7 +80,7 @@
                 "passphrase": localStorage.getItem("passphrase") || "",
                 "APPKEY": $APPKEY,
             },
-            body: JSON.stringify({match: $info?.match, robot: $info?.robot, data}),
+            body: JSON.stringify({match: $info?.match, robot: $info?.robot, data, cycle_times: $cycle_times, defense_times: $defense_times}),
         })
             .then(() => location.reload());
     }
@@ -88,7 +88,7 @@
 
 <div class="flex flex-col items-center">
     <FancyButtons
-        text={"Submit :D"}
+        text={"Submit"}
         on:click={submit}
         bgColor={"#39c41f"}
         fontSize={"47px"}

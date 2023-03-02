@@ -1,86 +1,81 @@
 <script lang="ts">
   import { intake } from "$lib/stores/pitScoutStores";
-
+ 
   var backgroundColorsButtons = ["#efdcdc","#efdcdc","#efdcdc","#efdcdc", "#efdcdc", "#efdcdc", "#efdcdc"]
 
   function handleCubeFloor(){
-        intake.set(0);
-        for (let i = 0; i < 7; i++){
-            if (i == 0){
-                backgroundColorsButtons[i] = "#7ED957";
-            }else{
-                backgroundColorsButtons[i] = "#efdcdc"; 
-            }
+    if (!$intake[0]) {
+            $intake[0] = true;
+            backgroundColorsButtons[0] = "#7ED957";
+        } else {
+            $intake[0] = false;
+            backgroundColorsButtons[0] = "#efdcdc"; 
         }
     }
     function handleConeFloorUpright(){
-        intake.set(1);
-        for (let i = 0; i < 7; i++){
-            if (i == 1){
-                backgroundColorsButtons[i] = "#7ED957";
-            }else{
-                backgroundColorsButtons[i] = "#efdcdc"; 
-            }
+        if (!$intake[1]) {
+            $intake[1] = true;
+            backgroundColorsButtons[1] = "#7ED957";
+        } else {
+            $intake[1] = false;
+            backgroundColorsButtons[1] = "#efdcdc"; 
         }
     }
     function handleConeFloorFallen(){
-        intake.set(2);
-        for (let i = 0; i < 7; i++){
-            if (i == 2){
-                backgroundColorsButtons[i] = "#7ED957";
-            }else{
-                backgroundColorsButtons[i] = "#efdcdc"; 
-            }
+        if (!$intake[2]) {
+            $intake[2] = true;
+            backgroundColorsButtons[2] = "#7ED957";
+        } else {
+            $intake[2] = false;
+            backgroundColorsButtons[2] = "#efdcdc"; 
         }
     }
 
     function handleCubePortal(){
-        intake.set(3);
-        for (let i = 0; i < 7; i++){
-            if (i == 3){
-                backgroundColorsButtons[i] = "#7ED957";
-            }else{
-                backgroundColorsButtons[i] = "#efdcdc"; 
-            }
+        if (!$intake[3]) {
+            $intake[3] = true;
+            backgroundColorsButtons[3] = "#7ED957";
+        } else {
+            $intake[3] = false;
+            backgroundColorsButtons[3] = "#efdcdc"; 
         }
     }
 
     function handleConePortal(){
-        intake.set(4);
-        for (let i = 0; i < 7; i++){
-            if (i == 4){
-                backgroundColorsButtons[i] = "#7ED957";
-            }else{
-                backgroundColorsButtons[i] = "#efdcdc"; 
-            }
+        if (!$intake[4]) {
+            $intake[4] = true;
+            backgroundColorsButtons[4] = "#7ED957";
+        } else {
+            $intake[4] = false;
+            backgroundColorsButtons[4] = "#efdcdc"; 
         }
     }
 
     function handleCubeShelf(){
-        intake.set(5);
-        for (let i = 0; i < 7; i++){
-            if (i == 5){
-                backgroundColorsButtons[i] = "#7ED957";
-            }else{
-                backgroundColorsButtons[i] = "#efdcdc"; 
-            }
+        if (!$intake[5]) {
+            $intake[5] = true;
+            backgroundColorsButtons[5] = "#7ED957";
+        } else {
+            $intake[5] = false;
+            backgroundColorsButtons[5] = "#efdcdc"; 
         }
     }
 
     function handleConeShelf(){
-        intake.set(6);
-        for (let i = 0; i < 7; i++){
-            if (i == 6){
-                backgroundColorsButtons[i] = "#7ED957";
-            }else{
-                backgroundColorsButtons[i] = "#efdcdc"; 
-            }
+        if (!$intake[6]) {
+            $intake[6] = true;
+            backgroundColorsButtons[6] = "#7ED957";
+        } else {
+            $intake[6] = false;
+            backgroundColorsButtons[6] = "#efdcdc"; 
         }
+        
     }
 </script>
 
 <h1 class="text-yellow-500 text-xl text-center">Intake</h1>
 
+<div class="grid place-items-center">
   <div class = "makeColumnButtons">
     <div class = "buttonsTitle"> 
         Intake Ability
@@ -93,6 +88,7 @@
     <button class = "optionButtons" on:click = {handleCubeShelf} style = "background-color: {backgroundColorsButtons[5]}"> Cube Shelf </button>
     <button class = "optionSpecialButtons" on:click = {handleConeShelf} style = "background-color: {backgroundColorsButtons[6]}"> Cone Shelf </button>
   </div>
+</div>
 
 <style>
 

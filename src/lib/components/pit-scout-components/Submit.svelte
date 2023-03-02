@@ -18,7 +18,6 @@
      *
      * @complete
      */
-     
     async function submit() {
         let data: PitScoutData = {
           length: 0,
