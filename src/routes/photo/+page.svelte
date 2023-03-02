@@ -53,7 +53,7 @@
     <title>Photo Upload</title>
 </svelte:head>
 <div class="endBackground">
-    <h1 class="text-red-600 text-4xl text-center font-bold">Upload a photo</h1>
+    <h1 class="makeTitle">Upload a photo</h1>
     <div class="makeBorder">
         <!--- TODO: regex match this input and prevent submission with invalid team_key --->
 
@@ -131,12 +131,18 @@
         align-items: center;
         padding-right: 37px;
     }
+
+    .makeTitle{
+      font-family: 'Poppins';
+      font-size: 2.6rem;
+      color: #b231f5; 
+    }
     .makeUpload {
         display: flex;
         font-family: 'Poppins';
         width: 341px;
         background-color: #efdcdc;
-        border-color: black;
+        border-color: black;  
         font-size: 1.2rem;
         text-align: center;
         border-width: 2px;
@@ -146,6 +152,7 @@
         padding-top: 11px;
         padding-bottom: 11px;
         flex-direction: column;
+        align-content: center;
         
     }
     .notesBox {
@@ -174,5 +181,8 @@
         padding-left: 17px;
         padding-right: 17px;
         padding: 17px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 </style>
