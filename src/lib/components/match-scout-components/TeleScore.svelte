@@ -125,8 +125,9 @@
 </script>
 
 <!-- <svelte:window bind:outerHeight bind:outerWidth/> -->
-<h1 id="header" class="text-red-600 text-center text-5xl font-extrabold makeFont">TeleScoring</h1>
-<div class="grid grid-cols-1 grid-rows-1 place-items-center">
+<h1 id="header" class="text-red-600 text-center text-5xl font-extrabold">TeleScoring {$team_number}</h1>
+<br>
+<div class="grid grid-rows-1 grid-cols-1 place-items-center">
     <Canvas
         width={outerWidth}
         height={outerWidth}
