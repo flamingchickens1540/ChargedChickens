@@ -12,8 +12,6 @@
     let initialTime : number;
     let color: string = "#3705B1";
 
-    let mousePos : MouseEvent;
-
     // how far from its initial pos before it discounts defense press.
     let breakDist = 500;
 
@@ -22,8 +20,7 @@
      * 
      * @complete
      */
-    function handleMousedown(e : MouseEvent) {
-      mousePos = e;
+    function handleMousedown() {
       color = "#000033";
       initialTime = Date.now();
 	  }
@@ -35,9 +32,7 @@
      * 
      * @complete
      */
-    function handleMouseup(e : MouseEvent) {
-      if(Math.sqrt((mousePos.x - e.x)**2 + (mousePos.y - e.y)**2) >= breakDist)
-        return;
+    function handleMouseup() {
       miliSecondsArr.push(Date.now() - initialTime)
       defense_times.update(() => miliSecondsArr);
       color = "#3705B1";
@@ -46,7 +41,7 @@
 
 </script>
   <div style="--btn-color: {color}" class="p-10 grid grid-cols-1 grid-rows-1 place-items-center">
-    <button class="h-32 w-80 lg:flex-grow sm:flex-shrink rounded-full outline outline-10 unselectable" on:mousedown={handleMousedown} on:mouseup={handleMouseup}>Defense</button>
+    <button class="h-32 w-80 lg:flex-grow sm:flex-shrink rounded-full outline outline-10 unselectable" on:touchstart={handleMousedown} on:touchend={handleMouseup}>Defense</button>
   </div>
 
 <style>
