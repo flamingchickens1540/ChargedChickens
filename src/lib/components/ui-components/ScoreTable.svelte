@@ -75,7 +75,7 @@
 </div>
 {:else}
 <div on:mousedown={mouseClicked} bind:clientWidth={outerWidth} style="
-background: #F0E6E6;
+<!-- background: #F0E6E6; -->
 padding: 2%;
 
 border-width:0.75vw;
