@@ -5,7 +5,7 @@
    * 
    * @complete
    */
-
+  
   export let checked = false;
   export const color = "#2196F3";
 </script>

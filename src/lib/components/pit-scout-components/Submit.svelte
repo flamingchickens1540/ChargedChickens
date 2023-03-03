@@ -25,7 +25,7 @@
           drivetrain: 0,
           slippery_wheels: false,
           polish: 0,
-          intake: 0,
+          intake: [],
           automation: 0,
           est_cycle_time: 0,
           notes: "",

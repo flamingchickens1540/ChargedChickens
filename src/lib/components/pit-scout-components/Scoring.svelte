@@ -3,72 +3,67 @@
   import TeleOpScoring from "$lib/assets/TeleOpScoring-removebg-preview.png";
   import { onMount } from "svelte"
   import { Canvas, Layer } from "svelte-canvas"
-  import { team_number, tele_mid_left_succeed } from "$lib/stores/matchScoutStores"
-    import { DEBUG } from "$lib/generalStores"
+  import { DEBUG } from "$lib/generalStores"
 
-let scoring = [
-  high_left, // 0
-  high_center, // 1
-  high_right, // 2
-  mid_left, // etc.
-  mid_center, 
-  mid_right, 
-  low_left, 
-  low_center, 
-  low_right
-]
-let click: {row: number, col: number};
-// @ts-ignore
-$: render = ({ context }) => {
-  const AutoScoreBoard = new Image();
-  AutoScoreBoard.src = TeleOpScoring;
-  AutoScoreBoard.onload = () => {
-      context.drawImage(AutoScoreBoard, 0, 0, outerWidth, outerWidth)
+  let scoring = [
+    high_left, // 0
+    high_center, // 1
+    high_right, // 2
+    mid_left, // etc.
+    mid_center, 
+    mid_right, 
+    low_left, 
+    low_center, 
+    low_right
+  ]
+  let click: {row: number, col: number};
+  // @ts-ignore
+  $: render = ({ context }) => {
+    const AutoScoreBoard = new Image();
+    AutoScoreBoard.src = TeleOpScoring;
+    AutoScoreBoard.onload = () => {
+        context.drawImage(AutoScoreBoard, 0, 0, outerWidth, outerWidth)
+    }
+    let count = 0;
+    if (click) {
+      // The index on a 1d array of the tile
+      scoring.forEach(tile => {
+        let held_value: boolean = false;
+        tile.subscribe(value => held_value = value);
+        let tile_num = count;
+        
+        let rect_size = outerWidth / 3;
+        let x = (tile_num%3)*rect_size;
+        let y = (Math.floor(tile_num/3))*rect_size;
+
+        if (DEBUG) console.log(tile_num/3); 
+        if (DEBUG) console.log("Tiles mod 3")
+        if (DEBUG) console.log(tile_num%3);
+        if (DEBUG) console.log(held_value);
+
+        if(held_value) {
+            context.fillStyle = "rgb(38, 213, 71)";
+            context.fillRect(x, y, rect_size, rect_size);
+        }
+        count++;
+      });
+    }
+  };
+  function mouseClicked(mouse: MouseEvent) {
+  if (mouse.offsetY == outerWidth || mouse.offsetX == outerWidth) return
+    click = { row: Math.floor(mouse.offsetY / outerWidth * 3), col: Math.floor(mouse.offsetX / outerWidth * 3) }
+    console.log(click);
+    let held_value;
+    scoring[click.col + (click.row * 3)].subscribe(value => held_value = value);
+    // console.log(held_value)
+    // console.log(click.col + (click.row * 3));
+    scoring[click.col + (click.row * 3)].set(!held_value);
+    // console.log(held_value);
   }
-  let count = 0;
-  if (click) {
-    // The index on a 1d array of the tile
-    scoring.forEach(tile => {
-      let held_value: boolean = false;
-      tile.subscribe(value => held_value = value);
-      let tile_num = count;
-      
-      let rect_size = outerWidth / 3;
-      let x = (tile_num%3)*rect_size;
-      let y = (Math.floor(tile_num/3))*rect_size;
+  onMount(() => {
+    outerWidth = document.getElementById("scoring")?.clientWidth || window.outerWidth
 
-      if (DEBUG) console.log(tile_num/3); 
-      if (DEBUG) console.log("Tiles mod 3")
-      if (DEBUG) console.log(tile_num%3);
-      if (DEBUG) console.log(held_value);
-
-      if(held_value) {
-          context.fillStyle = "rgba(38, 213, 71)";
-          context.fillRect(x, y, rect_size, rect_size);
-      }
-      count++;
-    });
-  }
-};
-function mouseClicked(mouse: MouseEvent) {
-if (mouse.offsetY == outerWidth || mouse.offsetX == outerWidth) return
-  click = { row: Math.floor(mouse.offsetY / outerWidth * 3), col: Math.floor(mouse.offsetX / outerWidth * 3) }
-  console.log(click);
-  let held_value;
-  scoring[click.col + (click.row * 3)].subscribe(value => held_value = value);
-  // console.log(held_value)
-  // console.log(click.col + (click.row * 3));
-  scoring[click.col + (click.row * 3)].set(!held_value);
-  // scoring[click.col + (click.row * 3)].subscribe(value => held_value = value);
-  // console.log(held_value);
-}
-onMount(() => {
-outerWidth = document.getElementById("scoring")?.clientWidth || window.outerWidth
-// outerWidth -= 20;
-// outerHeight -= 20;
-// outerHeight /= 1.2;
-// outerWidth /= 1.2;
-});
+  });
 </script>
 <!-- <svelte:window bind:outerHeight bind:outerWidth/> -->
 <h1 id="scoring" class="text-purple-600 text-center text-4xl font-extrabold">Where can it score?</h1>

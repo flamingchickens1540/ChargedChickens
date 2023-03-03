@@ -98,7 +98,7 @@ export type PitScoutData = {
     low_left: boolean
     low_center: boolean
     low_right: boolean
-    intake: number
+    intake: boolean[]
     automation: number
     est_cycle_time: number
     notes: string
