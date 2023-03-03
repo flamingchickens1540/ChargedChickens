@@ -124,15 +124,6 @@ border-radius: 1.5vw;
 ">
 <img src={clicked ? SucceessFailure : TeleOpScoring} alt=""/>
 </div>
-<!-- <Canvas
-width={tableWidth}
-height={tableWidth}
-class="object-center"
-on:click={mouseClicked}
-style="
->
-<Layer {render} />
-</Canvas> -->
 
 <div
   class="p-5 grid grid-cols-1 grid-rows-1 place-items-center"
@@ -148,41 +139,7 @@ style="
 
 
 <style>
-  /* LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL KMS */
-  .failSuccessButton {
-      background-color: #fcf7f7;
-  }
 
-  .failedButton {
-      background-color: #db0f0f;
-  }
-
-  .succeededButton {
-      background-color: #0fdb1a;
-  }
-
-  .backBtn {
-    background-color: beige;
-  }
-
-      /* .endgameTitle{
-      display: flex;
-      font-family: "Poppins";
-      font-size: 36px; 
-      padding-top: 11px;
-      padding-left: 2px;      
-      width: 50%;
-      }
-
-  .endgameTitleNumbers{
-      display: flex;
-      font-family: "Poppins";
-      font-size: 36px; 
-      padding-top: 11px;
-      width: 50%;
-      justify-content: right;
-      padding-right: 11px;
-  } */
   div {
       font-family: "Poppins";
   }
