@@ -1,16 +1,16 @@
 <script lang="ts">
     import TeleOpScoring from "$lib/assets/Teleop.png";
-    import { Canvas, Layer } from "svelte-canvas";
     import { onMount } from 'svelte';
-    import { info } from "$lib/stores/generalStores";
     import type { Writable } from "svelte/store";
     
     const margin = 0.5;
     const padding = 0.25;
     const borderWidth = 0.15;
 
-    export let fail : Writable<number>[];
     export let success : Writable<number>[];
+    //To make sure that fail will be success if there's no value
+    export let fail : Writable<number>[] = success;
+
 
     let outerWidth : number;
 
@@ -18,18 +18,6 @@
     let gridIndex : number;
 
     let succeed: boolean = false;
-
-    // @ts-ignore
-    $: render = ({ context }) => {
-    const TeleOpScoreBoard = new Image();
-
-    TeleOpScoreBoard.src = TeleOpScoring;
-
-    TeleOpScoreBoard.onload = () => {
-        context.drawImage(TeleOpScoreBoard, 0, 0, outerWidth, outerWidth);
-    };
-
-    };
 
     /**
     * Handles the double clicking of the mouse on the telescore canvas
@@ -81,8 +69,7 @@
 
     onMount(() => {
     outerWidth = window.outerWidth * (100 - margin - padding - borderWidth)/100;
-    })
-
+    });
 </script>
 
 {#if clicked}
