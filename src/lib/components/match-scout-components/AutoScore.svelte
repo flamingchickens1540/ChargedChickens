@@ -21,8 +21,7 @@
   auto_low_center_fail, 
   auto_low_right_fail
 } from '$lib/stores/matchScoutStores'
-import { defense_times } from '$lib/stores/matchScoutStores'
-    import { info } from "$lib/stores/generalStores"
+  import { info } from "$lib/stores/generalStores"
 
 const teleScoreSucceed = [
   auto_high_left_succeed, 
@@ -88,10 +87,10 @@ const teleScoreFail = [
             
             clicked = false;
         }
+  }
 
-      // gridIndex = Math.floor(mouse.offsetX / tableWidth * 3) + Math.floor(mouse.offsetY / tableWidth * 3) * 3;
-      // console.log(gridIndex);
-      // clicked = true;
+  function handleBackClick() {
+    clicked = false;
   }
 </script>
 
@@ -107,16 +106,18 @@ border-radius: 1.5vw;
 ">
 <img src={clicked ? SucceessFailure : TeleOpScoring} alt=""/>
 </div>
-<!-- <Canvas
-width={tableWidth}
-height={tableWidth}
-class="object-center"
-on:click={mouseClicked}
-style="
+{#if clicked}
+<div
+  class="p-5 grid grid-cols-1 grid-rows-1 place-items-center"
 >
-<Layer {render} />
-</Canvas> -->
-
+  <button
+  style="background-color: blueviolet"
+      class="h-32 w-80 lg:flex-grow sm:flex-shrink rounded-full unselectable"
+      on:click={handleBackClick}
+      >Back</button
+  >
+</div>
+{/if}
 
 <style>
   div {

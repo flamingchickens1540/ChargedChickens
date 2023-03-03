@@ -17,11 +17,11 @@ npm create svelte@latest my-app
 ## Developing
 
 First, make sure to create a secrets folder containing passwords.ts in the root directory. Passwords should look like this:
+
 ```
 export const user_password = "password";
 export const admin_password = "adminpassword";
 ```
-
 
 Then, once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
 

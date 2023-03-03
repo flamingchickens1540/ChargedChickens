@@ -78,7 +78,7 @@ const teleScoreFail = [
 
         if (!clicked) {
           clicked = true;
-            gridIndex =  Math.floor(mouse.offsetX / tableWidth * 3) + Math.floor(mouse.offsetY / tableWidth * 3) * 3;
+          gridIndex =  Math.floor(mouse.offsetX / tableWidth * 3) + Math.floor(mouse.offsetY / tableWidth * 3) * 3;
         } else {
             if (mouse.offsetX < outerWidth / 2) {
                 teleScoreSucceed[gridIndex].update(n => n + 1);
@@ -114,15 +114,18 @@ const teleScoreFail = [
 
 <div class="grid grid-rows-1 grid-cols-1 place-items-center">
   <h1 id="header" class="text-purple-600 text-center text-4xl font-extrabold">Telescore {$info.robot?.team_key}</h1>
-</div><div on:mousedown={mouseClicked} bind:clientWidth={tableWidth} style="
-<!-- background: #F0E6E6; -->;
-padding: 2%;
+</div><div 
+on:mousedown={mouseClicked} 
+bind:clientWidth={tableWidth} style="
+  <!-- background: #F0E6E6; -->;
+  padding: 2%;
 
-border-width:0.75vw;
-border-color: black;
-border-radius: 1.5vw;
-">
+  border-width:0.75vw;
+  border-color: black;
+  border-radius: 1.5vw;"
+>
 <img src={clicked ? SucceessFailure : TeleOpScoring} alt=""/>
+
 </div>
 
 <div

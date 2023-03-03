@@ -66,8 +66,8 @@
   {:then}
     <ScoutCarousel />
   {:catch}
-    <div class = "helpMe">
-      <img src = "favicon.png" alt = "help me">
+    <div class = "grid grid-rows-1 grid-cols-1 place-items-center">
+      <img src = "favicon.png" alt = "">
     </div>
     <br>
     <button
@@ -78,10 +78,3 @@
   {/await}
 </div>
 
-
-<style>
-  .helpMe{
-    display: flex;
-    justify-content: center;
-  }
-</style>
