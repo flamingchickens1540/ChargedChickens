@@ -51,13 +51,10 @@ onMount(() => {
 </script>
 
 <!-- <svelte:window bind:outerHeight bind:outerWidth/> -->
-<div class="grid grid-rows-1 grid-cols-1 place-items-center">
-  <h1 id="header" class="text-purple-600 text-center text-4xl font-extrabold">Where can it score?</h1>
-</div>
+<h1 id="header" class="text-purple-600 text-center text-4xl font-extrabold">Where can it score?</h1>
 
-<div class="grid grid-rows-1 grid-cols-1 place-items-center outline">
+<div class="grid place-items-center outline">
     <Canvas
-    class=""
     width={outerWidth}
     height={outerWidth}   
     on:click={mouseClicked}
