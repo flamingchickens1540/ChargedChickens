@@ -20,7 +20,7 @@
         background-color: #efdcdc;
         border-color: black;
         font-size: 23px;
-        border-width: 2px;
+        border-width: 0.75vw;
         border-radius: 0.5rem;
         justify-content: center;
         padding: 11px;

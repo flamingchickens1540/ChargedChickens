@@ -44,12 +44,12 @@
         <AutoCommunity />
       </div>
     </div>
-    <div id="tele" style="padding:1vw;">
+    <div id="tele" style="padding:4vw;">
       <TeleScore />
       <DefenseButton/>
       <br>
     </div>
-    <div id="end" style="padding:10px;">
+    <div id="end" style="padding:4vw;">
       <EndChargeStation />
       <br>
       <EndDriverSkill />
