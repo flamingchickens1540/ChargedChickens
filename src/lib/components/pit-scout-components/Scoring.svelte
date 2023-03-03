@@ -53,7 +53,7 @@ onMount(() => {
 <!-- <svelte:window bind:outerHeight bind:outerWidth/> -->
 <h1 id="header" class="text-purple-600 text-center text-4xl font-extrabold">Where can it score?</h1>
 
-<div class="grid place-items-center outline">
+<div class="makeGood">
     <Canvas
     width={outerWidth}
     height={outerWidth}   
