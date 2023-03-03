@@ -1,7 +1,7 @@
-import { writable, type Writable } from "svelte/store";
+import { writable, type Writable } from 'svelte/store'
 
-export const admin: Writable<boolean> = writable(false);
+export const admin: Writable<boolean> = writable(false)
 
-export const login: Writable<boolean> = writable(true);
+export const login: Writable<boolean> = writable(true)
 
-export const DEBUG: Writable<boolean> = writable(false);
+export const DEBUG: Writable<boolean> = writable(false)

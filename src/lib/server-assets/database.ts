@@ -15,7 +15,7 @@ import type {
     TeamMatch,
 } from '$lib/types'
 
-const useDB = false; 
+const useDB = false
 
 const db = mysql
     .createPool({
@@ -44,22 +44,25 @@ export async function insertEvent(event_key: EventKey): Promise<boolean> {
     }
 }
 
-export async function insertMatch(match_key: MatchKey, event_key: EventKey,): Promise<boolean> {
-  if (!useDB) return true
+export async function insertMatch(
+    match_key: MatchKey,
+    event_key: EventKey
+): Promise<boolean> {
+    if (!useDB) return true
 
-  try {
-      await db.query(
-          `
+    try {
+        await db.query(
+            `
   INSERT INTO Matches (match_key, event_key)
   VALUES (?, ?)`,
-          [match_key, event_key]
-      )
+            [match_key, event_key]
+        )
 
-      return true
-  } catch (error) {
-      console.error(error)
-      return false
-  }
+        return true
+    } catch (error) {
+        console.error(error)
+        return false
+    }
 }
 
 export async function insertTeam(
@@ -219,46 +222,46 @@ export async function insertImage(
 }
 
 export async function insertPitScoutingData(
-  event_key: EventKey,
-  team_key: TeamKey,
-  pit_data: PitScoutData
+    event_key: EventKey,
+    team_key: TeamKey,
+    pit_data: PitScoutData
 ): Promise<boolean> {
-  if (!useDB) return true;
+    if (!useDB) return true
 
-  try {
-    await db.query(
-      `
+    try {
+        await db.query(
+            `
   INSERT INTO PitScouting (event_key, team_key, length, width, drivetrain, slippery_wheels, polish, high_left, high_center, high_right, mid_left, mid_center, mid_right, low_left, low_center, low_right, intake, automation, est_cycle_time, notes)
   VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`,
-      [
-        event_key,
-        team_key,
-        pit_data.length,
-        pit_data.width,
-        pit_data.drivetrain,
-        pit_data.slippery_wheels,
-        pit_data.polish,
-        pit_data.high_left,
-        pit_data.high_center,
-        pit_data.high_right,
-        pit_data.mid_left,
-        pit_data.mid_center,
-        pit_data.mid_right,
-        pit_data.low_left,
-        pit_data.low_center,
-        pit_data.low_right,
-        pit_data.intake,
-        pit_data.automation,
-        pit_data.est_cycle_time,
-        pit_data.notes,
-      ]
-    );
-    
-    return true;
-  } catch (error) {
-    console.error(error);
-    return false;
-  }
+            [
+                event_key,
+                team_key,
+                pit_data.length,
+                pit_data.width,
+                pit_data.drivetrain,
+                pit_data.slippery_wheels,
+                pit_data.polish,
+                pit_data.high_left,
+                pit_data.high_center,
+                pit_data.high_right,
+                pit_data.mid_left,
+                pit_data.mid_center,
+                pit_data.mid_right,
+                pit_data.low_left,
+                pit_data.low_center,
+                pit_data.low_right,
+                pit_data.intake,
+                pit_data.automation,
+                pit_data.est_cycle_time,
+                pit_data.notes,
+            ]
+        )
+
+        return true
+    } catch (error) {
+        console.error(error)
+        return false
+    }
 }
 
 export async function getTeamMatch(
@@ -368,24 +371,27 @@ export async function getTeam(team_key: TeamKey): Promise<Team | null> {
 }
 
 export async function getTeams(): Promise<Team[] | null> {
-  if (!useDB)
-      return Promise.resolve([{
-          team_key: 'frc1540',
-          nickname: 'Team 1540',
-          team_number: 1540,
-          website: 'team1540.org',
-      }, {
-        team_key: 'frc1425',
-        nickname: 'Team 1425',
-        team_number: 1425,
-        website: 'team1425.org',
-    }] as Team[])
-  try {
-      const [rows] = await db.query(`SELECT * FROM Teams`)
+    if (!useDB)
+        return Promise.resolve([
+            {
+                team_key: 'frc1540',
+                nickname: 'Team 1540',
+                team_number: 1540,
+                website: 'team1540.org',
+            },
+            {
+                team_key: 'frc1425',
+                nickname: 'Team 1425',
+                team_number: 1425,
+                website: 'team1425.org',
+            },
+        ] as Team[])
+    try {
+        const [rows] = await db.query(`SELECT * FROM Teams`)
 
-      return rows ?? null
-  } catch (error) {
-      console.error(error)
-      return null
-  }
+        return rows ?? null
+    } catch (error) {
+        console.error(error)
+        return null
+    }
 }
