@@ -10,7 +10,7 @@
 
 <div class = "makeBorder">
     <div class="testBorder"> 
-        <b> Driver Skills </b>
+        <b> Polish </b>
     </div>
     <div class="centerStars">
         <div class = "testThings">
