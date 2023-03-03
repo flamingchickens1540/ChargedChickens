@@ -34,7 +34,7 @@
   <!-- <h1 class="text-red-600 text-4xl text-center font-bold">Match Scout</h1>   -->
 
   <!-- fix margin -->
-  <div id="carousel" class="w-full" style="margin-top:-1.5rem;">
+  <div id="carousel" style="height:100svh;margin-top:-1.5rem; background:#dbd6d6">
     <div id="auto"  style="padding:4vw;">
       <AutoScore />
       <div class="place-items-center" style="padding-top:2vw;">
@@ -62,4 +62,4 @@
     <div id=submit style="padding:10px;">
       <Submit />
     </div>
-</div>
+  </div>
