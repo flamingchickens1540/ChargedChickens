@@ -140,6 +140,7 @@ bind:clientWidth={tableWidth} style="
   >
 </div>
 
+
 <style>
 
   div {
