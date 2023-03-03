@@ -88,7 +88,7 @@
 
 <div class="flex flex-col items-center">
     <FancyButtons
-        text={"Submit :D"}
+        text={"Submit"}
         on:click={submit}
         bgColor={"#39c41f"}
         fontSize={"47px"}

@@ -4,6 +4,13 @@
     import { APPKEY } from "$lib/stores/generalStores";
     import { event_key, team_key } from "$lib/stores/pitScoutStores"
     import type { PitScoutData } from "$lib/types";
+    import { confetti } from "@neoconfetti/svelte";
+    import { tick } from "svelte";
+    import FancyButtons from "$lib/components/ui-components/FancyButtons.svelte";
+
+    let isVisible = false;
+    let submitVisible = false;
+    let hasSumbit = false;
 
     /**
      * Iterates through all matchScoutStores and puts them into a JSON Object
@@ -32,6 +39,8 @@
           low_center: false,
           low_right: false,
         };
+        isVisible = true;
+        hasSumbit = true;
 
         Object.keys($pit_scout_stores).map((key) => {
             // @ts-ignore
@@ -54,5 +63,21 @@
 </script>
 
 <div class="flex flex-col items-center">
-    <button class="text-red-600 text-lg p-2 rounded bg-yellow-300" on:click={submit}>Submit</button>
+    <FancyButtons
+        text={"Submit :D"}
+        on:click={submit}
+        bgColor={"#39c41f"}
+        fontSize={"47px"}
+    />
+    {#if submitVisible}
+        <div>
+            <div use:confetti />
+        </div>
+    {/if}
+    {#if isVisible}
+        <div>
+            <div use:confetti />
+        </div>
+    {/if}
+    
 </div>

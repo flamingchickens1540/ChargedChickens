@@ -14,29 +14,4 @@
     <h1 id="header" class="text-purple-600 text-center text-5xl font-extrabold">Endgame {$info.robot?.team_key}</h1>
   </div>
 
-<ChargeStation handleClick={onOption} name="End Charge Station"></ChargeStation>
-
-<style>
-    .endgameTitle{
-        display: flex;
-        font-family: "Poppins";
-        font-size: 24px; 
-        padding-top: 11px;
-        padding-left: 2px;      
-        width: 50%;
-    }
-    .alignTitle{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-    }
-    .endgameTitleNumbers{
-        display: flex;
-        font-family: "Poppins";
-        font-size: 24px; 
-        padding-top: 11px;
-        width: 50%;
-        justify-content: right;
-        padding-right: 11px;
-    }
-</style>
+<ChargeStation handleClick={onOption}></ChargeStation>

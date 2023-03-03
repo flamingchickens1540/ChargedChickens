@@ -11,7 +11,7 @@
   import Submit from "$lib/components/match-scout-components/Submit.svelte";
   import Siema from "siema";
   import { onMount } from "svelte";
-    import DefenseButton from "./match-scout-components/DefenseButton.svelte"
+  import DefenseButton from "./match-scout-components/DefenseButton.svelte";  
   
   onMount(() => {
     new Siema({
@@ -31,7 +31,6 @@
   })
 </script>
 
-<body>
   <!-- <h1 class="text-red-600 text-4xl text-center font-bold">Match Scout</h1>   -->
 
   <!-- fix margin -->
@@ -40,6 +39,8 @@
       <AutoScore />
       <div class="place-items-center" style="padding:10px;">
         <AutoChargeStation />
+      </div>
+      <div class = "makeWideWider">
         <AutoCommunity />
       </div>
     </div>
@@ -61,12 +62,4 @@
     <div id=submit style="padding:10px;">
       <Submit />
     </div>
-  </div>
-
-</body>
-
-<style>
-  body {
-    background: #dbd6d6;
-  }
-</style>
+</div>
