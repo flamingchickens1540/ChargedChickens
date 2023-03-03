@@ -1,72 +1,72 @@
 <script lang="ts">
-  import { intake } from "$lib/stores/pitScoutStores";
+  import { intake_cube_floor, intake_cone_floor_upright, intake_cone_floor_fallen, intake_cone_portal, intake_cone_shelf, intake_cube_portal, intake_cube_shelf } from "$lib/stores/pitScoutStores";
  
   var backgroundColorsButtons = ["#efdcdc","#efdcdc","#efdcdc","#efdcdc", "#efdcdc", "#efdcdc", "#efdcdc"]
 
   function handleCubeFloor(){
-    if (!$intake[0]) {
-            $intake[0] = true;
+    if (!$intake_cube_floor) {
+            $intake_cube_floor = true;
             backgroundColorsButtons[0] = "#7ED957";
         } else {
-            $intake[0] = false;
+            $intake_cube_floor = false;
             backgroundColorsButtons[0] = "#efdcdc"; 
         }
     }
     function handleConeFloorUpright(){
-        if (!$intake[1]) {
-            $intake[1] = true;
+        if (!$intake_cone_floor_upright) {
+            $intake_cone_floor_upright = true;
             backgroundColorsButtons[1] = "#7ED957";
         } else {
-            $intake[1] = false;
+            $intake_cone_floor_upright = false;
             backgroundColorsButtons[1] = "#efdcdc"; 
         }
     }
     function handleConeFloorFallen(){
-        if (!$intake[2]) {
-            $intake[2] = true;
+        if (!$intake_cone_floor_fallen) {
+            $intake_cone_floor_fallen = true;
             backgroundColorsButtons[2] = "#7ED957";
         } else {
-            $intake[2] = false;
+            $intake_cone_floor_fallen = false;
             backgroundColorsButtons[2] = "#efdcdc"; 
         }
     }
 
     function handleCubePortal(){
-        if (!$intake[3]) {
-            $intake[3] = true;
+        if (!$intake_cube_portal) {
+            $intake_cube_portal = true;
             backgroundColorsButtons[3] = "#7ED957";
         } else {
-            $intake[3] = false;
+            $intake_cube_portal = false;
             backgroundColorsButtons[3] = "#efdcdc"; 
         }
     }
 
     function handleConePortal(){
-        if (!$intake[4]) {
-            $intake[4] = true;
+        if (!$intake_cone_portal) {
+            $intake_cone_portal = true;
             backgroundColorsButtons[4] = "#7ED957";
         } else {
-            $intake[4] = false;
+            $intake_cone_portal = false;
             backgroundColorsButtons[4] = "#efdcdc"; 
         }
     }
 
     function handleCubeShelf(){
-        if (!$intake[5]) {
-            $intake[5] = true;
+        if (!$intake_cube_shelf) {
+            $intake_cube_shelf = true;
             backgroundColorsButtons[5] = "#7ED957";
         } else {
-            $intake[5] = false;
+            $intake_cube_shelf = false;
             backgroundColorsButtons[5] = "#efdcdc"; 
         }
     }
 
     function handleConeShelf(){
-        if (!$intake[6]) {
-            $intake[6] = true;
+        if (!$intake_cone_shelf) {
+            $intake_cone_shelf = true;
             backgroundColorsButtons[6] = "#7ED957";
         } else {
-            $intake[6] = false;
+            $intake_cone_shelf = false;
             backgroundColorsButtons[6] = "#efdcdc"; 
         }
         

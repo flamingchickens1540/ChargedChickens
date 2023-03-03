@@ -23,16 +23,6 @@
             }
         }
     }
-    function handleSlippery(){
-        drivetrain.set(2);
-        for (let i = 0; i < 4; i++){
-                if (i == 2){
-                    backgroundColorsButtons[i] = "#7ED957";
-                }else{
-                    backgroundColorsButtons[i] = "#efdcdc"; 
-                }
-        }
-    }
     function handleOther(){
         drivetrain.set(3);
         for (let i = 0; i < 4; i++){
@@ -52,7 +42,6 @@
     </div>
     <button class = "optionButtons" on:click = {handleSwerve} style = "background-color: {backgroundColorsButtons[0]}"> Swerve </button>
     <button class = "optionButtons" on:click = {handleTank} style = "background-color: {backgroundColorsButtons[1]}"> Tank </button>
-    <button class = "optionButtons" on:click = {handleSlippery} style = "background-color: {backgroundColorsButtons[2]}"> Slippery </button>
     <button class = "optionSpecialButtons" on:click = {handleOther} style = "background-color: {backgroundColorsButtons[3]}"> Other </button>
 </div>
 

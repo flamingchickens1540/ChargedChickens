@@ -10,10 +10,16 @@ export const width: Writable<number> = writable(0)
 export const drivetrain: Writable<number> = writable(0)
 export const slippery_wheels: Writable<boolean> = writable(false)
 export const polish: Writable<number> = writable(0)
-export const intake: Writable<boolean[]> = writable([])
 export const automation: Writable<number> = writable(0)
 export const est_cycle_time: Writable<number> = writable(0)
 export const notes: Writable<string> = writable('')
+export const intake_cube_floor: Writable<boolean> = writable(false)
+export const intake_cone_floor_upright: Writable<boolean> = writable(false)
+export const intake_cone_floor_fallen: Writable<boolean> = writable(false)
+export const intake_cube_portal: Writable<boolean> = writable(false)
+export const intake_cone_portal: Writable<boolean> = writable(false)
+export const intake_cube_shelf: Writable<boolean> = writable(false)
+export const intake_cone_shelf: Writable<boolean> = writable(false)
 
 //scoring positions
 export const high_left: Writable<boolean> = writable(false)
@@ -32,7 +38,13 @@ export const pit_scout_stores = writable({
     drivetrain,
     slippery_wheels,
     polish,
-    intake,
+    intake_cube_floor,
+    intake_cone_floor_upright,
+    intake_cone_floor_fallen,
+    intake_cube_portal,
+    intake_cone_portal,
+    intake_cube_shelf,
+    intake_cone_shelf,
     automation,
     est_cycle_time,
     notes,

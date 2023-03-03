@@ -231,8 +231,8 @@ export async function insertPitScoutingData(
     try {
         await db.query(
             `
-  INSERT INTO PitScouting (event_key, team_key, length, width, drivetrain, slippery_wheels, polish, high_left, high_center, high_right, mid_left, mid_center, mid_right, low_left, low_center, low_right, intake, automation, est_cycle_time, notes)
-  VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`,
+  INSERT INTO PitScouting (event_key, team_key, length, width, drivetrain, slippery_wheels, polish, high_left, high_center, high_right, mid_left, mid_center, mid_right, low_left, low_center, low_right, automation, est_cycle_time, notes, intake_cube_floor, intake_cone_floor_upright, intake_cone_floor_fallen, intake_cube_portal, intake_cone_portal, intake_cube_shelf, intake_cone_shelf)
+  VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`,
             [
                 event_key,
                 team_key,
@@ -250,10 +250,16 @@ export async function insertPitScoutingData(
                 pit_data.low_left,
                 pit_data.low_center,
                 pit_data.low_right,
-                pit_data.intake,
                 pit_data.automation,
                 pit_data.est_cycle_time,
                 pit_data.notes,
+                pit_data.intake_cube_floor,
+                pit_data.intake_cone_floor_upright,
+                pit_data.intake_cone_floor_fallen,
+                pit_data.intake_cube_portal,
+                pit_data.intake_cone_portal,
+                pit_data.intake_cube_shelf,
+                pit_data.intake_cone_shelf
             ]
         )
 

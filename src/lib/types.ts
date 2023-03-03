@@ -98,7 +98,13 @@ export type PitScoutData = {
     low_left: boolean
     low_center: boolean
     low_right: boolean
-    intake: number
+    intake_cube_floor: boolean,
+    intake_cone_floor_upright: boolean,
+    intake_cone_floor_fallen: boolean,
+    intake_cube_portal: boolean,
+    intake_cone_portal: boolean,
+    intake_cube_shelf: boolean,
+    intake_cone_shelf: boolean,
     automation: number
     est_cycle_time: number
     notes: string
