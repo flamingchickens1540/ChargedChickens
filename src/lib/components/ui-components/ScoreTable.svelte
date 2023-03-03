@@ -1,6 +1,5 @@
 <script lang="ts">
     import TeleOpScoring from "$lib/assets/Teleop.png";
-    import { onMount } from 'svelte';
     import type { Writable } from "svelte/store";
 
     export let success : Writable<number>[];
