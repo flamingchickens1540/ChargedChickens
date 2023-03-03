@@ -2,10 +2,6 @@
     import TeleOpScoring from "$lib/assets/Teleop.png";
     import { onMount } from 'svelte';
     import type { Writable } from "svelte/store";
-    
-    const margin = 0.5;
-    const padding = 0.25;
-    const borderWidth = 0.15;
 
     export let success : Writable<number>[];
     //To make sure that fail will be success if there's no value
@@ -66,29 +62,25 @@
         (succeed ? success[gridIndex] : fail[gridIndex]).update(n => n+1);
         clicked = succeed = false;
     }
-
-    onMount(() => {
-    outerWidth = window.outerWidth * (100 - margin - padding - borderWidth)/100;
-    });
 </script>
 
 {#if clicked}
 <div class="grid grid-rows-1 grid-cols-2 place-items-center" style="">
-<button id="successBtn" class="w-40 h-40 outline failSuccessButton" class:succeededButton={succeed} on:click={handleSuccessClick}>Success</button>
-<button id="failBtn" class="w-40 h-40 outline failSuccessButton"  class:failedButton={!succeed} on:click={handleFailClick}>Failure</button>
+<button class="w-40 h-40 outline failSuccessButton" class:succeededButton={succeed} on:click={handleSuccessClick}>Success</button>
+<button class="w-40 h-40 outline failSuccessButton"  class:failedButton={!succeed} on:click={handleFailClick}>Failure</button>
 </div>
 <br>
 <div class="grid grid-rows-1 grid-cols-1 place-items-center">
-<button id="backBtn" class="w-40 h-40 outline" on:click={handleBackClick}>Back</button>
+<button class="w-40 h-40 outline backBtn" on:click={handleBackClick}>Back</button>
 </div>
 {:else}
-<div on:mousedown={mouseClicked} style="
+<div on:mousedown={mouseClicked} bind:clientWidth={outerWidth} style="
 background: #F0E6E6;
-padding: {padding}rem;
-margin: {margin}rem;
-border-width:{borderWidth}rem;
+padding: 2%;
+
+border-width:0.75vw;
 border-color: black;
-border-radius: 5vw;
+border-radius: 1.5vw;
 ">
 <img src={TeleOpScoring} alt=""/>
 </div>
@@ -117,6 +109,9 @@ style="
         background-color: #0fdb1a;
     }
 
+    .backBtn {
+      background-color: beige;
+    }
 
         /* .endgameTitle{
         display: flex;

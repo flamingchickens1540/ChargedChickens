@@ -28,7 +28,7 @@
         align-items: center;
         font-family: "Poppins";
         font-size: 23px;
-        border-width: 0.15rem;
+        border-width: 0.75vw;
         border-color: black;
         border-radius: 0.5rem;
         background-color: #efdcdc;

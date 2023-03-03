@@ -34,17 +34,17 @@
   <!-- <h1 class="text-red-600 text-4xl text-center font-bold">Match Scout</h1>   -->
 
   <!-- fix margin -->
-  <div id="carousel" class="h-screen w-full" style="margin-top:-1.5rem; padding-top:1.5rem">
-    <div id="auto" >
+  <div id="carousel" class="w-full" style="margin-top:-1.5rem;">
+    <div id="auto"  style="padding:4vw;">
       <AutoScore />
-      <div class="place-items-center" style="padding:10px;">
+      <div class="place-items-center" style="padding-top:2vw;">
         <AutoChargeStation />
       </div>
-      <div class = "makeWideWider">
+      <div class = "makeWideWider" style="padding-top:2vw">
         <AutoCommunity />
       </div>
     </div>
-    <div id="tele" style="padding:10px;">
+    <div id="tele" style="padding:1vw;">
       <TeleScore />
       <DefenseButton/>
       <br>

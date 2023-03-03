@@ -1,14 +1,14 @@
 <script lang="ts">
     import ChargeStationOption from "../ui-components/ChargeStationOption.svelte";
 
-    const options = [
+    export const options = [
         "Not Attempted",
         "Failed",
         "Docked",
         "Engaged"
-    ]
+    ];
     export let handleClick : (option : number) => void;
-    export let name : string;
+    export let name : string = "Charge Station";
 
     let selectedOption: number = 0;
 
@@ -32,8 +32,8 @@
         flex-direction: column;
         border-color: black;
         background-color: #efdcdc;
-        border-width: 0.15rem;
-        border-radius: 0.5rem;
+        border-width: 0.75vw;
+        border-radius: 0.25rem;
         pointer-events: none;
     }
     
