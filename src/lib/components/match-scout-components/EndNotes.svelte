@@ -1,7 +1,28 @@
+<!-- Credit: David -->
+
 <script lang="ts">
     import { notes } from "$lib/stores/matchScoutStores";
 </script>
-
-<h1 class="text-red-600 text-center">Notes about the Endgame</h1>
-
-<input type="text" class="h-12 w-36"bind:value={$notes}>
+<div class = "makeBorder">
+    Notes
+        <textarea bind:value={$notes} class = "notesBox"></textarea>
+</div>
+<style>
+    .notesBox{
+        width: 100%;
+        resize: none;
+        height: 63px;
+    }
+    .makeBorder{
+        display: flex;
+        font-family: "Poppins";
+        flex-direction: column;
+        background-color: #efdcdc;
+        border-color: black;
+        font-size: 23px;
+        border-width: 0.75vw;
+        border-radius: 0.5rem;
+        justify-content: center;
+        padding: 11px;
+    }
+</style>

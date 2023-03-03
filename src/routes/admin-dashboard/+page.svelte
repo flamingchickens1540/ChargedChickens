@@ -176,4 +176,7 @@
         background-color: rgb(118, 218, 99);
         outline-color:rgb(118, 218, 99, .3);
     }
+    h1 {
+        color: rgb(280, 30, 30);
+    }
 </style>

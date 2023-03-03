@@ -30,40 +30,34 @@
   })
 </script>
 
-<body class="bg-blue-500">
   <!-- <h1 class="text-red-600 text-4xl text-center font-bold">Match Scout</h1>   -->
-  <div id="carousel" class="h-screen w-full">
-    <div id="auto" >
+
+  <!-- fix margin -->
+  <div id="carousel" style="height:100svh;margin-top:-1.5rem;">
+    <div id="auto"  style="padding:4vw;">
       <AutoScore />
-      <div class="grid grid-rows-1 grid-cols-2 place-items-center">
+      <div class="place-items-center" style="padding-top:2vw;">
         <AutoChargeStation />
+      </div>
+      <div class = "makeWideWider" style="padding-top:2vw">
         <AutoCommunity />
       </div>
     </div>
-    <div id="tele">
+    <div id="tele" style="padding:4vw;">
       <TeleScore />
       <br>
     </div>
-    <div id="end">
+    <div id="end" style="padding:4vw;">
       <EndChargeStation />
       <br>
       <EndDriverSkill />
       <br>
-      <EndBroke />
-      <br>
-      <EndDied />
+      <EndBroke/>
+      <EndDied/>
       <br>
       <EndNotes />
     </div>
-    <div id=submit>
+    <div id=submit style="padding:10px;">
       <Submit />
     </div>
   </div>
-
-</body>
-
-<style>
-  body {
-    background-color: rgb(85, 163, 218);
-  }
-</style>
