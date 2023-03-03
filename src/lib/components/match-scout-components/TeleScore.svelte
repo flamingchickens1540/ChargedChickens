@@ -23,6 +23,7 @@
   tele_mid_right_succeed,
 } from '$lib/stores/matchScoutStores'
 import { defense_times } from '$lib/stores/matchScoutStores'
+    import { info } from "$lib/stores/generalStores"
 
 const teleScoreSucceed = [
   tele_high_left_succeed,
@@ -111,7 +112,9 @@ const teleScoreFail = [
   }
 </script>
 
-<div on:mousedown={mouseClicked} bind:clientWidth={tableWidth} style="
+<div class="grid grid-rows-1 grid-cols-1 place-items-center">
+  <h1 id="header" class="text-purple-600 text-center text-4xl font-extrabold">Telescore {$info.robot?.team_key}</h1>
+</div><div on:mousedown={mouseClicked} bind:clientWidth={tableWidth} style="
 <!-- background: #F0E6E6; -->;
 padding: 2%;
 
