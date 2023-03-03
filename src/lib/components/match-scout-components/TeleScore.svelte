@@ -13,7 +13,7 @@
     rel="stylesheet"
 />
 <div class="grid grid-rows-1 grid-cols-1 place-items-center">
-    <h1 id="header" class="text-purple-600 text-center text-5xl font-extrabold">Telescore {$info.robot?.team_key}</h1>
+    <h1 id="header" class="text-purple-600 text-center text-5xl font-extrabold">Telescore team_number</h1>
 </div>
 
 <ScoreTable fail={
