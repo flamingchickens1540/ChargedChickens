@@ -5,7 +5,7 @@
 </script>
 <div class = "makeBorder">
     Notes
-        <textarea bind:value={$notes} class = "notesBox"></textarea>
+        <input type="text" bind:value={$notes} class = "notesBox" />
 </div>
 <style>
     .notesBox{

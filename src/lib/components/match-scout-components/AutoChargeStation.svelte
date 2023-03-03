@@ -6,6 +6,6 @@
     }
 
 </script>
-<div style="">
+<div>
     <ChargeStation handleClick={onOption}></ChargeStation>
 </div>
