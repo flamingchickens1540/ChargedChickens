@@ -8,7 +8,7 @@
     export let fail : Writable<number>[] = success;
 
 
-    let outerWidth : number;
+    let tableWidth : number;
 
     let clicked: boolean = false;
     let gridIndex : number;
@@ -31,10 +31,11 @@
     * 
     */
     function mouseClicked(mouse : MouseEvent) {
-        if(mouse.offsetY == outerWidth || mouse.offsetX == outerWidth)
+        if(mouse.offsetY == tableWidth || mouse.offsetX == tableWidth)
             return;
 
-        gridIndex = Math.floor(mouse.offsetX / outerWidth * 3) + Math.floor(mouse.offsetY / outerWidth * 3) * 3;
+        gridIndex = Math.floor(mouse.offsetX / tableWidth * 3) + Math.floor(mouse.offsetY / tableWidth * 3) * 3;
+        console.log(gridIndex);
         clicked = true;
     }
 
@@ -74,7 +75,7 @@
 <button class="w-40 h-40 outline backBtn" on:click={handleBackClick}>Back</button>
 </div>
 {:else}
-<div on:mousedown={mouseClicked} bind:clientWidth={outerWidth} style="
+<div on:mousedown={mouseClicked} bind:clientWidth={tableWidth} style="
 <!-- background: #F0E6E6; -->
 padding: 2%;
 
@@ -85,8 +86,8 @@ border-radius: 1.5vw;
 <img src={TeleOpScoring} alt=""/>
 </div>
 <!-- <Canvas
-width={outerWidth}
-height={outerWidth}
+width={tableWidth}
+height={tableWidth}
 class="object-center"
 on:click={mouseClicked}
 style="
