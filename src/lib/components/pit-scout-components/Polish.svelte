@@ -35,7 +35,7 @@
         justify-content: space-around;
         align-content: center;
         align-items: center;
-        width: 60%;
+        width: 50%;
         font-family: "Poppins";
         font-size: 17px;
         height: 43px;
