@@ -49,7 +49,6 @@
     </div>
     <div id="end" style="padding:4vw;">
       <EndChargeStation />
-      <br>
       <EndDriverSkill />
       <EndBroke/>
       <EndDied/>

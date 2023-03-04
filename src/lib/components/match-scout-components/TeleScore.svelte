@@ -113,7 +113,7 @@ const teleScoreFail = [
 </script>
 
 <div class="grid grid-rows-1 grid-cols-1 place-items-center">
-  <h1 id="header" class="text-purple-600 text-center text-4xl font-extrabold">Telescore {$info.robot?.team_key}</h1>
+  <h1 id="header" class="text-{$info.robot?.alliance}-600 text-center text-4xl font-extrabold">Telescore {$info.robot?.team_key}</h1>
 </div><div 
 on:mousedown={mouseClicked} 
 bind:clientWidth={tableWidth} style="
@@ -146,4 +146,8 @@ bind:clientWidth={tableWidth} style="
   div {
       font-family: "Poppins";
   }
+
+  /* header {
+      color: var(--header-color)
+  } */
 </style>
