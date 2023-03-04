@@ -1,6 +1,4 @@
 <script lang="ts">
-  import TeleOpScoring from "$lib/assets/Teleop.png";
-  import SucceessFailure from '$lib/assets/SuccessFailure.png'
   import {
   cycle_times,
   tele_high_center_fail,
@@ -23,6 +21,9 @@
   tele_mid_right_succeed,
 } from '$lib/stores/matchScoutStores'
 import { defense_times } from '$lib/stores/matchScoutStores'
+    import ScoreTable from "../ui-components/ScoreTable.svelte"
+
+let succeedFailScreen : boolean;
 
 const teleScoreSucceed = [
   tele_high_left_succeed,
@@ -34,7 +35,7 @@ const teleScoreSucceed = [
   tele_low_left_succeed,
   tele_low_center_succeed,
   tele_low_right_succeed,
-]
+];
 const teleScoreFail = [
   tele_high_left_fail,
   tele_high_center_fail,
@@ -45,13 +46,7 @@ const teleScoreFail = [
   tele_low_left_fail,
   tele_low_center_fail,
   tele_low_right_fail,
-]
-
-
-  let tableWidth : number;
-
-  let clicked: boolean = false;
-  let gridIndex : number;
+];
 
   let initialDefenseTime : number;
   let lastCycleTimestamp : number;
@@ -71,56 +66,45 @@ const teleScoreFail = [
   * Make clicking display a success/fail choice component
   * 
   */
-  function mouseClicked(mouse : MouseEvent) {
-      if(mouse.offsetY == tableWidth || mouse.offsetX == tableWidth)
-          return;
 
-        if (!clicked) {
-          clicked = true;
-            gridIndex =  Math.floor(mouse.offsetX / tableWidth * 3) + Math.floor(mouse.offsetY / tableWidth * 3) * 3;
-        } else {
-            if (mouse.offsetX < outerWidth / 2) {
-                teleScoreSucceed[gridIndex].update(n => n + 1);
-                const timestamp = Date.now();
-                if (lastCycleTimestamp != null) $cycle_times.push((timestamp - lastCycleTimestamp) / 1000);
-                lastCycleTimestamp = timestamp;
-            }
-            else {
-                teleScoreFail[gridIndex].update(n => n + 1);
-            }
-            
-            clicked = false;
-        }
+  let gridIndex : number;
+  function gridSelected(index : number) {
+    gridIndex = index;
+    succeedFailScreen = true;
+  }
 
-      // gridIndex = Math.floor(mouse.offsetX / tableWidth * 3) + Math.floor(mouse.offsetY / tableWidth * 3) * 3;
-      // console.log(gridIndex);
-      // clicked = true;
+  function successFailSelected(succeed : boolean) {
+    if(succeed) {
+      teleScoreSucceed[gridIndex].update(n => n + 1);
+      const timestamp = Date.now();
+      if (lastCycleTimestamp != null) 
+        $cycle_times.push((timestamp - lastCycleTimestamp) / 1000);
+      lastCycleTimestamp = timestamp;
+    } else {
+      teleScoreFail[gridIndex].update(n => n + 1);
+    }
+    succeedFailScreen = false;
   }
 
   function handleMouseup() {
-    if (!clicked) {
+    if (!succeedFailScreen) {
       const time = Date.now() - initialDefenseTime
       if (time > 500) $defense_times.push(time / 1000)
-    } else { clicked = false }
+    }
+    succeedFailScreen = false;
   } 
 
   function handleMousedown() {
-    if (!clicked) {
+    if(!succeedFailScreen) {
       initialDefenseTime = Date.now();
     }
   }
 </script>
 
-<div on:mousedown={mouseClicked} bind:clientWidth={tableWidth} style="
-<!-- background: #F0E6E6; -->;
-padding: 2%;
-
-border-width:0.75vw;
-border-color: black;
-border-radius: 1.5vw;
-">
-<img src={clicked ? SucceessFailure : TeleOpScoring} alt=""/>
-</div>
+<ScoreTable succeedFailScreen={succeedFailScreen}
+gridSelected={gridSelected}
+successFailSelected={successFailSelected}
+></ScoreTable>
 <!-- <Canvas
 width={tableWidth}
 height={tableWidth}
@@ -139,48 +123,6 @@ style="
       class="h-32 w-80 lg:flex-grow sm:flex-shrink rounded-full unselectable"
       on:touchstart={handleMousedown}
       on:touchend={handleMouseup}
-      >{clicked ? "Back" : "Defense"}</button
+      >{succeedFailScreen ? "Back" : "Defense"}</button
   >
 </div>
-
-
-<style>
-  /* LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL KMS */
-  .failSuccessButton {
-      background-color: #fcf7f7;
-  }
-
-  .failedButton {
-      background-color: #db0f0f;
-  }
-
-  .succeededButton {
-      background-color: #0fdb1a;
-  }
-
-  .backBtn {
-    background-color: beige;
-  }
-
-      /* .endgameTitle{
-      display: flex;
-      font-family: "Poppins";
-      font-size: 36px; 
-      padding-top: 11px;
-      padding-left: 2px;      
-      width: 50%;
-      }
-
-  .endgameTitleNumbers{
-      display: flex;
-      font-family: "Poppins";
-      font-size: 36px; 
-      padding-top: 11px;
-      width: 50%;
-      justify-content: right;
-      padding-right: 11px;
-  } */
-  div {
-      font-family: "Poppins";
-  }
-</style>
