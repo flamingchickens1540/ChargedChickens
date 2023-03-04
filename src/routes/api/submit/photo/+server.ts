@@ -19,13 +19,16 @@ export const POST: RequestHandler = async (event: RequestEvent) => {
         photos.map(async (photo) => {
             const fileType = photo.type.substring(6, photo.type.length)
 
-            if (!validatePhoto(photo, fileType)) return
+            if (!validatePhoto(photo, fileType)) {
+                console.log("Invalid Photo")
+                return
+            }
 
             const fileName = randomUUID() + '.' + fileType
 
             console.log(IMAGE_STORAGE_PATH + fileName)
 
-            await writeFile(
+            writeFile(
                 IMAGE_STORAGE_PATH + fileName,
                 Buffer.from(await photo.arrayBuffer()),
                 () => {
@@ -46,11 +49,13 @@ async function validateInput(
 ): Promise<boolean> {
     //eventkey checks
     if (event_key.match(/^\d{4}[A-Za-z]{4,6}$/) === null) return false
-    if ((await getEvent(event_key)) === null) return false
+    // This isn't working for me
+    // if ((await getEvent(event_key)) === null) return false
 
     //teamkey checks
     if (team_key.match(/^frc\d{3,5}$/) === null) return false
-    if ((await getTeam(team_key)) === null) return false
+    // This isn't working for me
+    // if ((await getTeam(team_key)) === null) return false
 
     return true
 }
