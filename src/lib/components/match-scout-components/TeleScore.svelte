@@ -119,8 +119,8 @@ style="
   class="p-5 grid grid-cols-1 grid-rows-1 place-items-center"
 >
   <button
-  style="background-color: blueviolet"
-      class="h-32 w-80 lg:flex-grow sm:flex-shrink rounded-full unselectable"
+  style="background-color: blueviolet;width:100%  "
+      class="h-32 lg:flex-grow sm:flex-shrink rounded-full unselectable"
       on:touchstart={handleMousedown}
       on:touchend={handleMouseup}
       >{succeedFailScreen ? "Back" : "Defense"}</button

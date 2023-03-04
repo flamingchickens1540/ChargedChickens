@@ -34,20 +34,20 @@
 
   <!-- fix margin -->
   <div id="carousel" style="height:100svh;margin-top:-1.5rem; background:#dbd6d6">
-    <div id="auto"  style="padding:4vw;">
+    <div id="auto"  style="padding:4vh;">
       <AutoScore />
-      <div class="place-items-center" style="padding-top:2vw;">
+      <div class="place-items-center" style="padding-top:1vh;">
         <AutoChargeStation />
       </div>
-      <div class = "makeWideWider" style="padding-top:2vw">
+      <div class = "makeWideWider" style="padding-top:1vh">
         <AutoCommunity />
       </div>
     </div>
-    <div id="tele" style="padding:4vw;">
+    <div id="tele" style="padding-left:3vh;padding-right:3vh;">
       <TeleScore />
       <br>
     </div>
-    <div id="end" style="padding:4vw;">
+    <div id="end" style="padding-left:3vh;padding-right:3vh;">
       <EndChargeStation />
       <br>
       <EndDriverSkill />
