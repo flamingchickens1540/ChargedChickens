@@ -19,7 +19,10 @@
     promise = new Promise(async (resolve, reject) => {
       controller.signal.addEventListener("abort", reject);
       $info = await recursivePoll();
-      resolve();
+      if($info.success)
+        resolve();
+      else
+        reject();
     });
   }
 
@@ -39,10 +42,12 @@
       signal: controller.signal,
     })
       .then((res) => res.json())
-      .then(async (data: MatchScoutInfo) => {
+      .then(async (res) => {
+        const data = res as MatchScoutInfo;
         if (data.success) {
           return data;
         } else {
+          await new Promise(resolve => setTimeout(resolve, res.timeout - Date.now()))
           return await recursivePoll();
         }
       })

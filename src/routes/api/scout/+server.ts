@@ -1,8 +1,12 @@
-import { pollNextRobot } from '$lib/server-assets/scoutQueue'
+import { pollNextRobot, getTimeout } from '$lib/server-assets/scoutQueue'
 import { json } from '@sveltejs/kit'
 
 export const POST = async (request: Request) => {
-    const match = pollNextRobot()
+    const match = pollNextRobot();
 
-    return json({ success: match != null, ...match })
+    if(match == null) {
+        return json({ success: false, timeout: getTimeout() })
+    }
+
+    return json({ success: true, ...match })
 }
