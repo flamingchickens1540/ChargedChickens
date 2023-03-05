@@ -26,7 +26,9 @@ export const POST = async (event: RequestEvent) => {
                     blue: data.alliances.blue.team_keys,
                 }
             })
-    } catch (error) { /* empty */ }
+    } catch (error) {
+        /* empty */
+    }
 
     return json({ success: alliances !== null, ...alliances })
 }

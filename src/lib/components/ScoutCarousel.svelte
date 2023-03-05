@@ -49,12 +49,9 @@
     </div>
     <div id="end" style="padding-left:3vh;padding-right:3vh;">
       <EndChargeStation />
-      <br>
       <EndDriverSkill />
-      <br>
       <EndBroke/>
       <EndDied/>
-      <br>
       <EndNotes />
     </div>
     <div id=submit style="padding:10px;">

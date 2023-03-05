@@ -10,7 +10,11 @@
 
 <div class = "makeBorder">
     <div class="testBorder"> 
+<<<<<<< HEAD
         <b> Driver Skills </b>
+=======
+        <b> Polish </b>
+>>>>>>> e2bb25dc698a4f8ce2b62a860373687095a3c94d
     </div>
     <div class="centerStars">
         <div class = "testThings">
@@ -35,7 +39,11 @@
         justify-content: space-around;
         align-content: center;
         align-items: center;
+<<<<<<< HEAD
         width: 50%;
+=======
+        width: 60%;
+>>>>>>> e2bb25dc698a4f8ce2b62a860373687095a3c94d
         font-family: "Poppins";
         font-size: 17px;
         height: 43px;

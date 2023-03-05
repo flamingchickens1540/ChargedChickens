@@ -1,59 +1,48 @@
 <script lang="ts">
-  import { drivetrain } from "$lib/stores/pitScoutStores";
+    import { drivetrain } from "$lib/stores/pitScoutStores";
 
-  var backgroundColorsButtons = ["#efdcdc","#efdcdc","#efdcdc", "#efdcdc"]
+    var backgroundColorsButtons = ["#efdcdc","#efdcdc","#efdcdc", "#efdcdc"]
 
-function handleSwerve(){
-      drivetrain.set(0);
-      for (let i = 0; i < 4; i++){
-          if (i == 0){
-              backgroundColorsButtons[i] = "#7ED957";
-          }else{
-              backgroundColorsButtons[i] = "#efdcdc"; 
-          }
-      }
-  }
-  function handleTank(){
-      drivetrain.set(1);
-      for (let i = 0; i < 4; i++){
-          if (i == 1){
-              backgroundColorsButtons[i] = "#7ED957";
-          }else{
-              backgroundColorsButtons[i] = "#efdcdc"; 
-          }
-      }
-  }
-  function handleSlippery(){
-    drivetrain.set(2);
-    for (let i = 0; i < 4; i++){
-          if (i == 2){
-              backgroundColorsButtons[i] = "#7ED957";
-          }else{
-              backgroundColorsButtons[i] = "#efdcdc"; 
-          }
-      }
-  }
-  function handleOther(){
-      drivetrain.set(3);
-      for (let i = 0; i < 4; i++){
-          if (i == 3){
-              backgroundColorsButtons[i] = "#7ED957";
-          }else{
-              backgroundColorsButtons[i] = "#efdcdc"; 
-          }
-      }
-  }
+    function handleSwerve(){
+        drivetrain.set(0);
+        for (let i = 0; i < 4; i++){
+            if (i == 0){
+                    backgroundColorsButtons[i] = "#7ED957";
+            }else{
+                    backgroundColorsButtons[i] = "#efdcdc"; 
+            }
+        }
+    }
+    function handleTank(){
+        drivetrain.set(1);
+        for (let i = 0; i < 4; i++){
+            if (i == 1){
+                    backgroundColorsButtons[i] = "#7ED957";
+            }else{
+                    backgroundColorsButtons[i] = "#efdcdc"; 
+            }
+        }
+    }
+    function handleOther(){
+        drivetrain.set(3);
+        for (let i = 0; i < 4; i++){
+            if (i == 3){
+                backgroundColorsButtons[i] = "#7ED957";
+            }else{
+                backgroundColorsButtons[i] = "#efdcdc"; 
+            }
+        }
+    }
 </script>
 
 
 <div class = "makeColumnButtons">
-  <div class = "buttonsTitle"> 
-      Drivetrain Type
-  </div>
-  <button class = "optionButtons" on:click = {handleSwerve} style = "background-color: {backgroundColorsButtons[0]}"> Swerve </button>
-  <button class = "optionButtons" on:click = {handleTank} style = "background-color: {backgroundColorsButtons[1]}"> Tank </button>
-  <button class = "optionButtons" on:click = {handleSlippery} style = "background-color: {backgroundColorsButtons[2]}"> Slippery </button>
-  <button class = "optionSpecialButtons" on:click = {handleOther} style = "background-color: {backgroundColorsButtons[3]}"> Other </button>
+    <div class = "buttonsTitle"> 
+        Drivetrain Type
+    </div>
+    <button class = "optionButtons" on:click = {handleSwerve} style = "background-color: {backgroundColorsButtons[0]}"> Swerve </button>
+    <button class = "optionButtons" on:click = {handleTank} style = "background-color: {backgroundColorsButtons[1]}"> Tank </button>
+    <button class = "optionSpecialButtons" on:click = {handleOther} style = "background-color: {backgroundColorsButtons[3]}"> Other </button>
 </div>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -62,7 +51,7 @@ function handleSwerve(){
 
 <style>
 
-.makeColumnButtons{
+    .makeColumnButtons{
         display: flex;
         flex-direction: column;
         width: 341px;
@@ -82,33 +71,7 @@ function handleSwerve(){
         border-top-right-radius: 0.3rem;
         border-top-left-radius: 0.3rem;
     }
-
-    .endgameTitle{
-        display: flex;
-        font-family: "Poppins";
-        font-size: 36px; 
-        padding-top: 11px;
-        padding-left: 2px;      
-        width: 50%;
-    }
-
-    .alignTitle{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-    }
-
     
-
-    .endgameTitleNumbers{
-        display: flex;
-        font-family: "Poppins";
-        font-size: 36px; 
-        padding-top: 11px;
-        width: 50%;
-        justify-content: right;
-        padding-right: 11px;
-    }
     .optionButtons{
         height: 43px;
         border-bottom-width: 2px;
@@ -120,6 +83,7 @@ function handleSwerve(){
         border-left-width: 2px;
         border-right-width: 2px;
     }
+
     .optionSpecialButtons{
         height: 43px; 
         text-align: left;

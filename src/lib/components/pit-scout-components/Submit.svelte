@@ -5,7 +5,6 @@
     import { event_key, team_key } from "$lib/stores/pitScoutStores"
     import type { PitScoutData } from "$lib/types";
     import { confetti } from "@neoconfetti/svelte";
-    import { tick } from "svelte";
     import FancyButtons from "$lib/components/ui-components/FancyButtons.svelte";
 
     let isVisible = false;
@@ -25,7 +24,13 @@
           drivetrain: 0,
           slippery_wheels: false,
           polish: 0,
-          intake: 0,
+          intake_cube_floor: false,
+          intake_cone_floor_upright: false,
+          intake_cone_floor_fallen: false,
+          intake_cube_portal: false,
+          intake_cone_portal: false,
+          intake_cube_shelf: false,
+          intake_cone_shelf: false,
           automation: 0,
           est_cycle_time: 0,
           notes: "",
@@ -39,6 +44,9 @@
           low_center: false,
           low_right: false,
         };
+        isVisible = true;
+        hasSumbit = true;
+
         isVisible = true;
         hasSumbit = true;
 
@@ -58,13 +66,14 @@
             },
             body: JSON.stringify({"event_key": $event_key, "team_key": $team_key, data}),
         })
-            .then(() => location.reload());
+            .then((res) => res.json())
+            .then((data) => {if (data.success) location.reload()})
     }
 </script>
 
 <div class="flex flex-col items-center">
     <FancyButtons
-        text={"Submit :D"}
+        text={"Submit"}
         on:click={submit}
         bgColor={"#39c41f"}
         fontSize={"47px"}

@@ -6,6 +6,10 @@
     }
 
 </script>
+<<<<<<< HEAD
 <div style="">
+=======
+<div>
+>>>>>>> e2bb25dc698a4f8ce2b62a860373687095a3c94d
     <ChargeStation handleClick={onOption}></ChargeStation>
 </div>
