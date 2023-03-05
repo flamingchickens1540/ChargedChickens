@@ -5,17 +5,6 @@ export const event_key: Writable<EventKey> = writable()
 export const team_key: Writable<TeamKey> = writable()
 
 //stores for pit scouting
-<<<<<<< HEAD
-export const length: Writable<number> = writable(0);
-export const width: Writable<number> = writable(0);
-export const drivetrain: Writable<number> = writable(0);
-export const slippery_wheels: Writable<boolean> = writable(false);
-export const polish: Writable<number> = writable(0);
-export const intake: Writable<boolean[]> = writable([]);
-export const automation: Writable<number> = writable(0);
-export const est_cycle_time: Writable<number> = writable(0);
-export const notes: Writable<string> = writable("");
-=======
 export const length: Writable<number> = writable(0)
 export const width: Writable<number> = writable(0)
 export const drivetrain: Writable<number> = writable(0)
@@ -31,7 +20,6 @@ export const intake_cube_portal: Writable<boolean> = writable(false)
 export const intake_cone_portal: Writable<boolean> = writable(false)
 export const intake_cube_shelf: Writable<boolean> = writable(false)
 export const intake_cone_shelf: Writable<boolean> = writable(false)
->>>>>>> e2bb25dc698a4f8ce2b62a860373687095a3c94d
 
 //scoring positions
 export const high_left: Writable<boolean> = writable(false)

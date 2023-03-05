@@ -123,18 +123,6 @@ style="
       class="h-32 w-80 lg:flex-grow sm:flex-shrink rounded-full unselectable"
       on:touchstart={handleMousedown}
       on:touchend={handleMouseup}
-      >{clicked ? "Back" : "Defense"}</button
+      >{succeedFailScreen ? "Back" : "Defense"}</button
   >
 </div>
-
-
-<style>
-
-  div {
-      font-family: "Poppins";
-  }
-
-  /* header {
-      color: var(--header-color)
-  } */
-</style>
