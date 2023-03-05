@@ -33,7 +33,7 @@ export function endMatch() {
   ongoingMatch = false;
 }
 
-export function getTimeout() {
+export function getNextPollTime() {
   const currentTime = Date.now();
 
   if(currentTime > time) {

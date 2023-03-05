@@ -42,12 +42,11 @@
       signal: controller.signal,
     })
       .then((res) => res.json())
-      .then(async (res) => {
-        const data = res as MatchScoutInfo;
+      .then(async (data : MatchScoutInfo) => {
         if (data.success) {
           return data;
         } else {
-          await new Promise(resolve => setTimeout(resolve, res.timeout - Date.now()))
+          await new Promise(resolve => setTimeout(resolve, data.nextPollTime - Date.now()))
           return await recursivePoll();
         }
       })
