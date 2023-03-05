@@ -19,7 +19,15 @@
     promise = new Promise(async (resolve, reject) => {
       controller.signal.addEventListener("abort", reject);
       $info = await recursivePoll();
-      resolve();
+      if($info.success) {
+        const container = (document.querySelector(".container") as HTMLElement).style;
+        container.background = "#dbd6d6";
+        container.margin = "0px";
+      
+
+        resolve();
+      } else
+        reject();
     });
   }
 
@@ -47,7 +55,7 @@
         }
       })
       .catch(err => {
-        return {"success": false};
+        return {"success": false, nextPollTime : 0};
       });
   }
 </script>
