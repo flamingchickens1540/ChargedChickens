@@ -1,5 +1,6 @@
 import { json } from '@sveltejs/kit'
 import type { RequestEvent, RequestHandler } from './$types'
+import { endMatch } from '$lib/server-assets/scoutQueue';
 import {
     insertTeamMatch,
     insertCycleTime,
@@ -31,6 +32,8 @@ export const POST: RequestHandler = async (event: RequestEvent) => {
     ])
 
     const result = dbRes.every((res) => res.status === 'fulfilled')
+
+    endMatch();
 
     return json({ success: result, endpoint: 'submit' })
 }
