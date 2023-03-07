@@ -28,7 +28,11 @@
             removeFile(file)
         })
         data.append('team_key', team_key)
-        data.append('match_key', event_key)
+        data.append('match_key', localStorage.getItem("event_key") || event_key)
+        if (!localStorage.getItem("event_key")) {
+            localStorage.setItem("event_key", event_key)
+        }
+        
         fetch('/api/submit/photo', {
             method: 'POST',
             headers: {
@@ -167,7 +171,7 @@
         flex-direction: column;
         align-items: center;
         width: 341px;
-        background-color: #efdcdc;
+        /* background-color: #efdcdc; */
         border-color: black;
         font-size: 23px;
         border-width: 2px;

@@ -50,10 +50,11 @@
 
         Object.keys($pit_scout_stores).map((key) => {
             // @ts-ignore
-            data[key] = get($pit_scout_stores[key]);
+            data[key] = get($pit_scout_stores[key])
         });
 
-        console.log(Object.keys(data).length);
+        console.log(Object.keys(data).length)
+        localStorage.setItem('eventKey', $event_key)
 
         fetch("/api/submit/pit", {
             method: "POST",
@@ -62,7 +63,7 @@
                 "passphrase": localStorage.getItem("passphrase") || "",
                 "APPKEY": $APPKEY,
             },
-            body: JSON.stringify({"event_key": $event_key, "team_key": $team_key, data}),
+            body: JSON.stringify({"event_key": localStorage.getItem("event_key") || $event_key, "team_key": $team_key, data}),
         })
             .then((res) => res.json())
             .then((data) => {if (data.success) location.reload()})

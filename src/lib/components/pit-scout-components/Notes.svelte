@@ -6,6 +6,7 @@
   Extra Notes
       <textarea bind:value={$notes} class = "notesBox"></textarea>
 </div>
+
 <style>
   .notesBox{
       width: 100%;

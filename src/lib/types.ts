@@ -138,6 +138,7 @@ export type MatchScoutInfo = {
     success: boolean
     robot?: Robot
     match?: Match
+    nextPollTime : number
 }
 
 export type RGB = {

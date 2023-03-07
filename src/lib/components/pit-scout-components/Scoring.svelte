@@ -3,8 +3,7 @@
   import TeleOpScoring from "$lib/assets/TeleOpScoring-removebg-preview.png";
   import { onMount } from "svelte"
   import { Canvas, Layer } from "svelte-canvas"
-  import { team_number, tele_mid_left_succeed } from "$lib/stores/matchScoutStores"
-    import { DEBUG } from "$lib/generalStores"
+  import { DEBUG } from "$lib/generalStores"
 
 let scoring = [
   high_left, // 0
@@ -56,21 +55,15 @@ if (mouse.offsetY == outerWidth || mouse.offsetX == outerWidth) return
   console.log(click);
   let held_value;
   scoring[click.col + (click.row * 3)].subscribe(value => held_value = value);
-  // console.log(held_value)
-  // console.log(click.col + (click.row * 3));
+
   scoring[click.col + (click.row * 3)].set(!held_value);
-  // scoring[click.col + (click.row * 3)].subscribe(value => held_value = value);
-  // console.log(held_value);
+
 }
 onMount(() => {
-outerWidth = document.getElementById("scoring")?.clientWidth || window.outerWidth
-// outerWidth -= 20;
-// outerHeight -= 20;
-// outerHeight /= 1.2;
-// outerWidth /= 1.2;
+  outerWidth = document.getElementById("scoring")?.clientWidth || window.outerWidth
 });
 </script>
-<!-- <svelte:window bind:outerHeight bind:outerWidth/> -->
+
 <h1 id="scoring" class="text-purple-600 text-center text-4xl font-extrabold">Where can it score?</h1>
 <div class="grid grid-row-1 grid-cols-1 place-items-center">
   <Canvas
@@ -84,6 +77,5 @@ outerWidth = document.getElementById("scoring")?.clientWidth || window.outerWidt
 <style>
 div {
   font-family: "Poppins";
-  /* padding-left: 30%;   */
 }
 </style>

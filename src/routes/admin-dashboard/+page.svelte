@@ -76,6 +76,7 @@
             .then(data => { if (!data.success) alert("ERROR"); else lastCreatedMatch = match.match_key; });
     }
 
+    
     function autoPopulate() {
         fetch('/api/admin/teams', {
             method: 'POST',
