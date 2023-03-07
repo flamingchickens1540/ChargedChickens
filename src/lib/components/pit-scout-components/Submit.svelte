@@ -54,7 +54,8 @@
         });
 
         console.log(Object.keys(data).length)
-        localStorage.setItem('eventKey', $event_key)
+        if (!localStorage.getItem('event_key')) localStorage.setItem('event_key', $event_key)
+        
 
         fetch("/api/submit/pit", {
             method: "POST",
@@ -63,7 +64,7 @@
                 "passphrase": localStorage.getItem("passphrase") || "",
                 "APPKEY": $APPKEY,
             },
-            body: JSON.stringify({"event_key": localStorage.getItem("event_key") || $event_key, "team_key": $team_key, data}),
+            body: JSON.stringify({"event_key": localStorage.getItem("event_key") || "", "team_key": $team_key, data}),
         })
             .then((res) => res.json())
             .then((data) => {if (data.success) location.reload()})
