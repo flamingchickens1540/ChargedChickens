@@ -29,9 +29,8 @@
         })
         data.append('team_key', team_key)
         data.append('match_key', localStorage.getItem("event_key") || event_key)
-        if (!localStorage.getItem("event_key")) {
-            localStorage.setItem("event_key", event_key)
-        }
+        localStorage.setItem("event_key", event_key)
+        
         
         fetch('/api/submit/photo', {
             method: 'POST',

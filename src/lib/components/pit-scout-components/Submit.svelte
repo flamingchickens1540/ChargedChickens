@@ -54,7 +54,7 @@
         });
 
         console.log(Object.keys(data).length)
-        if (!localStorage.getItem('event_key')) localStorage.setItem('event_key', $event_key)
+        localStorage.setItem('event_key', $event_key)
         
 
         fetch("/api/submit/pit", {
