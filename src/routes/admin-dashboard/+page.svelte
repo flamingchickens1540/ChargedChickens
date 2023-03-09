@@ -3,6 +3,8 @@
     import { APPKEY } from "$lib/stores/generalStores";
     import { team_matches_stores } from '$lib/stores/matchScoutStores';
     import { select_option } from 'svelte/internal';
+
+    (document.getElementById("background") as HTMLElement).style.background = "gray";
     
     let match_key: string = '';
     let event_key: string = '';
