@@ -103,18 +103,4 @@
             <div use:confetti />
         </div>
     {/if}
-    <div class="downButtons">
-        {#if hasSumbit == true}
-        <FancyButtons
-            on:click={async () => {
-                isVisible = false;
-                await tick();
-                isVisible = true;
-            }}
-            text={"Go Ahead And Click This For More Confetti :D Your Welcome -David :D"}
-            bgColor={"#39c41f"}
-            fontSize={"11px"}
-        />
-        {/if}
-    </div>
 </div>
