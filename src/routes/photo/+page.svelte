@@ -2,11 +2,11 @@
     import { APPKEY } from '$lib/stores/generalStores'
     import type { EventKey, TeamKey } from '$lib/types'
     import FancyButtons from "$lib/components/ui-components/FancyButtons.svelte"
-    import { confetti } from "@neoconfetti/svelte";
-    import { tick } from "svelte";
-    let isVisible = false;
-    let submitVisible = false;
-    let hasSumbit = false;
+    import { confetti } from "@neoconfetti/svelte"
+    import { tick } from "svelte"
+    let isVisible = false
+    let submitVisible = false
+    let hasSumbit = false
 
     let photos: FileList
     let team_key: TeamKey
@@ -20,17 +20,16 @@
     }
 
     function submit() {
-        isVisible = true;
-        hasSumbit = true;
+        isVisible = true
+        hasSumbit = true
         const data = new FormData()
         Array.from(photos).forEach((file) => {
             data.append('photo', file)
             removeFile(file)
         })
         data.append('team_key', team_key)
-        data.append('match_key', localStorage.getItem("event_key") || event_key)
         localStorage.setItem("event_key", event_key)
-        
+        data.append('match_key', localStorage.getItem("event_key") || '')
         
         fetch('/api/submit/photo', {
             method: 'POST',
