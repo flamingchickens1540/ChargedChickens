@@ -1,5 +1,6 @@
 <script lang="ts">
   import { event_key, team_key } from "$lib/stores/pitScoutStores";
+	event_key.set(localStorage.getItem('event_key') || null)
 </script>
 
 <div class="makeBorder">
