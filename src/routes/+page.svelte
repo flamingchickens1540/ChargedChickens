@@ -121,7 +121,7 @@
             #ee5a49 49%,
             #fce644 100%
         );
-        animation: theFancy 2s linear infinite;
+        animation: theFancy 4s linear infinite;
         padding: 4px;
     }
 
