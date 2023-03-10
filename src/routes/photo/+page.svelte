@@ -4,14 +4,15 @@
     import FancyButtons from "$lib/components/ui-components/FancyButtons.svelte"
     import { confetti } from "@neoconfetti/svelte"
     import { tick } from "svelte"
-    let isVisible = false
+      import { event_key } from "$lib/stores/pitScoutStores";
+	let isVisible = false
     let submitVisible = false
     let hasSumbit = false
 
     let photos: FileList
     let team_key: TeamKey
-    let event_key: EventKey
-
+   //  let event_key: EventKey
+	event_key.set(localStorage.getItem('event_key') || null)
     function removeFile(photo: File) {
         const file = Array.from(photos).indexOf(photo)
         photos = Array.from(photos).filter(
@@ -28,7 +29,7 @@
             removeFile(file)
         })
         data.append('team_key', team_key)
-        localStorage.setItem("event_key", event_key)
+        localStorage.setItem("event_key", $event_key)
         data.append('match_key', localStorage.getItem("event_key") || '')
         
         fetch('/api/submit/photo', {
@@ -40,8 +41,8 @@
             body: data,
         })
             .then((data) => data.json())
-            .then((res) => console.log(res))
-    }
+            .then((res) => console.log(res))   
+ 	}
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -63,7 +64,7 @@
         <input
             class="notesBox"
             placeholder={'2023demo'}
-            bind:value={event_key}
+            bind:value={$event_key}
         />
 
         Team Key:
