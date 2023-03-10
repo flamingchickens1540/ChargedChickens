@@ -15,7 +15,7 @@
 
     let listOfQuotes = [
         'Sniffs marker "ohhhhhhhhhhhhhh"',
-        '"Just because you show up in class as a giant beetle doesnt mean you get to skip your in-class writing!" -Jane',
+        '"Just because you show up in class as a giant beetle doesn`t mean you get to skip your in-class writing!" -Jane',
         '"Stop vaccinating me" - Justin',
         '"Knees nuts" - Cole',
         '“My hair could be a lasagna.” -Alina',
@@ -27,14 +27,14 @@
         '“I would like to make dumplings. Because I’m a dumpling.” -Benjamin',
         '“We are here to break the robot” - Simon',
         '“API means artificial premeditated identity theft” - Ari',
-        '"Its just incest but with cousins and you cant tell!" - Alvin',
-        '"Im not even going to ask" "About the meth or the donkey?"',
-        '"are you fusion 360 bc Id ignore red flags for you" - Cynthia',
-        '"are you a female sheep cuz youre ewe" - Cynthia',
+        '"It`s just incest but with cousins and you cant tell!" - Alvin',
+        '"I`m not even going to ask" "About the meth or the donkey?"',
+        '"Are you fusion 360 bc Id ignore red flags for you" - Cynthia',
+        '"Are you a female sheep cuz you`re ewe" - Cynthia',
         '"I think weapons of mass destruction should be commercially available" - David :D ',
         '“Robots first. Dinner second. Safety third.” - Kevin',
         '“Do not put the Yumm sauce in a bowl and put it on your head” - Simon',
-        '"Im not a furry" - Kevin',
+        '"I`m not a furry" - Kevin',
     ]
 
     let listOfNames = [
