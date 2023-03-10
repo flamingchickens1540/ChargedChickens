@@ -12,7 +12,7 @@
     let photos: FileList
     let team_key: TeamKey
    //  let event_key: EventKey
-	event_key.set(localStorage.getItem('event_key') || null)
+	event_key.set(localStorage.getItem('event_key') as EventKey || null)
     function removeFile(photo: File) {
         const file = Array.from(photos).indexOf(photo)
         photos = Array.from(photos).filter(

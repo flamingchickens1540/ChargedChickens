@@ -3,7 +3,7 @@
     import { pit_scout_stores } from "$lib/stores/pitScoutStores";
     import { APPKEY } from "$lib/stores/generalStores";
     import { event_key, team_key } from "$lib/stores/pitScoutStores"
-    import type { PitScoutData } from "$lib/types";
+    import type { EventKey, PitScoutData } from "$lib/types";
     import { confetti } from "@neoconfetti/svelte";
     import FancyButtons from "$lib/components/ui-components/FancyButtons.svelte";
 
@@ -71,7 +71,7 @@
         })
             .then((res) => res.json())
             .then((data) => {if (data.success) location.reload()})
-	event_key.set("")
+	event_key.set("" as EventKey)
     }
 </script>
 
