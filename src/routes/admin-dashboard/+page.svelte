@@ -126,6 +126,16 @@
 
     function setPassword() {
         localStorage.setItem("ADMIN_PASSWORD", inputPassword);
+        fetch('/api/admin/authed', {
+            method:"POST",
+            body:JSON.stringify({password:inputPassword}),
+            headers : {
+                passphrase: localStorage.getItem("passphrase") || "",
+                APPKEY: $APPKEY
+            }
+        }).then(res => res.json()).then(data => 
+            (document.getElementById("auth") as HTMLElement).style.background = data.success ? "red" : ""
+        );
         inputPassword = "";
     }
 </script>
@@ -160,7 +170,7 @@
     </div>
     <div class="grid grid-cols-1 grid-rows-2 place-items-center border-4">
         <input type="text" bind:value={inputPassword}>
-        <button class="text-red-600 text-lg p-2 rounded bg-yellow-300" on:click={() => setPassword()}>AUTH</button>
+        <button class="text-red-600 text-lg p-2 rounded bg-yellow-300" id="auth" on:click={() => setPassword()}>AUTH</button>
     </div>  
     <button on:click={autoPopulate}> AUTOPOPULATE </button>
     <div class="grid grid-cols-1 grid-rows-2 place-items-center border-4">

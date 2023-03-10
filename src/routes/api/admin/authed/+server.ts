@@ -6,7 +6,7 @@ export const POST: RequestHandler = async (event: RequestEvent) => {
     const body: any = await event.request.json()
 
     return json({
-        success: body?.password === ADMIN_PASSWORD,
+        success: body.password === ADMIN_PASSWORD,
         endpoint: 'authed',
     })
 }
