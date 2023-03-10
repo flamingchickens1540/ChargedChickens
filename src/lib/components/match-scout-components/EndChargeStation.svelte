@@ -15,3 +15,13 @@
   </div>
 
 <ChargeStation handleClick={onOption}></ChargeStation>
+
+<style>
+    div {
+      font-family: "Poppins";
+    }
+
+    div {
+        padding-bottom: 1%;
+    }
+</style>

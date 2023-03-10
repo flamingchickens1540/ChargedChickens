@@ -13,7 +13,7 @@ export const POST = async (event: RequestEvent) => {
     const robots: Robot[] = []
 
     try {
-        //add match to database
+           //add match to database
         if (!(await insertMatch(data.match_key, data.event_key)))
             throw new Error("Couldn't insert match")
 

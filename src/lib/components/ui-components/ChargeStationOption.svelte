@@ -10,7 +10,7 @@
 <style>
     button {
         font-family: "Poppins";
-        font-size: 6vw;
+        font-size: 23px;
         text-align: left;
         border-top-width: 2px;
         border-top-color: black;

@@ -4,6 +4,7 @@ import {
     MYSQL_USER,
     MYSQL_PASSWORD,
     MYSQL_DATABASE,
+    USE_DB
 } from '$env/static/private'
 import type {
     EventKey,
@@ -15,8 +16,7 @@ import type {
     TeamMatch,
 } from '$lib/types'
 
-const useDB = true
-
+const use_db: boolean = USE_DB.toLowerCase as unknown as string == "true";
 const db = mysql
     .createPool({
         host: MYSQL_HOST,
@@ -27,7 +27,8 @@ const db = mysql
     .promise()
 
 export async function insertEvent(event_key: EventKey): Promise<boolean> {
-    if (!useDB) return true
+    if (!use_db
+    ) return true
 
     try {
         await db.query(
@@ -48,7 +49,8 @@ export async function insertMatch(
     match_key: MatchKey,
     event_key: EventKey
 ): Promise<boolean> {
-    if (!useDB) return true
+    if (!use_db
+    ) return true
 
     try {
         await db.query(
@@ -71,7 +73,8 @@ export async function insertTeam(
     team_number: number,
     website: string
 ): Promise<boolean> {
-    if (!useDB) return true
+    if (!use_db
+    ) return true
 
     try {
         await db.query(
@@ -93,7 +96,8 @@ export async function insertTeamMatch(
     team_key: TeamKey,
     team_data: TeamMatch
 ): Promise<boolean> {
-    if (!useDB) return true
+    if (!use_db
+    ) return true
 
     try {
         await db.query(
@@ -160,7 +164,8 @@ export async function insertCycleTime(
     team_key: TeamKey,
     match_key: MatchKey
 ): Promise<boolean> {
-    if (!useDB) return true
+    if (!use_db
+    ) return true
 
     try {
         await db.query(
@@ -182,7 +187,8 @@ export async function insertDefenseTime(
     team_key: TeamKey,
     match_key: MatchKey
 ): Promise<boolean> {
-    if (!useDB) return true
+    if (!use_db
+    ) return true
 
     try {
         await db.query(
@@ -204,7 +210,8 @@ export async function insertImage(
     team_key: TeamKey,
     url: string
 ): Promise<boolean> {
-    if (!useDB) return true
+    if (!use_db
+    ) return true
 
     try {
         await db.query(
@@ -226,7 +233,7 @@ export async function insertPitScoutingData(
   team_key: TeamKey,
   pit_data: PitScoutData
 ): Promise<boolean> {
-  if (!useDB) return true;
+  if (!use_db) return true;
 
     try {
         await db.query(
@@ -274,7 +281,8 @@ export async function getTeamMatch(
     match_key: MatchKey,
     team_key: TeamKey
 ): Promise<TeamMatch | null> {
-    if (!useDB)
+    if (!use_db
+    )
         return Promise.resolve({
             broke: false,
             died: false,
@@ -335,7 +343,8 @@ export async function getTeamMatch(
 }
 
 export async function getEvent(event_key: EventKey): Promise<TeamEvent | null> {
-    if (!useDB)
+    if (!use_db
+    )
         return Promise.resolve({
             id: 1,
             team_key: 'frc1540',
@@ -356,7 +365,8 @@ export async function getEvent(event_key: EventKey): Promise<TeamEvent | null> {
 }
 
 export async function getTeam(team_key: TeamKey): Promise<Team | null> {
-    if (!useDB)
+    if (!use_db
+    )
         return Promise.resolve({
             team_key: 'frc1540',
             nickname: 'Team 1540',
@@ -377,7 +387,8 @@ export async function getTeam(team_key: TeamKey): Promise<Team | null> {
 }
 
 export async function getTeams(): Promise<Team[] | null> {
-    if (!useDB)
+    if (!use_db
+    )
         return Promise.resolve([
             {
                 team_key: 'frc1540',

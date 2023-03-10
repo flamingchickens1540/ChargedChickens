@@ -2,19 +2,22 @@
 
 <script lang="ts">
     import { notes } from "$lib/stores/matchScoutStores";
-</script>
-<div class = "makeBorder">
-    Notes
-        <textarea bind:value={$notes} class = "notesBox"></textarea>
-</div>
-<style>
+  </script>
+  
+  <div class="grid grid-rows-1 grid-cols-1 place-items-center">
+    <div class = "makeBorder">
+      Extra Notes
+          <textarea bind:value={$notes} class = "notesBox"></textarea>
+    </div>
+  </div>
+
+  <style>
     .notesBox{
         width: 100%;
         resize: none;
         height: 63px;
     }
     .makeBorder{
-        display: flex;
         font-family: "Poppins";
         flex-direction: column;
         background-color: #efdcdc;

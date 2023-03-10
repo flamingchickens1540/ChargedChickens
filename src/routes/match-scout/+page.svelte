@@ -19,9 +19,10 @@
     promise = new Promise(async (resolve, reject) => {
       controller.signal.addEventListener("abort", reject);
       $info = await recursivePoll();
-      if($info.success)
+      if($info.success) {
+      
         resolve();
-      else
+      } else
         reject();
     });
   }
@@ -51,7 +52,7 @@
         }
       })
       .catch(err => {
-        return {"success": false};
+        return {"success": false, nextPollTime : 0};
       });
   }
 </script>

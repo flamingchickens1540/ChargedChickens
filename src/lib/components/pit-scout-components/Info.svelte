@@ -9,16 +9,6 @@
 
 <style>
 
-  .makeFont{
-    font-size: 23px;
-    border-bottom-width: 2px;
-    border-color: black;
-    width: 341px;
-    display: flex;
-    justify-content: center;
-    font-weight: 700;
-  }
-
   .notesBox{
     width: 243px;
     resize: none;
