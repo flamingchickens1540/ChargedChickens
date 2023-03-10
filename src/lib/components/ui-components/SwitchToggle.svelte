@@ -45,6 +45,7 @@
     .stack {
         border-top-right-radius: 0px;
         border-top-left-radius: 0px;
-        margin-top: -1.5vh;
+        padding-top: 1vw;
+        margin-top: -1vh;
     }
 </style>
