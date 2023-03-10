@@ -1,6 +1,4 @@
 <script lang="ts">
-  import TeleOpScoring from "$lib/assets/Teleop.png";
-  import SucceessFailure from '$lib/assets/SuccessFailure.png'
   import {
   cycle_times,
   tele_high_center_fail,
@@ -23,7 +21,9 @@
   tele_mid_right_succeed,
 } from '$lib/stores/matchScoutStores'
 import { defense_times } from '$lib/stores/matchScoutStores'
-    import { info } from "$lib/stores/generalStores"
+    import ScoreTable from "../ui-components/ScoreTable.svelte"
+
+let succeedFailScreen : boolean;
 
 const teleScoreSucceed = [
   tele_high_left_succeed,
@@ -35,7 +35,7 @@ const teleScoreSucceed = [
   tele_low_left_succeed,
   tele_low_center_succeed,
   tele_low_right_succeed,
-]
+];
 const teleScoreFail = [
   tele_high_left_fail,
   tele_high_center_fail,
@@ -46,13 +46,7 @@ const teleScoreFail = [
   tele_low_left_fail,
   tele_low_center_fail,
   tele_low_right_fail,
-]
-
-
-  let tableWidth : number;
-
-  let clicked: boolean = false;
-  let gridIndex : number;
+];
 
   let initialDefenseTime : number;
   let lastCycleTimestamp : number;
@@ -72,61 +66,54 @@ const teleScoreFail = [
   * Make clicking display a success/fail choice component
   * 
   */
-  function mouseClicked(mouse : MouseEvent) {
-      if(mouse.offsetY == tableWidth || mouse.offsetX == tableWidth)
-          return;
 
-        if (!clicked) {
-          clicked = true;
-          gridIndex =  Math.floor(mouse.offsetX / tableWidth * 3) + Math.floor(mouse.offsetY / tableWidth * 3) * 3;
-        } else {
-            if (mouse.offsetX < outerWidth / 2) {
-                teleScoreSucceed[gridIndex].update(n => n + 1);
-                const timestamp = Date.now();
-                if (lastCycleTimestamp != null) $cycle_times.push((timestamp - lastCycleTimestamp) / 1000);
-                lastCycleTimestamp = timestamp;
-            }
-            else {
-                teleScoreFail[gridIndex].update(n => n + 1);
-            }
-            
-            clicked = false;
-        }
+  let gridIndex : number;
+  function gridSelected(index : number) {
+    gridIndex = index;
+    succeedFailScreen = true;
+  }
 
-      // gridIndex = Math.floor(mouse.offsetX / tableWidth * 3) + Math.floor(mouse.offsetY / tableWidth * 3) * 3;
-      // console.log(gridIndex);
-      // clicked = true;
+  function successFailSelected(succeed : boolean) {
+    if(succeed) {
+      teleScoreSucceed[gridIndex].update(n => n + 1);
+      const timestamp = Date.now();
+      if (lastCycleTimestamp != null) 
+        $cycle_times.push((timestamp - lastCycleTimestamp) / 1000);
+      lastCycleTimestamp = timestamp;
+    } else {
+      teleScoreFail[gridIndex].update(n => n + 1);
+    }
+    succeedFailScreen = false;
   }
 
   function handleMouseup() {
-    if (!clicked) {
+    if (!succeedFailScreen) {
       const time = Date.now() - initialDefenseTime
       if (time > 500) $defense_times.push(time / 1000)
-    } else { clicked = false }
+    }
+    succeedFailScreen = false;
   } 
 
   function handleMousedown() {
-    if (!clicked) {
+    if(!succeedFailScreen) {
       initialDefenseTime = Date.now();
     }
   }
 </script>
 
-<div class="grid grid-rows-1 grid-cols-1 place-items-center">
-  <h1 id="header" class="text-{$info.robot?.alliance}-600 text-center text-4xl font-extrabold">Telescore {$info.robot?.team_key}</h1>
-</div><div 
-on:mousedown={mouseClicked} 
-bind:clientWidth={tableWidth} style="
-  <!-- background: #F0E6E6; -->;
-  padding: 2%;
-
-  border-width:0.75vw;
-  border-color: black;
-  border-radius: 1.5vw;"
+<ScoreTable succeedFailScreen={succeedFailScreen}
+gridSelected={gridSelected}
+successFailSelected={successFailSelected}
+></ScoreTable>
+<!-- <Canvas
+width={tableWidth}
+height={tableWidth}
+class="object-center"
+on:click={mouseClicked}
+style="
 >
-<img src={clicked ? SucceessFailure : TeleOpScoring} alt=""/>
-
-</div>
+<Layer {render} />
+</Canvas> -->
 
 <div
   class="p-5 grid grid-cols-1 grid-rows-1 place-items-center"
@@ -136,18 +123,6 @@ bind:clientWidth={tableWidth} style="
       class="h-32 w-80 lg:flex-grow sm:flex-shrink rounded-full unselectable"
       on:touchstart={handleMousedown}
       on:touchend={handleMouseup}
-      >{clicked ? "Back" : "Defense"}</button
+      >{succeedFailScreen ? "Back" : "Defense"}</button
   >
 </div>
-
-
-<style>
-
-  div {
-      font-family: "Poppins";
-  }
-
-  /* header {
-      color: var(--header-color)
-  } */
-</style>

@@ -29,8 +29,6 @@
 	<br>
 	<Drivetrain />
 	<br>
-	<Wheels />
-	<br>
 	<Polish />
 	<br>
 	<Scoring />

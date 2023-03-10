@@ -1,12 +1,13 @@
+<!-- Credit: David -->
+
 <script lang="ts">
     import { notes } from "$lib/stores/matchScoutStores";
-  </script>
-  
-  <div class = "makeBorder">
-    Extra Notes
+</script>
+<div class = "makeBorder">
+    Notes
         <textarea bind:value={$notes} class = "notesBox"></textarea>
-  </div>
-  <style>
+</div>
+<style>
     .notesBox{
         width: 100%;
         resize: none;
@@ -16,15 +17,12 @@
         display: flex;
         font-family: "Poppins";
         flex-direction: column;
-        align-items: center;
-        width: 341px;
         background-color: #efdcdc;
         border-color: black;
         font-size: 23px;
-        border-width: 2px;
+        border-width: 0.75vw;
         border-radius: 0.5rem;
         justify-content: center;
         padding: 11px;
     }
-  </style>
-  
+</style>

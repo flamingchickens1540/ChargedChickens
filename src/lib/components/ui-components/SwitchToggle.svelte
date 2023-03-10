@@ -28,7 +28,7 @@
         align-items: center;
         font-family: "Poppins";
         font-size: 23px;
-        border-width: 0.75vw;
+        border-width: 2px;
         border-color: black;
         border-radius: 0.5rem;
         background-color: #efdcdc;
@@ -45,6 +45,6 @@
     .stack {
         border-top-right-radius: 0px;
         border-top-left-radius: 0px;
-        margin-top: -1.5vw;
+        margin-top: -1.5vh;
     }
 </style>
