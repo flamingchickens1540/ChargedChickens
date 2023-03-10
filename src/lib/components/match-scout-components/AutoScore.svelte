@@ -105,7 +105,7 @@ border-radius: 1.5vw;
 >
   <button
   style="background-color: blueviolet"
-      class="h-32 w-80 lg:flex-grow sm:flex-shrink rounded-full unselectable"
+      class="h-32 w-80 lg:flex-grow sm:flex-shrink rounded-full select-none"
       on:click={handleBackClick}
       >Back</button
   >
