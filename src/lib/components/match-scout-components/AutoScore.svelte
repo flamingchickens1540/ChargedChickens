@@ -21,37 +21,34 @@
   auto_low_center_fail, 
   auto_low_right_fail
 } from '$lib/stores/matchScoutStores'
+
   import { info } from "$lib/stores/generalStores"
-
-const teleScoreSucceed = [
-  auto_high_left_succeed, 
-  auto_high_center_succeed, 
-  auto_high_right_succeed, 
-  auto_mid_left_succeed, 
-  auto_mid_center_succeed, 
-  auto_mid_right_succeed, 
-  auto_low_left_succeed, 
-  auto_low_center_succeed, 
-  auto_low_right_succeed
-]
-const teleScoreFail = [
-  auto_high_left_fail, 
-  auto_high_center_fail, 
-  auto_high_right_fail, 
-  auto_mid_left_fail, 
-  auto_mid_center_fail, 
-  auto_mid_right_fail, 
-  auto_low_left_fail, 
-  auto_low_center_fail, 
-  auto_low_right_fail
-]
-
-
+  const teleScoreSucceed = [
+    auto_high_left_succeed, 
+    auto_high_center_succeed, 
+    auto_high_right_succeed, 
+    auto_mid_left_succeed, 
+    auto_mid_center_succeed, 
+    auto_mid_right_succeed, 
+    auto_low_left_succeed, 
+    auto_low_center_succeed, 
+    auto_low_right_succeed
+  ]
+  const teleScoreFail = [
+    auto_high_left_fail, 
+    auto_high_center_fail, 
+    auto_high_right_fail, 
+    auto_mid_left_fail, 
+    auto_mid_center_fail, 
+    auto_mid_right_fail, 
+    auto_low_left_fail, 
+    auto_low_center_fail, 
+    auto_low_right_fail
+  ]
   let tableWidth : number;
-
   let clicked: boolean = false;
   let gridIndex : number;
-
+  
   /**
   * Handles the double clicking of the mouse on the telescore canvas
   * The purpose is to increment one of the teleScoreFail stores based on which cell on the canvas grid was clicked
@@ -70,7 +67,6 @@ const teleScoreFail = [
   function mouseClicked(mouse : MouseEvent) {
       if(mouse.offsetY == tableWidth || mouse.offsetX == tableWidth)
           return;
-
         if (!clicked) {
           clicked = true;
             gridIndex =  Math.floor(mouse.offsetX / tableWidth * 3) + Math.floor(mouse.offsetY / tableWidth * 3) * 3;
@@ -88,7 +84,6 @@ const teleScoreFail = [
             clicked = false;
         }
   }
-
   function handleBackClick() {
     clicked = false;
   }
@@ -98,7 +93,6 @@ const teleScoreFail = [
   <h1 id="header" class="text-{$info.robot?.alliance}-600 text-center text-4xl font-extrabold">Autoscore {$info.robot?.team_key}</h1>
 </div><div on:mousedown={mouseClicked} bind:clientWidth={tableWidth} style="
 padding: 2%;
-
 border-width:0.75vw;
 border-color: black;
 border-radius: 1.5vw;
@@ -123,33 +117,3 @@ border-radius: 1.5vw;
       font-family: "Poppins";
   }
 </style>
-
-
-
-
-<!-- <ScoreTable fail={
-[
-  auto_high_left_fail, 
-  auto_high_center_fail, 
-  auto_high_right_fail, 
-  auto_mid_left_fail, 
-  auto_mid_center_fail, 
-  auto_mid_right_fail, 
-  auto_low_left_fail, 
-  auto_low_center_fail, 
-  auto_low_right_fail
-]
-} 
-success={
-[
-  auto_high_left_succeed, 
-  auto_high_center_succeed, 
-  auto_high_right_succeed, 
-  auto_mid_left_succeed, 
-  auto_mid_center_succeed, 
-  auto_mid_right_succeed, 
-  auto_low_left_succeed, 
-  auto_low_center_succeed, 
-  auto_low_right_succeed
-]
-}/> -->

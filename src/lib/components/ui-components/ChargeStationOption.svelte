@@ -5,7 +5,7 @@
     export let id : number;
 </script>
 
-<button class="overflow-y-auto" class:selected on:mousedown={() => click(id)}>{name}</button>
+<button class:selected on:mousedown={() => click(id)}>{name}</button>
 
 <style>
     button {

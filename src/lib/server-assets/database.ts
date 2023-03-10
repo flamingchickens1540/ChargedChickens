@@ -229,12 +229,11 @@ export async function insertImage(
 }
 
 export async function insertPitScoutingData(
-    event_key: EventKey,
-    team_key: TeamKey,
-    pit_data: PitScoutData
+  event_key: EventKey,
+  team_key: TeamKey,
+  pit_data: PitScoutData
 ): Promise<boolean> {
-    if (!use_db
-    ) return true
+  if (!use_db) return true;
 
     try {
         await db.query(

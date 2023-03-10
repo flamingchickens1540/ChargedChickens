@@ -44,6 +44,8 @@
           low_center: false,
           low_right: false,
         };
+        isVisible = true;
+        hasSumbit = true;
 
         isVisible = true;
         hasSumbit = true;

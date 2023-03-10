@@ -24,7 +24,6 @@
 } from '$lib/stores/matchScoutStores'
 import { defense_times } from '$lib/stores/matchScoutStores'
     import { info } from "$lib/stores/generalStores"
-
 const teleScoreSucceed = [
   tele_high_left_succeed,
   tele_high_center_succeed,
@@ -47,16 +46,11 @@ const teleScoreFail = [
   tele_low_center_fail,
   tele_low_right_fail,
 ]
-
-
   let tableWidth : number;
-
   let clicked: boolean = false;
   let gridIndex : number;
-
   let initialDefenseTime : number;
   let lastCycleTimestamp : number;
-
   /**
   * Handles the double clicking of the mouse on the telescore canvas
   * The purpose is to increment one of the teleScoreFail stores based on which cell on the canvas grid was clicked
@@ -75,7 +69,6 @@ const teleScoreFail = [
   function mouseClicked(mouse : MouseEvent) {
       if(mouse.offsetY == tableWidth || mouse.offsetX == tableWidth)
           return;
-
         if (!clicked) {
           clicked = true;
           gridIndex =  Math.floor(mouse.offsetX / tableWidth * 3) + Math.floor(mouse.offsetY / tableWidth * 3) * 3;
@@ -92,19 +85,16 @@ const teleScoreFail = [
             
             clicked = false;
         }
-
       // gridIndex = Math.floor(mouse.offsetX / tableWidth * 3) + Math.floor(mouse.offsetY / tableWidth * 3) * 3;
       // console.log(gridIndex);
       // clicked = true;
   }
-
   function handleMouseup() {
     if (!clicked) {
       const time = Date.now() - initialDefenseTime
       if (time > 500) $defense_times.push(time / 1000)
     } else { clicked = false }
   } 
-
   function handleMousedown() {
     if (!clicked) {
       initialDefenseTime = Date.now();
@@ -118,7 +108,6 @@ const teleScoreFail = [
 on:mousedown={mouseClicked} 
 bind:clientWidth={tableWidth} style="
   padding: 2%;
-
   border-width:0.75vw;
   border-color: black;
   border-radius: 1.5vw;"
@@ -142,11 +131,9 @@ bind:clientWidth={tableWidth} style="
 
 
 <style>
-
   div {
       font-family: "Poppins";
   }
-
   /* header {
       color: var(--header-color)
   } */
