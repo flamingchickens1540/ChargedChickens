@@ -41,6 +41,7 @@
             body: data,
         })
             .then((data) => data.json())
+            .then((data) => {if (data.success) location.reload()})
             .then((res) => console.log(res))   
  	}
 </script>

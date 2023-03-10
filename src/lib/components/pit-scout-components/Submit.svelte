@@ -56,7 +56,7 @@
         });
 
         console.log(Object.keys(data).length)
-       	if (localStorage.getItem('event_key')) localStorage.setItem('event_key', $event_key)
+       	localStorage.setItem('event_key', $event_key)
 	console.log(localStorage.getItem('event_key'))
         
 
@@ -67,7 +67,7 @@
                 "passphrase": localStorage.getItem("passphrase") || "",
                 "APPKEY": $APPKEY,
             },
-            body: JSON.stringify({"event_key": localStorage.getItem('event_key') || "", "team_key": $team_key, data}),
+            body: JSON.stringify({"event_key": localStorage.getItem('event_key') || "2023orwil", "team_key": $team_key, data}),
         })
             .then((res) => res.json())
             .then((data) => {if (data.success) location.reload()})
