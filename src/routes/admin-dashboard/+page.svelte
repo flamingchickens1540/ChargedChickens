@@ -175,10 +175,20 @@
         <button class="h-14 text-red-600 text-lg p-4 rounded bg-yellow-300 outline" on:click={() => createEvent()}> Create Event </button>
     </div>
 
-    <div class="h-36 grid grid-cols-1 grid-rows-2 place-items-center outline">
-        <input type="text" bind:value={inputPassword}>
-        <button class="h-14 text-red-600 text-lg p-4 rounded bg-yellow-300 outline" on:click={() => setPassword()}> Auth </button>
-    </div>
+    <!-- Finish await -->
+    <!-- {#await } -->
+        <div class="h-36 grid grid-cols-1 grid-rows-2 place-items-center outline">
+            <input type="text" bind:value={inputPassword}>
+            <button class="h-14 text-red-600 text-lg p-4 rounded bg-yellow-300 outline" on:click={() => setPassword()}> Auth </button>
+        </div>
+    <!-- {:then }  -->
+        <!-- <div class="h-36 grid grid-cols-1 grid-rows-2 place-items-center outline">
+            <input type="text" bind:value={inputPassword}>
+            <button class="h-14 text-green-600 text-lg p-4 rounded bg-yellow-300 outline" on:click={() => setPassword()}> Auth </button>
+        </div>
+    {/await} -->
+    
+
 
 </div>
 
