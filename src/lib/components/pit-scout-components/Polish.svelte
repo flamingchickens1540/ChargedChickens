@@ -22,7 +22,6 @@
 <style>
     .makeBorder{
         display: flex;
-        background-color: #efdcdc;
         border-color: black;
         border-width: 2px;
         border-radius: 0.5rem;

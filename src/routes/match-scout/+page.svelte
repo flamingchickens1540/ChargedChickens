@@ -20,11 +20,7 @@
       controller.signal.addEventListener("abort", reject);
       $info = await recursivePoll();
       if($info.success) {
-        const container = (document.querySelector(".container") as HTMLElement).style;
-        container.background = "#dbd6d6";
-        container.margin = "0px";
       
-
         resolve();
       } else
         reject();
@@ -47,10 +43,11 @@
       signal: controller.signal,
     })
       .then((res) => res.json())
-      .then(async (data: MatchScoutInfo) => {
+      .then(async (data : MatchScoutInfo) => {
         if (data.success) {
           return data;
         } else {
+          await new Promise(resolve => setTimeout(resolve, data.nextPollTime - Date.now()))
           return await recursivePoll();
         }
       })

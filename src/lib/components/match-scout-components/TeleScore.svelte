@@ -117,7 +117,6 @@ const teleScoreFail = [
 </div><div 
 on:mousedown={mouseClicked} 
 bind:clientWidth={tableWidth} style="
-  <!-- background: #F0E6E6; -->;
   padding: 2%;
 
   border-width:0.75vw;
@@ -136,8 +135,9 @@ bind:clientWidth={tableWidth} style="
       class="h-32 w-80 lg:flex-grow sm:flex-shrink rounded-full unselectable"
       on:touchstart={handleMousedown}
       on:touchend={handleMouseup}
+      on:click={handleMousedown}
       >{clicked ? "Back" : "Defense"}</button
-  >
+    >
 </div>
 
 

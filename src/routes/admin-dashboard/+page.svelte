@@ -1,8 +1,6 @@
 <script lang="ts">
     import type { AssignData, EventKey, MatchKey, TeamKey } from '$lib/types';
     import { APPKEY } from "$lib/stores/generalStores";
-    import { team_matches_stores } from '$lib/stores/matchScoutStores';
-    import { select_option } from 'svelte/internal';
     
     let match_key: string = '';
     let event_key: string = '';
@@ -76,6 +74,7 @@
             .then(data => { if (!data.success) alert("ERROR"); else lastCreatedMatch = match.match_key; });
     }
 
+    
     function autoPopulate() {
         fetch('/api/admin/teams', {
             method: 'POST',
@@ -139,54 +138,74 @@
         inputPassword = "";
     }
 </script>
-
-<h1 class="text-center text-3xl">Welcome Admin</h1>
 <br>
 <div class="grid grid-rows-1 grid-cols-2 text-center">
 
-    <div class="p-10 grid grid-cols-1 grid-rows-2 gap-5 place-self-center border-4">
-        <h1 class="text-blue-600">Blue Robots</h1>
-        <input type="text" class="border" bind:value={robots_blue[0]}>
-        <input type="text" class="border" bind:value={robots_blue[1]}>
-        <input type="text" class="border" bind:value={robots_blue[2]}>
+    <div class="p-4 col-span-2 grid grid-rows-1 grid-cols-1 outline">
+        <h1 class="text-center text-3xl text-blue-600"><strong> Welcome Admin </strong></h1>
     </div>
 
-    <div class="p-10 grid grid-cols-1 grid-rows-2 gap-5 place-self-center border-4">
-        <h1 class="text-red-600">Red Robots</h1>
-        <input type="text" class="border" bind:value={robots_red[0]}>
-        <input type="text" class="border" bind:value={robots_red[1]}>
-        <input type="text" class="border" bind:value={robots_red[2]}>
+    <div class="p-10 grid grid-cols-1 grid-rows-2 gap-5 place-self-center outline">
+        <h1 class="text-blue-600"><strong> Blue Robots </strong></h1>
+        <input type="text" bind:value={robots_blue[0]}>
+        <input type="text" bind:value={robots_blue[1]}>
+        <input type="text" bind:value={robots_blue[2]}>
+    </div>
+
+    <div class="p-10 grid grid-cols-1 grid-rows-2 gap-5 place-self-center outline">
+        <h1 class="text-red-500"><strong> Red Robots </strong></h1>
+        <input type="text" bind:value={robots_red[0]}>
+        <input type="text" bind:value={robots_red[1]}>
+        <input type="text" bind:value={robots_red[2]}>
     </div>
 </div>
 
 <div class="grid grid-rows-1 grid-cols-2 text-center">
-    <div class="p-10 grid grid-cols-1 grid-rows-2 gap-5 place-items-center border-4">
-        <label for="match_key">Match Key</label>
-        <input type="text" class="border" name="match_key" bind:value={match_key}>
+
+    <div class="p-4 grid grid-cols-1 grid-rows-2 gap-5 place-items-center outline">
+        <label class="text-blue-600" for="match_key"><strong> Match Key </strong></label>
+        <input type="text" name="match_key" bind:value={match_key}>
     </div>
-    <div class="grid grid-cols-1 grid-rows-1 place-items-center border-4">
-        <button class="h-36 w-36 lg:flex-grow sm:flex-shrink rounded-full outline outline-10" style="--btn-color:{color}; --btn-edge-color:{edgeColor}" on:click={createMatch}>Create Match</button>
-        <p>Last Created Match: {lastCreatedMatch}</p>
+
+    <div class="h-24 grid grid-cols-1 grid-rows-1 place-items-center outline ">
+        <button class="h-14 lg:flex-grow sm:flex-shrink text-red-600 text-lg p-4 rounded bg-yellow-300 outline" on:click={autoPopulate}> Auto-Populate </button>
     </div>
-    <div class="grid grid-cols-1 grid-rows-2 place-items-center border-4">
-        <input type="text" bind:value={inputPassword}>
-        <button class="text-red-600 text-lg p-2 rounded bg-yellow-300" id="auth" on:click={() => setPassword()}>AUTH</button>
-    </div>  
-    <button on:click={autoPopulate}> AUTOPOPULATE </button>
-    <div class="grid grid-cols-1 grid-rows-2 place-items-center border-4">
+
+    <div class="grid grid-cols-1 grid-rows-2 place-items-center outline">
+        <strong><p class="text-blue-600">Last Created Match</p></strong>
+        <strong><p class="text-blue-600">{lastCreatedMatch}</p></strong>
+    </div>
+
+    <div class="h-24 grid grid-cols-1 grid-rows-1 place-items-center outline">
+        <button class="h-14 text-red-600 text-lg p-4 rounded bg-yellow-300 outline" on:click={createMatch}> Create Match </button>
+    </div>
+    
+    <div class="h-36 grid grid-cols-1 grid-rows-2 place-items-center outline">
         <input type="text" bind:value={event_key}>
-        <button class="text-red-600 text-lg p-2 rounded bg-yellow-300" on:click={() => createEvent()}> create event </button>
-    </div>  
+        <button class="h-14 text-red-600 text-lg p-4 rounded bg-yellow-300 outline" on:click={() => createEvent()}> Create Event </button>
+    </div>
+
+    <div class="h-36 grid grid-cols-1 grid-rows-2 place-items-center outline">
+        <input type="text" bind:value={inputPassword}>
+        <button class="h-14 text-red-600 text-lg p-4 rounded bg-yellow-300 outline" on:click={() => setPassword()}> Auth </button>
+    </div>
 
 </div>
 
 <style>
+
     button {
         color: rgb(255, 255, 255);
-        background-color: rgb(118, 218, 99);
-        outline-color:rgb(118, 218, 99, .3);
+        background-color: rgb(240, 60, 60);
+        outline-color:rgb(240, 60, 60, .3);
     }
-    h1 {
-        color: rgb(280, 30, 30);
+   
+    div {
+        background-color: #313639;
     }
+
+    input {
+        background-color: darkgrey;
+    }
+
 </style>
