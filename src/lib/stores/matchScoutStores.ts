@@ -1,8 +1,5 @@
 import { writable, type Writable } from 'svelte/store'
 
-export const team_number: Writable<string | undefined> = writable('')
-
-
 export const team_number: Writable<string | undefined> = writable("");
 
 //stores for match scouting
