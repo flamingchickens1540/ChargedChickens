@@ -30,7 +30,7 @@
         })
         data.append('team_key', team_key)
         localStorage.setItem("event_key", $event_key)
-        data.append('match_key', localStorage.getItem("event_key") || '')
+        data.append('match_key', localStorage.getItem("event_key") || '2023orwil')
         
         fetch('/api/submit/photo', {
             method: 'POST',
