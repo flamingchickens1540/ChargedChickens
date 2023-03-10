@@ -2,50 +2,50 @@
   import TeleOpScoring from "$lib/assets/Teleop.png";
   import SucceessFailure from '$lib/assets/SuccessFailure.png'
   import {
-  cycle_times,
-  tele_high_center_fail,
-  tele_high_center_succeed,
-  tele_high_left_fail,
-  tele_high_left_succeed,
-  tele_high_right_fail,
-  tele_high_right_succeed,
-  tele_low_center_fail,
-  tele_low_center_succeed,
-  tele_low_left_fail,
-  tele_low_left_succeed,
-  tele_low_right_fail,
-  tele_low_right_succeed,
-  tele_mid_center_fail,
-  tele_mid_center_succeed,
-  tele_mid_left_fail,
-  tele_mid_left_succeed,
-  tele_mid_right_fail,
-  tele_mid_right_succeed,
-} from '$lib/stores/matchScoutStores'
-import { defense_times } from '$lib/stores/matchScoutStores'
-    import { info } from "$lib/stores/generalStores"
-const teleScoreSucceed = [
-  tele_high_left_succeed,
-  tele_high_center_succeed,
-  tele_high_right_succeed,
-  tele_mid_left_succeed,
-  tele_mid_center_succeed,
-  tele_mid_right_succeed,
-  tele_low_left_succeed,
-  tele_low_center_succeed,
-  tele_low_right_succeed,
-]
-const teleScoreFail = [
-  tele_high_left_fail,
-  tele_high_center_fail,
-  tele_high_right_fail,
-  tele_mid_left_fail,
-  tele_mid_center_fail,
-  tele_mid_right_fail,
-  tele_low_left_fail,
-  tele_low_center_fail,
-  tele_low_right_fail,
-]
+    cycle_times,
+    tele_high_center_fail,
+    tele_high_center_succeed,
+    tele_high_left_fail,
+    tele_high_left_succeed,
+    tele_high_right_fail,
+    tele_high_right_succeed,
+    tele_low_center_fail,
+    tele_low_center_succeed,
+    tele_low_left_fail,
+    tele_low_left_succeed,
+    tele_low_right_fail,
+    tele_low_right_succeed,
+    tele_mid_center_fail,
+    tele_mid_center_succeed,
+    tele_mid_left_fail,
+    tele_mid_left_succeed,
+    tele_mid_right_fail,
+    tele_mid_right_succeed,
+  } from '$lib/stores/matchScoutStores'
+  import { defense_times } from '$lib/stores/matchScoutStores'
+  import { info } from "$lib/stores/generalStores"
+  const teleScoreSucceed = [
+    tele_high_left_succeed,
+    tele_high_center_succeed,
+    tele_high_right_succeed,
+    tele_mid_left_succeed,
+    tele_mid_center_succeed,
+    tele_mid_right_succeed,
+    tele_low_left_succeed,
+    tele_low_center_succeed,
+    tele_low_right_succeed,
+  ]
+  const teleScoreFail = [
+    tele_high_left_fail,
+    tele_high_center_fail,
+    tele_high_right_fail,
+    tele_mid_left_fail,
+    tele_mid_center_fail,
+    tele_mid_right_fail,
+    tele_low_left_fail,
+    tele_low_center_fail,
+    tele_low_right_fail,
+  ]
   let tableWidth : number;
   let clicked: boolean = false;
   let gridIndex : number;
@@ -93,24 +93,24 @@ const teleScoreFail = [
     if (!clicked) {
       const time = Date.now() - initialDefenseTime
       if (time > 500) $defense_times.push(time / 1000)
-    } else { clicked = false }
+    } else clicked = false
   } 
   function handleMousedown() {
     if (!clicked) {
       initialDefenseTime = Date.now();
-    }
+    } else clicked = false
   }
 </script>
 
 <div class="grid grid-rows-1 grid-cols-1 place-items-center">
   <h1 id="header" class="text-{$info.robot?.alliance}-600 text-center text-4xl font-extrabold">Telescore {$info.robot?.team_key}</h1>
 </div><div 
-on:mousedown={mouseClicked} 
-bind:clientWidth={tableWidth} style="
-  padding: 2%;
-  border-width:0.75vw;
-  border-color: black;
-  border-radius: 1.5vw;"
+  on:mousedown={mouseClicked} 
+  bind:clientWidth={tableWidth} style="
+    padding: 2%;
+    border-width:0.75vw;
+    border-color: black;
+    border-radius: 1.5vw;"
 >
 <img src={clicked ? SucceessFailure : TeleOpScoring} alt=""/>
 
