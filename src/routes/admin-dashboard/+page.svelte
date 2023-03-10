@@ -9,20 +9,15 @@
     let lastCreatedMatch: string = '';
     let inputPassword = "";
 
-    let color = "#76DA63";
-    let edgeColor: string = "#76da634d";
+    (document.getElementById("background") as HTMLElement).style.background = "#222222";
 
-    function sleep(ms: number) {
-        return new Promise(resolve => setTimeout(resolve, ms));
-    }
     /**
      * Creates a new match
      * 
      * @params e: on:click event
     */
-    async function createMatch(e: any) {
-        color = "#000000";
-        edgeColor = "#000000";  
+    async function createMatch(_e: any) {
+  
         let rr = parseRobots(robots_red);
         let rb = parseRobots(robots_blue);
         
@@ -36,9 +31,6 @@
         }
 
         sendMatch(match);
-        await sleep(1000);
-        color = "#76DA63";
-        edgeColor = "#76da634d";
     }
 
     /**
@@ -48,7 +40,7 @@
      * 
      * @returns An array of TeamKeys
      */
-    function parseRobots(robots:string[]): TeamKey[] {
+    function parseRobots(robots: string[]): TeamKey[] {
         let new_robots: TeamKey[] = [];
         robots.forEach(robot => new_robots.push(`frc${robot.replace(/\s/g, "") as unknown as number}` as TeamKey));
         return new_robots;
@@ -98,7 +90,7 @@
                 robots_blue = [data.blue[0].slice(3), data.blue[1].slice(3), data.blue[2].slice(3)];
 
             })
-            .catch(err => alert("ERROR"));
+            .catch(_err => alert("ERROR"));
     }
 
     function createEvent() {
@@ -120,7 +112,7 @@
 
                 if (!data.success) alert("ERROR");
             })
-            .catch(err => alert("ERROR"));
+            .catch(_err => alert("ERROR"));
     }
 
     function setPassword() {
@@ -139,68 +131,71 @@
     }
 </script>
 <br>
-<div class="grid grid-rows-1 grid-cols-2 text-center">
+<div class="outline outline-fade">
+    <div class="grid grid-rows-1 grid-cols-2 text-center">
 
-    <div class="p-4 col-span-2 grid grid-rows-1 grid-cols-1 outline">
-        <h1 class="text-center text-3xl text-blue-600"><strong> Welcome Admin </strong></h1>
+        <div class="p-4 col-span-2 grid grid-rows-1 grid-cols-1 outline">
+            <h1 class="text-center text-3xl text-blue-600"><strong> Welcome Admin </strong></h1>
+        </div>
+    
+        <div class="p-10 grid grid-cols-1 grid-rows-2 gap-5 place-self-center outline">
+            <h1 class="text-blue-600"><strong> Blue Robots </strong></h1>
+            <input type="text" bind:value={robots_blue[0]}>
+            <input type="text" bind:value={robots_blue[1]}>
+            <input type="text" bind:value={robots_blue[2]}>
+        </div>
+    
+        <div class="p-10 grid grid-cols-1 grid-rows-2 gap-5 place-self-center outline">
+            <h1 class="text-red-500"><strong> Red Robots </strong></h1>
+            <input type="text" bind:value={robots_red[0]}>
+            <input type="text" bind:value={robots_red[1]}>
+            <input type="text" bind:value={robots_red[2]}>
+        </div>
     </div>
-
-    <div class="p-10 grid grid-cols-1 grid-rows-2 gap-5 place-self-center outline">
-        <h1 class="text-blue-600"><strong> Blue Robots </strong></h1>
-        <input type="text" bind:value={robots_blue[0]}>
-        <input type="text" bind:value={robots_blue[1]}>
-        <input type="text" bind:value={robots_blue[2]}>
-    </div>
-
-    <div class="p-10 grid grid-cols-1 grid-rows-2 gap-5 place-self-center outline">
-        <h1 class="text-red-500"><strong> Red Robots </strong></h1>
-        <input type="text" bind:value={robots_red[0]}>
-        <input type="text" bind:value={robots_red[1]}>
-        <input type="text" bind:value={robots_red[2]}>
+    
+    <div class="grid grid-rows-1 grid-cols-2 text-center">
+    
+        <div class="p-4 grid grid-cols-1 grid-rows-2 gap-5 place-items-center outline">
+            <label class="text-blue-600" for="match_key"><strong> Match Key </strong></label>
+            <input type="text" name="match_key" bind:value={match_key}>
+        </div>
+    
+        <div class="h-24 grid grid-cols-1 grid-rows-1 place-items-center outline ">
+            <button class="h-14 lg:flex-grow sm:flex-shrink text-red-600 text-lg p-4 rounded bg-yellow-300 outline" on:click={autoPopulate}> Auto-Populate </button>
+        </div>
+    
+        <div class="grid grid-cols-1 grid-rows-2 place-items-center outline">
+            <strong><p class="text-blue-600">Last Created Match</p></strong>
+            <strong><p class="text-blue-600">{lastCreatedMatch}</p></strong>
+        </div>
+    
+        <div class="h-24 grid grid-cols-1 grid-rows-1 place-items-center outline">
+            <button class="h-14 text-red-600 text-lg p-4 rounded bg-yellow-300 outline" on:click={createMatch}> Create Match </button>
+        </div>
+        
+        <div class="h-36 grid grid-cols-1 grid-rows-2 place-items-center outline pb-4">
+            <input type="text" bind:value={event_key}>
+            <button class="h-14 text-red-600 text-lg p-4 rounded bg-yellow-300 outline" on:click={() => createEvent()}> Create Event </button>
+        </div>
+    
+        <!-- Finish await -->
+        <!-- {#await } -->
+            <div class="h-36 grid grid-cols-1 grid-rows-2 place-items-center outline pb-4">
+                <input type="text" bind:value={inputPassword}>
+                <button class="h-14 text-red-600 text-lg p-4 rounded bg-yellow-300 outline" on:click={() => setPassword()}> Auth </button>
+            </div>
+        <!-- {:then }  -->
+            <!-- <div class="h-36 grid grid-cols-1 grid-rows-2 place-items-center outline">
+                <input type="text" bind:value={inputPassword}>
+                <button class="h-14 text-green-600 text-lg p-4 rounded bg-yellow-300 outline" on:click={() => setPassword()}> Auth </button>
+            </div>
+        {/await} -->
+        
+    
+    
     </div>
 </div>
 
-<div class="grid grid-rows-1 grid-cols-2 text-center">
-
-    <div class="p-4 grid grid-cols-1 grid-rows-2 gap-5 place-items-center outline">
-        <label class="text-blue-600" for="match_key"><strong> Match Key </strong></label>
-        <input type="text" name="match_key" bind:value={match_key}>
-    </div>
-
-    <div class="h-24 grid grid-cols-1 grid-rows-1 place-items-center outline ">
-        <button class="h-14 lg:flex-grow sm:flex-shrink text-red-600 text-lg p-4 rounded bg-yellow-300 outline" on:click={autoPopulate}> Auto-Populate </button>
-    </div>
-
-    <div class="grid grid-cols-1 grid-rows-2 place-items-center outline">
-        <strong><p class="text-blue-600">Last Created Match</p></strong>
-        <strong><p class="text-blue-600">{lastCreatedMatch}</p></strong>
-    </div>
-
-    <div class="h-24 grid grid-cols-1 grid-rows-1 place-items-center outline">
-        <button class="h-14 text-red-600 text-lg p-4 rounded bg-yellow-300 outline" on:click={createMatch}> Create Match </button>
-    </div>
-    
-    <div class="h-36 grid grid-cols-1 grid-rows-2 place-items-center outline">
-        <input type="text" bind:value={event_key}>
-        <button class="h-14 text-red-600 text-lg p-4 rounded bg-yellow-300 outline" on:click={() => createEvent()}> Create Event </button>
-    </div>
-
-    <!-- Finish await -->
-    <!-- {#await } -->
-        <div class="h-36 grid grid-cols-1 grid-rows-2 place-items-center outline">
-            <input type="text" bind:value={inputPassword}>
-            <button class="h-14 text-red-600 text-lg p-4 rounded bg-yellow-300 outline" on:click={() => setPassword()}> Auth </button>
-        </div>
-    <!-- {:then }  -->
-        <!-- <div class="h-36 grid grid-cols-1 grid-rows-2 place-items-center outline">
-            <input type="text" bind:value={inputPassword}>
-            <button class="h-14 text-green-600 text-lg p-4 rounded bg-yellow-300 outline" on:click={() => setPassword()}> Auth </button>
-        </div>
-    {/await} -->
-    
-
-
-</div>
 
 <style>
 
@@ -216,6 +211,10 @@
 
     input {
         background-color: darkgrey;
+    }
+
+    .outline-fade {
+        outline-color: rgb(49 ,54 ,57, .85);
     }
 
 </style>
