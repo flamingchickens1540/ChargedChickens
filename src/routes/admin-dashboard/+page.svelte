@@ -133,7 +133,7 @@
                 APPKEY: $APPKEY
             }
         }).then(res => res.json()).then(data => 
-            (document.getElementById("auth") as HTMLElement).style.background = data.success ? "red" : ""
+            (document.getElementById("auth") as HTMLElement).style.background = data.success ? "yellow" : ""
         );
         inputPassword = "";
     }
@@ -187,7 +187,7 @@
 
     <div class="h-36 grid grid-cols-1 grid-rows-2 place-items-center outline">
         <input type="text" bind:value={inputPassword}>
-        <button class="h-14 text-red-600 text-lg p-4 rounded bg-yellow-300 outline" on:click={() => setPassword()}> Auth </button>
+        <button class="h-14 text-red-600 text-lg p-4 rounded bg-yellow-300 outline" id="authed" on:click={() => setPassword()}> Auth </button>
     </div>
 
 </div>
