@@ -125,6 +125,16 @@
 
     function setPassword() {
         localStorage.setItem("ADMIN_PASSWORD", inputPassword);
+        fetch('/api/admin/authed', {
+            method:"POST",
+            body:JSON.stringify({password:inputPassword}),
+            headers : {
+                passphrase: localStorage.getItem("passphrase") || "",
+                APPKEY: $APPKEY
+            }
+        }).then(res => res.json()).then(data => 
+            (document.getElementById("auth") as HTMLElement).style.background = data.success ? "yellow" : ""
+        );
         inputPassword = "";
     }
 </script>

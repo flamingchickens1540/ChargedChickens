@@ -2,7 +2,7 @@
     import { drivetrain } from "$lib/stores/pitScoutStores";
 
     var backgroundColorsButtons = ["#efdcdc","#efdcdc","#efdcdc", "#efdcdc"]
-
+    
     function handleSwerve(){
         drivetrain.set(0);
         for (let i = 0; i < 4; i++){

@@ -94,7 +94,7 @@ const teleScoreFail = [
   }
 </script>
 
-<div class="grid grid-rows-1 grid-cols-1 place-items-center overflow-y-scroll">
+<div class="grid grid-rows-1 grid-cols-1 place-items-center">
   <h1 id="header" class="text-{$info.robot?.alliance}-600 text-center text-4xl font-extrabold">Autoscore {$info.robot?.team_key}</h1>
 </div><div on:mousedown={mouseClicked} bind:clientWidth={tableWidth} style="
 padding: 2%;
