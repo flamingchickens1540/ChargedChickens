@@ -16,7 +16,8 @@ import type {
     TeamMatch,
 } from '$lib/types'
 
-const use_db: boolean = USE_DB.toLowerCase as unknown as string == "true";
+const use_db: boolean = USE_DB === "true";
+
 const db = mysql
     .createPool({
         host: MYSQL_HOST,
@@ -96,8 +97,7 @@ export async function insertTeamMatch(
     team_key: TeamKey,
     team_data: TeamMatch
 ): Promise<boolean> {
-    if (!use_db
-    ) return true
+	if (!use_db) return true
 
     try {
         await db.query(
