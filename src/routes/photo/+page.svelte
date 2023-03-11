@@ -1,19 +1,19 @@
 <script lang="ts">
     import { APPKEY } from '$lib/stores/generalStores'
     import type { EventKey, TeamKey } from '$lib/types'
-    import FancyButtons from "$lib/components/ui-components/FancyButtons.svelte"
-    import { confetti } from "@neoconfetti/svelte"
-    import { tick } from "svelte"
-      import { event_key } from "$lib/stores/pitScoutStores";
-        const ImageCompressor = require("js-image-compressor");
-      	let isVisible = false
+    import FancyButtons from '$lib/components/ui-components/FancyButtons.svelte'
+    import { confetti } from '@neoconfetti/svelte'
+    import { tick } from 'svelte'
+    import { event_key } from '$lib/stores/pitScoutStores'
+    const ImageCompressor = require('js-image-compressor')
+    let isVisible = false
     let submitVisible = false
     let hasSumbit = false
 
     let photos: FileList
     let team_key: TeamKey
-   //  let event_key: EventKey
-	event_key.set(localStorage.getItem('event_key') as EventKey || null)
+    //  let event_key: EventKey
+    event_key.set((localStorage.getItem('event_key') as EventKey) || null)
     function removeFile(photo: File) {
         const file = Array.from(photos).indexOf(photo)
         photos = Array.from(photos).filter(
@@ -24,34 +24,42 @@
     function submit() {
         isVisible = true
         hasSumbit = true
-        
+
         const data = new FormData()
         Array.from(photos).forEach((file) => {
             var options = {
                 file: file,
 
                 // Callback before compression
-                beforeCompress: function (result : any) {
-                    console.log('Image size before compression:', result.size);
-                    console.log('mime type:', result.type);
+                beforeCompress: function (result: any) {
+                    console.log('Image size before compression:', result.size)
+                    console.log('mime type:', result.type)
                 },
 
                 // Compression success callback
-                success: function (result : any) {
+                success: function (result: any) {
                     console.log('result:', result)
-                    console.log('Image size after compression:', result.size);
-                    console.log('mime type:', result.type);
-                    console.log('Actual compression ratio:', ((file.size-result.size) / file.size * 100).toFixed(2) +'%');
-                }
-            };
-            new ImageCompressor(options);
+                    console.log('Image size after compression:', result.size)
+                    console.log('mime type:', result.type)
+                    console.log(
+                        'Actual compression ratio:',
+                        (((file.size - result.size) / file.size) * 100).toFixed(
+                            2
+                        ) + '%'
+                    )
+                },
+            }
+            new ImageCompressor(options)
             data.append('photo', file)
             removeFile(file)
         })
         data.append('team_key', team_key)
-        localStorage.setItem("event_key", $event_key)
-        data.append('match_key', localStorage.getItem("event_key") || '2023orwil')
-        
+        localStorage.setItem('event_key', $event_key)
+        data.append(
+            'match_key',
+            localStorage.getItem('event_key') || '2023orwil'
+        )
+
         fetch('/api/submit/photo', {
             method: 'POST',
             headers: {
@@ -61,9 +69,11 @@
             body: data,
         })
             .then((data) => data.json())
-            .then((data) => {if (data.success) location.reload()})
-            .then((res) => console.log(res))   
- 	}
+            .then((data) => {
+                if (data.success) location.reload()
+            })
+            .then((res) => console.log(res))
+    }
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -101,51 +111,49 @@
                     <!-- svelte-ignore a11y-click-events-have-key-events -->
                     <h2>Selected</h2>
                     <button on:click={() => removeFile(photo)}>
-                    <img
-                        src={URL.createObjectURL(photo)}
-                        alt={photo.name}
-                    />
+                        <img
+                            src={URL.createObjectURL(photo)}
+                            alt={photo.name}
+                        />
                     </button>
                 {/each}
             {/if}
         </div>
     </div>
     <br />
-    
 </div>
 
-
 <div class="flex flex-col items-center">
-  <FancyButtons
-      text={"Upload"}
-      on:click={submit}
-      bgColor={"#39c41f"}
-      fontSize={"47px"}
-  />
-  {#if submitVisible}
-      <div>
-          <div use:confetti />
-      </div>
-  {/if}
-  {#if isVisible}
-      <div>
-          <div use:confetti />
-      </div>
-  {/if}
-  <div class="downButtons">
-      {#if hasSumbit}
-      <FancyButtons
-          on:click={async () => {
-              isVisible = false;
-              await tick();
-              isVisible = true;
-          }}
-          text="Go Ahead And Click This For More Confetti :D Your Welcome -David :D"
-          bgColor="#39c41f"
-          fontSize="11px"
-      />
-      {/if}
-  </div>
+    <FancyButtons
+        text={'Upload'}
+        on:click={submit}
+        bgColor={'#39c41f'}
+        fontSize={'47px'}
+    />
+    {#if submitVisible}
+        <div>
+            <div use:confetti />
+        </div>
+    {/if}
+    {#if isVisible}
+        <div>
+            <div use:confetti />
+        </div>
+    {/if}
+    <div class="downButtons">
+        {#if hasSumbit}
+            <FancyButtons
+                on:click={async () => {
+                    isVisible = false
+                    await tick()
+                    isVisible = true
+                }}
+                text="Go Ahead And Click This For More Confetti :D Your Welcome -David :D"
+                bgColor="#39c41f"
+                fontSize="11px"
+            />
+        {/if}
+    </div>
 </div>
 
 <style>
@@ -156,17 +164,17 @@
         padding-right: 37px;
     }
 
-    .makeTitle{
-      font-family: 'Poppins';
-      font-size: 2.6rem;
-      color: #b231f5; 
+    .makeTitle {
+        font-family: 'Poppins';
+        font-size: 2.6rem;
+        color: #b231f5;
     }
     .makeUpload {
         display: flex;
         font-family: 'Poppins';
         width: 341px;
         background-color: #efdcdc;
-        border-color: black;  
+        border-color: black;
         font-size: 1.2rem;
         text-align: center;
         border-width: 2px;
@@ -177,7 +185,6 @@
         padding-bottom: 11px;
         flex-direction: column;
         align-content: center;
-        
     }
     .notesBox {
         width: 243px;

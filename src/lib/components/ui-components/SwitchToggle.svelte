@@ -1,32 +1,33 @@
 <script lang="ts">
-    import Switch from "$lib/components/ui-components/Switch.svelte";
-    export let checked : boolean;
-    export let name : string;
-    export let stack = false;
+    import Switch from '$lib/components/ui-components/Switch.svelte'
+    export let checked: boolean
+    export let name: string
+    export let stack = false
 </script>
 
-<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
 <div class="makeBorder" class:stack>
-    <div class = "testBorder">
+    <div class="testBorder">
         <h1>{name}</h1>
-    </div> 
-    <div class= "brokeSwitchRight">
-        <Switch bind:checked/>
+    </div>
+    <div class="brokeSwitchRight">
+        <Switch bind:checked />
     </div>
 </div>
+
 <style>
-    .testBorder{
+    .testBorder {
         /* Credit: David */
         display: flex;
         align-items: right;
         justify-content: left;
-        width: 75%; 
+        width: 75%;
         text-indent: 11px;
     }
-    .makeBorder{
+    .makeBorder {
         display: flex;
         align-items: center;
-        font-family: "Poppins";
+        font-family: 'Poppins';
         font-size: 23px;
         border-width: 2px;
         border-color: black;
@@ -35,7 +36,7 @@
         padding: 2vw;
     }
 
-    .brokeSwitchRight{
+    .brokeSwitchRight {
         display: flex;
         padding-right: 1vw;
         justify-content: right;
