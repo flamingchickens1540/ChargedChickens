@@ -1,33 +1,33 @@
 <script lang="ts">
-    import ChargeStationOption from "../ui-components/ChargeStationOption.svelte";
+    import ChargeStationOption from '../ui-components/ChargeStationOption.svelte'
 
-    export const options = [
-        "Not Attempted",
-        "Failed",
-        "Docked",
-        "Engaged"
-    ];
-    export let handleClick : (option : number) => void;
-    export let name : string = "Charge Station";
+    export const options = ['Not Attempted', 'Failed', 'Docked', 'Engaged']
+    export let handleClick: (option: number) => void
+    export let name: string = 'Charge Station'
 
-    let selectedOption: number = 0;
+    let selectedOption: number = 0
 
-    function onClick(id : number) {
-        handleClick(selectedOption = id);
+    function onClick(id: number) {
+        handleClick((selectedOption = id))
     }
 </script>
 
 <div class="makeColumnButtons">
-    <div class="buttonsTitle"> 
+    <div class="buttonsTitle">
         {name}
     </div>
     {#each options as name, index}
-        <ChargeStationOption selected={selectedOption == index} name={name} id={index} click={onClick}></ChargeStationOption>
+        <ChargeStationOption
+            selected={selectedOption == index}
+            {name}
+            id={index}
+            click={onClick}
+        />
     {/each}
 </div>
 
 <style>
-    .makeColumnButtons{
+    .makeColumnButtons {
         display: flex;
         flex-direction: column;
         border-color: black;
@@ -36,11 +36,11 @@
         border-radius: 0.5rem;
         pointer-events: none;
     }
-    
-    .buttonsTitle{
+
+    .buttonsTitle {
         text-align: center;
         font-weight: 700;
-        font-family: "Poppins";
+        font-family: 'Poppins';
         font-size: 23px;
         height: 51px;
         border-color: black;

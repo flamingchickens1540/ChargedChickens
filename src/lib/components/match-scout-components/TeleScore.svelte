@@ -1,140 +1,144 @@
 <script lang="ts">
-  import TeleOpScoring from "$lib/assets/Teleop.png";
-  import SucceessFailure from '$lib/assets/SuccessFailure.png'
-  import {
-    cycle_times,
-    tele_high_center_fail,
-    tele_high_center_succeed,
-    tele_high_left_fail,
-    tele_high_left_succeed,
-    tele_high_right_fail,
-    tele_high_right_succeed,
-    tele_low_center_fail,
-    tele_low_center_succeed,
-    tele_low_left_fail,
-    tele_low_left_succeed,
-    tele_low_right_fail,
-    tele_low_right_succeed,
-    tele_mid_center_fail,
-    tele_mid_center_succeed,
-    tele_mid_left_fail,
-    tele_mid_left_succeed,
-    tele_mid_right_fail,
-    tele_mid_right_succeed,
-  } from '$lib/stores/matchScoutStores'
-  import { defense_times } from '$lib/stores/matchScoutStores'
-  import { info } from "$lib/stores/generalStores"
-  const teleScoreSucceed = [
-    tele_high_left_succeed,
-    tele_high_center_succeed,
-    tele_high_right_succeed,
-    tele_mid_left_succeed,
-    tele_mid_center_succeed,
-    tele_mid_right_succeed,
-    tele_low_left_succeed,
-    tele_low_center_succeed,
-    tele_low_right_succeed,
-  ]
-  const teleScoreFail = [
-    tele_high_left_fail,
-    tele_high_center_fail,
-    tele_high_right_fail,
-    tele_mid_left_fail,
-    tele_mid_center_fail,
-    tele_mid_right_fail,
-    tele_low_left_fail,
-    tele_low_center_fail,
-    tele_low_right_fail,
-  ]
-  let tableWidth : number;
-  let clicked: boolean = false;
-  let gridIndex : number;
-  let initialDefenseTime : number;
-  let lastCycleTimestamp : number;
-  /**
-  * Handles the double clicking of the mouse on the telescore canvas
-  * The purpose is to increment one of the teleScoreFail stores based on which cell on the canvas grid was clicked
-  * 
-  * @remarks
-  * For some reason, the rows calculation starts at 1, when it should start at 0, so we decrement the value by 1
-  * This is most likely because the elementHeight var actual measures from the top of the screen, not the top of the canvas
-  * This means that the 0th row is treated like the 1st row, even though clicks made on the 1st row are disregarded.
-  * 
-  * @param mouse - type: MouseEvent
-  * 
-  * @todo
-  * Make clicking display a success/fail choice component
-  * 
-  */
-  function mouseClicked(mouse : MouseEvent) {
-      if(mouse.offsetY == tableWidth || mouse.offsetX == tableWidth)
-          return;
+    import TeleOpScoring from '$lib/assets/Teleop.png'
+    import SucceessFailure from '$lib/assets/SuccessFailure.png'
+    import {
+        cycle_times,
+        tele_high_center_fail,
+        tele_high_center_succeed,
+        tele_high_left_fail,
+        tele_high_left_succeed,
+        tele_high_right_fail,
+        tele_high_right_succeed,
+        tele_low_center_fail,
+        tele_low_center_succeed,
+        tele_low_left_fail,
+        tele_low_left_succeed,
+        tele_low_right_fail,
+        tele_low_right_succeed,
+        tele_mid_center_fail,
+        tele_mid_center_succeed,
+        tele_mid_left_fail,
+        tele_mid_left_succeed,
+        tele_mid_right_fail,
+        tele_mid_right_succeed,
+    } from '$lib/stores/matchScoutStores'
+    import { defense_times } from '$lib/stores/matchScoutStores'
+    import { info } from '$lib/stores/generalStores'
+    const teleScoreSucceed = [
+        tele_high_left_succeed,
+        tele_high_center_succeed,
+        tele_high_right_succeed,
+        tele_mid_left_succeed,
+        tele_mid_center_succeed,
+        tele_mid_right_succeed,
+        tele_low_left_succeed,
+        tele_low_center_succeed,
+        tele_low_right_succeed,
+    ]
+    const teleScoreFail = [
+        tele_high_left_fail,
+        tele_high_center_fail,
+        tele_high_right_fail,
+        tele_mid_left_fail,
+        tele_mid_center_fail,
+        tele_mid_right_fail,
+        tele_low_left_fail,
+        tele_low_center_fail,
+        tele_low_right_fail,
+    ]
+    let tableWidth: number
+    let clicked: boolean = false
+    let gridIndex: number
+    let initialDefenseTime: number
+    let lastCycleTimestamp: number
+    /**
+     * Handles the double clicking of the mouse on the telescore canvas
+     * The purpose is to increment one of the teleScoreFail stores based on which cell on the canvas grid was clicked
+     *
+     * @remarks
+     * For some reason, the rows calculation starts at 1, when it should start at 0, so we decrement the value by 1
+     * This is most likely because the elementHeight var actual measures from the top of the screen, not the top of the canvas
+     * This means that the 0th row is treated like the 1st row, even though clicks made on the 1st row are disregarded.
+     *
+     * @param mouse - type: MouseEvent
+     *
+     * @todo
+     * Make clicking display a success/fail choice component
+     *
+     */
+    function mouseClicked(mouse: MouseEvent) {
+        if (mouse.offsetY == tableWidth || mouse.offsetX == tableWidth) return
         if (!clicked) {
-          clicked = true;
-          gridIndex =  Math.floor(mouse.offsetX / tableWidth * 3) + Math.floor(mouse.offsetY / tableWidth * 3) * 3;
+            clicked = true
+            gridIndex =
+                Math.floor((mouse.offsetX / tableWidth) * 3) +
+                Math.floor((mouse.offsetY / tableWidth) * 3) * 3
         } else {
             if (mouse.offsetX < outerWidth / 2) {
-                teleScoreSucceed[gridIndex].update(n => n + 1);
-                const timestamp = Date.now();
-                if (lastCycleTimestamp != null) $cycle_times.push((timestamp - lastCycleTimestamp) / 1000);
-                lastCycleTimestamp = timestamp;
+                teleScoreSucceed[gridIndex].update((n) => n + 1)
+                const timestamp = Date.now()
+                if (lastCycleTimestamp != null)
+                    $cycle_times.push((timestamp - lastCycleTimestamp) / 1000)
+                lastCycleTimestamp = timestamp
+            } else {
+                teleScoreFail[gridIndex].update((n) => n + 1)
             }
-            else {
-                teleScoreFail[gridIndex].update(n => n + 1);
-            }
-            
-            clicked = false;
+
+            clicked = false
         }
-      // gridIndex = Math.floor(mouse.offsetX / tableWidth * 3) + Math.floor(mouse.offsetY / tableWidth * 3) * 3;
-      // console.log(gridIndex);
-      // clicked = true;
-  }
-  function handleMouseup() {
-    if (!clicked) {
-      const time = Date.now() - initialDefenseTime
-      if (time > 500) $defense_times.push(time / 1000)
-    } else clicked = false
-  } 
-  function handleMousedown() {
-    if (!clicked) {
-      initialDefenseTime = Date.now();
-    } else clicked = false
-  }
+        // gridIndex = Math.floor(mouse.offsetX / tableWidth * 3) + Math.floor(mouse.offsetY / tableWidth * 3) * 3;
+        // console.log(gridIndex);
+        // clicked = true;
+    }
+    function handleMouseup() {
+        if (!clicked) {
+            const time = Date.now() - initialDefenseTime
+            if (time > 500) $defense_times.push(time / 1000)
+        } else clicked = false
+    }
+    function handleMousedown() {
+        if (!clicked) {
+            initialDefenseTime = Date.now()
+        } else clicked = false
+    }
 </script>
 
 <div class="grid grid-rows-1 grid-cols-1 place-items-center">
-  <h1 id="header" class="text-{$info.robot?.alliance}-600 text-center text-4xl font-extrabold">Telescore {$info.robot?.team_key}</h1>
-</div><div 
-  on:mousedown={mouseClicked} 
-  bind:clientWidth={tableWidth} style="
+    <h1
+        id="header"
+        class="text-{$info.robot
+            ?.alliance}-600 text-center text-4xl font-extrabold"
+    >
+        Telescore {$info.robot?.team_key}
+    </h1>
+</div>
+<div
+    on:mousedown={mouseClicked}
+    bind:clientWidth={tableWidth}
+    style="
     padding: 2%;
     border-width:0.75vw;
     border-color: black;
     border-radius: 1.5vw;"
 >
-<img src={clicked ? SucceessFailure : TeleOpScoring} alt=""/>
-
+    <img src={clicked ? SucceessFailure : TeleOpScoring} alt="" />
 </div>
 
-<div
-  class="p-5 grid grid-cols-1 grid-rows-1 place-items-center"
->
-  <button
-  style="background-color: blueviolet"
-      class="h-32 w-80 lg:flex-grow sm:flex-shrink rounded-full select-none"
-      on:touchstart={handleMousedown}
-      on:touchend={handleMouseup}
-      on:click={handleMousedown}
-      >{clicked ? "Back" : "Defense"}</button
+<div class="p-5 grid grid-cols-1 grid-rows-1 place-items-center">
+    <button
+        style="background-color: blueviolet"
+        class="h-32 w-80 lg:flex-grow sm:flex-shrink rounded-full select-none"
+        on:touchstart={handleMousedown}
+        on:touchend={handleMouseup}
+        on:click={handleMousedown}>{clicked ? 'Back' : 'Defense'}</button
     >
 </div>
 
-
 <style>
-  div {
-      font-family: "Poppins";
-  }
-  /* header {
+    div {
+        font-family: 'Poppins';
+    }
+    /* header {
       color: var(--header-color)
   } */
 </style>
