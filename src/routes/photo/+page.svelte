@@ -5,7 +5,8 @@
     import { confetti } from "@neoconfetti/svelte"
     import { tick } from "svelte"
       import { event_key } from "$lib/stores/pitScoutStores";
-	let isVisible = false
+        const ImageCompressor = require("js-image-compressor");
+      	let isVisible = false
     let submitVisible = false
     let hasSumbit = false
 
@@ -23,8 +24,27 @@
     function submit() {
         isVisible = true
         hasSumbit = true
+        
         const data = new FormData()
         Array.from(photos).forEach((file) => {
+            var options = {
+                file: file,
+
+                // Callback before compression
+                beforeCompress: function (result : any) {
+                    console.log('Image size before compression:', result.size);
+                    console.log('mime type:', result.type);
+                },
+
+                // Compression success callback
+                success: function (result : any) {
+                    console.log('result:', result)
+                    console.log('Image size after compression:', result.size);
+                    console.log('mime type:', result.type);
+                    console.log('Actual compression ratio:', ((file.size-result.size) / file.size * 100).toFixed(2) +'%');
+                }
+            };
+            new ImageCompressor(options);
             data.append('photo', file)
             removeFile(file)
         })

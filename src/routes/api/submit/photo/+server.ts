@@ -4,7 +4,7 @@ import { writeFile } from 'fs'
 import { randomUUID } from 'crypto'
 import type { RequestEvent, RequestHandler } from './$types'
 import type { EventKey, TeamKey } from '$lib/types'
-import { getTeam, getEvent, insertImage } from '$lib/server-assets/database'
+import { insertImage } from '$lib/server-assets/database'
 
 export const POST: RequestHandler = async (event: RequestEvent) => {
     const body = await event.request.formData()

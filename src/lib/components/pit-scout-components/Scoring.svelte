@@ -19,10 +19,10 @@ let scoring = [
 let click: {row: number, col: number};
 // @ts-ignore
 $: render = ({ context }) => {
-  const AutoScoreBoard = new Image();
-  AutoScoreBoard.src = TeleOpScoring;
-  AutoScoreBoard.onload = () => {
-      context.drawImage(AutoScoreBoard, 0, 0, outerWidth, outerWidth)
+  const ScoreBoard = new Image();
+  ScoreBoard.src = TeleOpScoring;
+  ScoreBoard.onload = () => {
+      context.drawImage(ScoreBoard, 0, 0, outerWidth, outerWidth)
   }
   let count = 0;
   if (click) {
@@ -36,11 +36,6 @@ $: render = ({ context }) => {
       let x = (tile_num%3)*rect_size;
       let y = (Math.floor(tile_num/3))*rect_size;
 
-      if (DEBUG) console.log(tile_num/3); 
-      if (DEBUG) console.log("Tiles mod 3")
-      if (DEBUG) console.log(tile_num%3);
-      if (DEBUG) console.log(held_value);
-
       if(held_value) {
           context.fillStyle = "rgba(38, 213, 71)";
           context.fillRect(x, y, rect_size, rect_size);
@@ -52,7 +47,6 @@ $: render = ({ context }) => {
 function mouseClicked(mouse: MouseEvent) {
 if (mouse.offsetY == outerWidth || mouse.offsetX == outerWidth) return
   click = { row: Math.floor(mouse.offsetY / outerWidth * 3), col: Math.floor(mouse.offsetX / outerWidth * 3) }
-  console.log(click);
   let held_value;
   scoring[click.col + (click.row * 3)].subscribe(value => held_value = value);
 
@@ -60,20 +54,21 @@ if (mouse.offsetY == outerWidth || mouse.offsetX == outerWidth) return
 
 }
 onMount(() => {
-  outerWidth = document.getElementById("scoring")?.clientWidth || window.outerWidth
+  outerWidth = window.outerWidth
 });
 </script>
 
 <h1 id="scoring" class="text-purple-600 text-center text-4xl font-extrabold">Where can it score?</h1>
 <div class="grid grid-row-1 grid-cols-1 place-items-center">
   <Canvas
-  width={outerWidth}
-  height={outerWidth}   
+  width={outerWidth }
+  height={outerWidth }   
   on:click={mouseClicked}
   >
     <Layer {render} />
   </Canvas>
 </div>
+
 <style>
 div {
   font-family: "Poppins";
