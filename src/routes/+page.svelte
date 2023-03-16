@@ -18,7 +18,7 @@
                 (data) =>
                     ((
                         document.getElementById('auth') as HTMLElement
-                    ).style.background = data.success ? 'green' : '')
+                    ).style.background = data.success ? '#7ed957' : '#e41919')
             )
         inputPhrase = ''
     }

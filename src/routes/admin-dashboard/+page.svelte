@@ -143,7 +143,7 @@
                 (data) =>
                     ((
                         document.getElementById('auth') as HTMLElement
-                    ).style.background = data.success ? 'blue' : '')
+                    ).style.background = data.success ? '#7ed957' : '#e41919')
             )
         inputPassword = ''
     }
@@ -161,19 +161,19 @@
         <div
             class="p-10 grid grid-cols-1 grid-rows-2 gap-5 place-self-center outline"
         >
-            <h1 class="text-blue-600"><strong> Blue Robots </strong></h1>
-            <input type="text" bind:value={robots_blue[0]} />
-            <input type="text" bind:value={robots_blue[1]} />
-            <input type="text" bind:value={robots_blue[2]} />
+            <h1 class="text-red-500"><strong> Red Robots </strong></h1>
+            <input type="text" bind:value={robots_red[0]} />
+            <input type="text" bind:value={robots_red[1]} />
+            <input type="text" bind:value={robots_red[2]} />
         </div>
 
         <div
             class="p-10 grid grid-cols-1 grid-rows-2 gap-5 place-self-center outline"
         >
-            <h1 class="text-red-500"><strong> Red Robots </strong></h1>
-            <input type="text" bind:value={robots_red[0]} />
-            <input type="text" bind:value={robots_red[1]} />
-            <input type="text" bind:value={robots_red[2]} />
+            <h1 class="text-blue-600"><strong> Blue Robots </strong></h1>
+            <input type="text" bind:value={robots_blue[0]} />
+            <input type="text" bind:value={robots_blue[1]} />
+            <input type="text" bind:value={robots_blue[2]} />
         </div>
     </div>
 

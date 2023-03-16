@@ -32,7 +32,7 @@
         flex-direction: column;
         border-color: black;
         background-color: #efdcdc;
-        border-width: 0.75vw;
+        border-width: 2px;
         border-radius: 0.5rem;
         pointer-events: none;
     }

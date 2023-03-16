@@ -61,7 +61,7 @@
     <title>Match Scout</title>
 </svelte:head>
 
-<div class="text-center bigMans">
+<div class="text-center">
     {#await promise}
         <button
             class="text-blue-500 font-bold text-4xl p-8 rounded bg-red-500"
