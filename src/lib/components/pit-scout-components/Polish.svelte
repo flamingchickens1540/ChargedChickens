@@ -25,6 +25,7 @@
     .makeBorder {
         display: flex;
         border-color: black;
+        background-color: #efdcdc;
         border-width: 2px;
         border-radius: 0.5rem;
         height: 61px;
