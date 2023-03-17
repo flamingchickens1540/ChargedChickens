@@ -27,7 +27,7 @@
         display: flex;
         background-color: #efdcdc;
         border-color: black;
-        border-width: 0.75vw;
+        border-width: 2px;
         border-radius: 0.5rem;
         height: 61px;
         align-content: center;

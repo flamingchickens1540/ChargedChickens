@@ -3,7 +3,7 @@
     import { notes } from '$lib/stores/matchScoutStores'
 </script>
 
-<div class="grid grid-rows-1 grid-cols-1 place-items-center">
+<div>
     <div class="makeBorder">
         Extra Notes
         <textarea bind:value={$notes} class="notesBox" />
@@ -22,7 +22,7 @@
         background-color: #efdcdc;
         border-color: black;
         font-size: 23px;
-        border-width: 0.75vw;
+        border-width: 2px;
         border-radius: 0.5rem;
         justify-content: center;
         padding: 11px;

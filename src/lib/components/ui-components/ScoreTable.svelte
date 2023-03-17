@@ -49,7 +49,7 @@
 padding: 2%;
 border-width:2px;
 border-color: black;
-border-radius: 1.5vh;
+border-radius: 10px;
 "
 >
     <img src={succeedFailScreen ? SucceessFailure : TeleOpScoring} alt="" />
