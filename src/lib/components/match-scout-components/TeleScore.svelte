@@ -133,8 +133,8 @@
     <button
     style="background-color: blueviolet"
         class="h-32 w-80 lg:flex-grow sm:flex-shrink rounded-full unselectable"
-        on:touchstart={handleMousedown}
-        on:touchend={handleMouseup}
+        on:mousedown={handleMousedown}
+        on:mouseup={handleMouseup}
         >{succeedFailScreen ? "Back" : "Defense"}</button
     >
   </div>

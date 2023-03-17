@@ -31,7 +31,7 @@
         font-size: 23px;
         border-width: 2px;
         border-color: black;
-        border-radius: 0.5rem;
+        border-radius: 10px;
         background-color: #efdcdc;
         padding: 7px;
     }

@@ -55,7 +55,7 @@ function successFailSelected(succeed : boolean) {
         <button
             style="background-color: blueviolet"
             class="h-32 w-80 lg:flex-grow sm:flex-shrink rounded-full select-none"
-            on:click={() => succeedFailScreen = false}>Back</button
+            on:click={() => console.log(succeedFailScreen = false)}>Back</button
         >
     </div>
 {/if}
