@@ -34,18 +34,17 @@
 
 <!-- fix margin -->
 <div id="carousel" style="height:fit-content;">
-    <div id="auto" class="overflow-y-auto" style="padding:4vw;">
-        <AutoScore />
-        <div class="place-items-center" style="padding-top:1vh;">
-            <AutoChargeStation />
-        </div>
-        <div class="makeWideWider" style="padding-top:1vh">
-            <AutoCommunity />
-        </div>
+    <div id="auto" class="flex flex-col" style="padding:3vw;flex-wrap:wrap">
+        <AutoScore/>
+            <div style="padding-top:1vh;">
+                <AutoChargeStation />
+            </div>
+            <div class="makeWideWider" style="padding-top:1vh">
+                <AutoCommunity />
+            </div>
     </div>
     <div id="tele" style="padding-left:3vh;padding-right:3vh;">
         <TeleScore />
-        <br />
     </div>
     <div id="end" style="padding-left:3vh;padding-right:3vh;">
         <EndChargeStation />

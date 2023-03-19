@@ -31,9 +31,9 @@
         font-size: 23px;
         border-width: 2px;
         border-color: black;
-        border-radius: 0.5rem;
+        border-radius: 10px;
         background-color: #efdcdc;
-        padding: 2vw;
+        padding: 7px;
     }
 
     .brokeSwitchRight {
@@ -46,7 +46,7 @@
     .stack {
         border-top-right-radius: 0px;
         border-top-left-radius: 0px;
-        padding-top: 1vw;
-        margin-top: -1vh;
+        padding-top: 3px;
+        margin-top: -7px;
     }
 </style>
