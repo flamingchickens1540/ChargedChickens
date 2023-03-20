@@ -10,4 +10,4 @@
     rel="stylesheet"
 />
 
-<SwitchToggle bind:checked={$auto_community} name="Auto Community" />
+<SwitchToggle bind:checked={$auto_community} name="Did the Robot leave its community?" />

@@ -4,14 +4,14 @@
 
 <div class="makeBorder">
     Extra Notes
-    <textarea bind:value={$notes} class="notesBox" placeholder="Example Notes"/>
+    <textarea bind:value={$notes} class="notesBox" placeholder="The Robot is the most beautiful thing"/>
 </div>
 
 <style>
     .notesBox {
         width: 100%;
         resize: none;
-        height: 63px;
+        height: 70px;
     }
     .makeBorder {
         display: flex;
