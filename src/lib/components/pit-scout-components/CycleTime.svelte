@@ -4,7 +4,7 @@
 
 <div class="makeBorder">
     <h1 class="text-xl text-center">Estimated CycleTime(In Seconds)</h1>
-    <input type="number" class="notesBox" bind:value={$est_cycle_time} />
+    <input type="number" class="notesBox" placeholder="15" bind:value={$est_cycle_time} />
 </div>
 
 <style>

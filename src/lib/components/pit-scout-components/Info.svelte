@@ -5,8 +5,8 @@
 </script>
 
 <div class="makeBorder">
-    Event Key: <input class="notesBox" bind:value={$event_key} />
-    Team Key: <input class="notesBox" bind:value={$team_key} />
+    Event Key: <input class="notesBox" placeholder="2023salor" bind:value={$event_key} />
+    Team Key: <input class="notesBox" placeholder="1540" bind:value={$team_key} />
 </div>
 
 <style>

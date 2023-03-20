@@ -67,8 +67,8 @@
                 APPKEY: $APPKEY,
             },
             body: JSON.stringify({
-                event_key: localStorage.getItem('event_key') || '2023orwil',
-                team_key: $team_key,
+                event_key: localStorage.getItem('event_key') || '',
+                team_key: "frc" + $team_key,
                 data,
             }),
         })

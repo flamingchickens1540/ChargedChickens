@@ -14,6 +14,7 @@
     import { onMount } from 'svelte'
     import { Canvas, Layer } from 'svelte-canvas'
     import { DEBUG } from '$lib/generalStores'
+    import type { Click } from '$lib/types'
 
     let scoring = [
         high_left, // 0
@@ -26,7 +27,7 @@
         low_center,
         low_right,
     ]
-    let click: { row: number; col: number }
+    let click: Click;
     // @ts-ignore
     $: render = ({ context }) => {
         const ScoreBoard = new Image()
