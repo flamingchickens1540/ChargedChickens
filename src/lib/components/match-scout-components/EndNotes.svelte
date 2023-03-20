@@ -6,7 +6,7 @@
 <div>
     <div class="makeBorder">
         Extra Notes
-        <textarea bind:value={$notes} class="notesBox" placeholder="Example Notes" />
+        <textarea bind:value={$notes} class="notesBox" placeholder="The greatest arm of all time" />
     </div>
 </div>
 
@@ -14,7 +14,7 @@
     .notesBox {
         width: 100%;
         resize: none;
-        height: 63px;
+        height: 70px;
     }
     .makeBorder {
         font-family: 'Poppins';

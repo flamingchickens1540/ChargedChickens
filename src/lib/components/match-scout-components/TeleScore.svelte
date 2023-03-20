@@ -117,8 +117,8 @@
 </div>
   
   <ScoreTable succeedFailScreen={succeedFailScreen}
-  gridSelected={gridSelected}
-  successFailSelected={successFailSelected}
+    gridSelected={gridSelected}
+    successFailSelected={successFailSelected}
   ></ScoreTable>
   <!-- <Canvas
   width={tableWidth}
