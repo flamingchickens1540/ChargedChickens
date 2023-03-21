@@ -52,6 +52,7 @@
   
     let initialDefenseTime : number;
     let lastCycleTimestamp : number;
+    let defenseColor = "blueviolet";
   
     /**
     * Handles the double clicking of the mouse on the telescore canvas
@@ -94,10 +95,12 @@
         if (time > 500) $defense_times.push(time / 1000)
       }
       succeedFailScreen = false;
+      defenseColor = "blueviolet";
     } 
   
     function handleMousedown() {
       if(!succeedFailScreen) {
+        defenseColor = "yellow";
         initialDefenseTime = Date.now();
       }
     }
@@ -114,8 +117,8 @@
 </div>
   
   <ScoreTable succeedFailScreen={succeedFailScreen}
-  gridSelected={gridSelected}
-  successFailSelected={successFailSelected}
+    gridSelected={gridSelected}
+    successFailSelected={successFailSelected}
   ></ScoreTable>
   <!-- <Canvas
   width={tableWidth}
@@ -131,7 +134,7 @@
     class="p-5 grid grid-cols-1 grid-rows-1 place-items-center"
   >
     <button
-    style="background-color: blueviolet"
+    style="background-color: {defenseColor}"
         class="h-32 w-80 lg:flex-grow sm:flex-shrink rounded-full unselectable"
         on:mousedown={handleMousedown}
         on:mouseup={handleMouseup}
