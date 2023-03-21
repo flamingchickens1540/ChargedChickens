@@ -68,7 +68,7 @@
             },
             body: JSON.stringify({
                 event_key: localStorage.getItem('event_key') || '',
-                team_key: "frc" + $team_key,
+                team_key: ("frc" + $team_key).trim(),
                 data,
             }),
         })

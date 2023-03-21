@@ -4,7 +4,7 @@
 
 <div class="makeBorder">
     Extra Notes
-    <textarea bind:value={$notes} class="notesBox" placeholder="The Robot is the most beautiful thing"/>
+    <textarea bind:value={$notes} class="notesBox" placeholder="Specific Gracious Professional Comments"/>
 </div>
 
 <style>
