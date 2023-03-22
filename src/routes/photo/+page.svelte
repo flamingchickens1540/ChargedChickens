@@ -29,7 +29,7 @@
             data.append('photo', file)
             removeFile(file)
         })
-        data.append('team_key', team_key)
+        data.append('team_key', ("frc" + team_key).trim())
         localStorage.setItem('event_key', $event_key)
         data.append(
             'match_key',
@@ -75,7 +75,7 @@
         />
 
         Team Key:
-        <input class="notesBox" placeholder={'frc1540'} bind:value={team_key} />
+        <input class="notesBox" placeholder={'1540'} bind:value={team_key} />
         <!--- TODO: make the number of files update correct --->
     </div>
     <br />
