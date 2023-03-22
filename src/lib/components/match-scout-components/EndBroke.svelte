@@ -10,4 +10,4 @@
     rel="stylesheet"
 />
 
-<SwitchToggle bind:checked={$broke} name="Is Broken" />
+<SwitchToggle bind:checked={$broke} name="Did the Robot break?" />

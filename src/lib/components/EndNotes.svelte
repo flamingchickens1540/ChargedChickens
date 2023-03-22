@@ -1,10 +1,12 @@
 <script lang="ts">
-    import { notes } from '$lib/stores/pitScoutStores'
+    import { notes } from '$lib/stores/matchScoutStores'
 </script>
 
-<div class="makeBorder">
-    Extra Notes
-    <textarea bind:value={$notes} class="notesBox" placeholder="Specific Gracious Professional Comments"/>
+<div>
+    <div class="makeBorder">
+        Extra Notes
+        <textarea bind:value={$notes} class="notesBox" placeholder="Specific Gracious Professional Comments" />
+    </div>
 </div>
 
 <style>
@@ -14,11 +16,8 @@
         height: 70px;
     }
     .makeBorder {
-        display: flex;
         font-family: 'Poppins';
         flex-direction: column;
-        align-items: center;
-        width: 341px;
         background-color: #efdcdc;
         border-color: black;
         font-size: 23px;

@@ -146,3 +146,8 @@ export type RGB = {
     green: number
     blue: number
 }
+
+export type Click = {
+    row: number
+    col: number 
+}

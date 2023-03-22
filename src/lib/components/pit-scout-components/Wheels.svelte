@@ -12,7 +12,7 @@
 
 <div class="makeBorder">
     <div class="testBorder">
-        <h1>Wheels Slippery</h1>
+        <h1>Slippery Wheels?</h1>
     </div>
     <div class="brokeSwitchRight">
         <Switch bind:checked={$slippery_wheels} />

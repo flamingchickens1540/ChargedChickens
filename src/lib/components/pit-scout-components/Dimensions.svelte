@@ -5,10 +5,10 @@
 <div class="makeBorder">
     <div class="makeFont">Dimensions</div>
     <label for="length">Length(inches)</label>
-    <input name="length" class="notesBox" type="number" bind:value={$length} />
+    <input name="length" class="notesBox" type="number" placeholder="30" bind:value={$length} />
     <div class="makeLine" />
     <label for="width">Width(inches)</label>
-    <input name="width" class="notesBox" type="number" bind:value={$width} />
+    <input name="width" class="notesBox" type="number" placeholder="30" bind:value={$width} />
 </div>
 
 <style>
