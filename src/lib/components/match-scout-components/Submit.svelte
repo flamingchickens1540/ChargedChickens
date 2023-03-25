@@ -90,6 +90,7 @@
                 data,
                 cycle_times: $cycle_times,
                 defense_times: $defense_times,
+                timestamp: $info.nextPollTime
             }),
         }).then(() => location.reload())
     }

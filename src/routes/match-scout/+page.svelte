@@ -1,9 +1,10 @@
 <script lang="ts">
     import ScoutCarousel from '$lib/components/ScoutCarousel.svelte'
-    import type { MatchScoutInfo } from '$lib/types'
+    import type { MatchScoutInfo, RobotMatch } from '$lib/types'
     import { info } from '$lib/stores/generalStores'
     import { APPKEY } from '$lib/stores/generalStores'
     import { beforeNavigate } from '$app/navigation'
+    import { json } from '@sveltejs/kit'
 
     let controller: AbortController
     let promise: Promise<void> = err()
@@ -22,6 +23,20 @@
             if ($info.success) {
                 resolve()
             } else reject()
+        })
+    }
+
+    async function assignedMatch(robotMatch : RobotMatch) {
+        return await fetch('/api/assigned', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                passphrase: localStorage.getItem('passphrase') || '',
+                APPKEY: $APPKEY,
+                
+            },
+            signal: controller.signal,
+            body:JSON.stringify(robotMatch)
         })
     }
 

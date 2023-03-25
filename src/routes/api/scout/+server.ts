@@ -8,5 +8,5 @@ export const POST = async (request: Request) => {
         return json({ success: false, nextPollTime: getNextPollTime() })
     }
 
-    return json({ success: true, ...match })
+    return json({ success: true, nextPollTime: getNextPollTime(), ...match })
 }

@@ -1,6 +1,6 @@
 import { json } from '@sveltejs/kit'
 import type { RequestEvent, RequestHandler } from './$types'
-import { endMatch } from '$lib/server-assets/scoutQueue';
+import { endMatch, isInvalidated } from '$lib/server-assets/scoutQueue';
 import {
     insertTeamMatch,
     insertCycleTime,
@@ -14,8 +14,13 @@ export const POST: RequestHandler = async (event: RequestEvent) => {
         robot: Robot
         data: TeamMatch
         cycle_times: number[]
-        defense_times: number[]
+        defense_times: number[],
+        timestamp : number
     } = await event.request.json()
+
+    if(isInvalidated(body.timestamp)) {
+    return json({ success: false, endpoint: 'submit' })
+    }
 
     const dbRes = await Promise.allSettled([
         insertTeamMatch(body.match.match_key, body.robot.team_key, body.data),
