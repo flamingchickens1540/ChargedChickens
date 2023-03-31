@@ -23,7 +23,9 @@
     tele_mid_right_succeed,
   } from '$lib/stores/matchScoutStores'
   import { defense_times } from '$lib/stores/matchScoutStores'
+    import { onMount } from 'svelte'
       import ScoreTable from "../ui-components/ScoreTable.svelte"
+
   
   let succeedFailScreen : boolean;
   
@@ -80,7 +82,7 @@
       if(succeed) {
         teleScoreSucceed[gridIndex].update(n => n + 1);
         const timestamp = Date.now();
-        if (lastCycleTimestamp != null) 
+        if (lastCycleTimestamp != null)
           $cycle_times.push((timestamp - lastCycleTimestamp) / 1000);
         lastCycleTimestamp = timestamp;
       } else {
@@ -93,17 +95,25 @@
       if (!succeedFailScreen) {
         const time = Date.now() - initialDefenseTime
         if (time > 500) $defense_times.push(time / 1000)
+        console.log(time)
       }
       succeedFailScreen = false;
       defenseColor = "blueviolet";
     } 
   
     function handleMousedown() {
+      
       if(!succeedFailScreen) {
         defenseColor = "yellow";
         initialDefenseTime = Date.now();
       }
     }
+
+
+  // This should prevent double recording defense times, working on pc, defense button issues.
+  onMount(() => {
+    (document.getElementById("defenseButton") as HTMLElement)[navigator.userAgent.includes("Mobile")?"ontouchstart" : "onmousedown"] = handleMousedown;
+  });
   </script>
 
 <div class="grid grid-rows-1 grid-cols-1 place-items-center">
@@ -135,8 +145,7 @@
   >
     <button
     style="background-color: {defenseColor}"
-        class="h-32 w-80 lg:flex-grow sm:flex-shrink rounded-full unselectable"
-        on:mousedown={handleMousedown}
+        class="h-32 w-80 lg:flex-grow sm:flex-shrink rounded-full unselectable" id="defenseButton"
         on:mouseup={handleMouseup}
         >{succeedFailScreen ? "Back" : "Defense"}</button
     >
