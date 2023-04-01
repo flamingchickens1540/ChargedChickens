@@ -112,8 +112,7 @@
 
   // This should prevent double recording defense times, working on pc, defense button issues.
   onMount(() => {
-    (document.getElementById("defenseButton") as HTMLElement)[navigator.userAgent.includes("Mobile")? "ontouchstart" : "onmousedown"] = handleMousedown;
-    (document.getElementById("defenseButton") as HTMLElement)[navigator.userAgent.includes("Mobile")? "ontouchend" : "onmouseup"] = handleMouseup;
+    (document.getElementById("defenseButton") as HTMLElement)[navigator.maxTouchPoints? "ontouchstart" : "onmousedown"] = handleMousedown;
   });
   </script>
 
