@@ -17,10 +17,10 @@
     import type { Click } from '$lib/types'
 
     let scoring = [
-        high_left, // 0
-        high_center, // 1
-        high_right, // 2
-        mid_left, // etc.
+        high_left,
+        high_center,
+        high_right,
+        mid_left,
         mid_center,
         mid_right,
         low_left,

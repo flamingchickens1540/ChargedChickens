@@ -23,7 +23,7 @@
     tele_mid_right_succeed,
   } from '$lib/stores/matchScoutStores'
   import { defense_times } from '$lib/stores/matchScoutStores'
-    import { onMount } from '$lib/svelte'
+    import { onMount } from 'svelte'
       import ScoreTable from "../ui-components/ScoreTable.svelte"
 
   
@@ -92,6 +92,7 @@
     }
   
     function handleMouseup() {
+
       if (!succeedFailScreen) {
         const time = Date.now() - initialDefenseTime
         if (time > 500) $defense_times.push(time / 1000)
@@ -101,7 +102,7 @@
     } 
   
     function handleMousedown() {
-      
+
       if(!succeedFailScreen) {
         defenseColor = "yellow";
         initialDefenseTime = Date.now();
@@ -111,7 +112,8 @@
 
   // This should prevent double recording defense times, working on pc, defense button issues.
   onMount(() => {
-    (document.getElementById("defenseButton") as HTMLElement)[navigator.userAgent.includes("Mobile")?"ontouchstart" : "onmousedown"] = handleMousedown;
+    (document.getElementById("defenseButton") as HTMLElement)[navigator.userAgent.includes("Mobile")? "ontouchstart" : "onmousedown"] = handleMousedown;
+    (document.getElementById("defenseButton") as HTMLElement)[navigator.userAgent.includes("Mobile")? "ontouchend" : "onmouseup"] = handleMouseup;
   });
   </script>
 
@@ -125,10 +127,11 @@
     </h1>
 </div>
   
-  <ScoreTable succeedFailScreen={succeedFailScreen}
+  <ScoreTable 
+    succeedFailScreen={succeedFailScreen}
     gridSelected={gridSelected}
-    successFailSelected={successFailSelected}
-  ></ScoreTable>
+    successFailSelected={successFailSelected}>
+  </ScoreTable>
   <!-- <Canvas
   width={tableWidth}
   height={tableWidth}
@@ -139,13 +142,10 @@
   <Layer {render} />
   </Canvas> -->
   
-  <div
-    class="p-5 grid grid-cols-1 grid-rows-1 place-items-center"
-  >
+  <div class="p-5 grid grid-cols-1 grid-rows-1 place-items-center">
     <button
-    style="background-color: {defenseColor}"
-        class="h-32 w-80 lg:flex-grow sm:flex-shrink rounded-full select-none" id="defenseButton"
-        on:mouseup={handleMouseup}
-        >{succeedFailScreen ? "Back" : "Defense"}</button
-    >
+        style="background-color: {defenseColor}"
+        class="h-32 w-80 lg:flex-grow sm:flex-shrink rounded-full select-none" id="defenseButton">
+        {succeedFailScreen ? "Back" : "Defense"}
+    </button>
   </div>
