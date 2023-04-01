@@ -145,7 +145,7 @@
   >
     <button
     style="background-color: {defenseColor}"
-        class="h-32 w-80 lg:flex-grow sm:flex-shrink rounded-full unselectable" id="defenseButton"
+        class="h-32 w-80 lg:flex-grow sm:flex-shrink rounded-full select-none" id="defenseButton"
         on:mouseup={handleMouseup}
         >{succeedFailScreen ? "Back" : "Defense"}</button
     >
