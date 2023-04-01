@@ -23,7 +23,7 @@
     tele_mid_right_succeed,
   } from '$lib/stores/matchScoutStores'
   import { defense_times } from '$lib/stores/matchScoutStores'
-    import { onMount } from 'svelte'
+    import { onMount } from '$lib/svelte'
       import ScoreTable from "../ui-components/ScoreTable.svelte"
 
   
