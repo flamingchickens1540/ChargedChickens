@@ -14,7 +14,7 @@
     rel="stylesheet"
 />
 <div class="grid grid-rows-1 grid-cols-1 place-items-center">
-    <h1 id="header" class="text-purple-600 text-center text-4xl font-extrabold">
+    <h1 id="header" class="text-{$info.robot?.alliance}-600 text-center text-4xl font-extrabold">
         Endgame {$info.robot?.team_key}
     </h1>
 </div>
