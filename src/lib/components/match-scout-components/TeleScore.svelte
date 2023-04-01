@@ -23,7 +23,7 @@
     tele_mid_right_succeed,
   } from '$lib/stores/matchScoutStores'
   import { defense_times } from '$lib/stores/matchScoutStores'
-    import { onMount } from '$lib/svelte'
+    import { onMount } from 'svelte'
       import ScoreTable from "../ui-components/ScoreTable.svelte"
 
   
@@ -111,7 +111,10 @@
 
   // This should prevent double recording defense times, working on pc, defense button issues.
   onMount(() => {
-    (document.getElementById("defenseButton") as HTMLElement)[navigator.userAgent.includes("Mobile")?"ontouchstart" : "onmousedown"] = handleMousedown;
+    /**
+     * Max touch points works to detect if a browser is mobile because it will be 0 when you are on a computer, you can't tap the screen, or (possibly) you are using a mouse. 
+    */
+    (document.getElementById("defenseButton") as HTMLElement)[navigator.maxTouchPoints?"ontouchstart" : "onmousedown"] = handleMousedown;
   });
   </script>
 
