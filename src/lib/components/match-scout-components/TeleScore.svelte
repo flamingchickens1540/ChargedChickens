@@ -95,7 +95,6 @@
       if (!succeedFailScreen) {
         const time = Date.now() - initialDefenseTime
         if (time > 500) $defense_times.push(time / 1000)
-        console.log(time)
       }
       succeedFailScreen = false;
       defenseColor = "blueviolet";
