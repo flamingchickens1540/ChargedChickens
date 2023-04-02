@@ -51,7 +51,7 @@
     }
 
     /**
-     * POSTs the match data to the api/assign endpoint
+     * POSTs the match data to the api/assign endpoint for robots in it to be assigned to users
      *
      * @param match
      */
@@ -68,7 +68,7 @@
         })
             .then((res) => res.json())
             .then((data) => {
-                if (!data.success) alert('ERROR')
+                if (!data.success) alert('Admin failed to assign matches, probably because they weren`t authenticated')
                 else lastCreatedMatch = match.match_key
             })
     }

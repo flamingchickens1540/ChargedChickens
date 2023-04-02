@@ -112,17 +112,16 @@
 
   // This should prevent double recording defense times, working on pc, defense button issues.
   onMount(() => {
-    (document.getElementById("defenseButton") as HTMLElement)[navigator.userAgent.includes("Mobile")? "ontouchstart" : "onmousedown"] = handleMousedown;
-    (document.getElementById("defenseButton") as HTMLElement)[navigator.userAgent.includes("Mobile")? "ontouchend" : "onmouseup"] = handleMouseup;
+    (document.getElementById("defenseButton") as HTMLElement)[navigator.maxTouchPoints? "ontouchstart" : "onmousedown"] = handleMousedown;
+    (document.getElementById("defenseButton") as HTMLElement)[navigator.maxTouchPoints? "ontouchend" : "onmouseup"] = handleMouseup;
+
   });
   </script>
 
 <div class="grid grid-rows-1 grid-cols-1 place-items-center">
     <h1
         id="header"
-        class="text-{$info.robot
-            ?.alliance}-600 text-center text-4xl font-extrabold"
-    >
+        class="text-{$info.robot?.alliance}-600 text-center text-4xl font-extrabold">
         Telescore {$info.robot?.team_key}
     </h1>
 </div>

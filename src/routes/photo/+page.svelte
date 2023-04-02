@@ -29,11 +29,12 @@
             data.append('photo', file)
             removeFile(file)
         })
+
         data.append('team_key', ("frc" + team_key).trim())
         localStorage.setItem('event_key', $event_key)
         data.append(
             'match_key',
-            localStorage.getItem('event_key') || '2023orwil'
+            localStorage.getItem('event_key') || ''
         )
 
         fetch('/api/submit/photo', {
