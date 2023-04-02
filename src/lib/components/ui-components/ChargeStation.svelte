@@ -1,7 +1,7 @@
 <script lang="ts">
     import ChargeStationOption from '../ui-components/ChargeStationOption.svelte'
 
-    export const options = ['Not Attempted', 'Failed', 'Docked', 'Engaged']
+    export let options = ['Not Attempted', 'Failed', 'Docked', 'Engaged'];
     export let handleClick: (option: number) => void
     export let name: string = 'Charge Station'
 

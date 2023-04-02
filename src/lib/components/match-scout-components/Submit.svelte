@@ -73,9 +73,7 @@
             data[key] = get(team_matches_stores[key])
         })
 
-        if (DEBUG) console.log(Object.keys(data).length)
-
-        console.log($info)
+        console.log("defense: " + $defense_times)
 
         fetch('/api/submit/match', {
             method: 'POST',
