@@ -4,7 +4,7 @@ import { json } from '@sveltejs/kit'
 export const POST = async (request: Request) => {
     const match = pollNextRobot();
 
-    if(match == null) {
+    if (match == null) {
         return json({ success: false, nextPollTime: getNextPollTime() })
     }
 
