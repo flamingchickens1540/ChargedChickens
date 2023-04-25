@@ -43,6 +43,7 @@
         width: 25%;
     }
 
+    /* Allows for switches to be stacked easily. Helpful if a dozen of options need to be added. */
     .stack {
         border-top-right-radius: 0px;
         border-top-left-radius: 0px;

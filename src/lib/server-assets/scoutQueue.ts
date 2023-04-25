@@ -33,6 +33,10 @@ export function endMatch() {
   ongoingMatch = false;
 }
 
+/**
+ * 
+ * @returns the next time a client should resend
+ */
 export function getNextPollTime() {
   const currentTime = Date.now();
 
