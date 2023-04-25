@@ -100,7 +100,7 @@
     } 
   
     /**
-     * @description Handles the start of a defense button press
+     * Handles the start of a defense button press
      */
     function handleMousedown() {
 
