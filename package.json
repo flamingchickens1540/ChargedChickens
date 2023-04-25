@@ -7,7 +7,7 @@
         "dev-host": "vite dev --host",
         "build": "vite build",
         "preview": "vite preview",
-        "start": "npm i && npm run build && node build",
+        "start": "npm ci && npm run build && node build",
         "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
         "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
         "lint": "eslint ."
