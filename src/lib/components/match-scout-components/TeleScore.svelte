@@ -59,7 +59,7 @@
     let gridIndex : number;
 
     /**
-     * @description Shows the succeed-fail screen for the giving grid index
+     * Shows the succeed-fail screen for the giving grid index
      * @see ScoreTable.svelte
      * @param index gridIndex
      */
