@@ -29,11 +29,20 @@
 let succeedFailScreen = false;
 
 let gridIndex : number;
+/**
+ * @see Telescore.svelte
+ * @param index
+ */
 function gridSelected(index : number) {
   gridIndex = index;
   succeedFailScreen = true;
 }
 
+/**
+ * Increments a succeed or fail of gridIndex by 1
+ * @see ScoreTable.svelte
+ * @param succeed whether a score attempt was successful
+ */
 function successFailSelected(succeed : boolean) {
   (succeed ? autoscoreSucceed : autoscoreFail)[gridIndex].update(n => n+1);
   succeedFailScreen = false;
@@ -55,7 +64,7 @@ function successFailSelected(succeed : boolean) {
         <button
             style="background-color: blueviolet"
             class="h-32 w-80 lg:flex-grow sm:flex-shrink rounded-full select-none"
-            on:click={() => console.log(succeedFailScreen = false)}>Back</button
+            on:click={() => succeedFailScreen = false}>Back</button
         >
     </div>
 {/if}

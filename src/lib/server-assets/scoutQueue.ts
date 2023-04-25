@@ -33,6 +33,11 @@ export function endMatch() {
   ongoingMatch = false;
 }
 
+/**
+ * if @this {time} is less than @this {Date.now()}, time is reset to that
+ * increments @this {time} by @this {timeSpace}
+ * @returns the next time a client should resend
+ */
 export function getNextPollTime() {
   const currentTime = Date.now();
 

@@ -5,7 +5,15 @@
     // Boolean to show or hide the fail success screen.
     export let succeedFailScreen: boolean = false
 
+    /**
+     * Function that handles the grid screen being clicked/pressed
+     * @param gridIndex the row and column of grid that was selected
+     */
     export let gridSelected: (gridIndex: number) => void
+    /**
+     * Function that handles the success-fail screen being clicked/pressed
+     * @param suceed true when success (left part of the screen) is clicked/pressed as opposed to the fail (right part)
+     */
     export let successFailSelected: (succeed: boolean) => void
 
     let tableWidth: number
@@ -14,10 +22,7 @@
      * Handles the double clicking of the mouse on the telescore canvas
      * The purpose is to increment one of the teleScoreFail stores based on which cell on the canvas grid was clicked
      *
-x     * @param mouse - type: MouseEvent
-     *
-     * @todo
-     * Make clicking display a success/fail choice component
+     * @param mouse - type: MouseEvent
      *
      */
     function mouseClicked(mouse: MouseEvent) {
