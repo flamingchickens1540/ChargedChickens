@@ -87,7 +87,7 @@
     }
   
     /**
-     * @description Handles a defense button press if the succeed-fail screen is not active. The ScoreTable screen is always set to the grid after this is called.
+     * Handles a defense button press if the succeed-fail screen is not active. The ScoreTable screen is always set to the grid after this is called.
      */
     function handleMouseup() {
 
