@@ -69,7 +69,7 @@
     }
   
     /**
-     * @description Handles successes or failures of scoring attempts. Records the cycle times.
+     * Handles successes or failures of scoring attempts. Records the cycle times.
      * @see ScoreTable.svelte
      * @param succeed Whether the succeeded
      */
