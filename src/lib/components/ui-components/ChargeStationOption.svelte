@@ -5,6 +5,7 @@
     export let id: number
 </script>
 
+
 <button class:selected on:mousedown={() => click(id)}>{name}</button>
 
 <style>
