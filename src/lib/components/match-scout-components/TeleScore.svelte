@@ -59,7 +59,7 @@
     let gridIndex : number;
 
     /**
-     * @description Shows the succeed-fail screen for the giving grid index
+     * Shows the succeed-fail screen for the giving grid index
      * @see ScoreTable.svelte
      * @param index gridIndex
      */
@@ -69,7 +69,7 @@
     }
   
     /**
-     * @description Handles successes or failures of scoring attempts. Records the cycle times.
+     * Handles successes or failures of scoring attempts. Records the cycle times.
      * @see ScoreTable.svelte
      * @param succeed Whether the succeeded
      */
@@ -87,7 +87,7 @@
     }
   
     /**
-     * @description Handles a defense button press if the succeed-fail screen is not active. The ScoreTable screen is always set to the grid after this is called.
+     * Handles a defense button press if the succeed-fail screen is not active. The ScoreTable screen is always set to the grid after this is called.
      */
     function handleMouseup() {
 
@@ -100,7 +100,7 @@
     } 
   
     /**
-     * @description Handles the start of a defense button press
+     * Handles the start of a defense button press
      */
     function handleMousedown() {
 
