@@ -1,7 +1,17 @@
+/**
+ * The team 'frc' + the team number 
+ */
 export type TeamKey = `frc${number}`
-
+/**
+ * The event key and the match type abreviation, and the match number
+ * @example 2023orwil_qm1
+ * [indicates the year][oregon state code + wilsonville abreviation]_[The first qualifying match]
+ */
 export type MatchKey = `${EventKey}_${'qm' | 'qf' | 'sf' | 'f'}${number}`
-
+/**
+ * The year number + the event abreviation
+ * @example 2023orwil
+ */
 export type EventKey = `${number}${string}`
 
 export type CycleTime = {

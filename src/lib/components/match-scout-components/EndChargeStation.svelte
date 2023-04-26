@@ -3,7 +3,7 @@
     import { end_charge_station } from '$lib/stores/matchScoutStores'
     import ChargeStation from '../ui-components/ChargeStation.svelte'
 
-    function onOption(id: number) {
+    function setChargeStation(id: number) {
         end_charge_station.set(id)
     }
 </script>
@@ -20,14 +20,11 @@
     </h1>
 </div>
 
-<ChargeStation handleClick={onOption} />
+<ChargeStation handleClick={setChargeStation} />
 
 <style>
     div {
         font-family: 'Poppins';
-    }
-
-    div {
         padding-bottom: 1%;
     }
 </style>
