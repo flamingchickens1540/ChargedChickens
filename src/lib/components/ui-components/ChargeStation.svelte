@@ -2,7 +2,7 @@
     import ChargeStationOption from '../ui-components/ChargeStationOption.svelte'
 
     /**
-     * All potential charge station states
+     * Presetted charge station options
      */
     export let options = ['Not Attempted', 'Failed', 'Docked', 'Engaged'];
 
