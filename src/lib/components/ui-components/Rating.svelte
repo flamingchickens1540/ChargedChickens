@@ -1,7 +1,7 @@
 <script lang="ts">
     /**
-     * This component displays three dynamic clickable stars, that change color depending on which have been clicked, and bind to a rating variable
-     */
+     * Displays three dynamic clickable stars, that change color depending on which have been clicked, and bind to a rating variable
+    */
 
     import Star from './Star.svelte'
     export let rating = 3

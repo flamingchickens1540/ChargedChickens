@@ -17,20 +17,19 @@ async function getBlueAllianceRes(team_key: string) {
 }
 
 export const POST = async (event: RequestEvent) => {
-    if (event.request.headers.get('ADMIN_PASSWORD') !== ADMIN_PASSWORD) {
+    if (event.request.headers.get('ADMIN_PASSWORD') !== ADMIN_PASSWORD)
         return json({ success: false, error: 'Unauthorized' }, { status: 401 })
-    }
 
     const data: AssignData = await event.request.json()
     const robots: Robot[] = []
 
     try {
-        //add match to database
+        // add match to database
         if (!(await insertMatch(data.match_key, data.event_key))) {
             throw new Error("Couldn't insert match")
         }
 
-        //add teams to database
+        // add teams to database
         const dbTeams =
             (await getTeams())?.map(({ team_key }) => team_key) || []
 
@@ -49,7 +48,7 @@ export const POST = async (event: RequestEvent) => {
             }
         }
 
-        //add robots to queue
+        // add robots to queue
         // for (const {red, blue} in data.robots)
         data.robots.red.forEach((key) => {
             robots.push({ team_key: key, alliance: 'red' })

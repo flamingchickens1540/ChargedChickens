@@ -1,6 +1,5 @@
 <script lang="ts">
-        import { info } from '$lib/stores/generalStores'
-
+    import { info } from '$lib/stores/generalStores'
     import {
     cycle_times,
     tele_high_center_fail,
@@ -23,8 +22,8 @@
     tele_mid_right_succeed,
   } from '$lib/stores/matchScoutStores'
   import { defense_times } from '$lib/stores/matchScoutStores'
-    import { onMount } from 'svelte'
-      import ScoreTable from "../ui-components/ScoreTable.svelte"
+  import { onMount } from 'svelte'
+  import ScoreTable from "../ui-components/ScoreTable.svelte"
 
   
   let succeedFailScreen : boolean;
@@ -56,28 +55,23 @@
     let lastCycleTimestamp : number;
     let defenseColor = "blueviolet";
   
-    /**
-    * Handles the double clicking of the mouse on the telescore canvas
-    * The purpose is to increment one of the teleScoreFail stores based on which cell on the canvas grid was clicked
-    * 
-    * @remarks
-    * For some reason, the rows calculation starts at 1, when it should start at 0, so we decrement the value by 1
-    * This is most likely because the elementHeight var actual measures from the top of the screen, not the top of the canvas
-    * This means that the 0th row is treated like the 1st row, even though clicks made on the 1st row are disregarded.
-    * 
-    * @param mouse - type: MouseEvent
-    * 
-    * @todo
-    * Make clicking display a success/fail choice component
-    * 
-    */
-  
     let gridIndex : number;
+
+    /**
+     * Shows the succeed-fail screen with the given grid index
+     * @see ScoreTable.svelte
+     * @param index gridIndex
+     */
     function gridSelected(index : number) {
       gridIndex = index;
       succeedFailScreen = true;
     }
   
+    /**
+     * Handles successes or failures of scoring attempts. Records the cycle times.
+     * @see ScoreTable.svelte
+     * @param succeed Whether the robot succeeded at scoring on the grid
+     */
     function successFailSelected(succeed : boolean) {
       if(succeed) {
         teleScoreSucceed[gridIndex].update(n => n + 1);
@@ -91,6 +85,9 @@
       succeedFailScreen = false;
     }
   
+    /**
+     * Handles a defense button press if the succeed-fail screen is not active. The ScoreTable screen is always set to the grid after this is called.
+     */
     function handleMouseup() {
 
       if (!succeedFailScreen) {
@@ -101,6 +98,9 @@
       defenseColor = "blueviolet";
     } 
   
+    /**
+     * Handles the start of a defense button press
+     */
     function handleMousedown() {
 
       if(!succeedFailScreen) {
@@ -110,11 +110,9 @@
     }
 
 
-  // This should prevent double recording defense times, working on pc, defense button issues.
   onMount(() => {
+    // Needed since the mousedown event is emitted after the element is unpressed on mobile. mouseup acts the same as touchend.
     (document.getElementById("defenseButton") as HTMLElement)[navigator.maxTouchPoints? "ontouchstart" : "onmousedown"] = handleMousedown;
-    (document.getElementById("defenseButton") as HTMLElement)[navigator.maxTouchPoints? "ontouchend" : "onmouseup"] = handleMouseup;
-
   });
   </script>
 
@@ -131,19 +129,11 @@
     gridSelected={gridSelected}
     successFailSelected={successFailSelected}>
   </ScoreTable>
-  <!-- <Canvas
-  width={tableWidth}
-  height={tableWidth}
-  class="object-center"
-  on:click={mouseClicked}
-  style="
-  >
-  <Layer {render} />
-  </Canvas> -->
   
   <div class="p-5 grid grid-cols-1 grid-rows-1 place-items-center">
     <button
         style="background-color: {defenseColor}"
+        on:mouseup={handleMouseup}
         class="h-32 w-80 lg:flex-grow sm:flex-shrink rounded-full select-none" id="defenseButton">
         {succeedFailScreen ? "Back" : "Defense"}
     </button>
