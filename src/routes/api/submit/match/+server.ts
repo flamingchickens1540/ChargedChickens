@@ -8,17 +8,27 @@ import {
 } from '$lib/server-assets/database'
 import type { Match, MatchKey, Robot, TeamKey, TeamMatch } from '$lib/types'
 
-export const POST: RequestHandler = async (event: RequestEvent) => {
+/**
+ * Inserts match data into the database
+ * 
+ * @param event 
+ * @returns 
+ */
+export const POST: RequestHandler = async (match_data_req: RequestEvent) => {
     const body: {
         match: Match
         robot: Robot
         data: TeamMatch
         cycle_times: number[]
         defense_times: number[]
-    } = await event.request.json()
+    } = await match_data_req.request.json()
 
     const dbRes = await Promise.allSettled([
-        insertTeamMatch(body.match.match_key, body.robot.team_key, body.data),
+        insertTeamMatch(
+            body.match.match_key, 
+            body.robot.team_key, 
+            body.data
+        ),
         insertCycleTimes(
             body.cycle_times,
             body.match.match_key,
@@ -37,7 +47,15 @@ export const POST: RequestHandler = async (event: RequestEvent) => {
 
     return json({ success: result, endpoint: 'submit' })
 }
-
+/**
+ * Inserts each cycle time into the database
+ * 
+ * @see /src/lib/server-assets/database.ts
+ * @param cycle_times 
+ * @param match_key 
+ * @param team_key 
+ * @returns 'fufilled' or not for every cycle
+ */
 async function insertCycleTimes(
     cycle_times: number[],
     match_key: MatchKey,
@@ -52,6 +70,14 @@ async function insertCycleTimes(
     return results.every((result) => result.status === 'fulfilled')
 }
 
+/**
+ * Inserts every defense time into the database
+ * 
+ * @param defense_times 
+ * @param match_key 
+ * @param team_key 
+ * @returns 'fufilled' or not for every cycle
+ */
 async function insertDefenseTimes(
     defense_times: number[],
     match_key: MatchKey,

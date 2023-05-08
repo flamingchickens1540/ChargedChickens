@@ -26,8 +26,10 @@ const db = mysql
         database: MYSQL_DATABASE,
     })
     .promise()
+
 /**
  * Inserts an event into the database
+ * 
  * @param event_key - The event key
  * @returns The promise of if it succeeded or not
  */
@@ -52,6 +54,7 @@ export async function insertEvent(event_key: EventKey): Promise<boolean> {
 
 /**
  * Inserts a match(not a teammatch) into the database
+ * 
  * @param match_key - The match key of the match being inserted
  * @param event_key - The event key of the event the match took place during
  * @returns A promise of if it succeeded or not
@@ -79,6 +82,7 @@ export async function insertMatch(
 }
 
 /**
+ * Inserts a single team into the database
  * 
  * @param team_key - The key of the team being inserted (eg. frc1540)
  * @param nickname - The nickname of the team (eg. The Flaming Chickens)
@@ -185,6 +189,7 @@ export async function insertTeamMatch(
 }
 
 /**
+ * Inserts a single cycle time into the database
  * 
  * @param time - The time the it took for a robot to grab a piece score it, then return to the loading zone
  * @param team_key - The key of the team whose cycle was being tracked
@@ -215,6 +220,7 @@ export async function insertCycleTime(
 }
 
 /**
+ * Inserts a single defense time into the database
  * 
  * @param time - The time the robot was intentionally preventing another robot from playing optimatlly
  * @param team_key - The key of the team being scouted

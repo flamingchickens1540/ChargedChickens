@@ -1,7 +1,13 @@
 import { pollNextRobot, getNextPollTime } from '$lib/server-assets/scoutQueue'
 import { json } from '@sveltejs/kit'
 
-export const POST = async (request: Request) => {
+/**
+ * Assigns the next robot in the queue to the scout
+ * @see /src/lib/server-assets/scoutQueue.ts
+ * @param request 
+ * @returns the match and robot being scouted
+ */
+export const POST = async (_request: Request) => {
     const match = pollNextRobot();
 
     if (match == null) {
