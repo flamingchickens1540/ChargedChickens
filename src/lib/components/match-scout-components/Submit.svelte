@@ -6,7 +6,6 @@
         team_matches_stores,
     } from '$lib/stores/matchScoutStores'
     import { confetti } from '@neoconfetti/svelte'
-    import { tick } from 'svelte'
     import FancyButtons from '$lib/components/ui-components/FancyButtons.svelte'
     import { APPKEY, DEBUG, info } from '$lib/stores/generalStores'
     import type { TeamMatch } from '$lib/types'
@@ -18,7 +17,7 @@
      * Iterates through all matchScoutStores and puts them into a JSON Object
      * Then it makes a POST request to the backend, which stores the match data
      *
-     * @complete
+     * @see /routes/api/submit/match/+server.ts
      */
     async function submit() {
         let data: TeamMatch = {

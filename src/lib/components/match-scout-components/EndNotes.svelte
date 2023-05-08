@@ -1,4 +1,3 @@
-<!-- Credit: David -->
 <script lang="ts">
     import { notes } from '$lib/stores/matchScoutStores'
 </script>

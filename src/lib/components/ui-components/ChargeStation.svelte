@@ -2,7 +2,7 @@
     import ChargeStationOption from '../ui-components/ChargeStationOption.svelte'
 
     /**
-     * preset options
+     * All potential charge station states
      */
     export let options = ['Not Attempted', 'Failed', 'Docked', 'Engaged'];
 
@@ -11,12 +11,16 @@
      * @param option the index of the option that was selected
      */
     export let handleClick: (option: number) => void
-
     export let name: string = 'Charge Station'
 
     let selectedOption: number = 0
 
-    
+    /**
+     * Passes the selected option off the handleClick function
+     * @param id - Which option was selected
+     * @see EndChargeStation.svelte
+     * @see AutoChargeStation.svelte
+     */
     function onClick(id: number) {
         handleClick((selectedOption = id))
     }

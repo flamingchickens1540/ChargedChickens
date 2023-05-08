@@ -1,6 +1,5 @@
 <script lang="ts">
-        import { info } from '$lib/stores/generalStores'
-
+    import { info } from '$lib/stores/generalStores'
     import {
     cycle_times,
     tele_high_center_fail,
@@ -23,8 +22,8 @@
     tele_mid_right_succeed,
   } from '$lib/stores/matchScoutStores'
   import { defense_times } from '$lib/stores/matchScoutStores'
-    import { onMount } from 'svelte'
-      import ScoreTable from "../ui-components/ScoreTable.svelte"
+  import { onMount } from 'svelte'
+  import ScoreTable from "../ui-components/ScoreTable.svelte"
 
   
   let succeedFailScreen : boolean;
@@ -59,7 +58,7 @@
     let gridIndex : number;
 
     /**
-     * Shows the succeed-fail screen for the giving grid index
+     * Shows the succeed-fail screen for the given grid index
      * @see ScoreTable.svelte
      * @param index gridIndex
      */
@@ -71,7 +70,7 @@
     /**
      * Handles successes or failures of scoring attempts. Records the cycle times.
      * @see ScoreTable.svelte
-     * @param succeed Whether the succeeded
+     * @param succeed Whether the the robot succeeded at scoring on the grid
      */
     function successFailSelected(succeed : boolean) {
       if(succeed) {
@@ -130,15 +129,6 @@
     gridSelected={gridSelected}
     successFailSelected={successFailSelected}>
   </ScoreTable>
-  <!-- <Canvas
-  width={tableWidth}
-  height={tableWidth}
-  class="object-center"
-  on:click={mouseClicked}
-  style="
-  >
-  <Layer {render} />
-  </Canvas> -->
   
   <div class="p-5 grid grid-cols-1 grid-rows-1 place-items-center">
     <button

@@ -6,8 +6,20 @@ import type { RequestEvent, RequestHandler } from './$types'
 import type { EventKey, TeamKey } from '$lib/types'
 import { insertImage } from '$lib/server-assets/database'
 
-export const POST: RequestHandler = async (event: RequestEvent) => {
-    const body = await event.request.formData()
+/**
+ * Uploads a photo to the server with a random UUID
+ * 
+ * Validates that the team and event key was inputed correctly
+ * 
+ * Inserts the urls, team and event key into the database in the Images table
+ * 
+ * @see /src/lib/server-assets/database.ts
+ * @fails if one of the photos or the event or team key in the request aren't valid
+ * @param form_data_req - containing the photos, the teamkey, and the match key
+ * @returns success or failure
+ */
+export const POST: RequestHandler = async (form_data_req: RequestEvent) => {
+    const body = await form_data_req.request.formData()
     const photos = body.getAll('photo') as File[]
     const team_key = body.get('team_key') as TeamKey
     const event_key = body.get('match_key') as EventKey
@@ -43,11 +55,18 @@ export const POST: RequestHandler = async (event: RequestEvent) => {
     return json({ success: true, endpoint: 'photo' })
 }
 
+/**
+ * Regex matches the team and event key
+ * 
+ * @param team_key eg. frc1540
+ * @param event_key eg. 2023orore
+ * @returns if they both fit their expected pattern
+ */
 async function validateInput(
     team_key: TeamKey,
     event_key: EventKey
 ): Promise<boolean> {
-    //eventkey checks
+    // eventkey checks
     if (event_key.match(/^\d{4}[A-Za-z]{4,6}$/) === null) return false
     // This isn't working for me
     // if ((await getEvent(event_key)) === null) return false
@@ -60,6 +79,13 @@ async function validateInput(
     return true
 }
 
+/**
+ * Regex matches the photo to make sure its not too large or an incorrect file type
+ * 
+ * @param photo 
+ * @param fileType 
+ * @returns if the phoro is valid
+ */
 function validatePhoto(photo: File, fileType: string): boolean {
     //photo checks
     if (photo.size > 1000000000) return false

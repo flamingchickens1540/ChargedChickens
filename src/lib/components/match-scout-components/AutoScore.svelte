@@ -1,19 +1,20 @@
 <script lang="ts">
-    import { auto_high_center_fail, auto_high_center_succeed, auto_high_left_fail, auto_high_left_succeed, auto_high_right_fail, auto_high_right_succeed, auto_low_center_fail, auto_low_center_succeed, auto_low_left_fail, auto_low_left_succeed, auto_low_right_fail, auto_low_right_succeed, auto_mid_center_fail, auto_mid_center_succeed, auto_mid_left_fail, auto_mid_left_succeed, auto_mid_right_fail, auto_mid_right_succeed, auto_score } from "$lib/stores/matchScoutStores";
-    import ScoreTable from "$lib/components/ui-components/ScoreTable.svelte"
-    import { info } from "$lib/stores/generalStores";
+  import { auto_high_center_fail, auto_high_center_succeed, auto_high_left_fail, auto_high_left_succeed, auto_high_right_fail, auto_high_right_succeed, auto_low_center_fail, auto_low_center_succeed, auto_low_left_fail, auto_low_left_succeed, auto_low_right_fail, auto_low_right_succeed, auto_mid_center_fail, auto_mid_center_succeed, auto_mid_left_fail, auto_mid_left_succeed, auto_mid_right_fail, auto_mid_right_succeed, auto_score } from "$lib/stores/matchScoutStores";
+  import ScoreTable from "$lib/components/ui-components/ScoreTable.svelte"
+  import { info } from "$lib/stores/generalStores";
 
   const autoscoreFail = [
-  auto_high_left_fail, 
-  auto_high_center_fail, 
-  auto_high_right_fail, 
-  auto_mid_left_fail, 
-  auto_mid_center_fail, 
-  auto_mid_right_fail, 
-  auto_low_left_fail, 
-  auto_low_center_fail, 
-  auto_low_right_fail
+    auto_high_left_fail, 
+    auto_high_center_fail, 
+    auto_high_right_fail, 
+    auto_mid_left_fail, 
+    auto_mid_center_fail, 
+    auto_mid_right_fail, 
+    auto_low_left_fail, 
+    auto_low_center_fail, 
+    auto_low_right_fail
   ];
+
   const autoscoreSucceed = [
     auto_high_left_succeed, 
     auto_high_center_succeed, 
@@ -26,27 +27,27 @@
     auto_low_right_succeed
   ];
 
-let succeedFailScreen = false;
+  let succeedFailScreen: boolean = false;
+  let gridIndex : number;
 
-let gridIndex : number;
-/**
- * @see Telescore.svelte
- * @param index
- */
-function gridSelected(index : number) {
-  gridIndex = index;
-  succeedFailScreen = true;
-}
+  /**
+   * @see Telescore.svelte
+   * @param index 
+   */
+  function gridSelected(index : number) {
+    gridIndex = index;
+    succeedFailScreen = true;
+  }
 
-/**
- * Increments a succeed or fail of gridIndex by 1
- * @see ScoreTable.svelte
- * @param succeed whether a score attempt was successful
- */
-function successFailSelected(succeed : boolean) {
-  (succeed ? autoscoreSucceed : autoscoreFail)[gridIndex].update(n => n+1);
-  succeedFailScreen = false;
-}
+  /**
+   * Increments a succeed or fail of gridIndex by 1
+   * @see ScoreTable.svelte
+   * @param succeed - If a score attempt was successful
+   */
+  function successFailSelected(succeed : boolean) {
+    (succeed ? autoscoreSucceed : autoscoreFail)[gridIndex].update(n => n+1);
+    succeedFailScreen = false;
+  }
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
