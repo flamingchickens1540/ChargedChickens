@@ -250,6 +250,13 @@ export async function insertDefenseTime(
     }
 }
 
+/**
+ * 
+ * @param event_key - The event the image was taken during
+ * @param team_key - The team key of the robot in the image
+ * @param url - The url to the image on the server (eg. https://scout.team1540.org/robot-images/02f61f8f-d4fc-495e-a476-3bf53f36bc56.jpeg)
+ * @returns A promise of if the insertion succeeded
+ */
 export async function insertImage(
     event_key: EventKey,
     team_key: TeamKey,
@@ -272,7 +279,13 @@ export async function insertImage(
         return false
     }
 }
-
+/**
+ * 
+ * @param event_key - The event of the pitscouting
+ * @param team_key - The key of the team being pitscouted
+ * @param pit_data - The data collected about the team and/or robot
+ * @returns A promise of if the insertion succeeded
+ */
 export async function insertPitScoutingData(
   event_key: EventKey,
   team_key: TeamKey,
@@ -321,7 +334,12 @@ export async function insertPitScoutingData(
         return false
     }
 }
-
+/**
+ * Gets the match scouting data for a specific robot during a specific match
+ * @param match_key - The match being scouted
+ * @param team_key - The team being scouted during the match
+ * @returns A promise of either the robot data for that match, or null
+ */
 export async function getTeamMatch(
     match_key: MatchKey,
     team_key: TeamKey
