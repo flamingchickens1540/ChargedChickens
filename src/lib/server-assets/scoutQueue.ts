@@ -2,6 +2,7 @@ import type { EventKey, MatchKey, RobotMatch, Robot } from '$lib/types'
 
 let robotMatches: RobotMatch[] = [];
 let time = Date.now();
+
 /**
  * Spacing between client timeouts
  */
@@ -37,8 +38,8 @@ export function endMatch() {
 }
 
 /**
- * if @this {time} is less than @this {Date.now()}, time is reset to that
- * increments @this {time} by @this {timeSpace}
+ * if @this time is less than @this Date.now(), time is reset to that
+ * increments @this time by @this timeSpace
  * @returns the next time a client should resend
  */
 export function getNextPollTime() {

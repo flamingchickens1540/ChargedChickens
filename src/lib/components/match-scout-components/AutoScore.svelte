@@ -4,15 +4,15 @@
   import { info } from "$lib/stores/generalStores";
 
   const autoscoreFail = [
-  auto_high_left_fail, 
-  auto_high_center_fail, 
-  auto_high_right_fail, 
-  auto_mid_left_fail, 
-  auto_mid_center_fail, 
-  auto_mid_right_fail, 
-  auto_low_left_fail, 
-  auto_low_center_fail, 
-  auto_low_right_fail
+    auto_high_left_fail, 
+    auto_high_center_fail, 
+    auto_high_right_fail, 
+    auto_mid_left_fail, 
+    auto_mid_center_fail, 
+    auto_mid_right_fail, 
+    auto_low_left_fail, 
+    auto_low_center_fail, 
+    auto_low_right_fail
   ];
 
   const autoscoreSucceed = [

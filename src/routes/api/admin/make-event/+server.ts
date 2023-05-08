@@ -4,13 +4,19 @@ import type { EventKey } from '$lib/types'
 import { json } from '@sveltejs/kit'
 import type { RequestEvent, RequestHandler } from './$types'
 
-export const POST: RequestHandler = async (event: RequestEvent) => {
-    if (event.request.headers.get('ADMIN_PASSWORD') !== ADMIN_PASSWORD) {
+/**
+ * Handles requests for adding new events to the database
+ * 
+ * @param event 
+ * @returns If the request was authorized and the insertion succeeded
+ */
+export const POST: RequestHandler = async (event_key_req: RequestEvent) => {
+    if (event_key_req.request.headers.get('ADMIN_PASSWORD') !== ADMIN_PASSWORD) {
         return json({ success: false, error: 'Unauthorized' }, { status: 401 })
     }
-    const body: { event_key: EventKey } = await event.request.json()
+    const event_key: EventKey = await event_key_req.request.json()
 
-    const res = await insertEvent(body.event_key)
+    const res = await insertEvent(event_key)
 
     return json({ success: res })
 }
