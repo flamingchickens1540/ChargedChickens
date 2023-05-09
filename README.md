@@ -1,45 +1,38 @@
-# create-svelte
+# Charged Chickens
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+Team 1540's scouting system for FRC 2023, Charged Up!
 
-## Creating a project
 
-If you're seeing this, you've probably already done this step. Congrats!
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+## Frontend
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+## API
 
-## Developing
+The API is split into four different base routes, admin, authed, scout, and submit.
 
-First, make sure to create a secrets folder containing passwords.ts in the root directory. Passwords should look like this:
+### Scout
+This is very simple, it just exists to poll the next robot from the scouting queue.
 
-```
-export const user_password = "password";
-export const admin_password = "adminpassword";
-```
+This request is made by a client every second or so while they're logged in. As soon as a match is released by the admin, the client will receive a valid response.
 
-Then, once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+### Authed
+This endpoint is also very simple. A request to it is made by the client if the entered passphrase matches the correct passphrase. The client needs to check the passphrase, since it's a svelte store, which only the it had access to.
 
-```bash
-npm run dev
+### Submit
+This route contains two endpoints, match, pit, and photo. Each one of for a different type of submission. These endpoints are requested when the client wants to submit scouting data.
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+## Server
 
-## Building
+### Setup
+We use a MySQL databse hosted on team 1540's server.
 
-To create a production version of your app:
+To set up a database, check out [this MySQL tutorial](https://dev.mysql.com/doc/mysql-getting-started/en/)
 
-```bash
-npm run build
-```
+Once you have that set up, create a .env file using the .env.example file as a template. Make sure your database credientials match.
 
-You can preview the production build with `npm run preview`.
+### Authentication
+Charged Chickens is a realively secure scouting system. At every endpoint, the API validates the clients request, by ensuring that the request header password matches the expected password.
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+For administrators creating matches and events, the admin_password is needed, for the scouts, the passphrase is needed. Both the passphrase and admin_password. We recommend changing the admin_pasword and the passphrase every competition day.
+
+There's also an appkey, this is used to ensure that the requset is coming from a valid client, since the user never inputs(or knows) the appkey, it only exists in generalStores.ts Every client should have the same appkey. Appkey validation exists to make sure peoeple (from outside the team) who overhear the passphase can't make requests to the API without having access to Charged Chickens.
