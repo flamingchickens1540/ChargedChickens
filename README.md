@@ -2,6 +2,10 @@
 
 Team 1540's scouting system for FRC 2023, Charged Up!
 
+Todo:
+- [ ] Write about the database architecture
+- [ ] Write about the frontend design
+
 ## Frontend
 
 ## API
@@ -33,11 +37,15 @@ This route is by far the most complex, and contains several endpoints, assign, a
 
 #### Assign
 This endpoint is used to assign a match to queued scouts, and to insert a match (not a TeamMatch) into the database. It takes a request containing the data known about the match before it's played. This includes which robots are playing on what alliance, the match key, and the event key. [See the AssignData Type](/src/lib/types.ts). 
-#### Authed
 
-#### Make-Event
+#### Authed
+This is a simple endpoint that just checks if the admin has the right admin_password, by checking the header.
 
 #### Teams
+This endpoint takes in a match key as the request, then queries The Blue alliance to find which teams on on the alliances, then returns the two lists of team_keys. This data is used by the admin dashboard to autofill teams after a match is entered. This is used toreduce the admin's workload.
+
+#### Make-Event
+This endpoint inserts an empty event into the database. The request body should contain an [EventKey](/src/lib/types.ts).
 
 ## Server
 
@@ -47,6 +55,7 @@ We use a MySQL databse hosted on team 1540's server.
 To set up a database, check out [this MySQL tutorial](https://dev.mysql.com/doc/mysql-getting-started/en/)
 
 Once you have that set up, create a .env file using the .env.example file as a template. Make sure your database credientials match.
+
 ### Authentication
 Charged Chickens is a realively secure scouting system. At every endpoint, the API validates the clients request, by ensuring that the request header password matches the expected password.
 
