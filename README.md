@@ -13,6 +13,9 @@ Todo:
 
 The API is split into four different base routes, admin, authed, scout, and submit.
 
+### How to use it
+
+
 ### Scout
 This is very simple, it just exists to poll the next robot from the scouting queue.
 
