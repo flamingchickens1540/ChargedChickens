@@ -15,6 +15,14 @@ The API is split into four different base routes, admin, authed, scout, and subm
 
 ### How to use it
 
+#### Match Scouting
+1. The admin signs in, their signed-in status is verified by the admin/authed endpoint. 
+2. The admin makes a request to the admin/make-event endpoint to create an empty event.
+3. The next steps can happen asynchronously and must happen for every match in an event.
+4. The admin enters a MatchKey and then autofills the teams in that match by querying the admin/teams endpoint. The admin then releases a match with the admin/assign endpoint.
+5. The scouts authenticate with the passphrase, they is verified with the authed endpoint.
+6. The scouts then login and repeatedly query the scout endpoint until a match is avaliable (ie. step 4 is done).
+7. The match is scouted, then the scouts submit their results with the submit/match endpoint.
 
 ### Scout
 This is very simple, it just exists to poll the next robot from the scouting queue.
