@@ -7,8 +7,6 @@ Todo:
 - [ ] Write about the frontend design
 - [ ] Write about the typing and structure so things don't get confusing with all the names (eg. TeamMatch vs Match vs Team)
 
-## Frontend
-
 ## API
 
 The API is split into four different base routes, admin, authed, scout, and submit.
