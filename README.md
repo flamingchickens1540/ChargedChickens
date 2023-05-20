@@ -5,6 +5,7 @@ Team 1540's scouting system for FRC 2023, Charged Up!
 Todo:
 - [ ] Write about the database architecture
 - [ ] Write about the frontend design
+- [ ] Write about the typing and structure so things don't get confusing with all the names (eg. TeamMatch vs Match vs Team)
 
 ## Frontend
 
