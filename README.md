@@ -2,8 +2,6 @@
 
 Team 1540's scouting system for FRC 2023, Charged Up!
 
-
-
 ## Frontend
 
 ## API
@@ -21,6 +19,26 @@ This endpoint is also very simple. A request to it is made by the client if the 
 ### Submit
 This route contains two endpoints, match, pit, and photo. Each one of for a different type of submission. These endpoints are requested when the client wants to submit scouting data.
 
+#### Match 
+This endpoints basically just takes in all the data from a match, including the cycle and defense times, and puts them in the database. [Request made from here](/src/lib/components/match-scout-components/Submit.svelte)
+
+#### Pit
+This endpoint takes in the event and team keys as well as the pit-scouting data and inserts it into the database. [Request made from here](/src/lib/components/pit-scout-components/Submit.svelte)
+
+#### Photo
+This endpoint is slightly more complex. Requests to this route must an array or object of photos, and a team and event key. First, the team and event keys are validated by checking if they both match their expected format (see the validateInput function at this endpoint's route). In the future, this could extend to also making sure that the given team is present at the event, using a request to TBA's API. Then each photo is validated by making sure they all less than one gigabyte in size. Finally, all the photos are inserted into the database. [Request made from here](/src/routes/photo/+page.svelte)
+
+### Admin
+This route is by far the most complex, and contains several endpoints, assign, authed, make-event, and teams. Each one is used for a different perpose by the admin, and should only be accessable by the admin. Each of these endpoints requires the admin password header to succeed. [All requests made from here](/src/routes/admin-dashboard/+page.svlete)
+
+#### Assign
+This endpoint is used to assign a match to queued scouts, and to insert a match (not a TeamMatch) into the database. It takes a request containing the data known about the match before it's played. This includes which robots are playing on what alliance, the match key, and the event key. [See the AssignData Type](/src/lib/types.ts). 
+#### Authed
+
+#### Make-Event
+
+#### Teams
+
 ## Server
 
 ### Setup
@@ -29,7 +47,6 @@ We use a MySQL databse hosted on team 1540's server.
 To set up a database, check out [this MySQL tutorial](https://dev.mysql.com/doc/mysql-getting-started/en/)
 
 Once you have that set up, create a .env file using the .env.example file as a template. Make sure your database credientials match.
-
 ### Authentication
 Charged Chickens is a realively secure scouting system. At every endpoint, the API validates the clients request, by ensuring that the request header password matches the expected password.
 

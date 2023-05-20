@@ -17,7 +17,7 @@
      * Iterates through all matchScoutStores and puts them into a JSON Object
      * Then it makes a POST request to the backend, which stores the match data
      *
-     * @see /routes/api/submit/match/+server.ts
+     * @see src/routes/api/sub mit/match/+server.ts
      */
     async function submit() {
         let data: TeamMatch = {
