@@ -13,7 +13,7 @@
     import TeleOpScoring from '$lib/assets/TeleOpScoring-removebg-preview.png'
     import { onMount } from 'svelte'
     import { Canvas, Layer } from 'svelte-canvas'
-    import { DEBUG } from '$lib/generalStores'
+    import { DEBUG } from '$lib/stores/generalStores'
     import type { Click } from '$lib/types'
 
     let scoring = [
