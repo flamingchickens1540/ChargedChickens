@@ -14,45 +14,46 @@ The API is split into four different base routes, admin, authed, scout, and subm
 #### Match Scouting
 1. The admin signs in, their signed-in status is verified by the admin/authed endpoint. 
 2. The admin makes a request to the admin/make-event endpoint to create an empty event.
-3. The next steps can happen asynchronously and must happen for every match in an event.
-4. The admin enters a MatchKey and then autofills the teams in that match by querying the admin/teams endpoint. The admin then releases a match with the admin/assign endpoint.
-5. The scouts authenticate with the passphrase, they is verified with the authed endpoint.
-6. The scouts then login and repeatedly query the scout endpoint until a match is avaliable (ie. step 4 is done).
-7. The match is scouted, then the scouts submit their results with the submit/match endpoint.
+3. All the teams need to be loaded into the database, we wrote a python script to grab them all from TBA (write-up coming later).
+4. The next steps can happen asynchronously and must happen for every match in an event.
+5. The admin enters a MatchKey and then autofills the teams in that match by querying the admin/teams endpoint. The admin then releases a match with the admin/assign endpoint.
+6. The scouts authenticate with the passphrase, they is verified with the authed endpoint.
+7. The scouts then login and repeatedly query the scout endpoint until a match is avaliable (ie. step 4 is done).
+8. The match is scouted, then the scouts submit their results with the submit/match endpoint.
 
-### Scout
+### /scout
 This is very simple, it just exists to poll the next robot from the scouting queue.
 
 This request is made by a client every second or so while they're logged in. As soon as a match is released by the admin, the client will receive a valid response.
 
-### Authed
+### /authed
 This endpoint is also very simple. A request to it is made by the client if the entered passphrase matches the correct passphrase. The client needs to check the passphrase, since it's a svelte store, which only the it had access to.
 
 ### Submit
 This route contains two endpoints, match, pit, and photo. Each one of for a different type of submission. These endpoints are requested when the client wants to submit scouting data.
 
-#### Match 
+#### /submit/match 
 This endpoints basically just takes in all the data from a match, including the cycle and defense times, and puts them in the database. [Request made from here](/src/lib/components/match-scout-components/Submit.svelte)
 
-#### Pit
+#### /submit/pit
 This endpoint takes in the event and team keys as well as the pit-scouting data and inserts it into the database. [Request made from here](/src/lib/components/pit-scout-components/Submit.svelte)
 
-#### Photo
+#### /submit/photo
 This endpoint is slightly more complex. Requests to this route must an array or object of photos, and a team and event key. First, the team and event keys are validated by checking if they both match their expected format (see the validateInput function at this endpoint's route). In the future, this could extend to also making sure that the given team is present at the event, using a request to TBA's API. Then each photo is validated by making sure they all less than one gigabyte in size. Finally, all the photos are inserted into the database. [Request made from here](/src/routes/photo/+page.svelte)
 
 ### Admin
 This route is by far the most complex, and contains several endpoints, assign, authed, make-event, and teams. Each one is used for a different perpose by the admin, and should only be accessable by the admin. Each of these endpoints requires the admin password header to succeed. [All requests made from here](/src/routes/admin-dashboard/+page.svlete)
 
-#### Assign
+#### /admin/assign
 This endpoint is used to assign a match to queued scouts, and to insert a match (not a TeamMatch) into the database. It takes a request containing the data known about the match before it's played. This includes which robots are playing on what alliance, the match key, and the event key. [See the AssignData Type](/src/lib/types.ts). 
 
-#### Authed
+#### /admin/authed
 This is a simple endpoint that just checks if the admin has the right admin_password, by checking the header.
 
-#### Teams
+#### /admin/teams
 This endpoint takes in a match key as the request, then queries The Blue alliance to find which teams on on the alliances, then returns the two lists of team_keys. This data is used by the admin dashboard to autofill teams after a match is entered. This is used toreduce the admin's workload.
 
-#### Make-Event
+#### /admin/make-event
 This endpoint inserts an empty event into the database. The request body should contain an [EventKey](/src/lib/types.ts).
 
 ## Server
