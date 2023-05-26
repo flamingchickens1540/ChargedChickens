@@ -9,7 +9,7 @@ Todo:
 
 The API is split into four different base routes, admin, authed, scout, and submit.
 
-### How to use it
+### How to use the API
 
 #### Match Scouting
 1. The admin signs in, their signed-in status is verified by the admin/authed endpoint. 
