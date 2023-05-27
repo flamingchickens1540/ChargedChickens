@@ -9,7 +9,7 @@ Todo:
 
 The API is split into four different base routes, admin, authed, scout, and submit.
 
-### How to use it
+### How to use the API
 
 #### Match Scouting
 1. The admin signs in, their signed-in status is verified by the admin/authed endpoint. 
@@ -27,7 +27,7 @@ This is very simple, it just exists to poll the next robot from the scouting que
 This request is made by a client every second or so while they're logged in. As soon as a match is released by the admin, the client will receive a valid response.
 
 ### /authed
-This endpoint is also very simple. A request to it is made by the client if the entered passphrase matches the correct passphrase. The client needs to check the passphrase, since it's a svelte store, which only the it had access to.
+This endpoint is also very simple. It just checks if the passphrase is correct.
 
 ### Submit
 This route contains two endpoints, match, pit, and photo. Each one of for a different type of submission. These endpoints are requested when the client wants to submit scouting data.
