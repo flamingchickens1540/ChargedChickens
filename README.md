@@ -22,39 +22,48 @@ The API is split into four different base routes, admin, authed, scout, and subm
 8. The match is scouted, then the scouts submit their results with the submit/match endpoint.
 
 ### /scout
-This is very simple, it just exists to poll the next robot from the scouting queue.
+This is very simple, it just exists to poll the next robot from the scouting queue. It takes an AbortController signal as a request param. 
 
 This request is made by a client every second or so while they're logged in. As soon as a match is released by the admin, the client will receive a valid response.
+- Method: POST
 
 ### /authed
 This endpoint is also very simple. It just checks if the passphrase is correct.
+- Method: POST
 
 ### Submit
 This route contains two endpoints, match, pit, and photo. Each one of for a different type of submission. These endpoints are requested when the client wants to submit scouting data.
 
 #### /submit/match 
 This endpoints basically just takes in all the data from a match, including the cycle and defense times, and puts them in the database. [Request made from here](/src/lib/components/match-scout-components/Submit.svelte)
+Method: POST
 
 #### /submit/pit
 This endpoint takes in the event and team keys as well as the pit-scouting data and inserts it into the database. [Request made from here](/src/lib/components/pit-scout-components/Submit.svelte)
+- Method: POST
 
-#### /submit/photo
+#### [/submit/photo](/src/routes/api/submit/photo)
 This endpoint is slightly more complex. Requests to this route must contain an array or object of photos, and a team and event key. First, the team and event keys are validated by checking if they both match their expected format (see the validateInput function at this endpoint's route). In the future, this could extend to also making sure that the given team is present at the event, using a request to TBA's API. Then each photo is validated by making sure they all less than one gigabyte in size. Finally, all the photos are inserted into the database. [Request made from here](/src/routes/photo/+page.svelte)
+- Method: POST
 
 ### Admin
 This route is by far the most complex, and contains several endpoints, assign, authed, make-event, and teams. Each one is used for a different perpose by the admin, and should only be accessible by the admin. Each of these endpoints requires a valid admin password header to succeed. [All requests made from here](/src/routes/admin-dashboard/+page.svlete)
 
 #### /admin/assign
-This endpoint is used to assign a match to queued scouts, and to insert a match (not a TeamMatch) into the database. It takes a request containing the data known about the match before it's played. This includes which robots are playing on what alliance, the match key, and the event key. [See the AssignData Type](/src/lib/types.ts). 
+This endpoint is used to assign a match to queued scouts, and to insert a match (not a TeamMatch) into the database. It takes a request containing the data known about the match before it's played. This includes which robots are playing on what alliance, the match key, and the event key. [See the AssignData Type](/src/lib/types.ts).
+- Method: POST
 
 #### /admin/authed
 This is a simple endpoint that just checks if the admin has the right admin_password, by checking the header.
+- Method: POST
 
 #### /admin/teams
 This endpoint takes in a match key as the request, then queries The Blue Alliance to find which teams on each alliance, then returns the two lists of team_keys. This data is used by the admin dashboard to autofill teams after a match is entered. This is used to reduce the admin's workload.
+- Method: POST
 
 #### /admin/make-event
 This endpoint inserts an empty event into the database. The request body should contain an [EventKey](/src/lib/types.ts).
+- Method: POST 
 
 ## Server
 
