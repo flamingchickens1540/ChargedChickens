@@ -15,11 +15,11 @@ The API is split into four different base routes, admin, authed, scout, and subm
 1. The admin signs in, their signed-in status is verified by the admin/authed endpoint. 
 2. The admin makes a request to the admin/make-event endpoint to create an empty event.
 3. All the teams need to be loaded into the database, we wrote a python script to grab them all from TBA (write-up coming later).
-4. The next steps can happen asynchronously and must happen for every match in an event.
-5. The admin enters a MatchKey and then autofills the teams in that match by querying the admin/teams endpoint. The admin then releases a match with the admin/assign endpoint.
+4. The following steps can happen asynchronously and must happen for every match in an event.
+5. The admin enters a MatchKey and then enters the teams for that match either by doing it manually or using autofill by querying the admin/teams endpoint. The admin then releases a match with the admin/assign endpoint.
 6. The scouts authenticate with the passphrase, they is verified with the authed endpoint.
-7. The scouts then login and repeatedly query the scout endpoint until a match is avaliable (ie. step 4 is done).
-8. The match is scouted, then the scouts submit their results with the submit/match endpoint.
+7. The scouts then login and repeatedly query the scout endpoint with a (4 second interval in between queries) until they have been assigned a team to scout.
+8. Once the match is scouted, the scouts submit their results with the submit/match endpoint.
 
 ### [/scout](/src/routes/api/scout/+server.ts)
 This is very simple, it just exists to poll the next robot from the scouting queue. It takes an AbortController signal as a request param.
@@ -66,7 +66,7 @@ To set up a database, check out [this MySQL tutorial](https://dev.mysql.com/doc/
 Once you have that set up, create a .env file using the .env.example file as a template. Make sure your database credientials match.
 
 ### Authentication
-Charged Chickens is a realively secure scouting system. At every endpoint, the API validates the clients request, by ensuring that the request header password matches the expected password.
+Charged Chickens is a relatively secure scouting system. At every endpoint, the API validates the clients request, by ensuring that the request header password matches the expected password. 
 
 For administrators creating matches and events, the admin_password is needed, for the scouts, the passphrase is needed. Both the passphrase and admin_password. We recommend changing the admin_pasword and the passphrase every competition day.
 
