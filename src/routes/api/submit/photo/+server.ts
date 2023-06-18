@@ -60,7 +60,7 @@ export const POST: RequestHandler = async (form_data_req: RequestEvent) => {
  * 
  * @param team_key eg. frc1540
  * @param event_key eg. 2023orore
- * @returns if they both fit their expected pattern
+ * @returns if both params exist in the database and fit their expected pattern
  */
 async function validateInput(
     team_key: TeamKey,
