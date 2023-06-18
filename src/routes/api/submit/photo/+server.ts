@@ -66,13 +66,14 @@ async function validateInput(
     team_key: TeamKey,
     event_key: EventKey
 ): Promise<boolean> {
-    return (
-      !event_key.match(/^\d{4}[A-Za-z]{4,6}$/) === null &&
-      !team_key.match(/^frc\d{3,5}$/) === null &&
-      !await getEvent(event_key) === null &&
-      !await getTeam(team_key) === null
-    );
-}
+    if (!await getEvent(event_key) === null && !await getTeam(team_key) === null) {
+      return (
+        !event_key.match(/^\d{4}[A-Za-z]{4,6}$/) === null &&
+        !team_key.match(/^frc\d{3,5}$/) === null
+      );
+    }
+    return false;
+  }
 
 /**
  * Regex matches the photo to make sure its not too large or an incorrect file type
