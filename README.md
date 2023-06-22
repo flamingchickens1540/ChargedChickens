@@ -39,7 +39,7 @@ This endpoint takes in all the data from a match, including the cycle and defens
 This endpoint takes in the event and team keys as well as the pit-scouting data and inserts it into the database. [Request made from here](/src/lib/components/pit-scout-components/Submit.svelte)
 
 #### [/submit/photo](/src/routes/api/submit/photo/+server.ts)
-This endpoint is slightly more complex. Requests to this route must contain an array or object of photos, and a team and event key. First, the team and event keys are validated by checking if they both match their expected format (see the validateInput function at this endpoint's route). In the future, this could extend to also making sure that the given team is present at the event, using a request to TBA's API. Then each photo is validated by making sure they all less than one gigabyte in size. Finally, all the photos are inserted into the database. [Request made from here](/src/routes/photo/+page.svelte)
+This endpoint takes an array or object of photos, and a team and event key. First, the team and event keys are validated by checking if they both match their expected format (see the validateInput function at this endpoint's route). Then each photo is validated by making sure they are all less than one gigabyte in size. Finally, all the photos are inserted into the database. [Request made from here](/src/routes/photo/+page.svelte)
 
 ### Admin
 This route contains several endpoints, assign, authed, make-event, and teams. Each one is used for a different purpose by the admin, and should only be accessible by the admin. Each of these endpoints requires a valid admin password header to succeed. [All requests made from here](/src/routes/admin-dashboard/+page.svelte)
