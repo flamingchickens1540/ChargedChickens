@@ -42,7 +42,7 @@ This endpoint takes in the event and team keys as well as the pit-scouting data 
 This endpoint is slightly more complex. Requests to this route must contain an array or object of photos, and a team and event key. First, the team and event keys are validated by checking if they both match their expected format (see the validateInput function at this endpoint's route). In the future, this could extend to also making sure that the given team is present at the event, using a request to TBA's API. Then each photo is validated by making sure they all less than one gigabyte in size. Finally, all the photos are inserted into the database. [Request made from here](/src/routes/photo/+page.svelte)
 
 ### Admin
-This route is by far the most complex, and contains several endpoints, assign, authed, make-event, and teams. Each one is used for a different perpose by the admin, and should only be accessible by the admin. Each of these endpoints requires a valid admin password header to succeed. [All requests made from here](/src/routes/admin-dashboard/+page.svlete)
+This route contains several endpoints, assign, authed, make-event, and teams. Each one is used for a different purpose by the admin, and should only be accessible by the admin. Each of these endpoints requires a valid admin password header to succeed. [All requests made from here](/src/routes/admin-dashboard/+page.svelte)
 
 #### [/admin/assign](/src/routes/api/admin/assign)
 This endpoint is used to assign a match to queued scouts, and to insert a match (not a TeamMatch) into the database. It takes a request containing the data known about the match before it's played. This includes which robots are playing on what alliance, the match key, and the event key. [See the AssignData Type](/src/lib/types.ts).
