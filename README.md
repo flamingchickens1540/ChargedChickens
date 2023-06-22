@@ -33,7 +33,7 @@ This endpoint is also very simple. It just checks if the passphrase is correct.
 This route contains two endpoints, match, pit, and photo. Each one of for a different type of submission. These endpoints are requested when the client wants to submit scouting data.
 
 #### [/submit/match](/src/routes/api/submit/match/+server.ts) 
-This endpoints basically just takes in all the data from a match, including the cycle and defense times, and puts them in the database. [Request made from here](/src/lib/components/match-scout-components/Submit.svelte)
+This endpoint takes in all the data from a match, including the cycle and defense times, and puts them in the database. [Request made from here](/src/lib/components/match-scout-components/Submit.svelte)
 
 #### [/submit/pit](/src/routes/api/submit/pit/+server.ts)
 This endpoint takes in the event and team keys as well as the pit-scouting data and inserts it into the database. [Request made from here](/src/lib/components/pit-scout-components/Submit.svelte)
