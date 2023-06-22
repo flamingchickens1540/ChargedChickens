@@ -48,7 +48,7 @@ This route is by far the most complex, and contains several endpoints, assign, a
 This endpoint is used to assign a match to queued scouts, and to insert a match (not a TeamMatch) into the database. It takes a request containing the data known about the match before it's played. This includes which robots are playing on what alliance, the match key, and the event key. [See the AssignData Type](/src/lib/types.ts).
 
 #### [/admin/authed](/src/routes/api/admin/authed/+server.ts)
-This is a simple endpoint that just checks if the admin has the right admin_password, by checking the header.
+This endpoint checks if the admin has the right admin_password, by checking the header.
 
 #### [/admin/teams](/src/routes/api/admin/teams/+server.ts)
 This endpoint takes in a match key as the request, then queries The Blue Alliance to find which teams on each alliance, then returns the two lists of team_keys. This data is used by the admin dashboard to autofill teams after a match is entered. This is used to reduce the admin's workload.
