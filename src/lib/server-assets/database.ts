@@ -27,6 +27,12 @@ const db = mysql
     })
     .promise()
 
+/**
+ * Inserts an event into the database
+ * 
+ * @param event_key - The event key
+ * @returns The promise of if it succeeded or not
+ */
 export async function insertEvent(event_key: EventKey): Promise<boolean> {
     if (!use_db
     ) return true
@@ -46,12 +52,19 @@ export async function insertEvent(event_key: EventKey): Promise<boolean> {
     }
 }
 
+/**
+ * Inserts a match(not a teammatch) into the database
+ * 
+ * @param match_key - The match key of the match being inserted
+ * @param event_key - The event key of the event the match took place during
+ * @returns A promise of if it succeeded or not
+ */
 export async function insertMatch(
     match_key: MatchKey,
-    event_key: EventKey
+    event_key: EventKey 
 ): Promise<boolean> {
-    if (!use_db
-    ) return true
+    
+        if (!use_db) return true
 
     try {
         await db.query(
@@ -68,6 +81,15 @@ export async function insertMatch(
     }
 }
 
+/**
+ * Inserts a single team into the database
+ * 
+ * @param team_key - The key of the team being inserted (eg. frc1540)
+ * @param nickname - The nickname of the team (eg. The Flaming Chickens)
+ * @param team_number - The number of the team (eg. 1540)
+ * @param website - The website url of the team (eg. team1540.org)
+ * @returns A promise of if the insertion succeeded
+ */
 export async function insertTeam(
     team_key: TeamKey,
     nickname: string,
@@ -92,6 +114,13 @@ export async function insertTeam(
     }
 }
 
+/**
+ * 
+ * @param match_key - The key of the match being scouted
+ * @param team_key - The key of the team being scouted
+ * @param team_data - The data for how well the team performed during this match
+ * @returns A promise of if the insertion succeeded
+ */
 export async function insertTeamMatch(
     match_key: MatchKey,
     team_key: TeamKey,
@@ -159,6 +188,14 @@ export async function insertTeamMatch(
     }
 }
 
+/**
+ * Inserts a single cycle time into the database
+ * 
+ * @param time - The time the it took for a robot to grab a piece score it, then return to the loading zone
+ * @param team_key - The key of the team whose cycle was being tracked
+ * @param match_key - The match that the cycle was recorded during
+ * @returns A promise of if the insertion succeeded
+ */
 export async function insertCycleTime(
     time: number,
     team_key: TeamKey,
@@ -182,6 +219,14 @@ export async function insertCycleTime(
     }
 }
 
+/**
+ * Inserts a single defense time into the database
+ * 
+ * @param time - The time the robot was intentionally preventing another robot from playing optimatlly
+ * @param team_key - The key of the team being scouted
+ * @param match_key - The match that the defense was recorded in
+ * @returns A promise of if the insertion succeeded
+ */
 export async function insertDefenseTime(
     time: number,
     team_key: TeamKey,
@@ -205,6 +250,13 @@ export async function insertDefenseTime(
     }
 }
 
+/**
+ * 
+ * @param event_key - The event the image was taken during
+ * @param team_key - The team key of the robot in the image
+ * @param url - The url to the image on the server (eg. https://scout.team1540.org/robot-images/02f61f8f-d4fc-495e-a476-3bf53f36bc56.jpeg)
+ * @returns A promise of if the insertion succeeded
+ */
 export async function insertImage(
     event_key: EventKey,
     team_key: TeamKey,
@@ -227,7 +279,13 @@ export async function insertImage(
         return false
     }
 }
-
+/**
+ * 
+ * @param event_key - The event of the pitscouting
+ * @param team_key - The key of the team being pitscouted
+ * @param pit_data - The data collected about the team and/or robot
+ * @returns A promise of if the insertion succeeded
+ */
 export async function insertPitScoutingData(
   event_key: EventKey,
   team_key: TeamKey,
@@ -276,7 +334,12 @@ export async function insertPitScoutingData(
         return false
     }
 }
-
+/**
+ * Gets the match scouting data for a specific robot during a specific match
+ * @param match_key - The match being scouted
+ * @param team_key - The team being scouted during the match
+ * @returns A promise of either the robot data for that match, or null
+ */
 export async function getTeamMatch(
     match_key: MatchKey,
     team_key: TeamKey
@@ -343,8 +406,7 @@ export async function getTeamMatch(
 }
 
 export async function getEvent(event_key: EventKey): Promise<TeamEvent | null> {
-    if (!use_db
-    )
+    if (!use_db)
         return Promise.resolve({
             id: 1,
             team_key: 'frc1540',
@@ -365,8 +427,7 @@ export async function getEvent(event_key: EventKey): Promise<TeamEvent | null> {
 }
 
 export async function getTeam(team_key: TeamKey): Promise<Team | null> {
-    if (!use_db
-    )
+    if (!use_db)
         return Promise.resolve({
             team_key: 'frc1540',
             nickname: 'Team 1540',
@@ -387,8 +448,7 @@ export async function getTeam(team_key: TeamKey): Promise<Team | null> {
 }
 
 export async function getTeams(): Promise<Team[] | null> {
-    if (!use_db
-    )
+    if (!use_db)
         return Promise.resolve([
             {
                 team_key: 'frc1540',

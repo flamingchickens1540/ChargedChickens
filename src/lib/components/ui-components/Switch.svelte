@@ -1,9 +1,7 @@
 <script land="ts">
     /**
-     * This component is a toggle switch that changs color depending on if it's clicked or not.
+     * A toggle switch that changes color depending on if it's clicked or not.
      * It also toggles a variable that gets binded what this element is called.
-     *
-     * @complete
      */
 
     export let checked = false
