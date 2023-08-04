@@ -58,11 +58,7 @@
     let gridIndex : number;
 
     /**
-<<<<<<< HEAD
-     * Shows the succeed-fail screen for the giving grid index
-=======
      * Shows the succeed-fail screen for the given grid index
->>>>>>> 8d1d0db16d4f66184d4839163029dfbbcbe1dd30
      * @see ScoreTable.svelte
      * @param index gridIndex
      */
@@ -74,11 +70,7 @@
     /**
      * Handles successes or failures of scoring attempts. Records the cycle times.
      * @see ScoreTable.svelte
-<<<<<<< HEAD
-     * @param succeed Whether the succeeded
-=======
      * @param succeed Whether the robot succeeded at scoring on the grid
->>>>>>> 8d1d0db16d4f66184d4839163029dfbbcbe1dd30
      */
     function successFailSelected(succeed : boolean) {
       if(succeed) {

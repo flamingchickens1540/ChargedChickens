@@ -30,27 +30,6 @@
   let succeedFailScreen: boolean = false;
   let gridIndex : number;
 
-<<<<<<< HEAD
-let gridIndex : number;
-/**
- * @see Telescore.svelte
- * @param index
- */
-function gridSelected(index : number) {
-  gridIndex = index;
-  succeedFailScreen = true;
-}
-
-/**
- * Increments a succeed or fail of gridIndex by 1
- * @see ScoreTable.svelte
- * @param succeed whether a score attempt was successful
- */
-function successFailSelected(succeed : boolean) {
-  (succeed ? autoscoreSucceed : autoscoreFail)[gridIndex].update(n => n+1);
-  succeedFailScreen = false;
-}
-=======
   /**
    * @see Telescore.svelte
    * @param index 
@@ -69,7 +48,6 @@ function successFailSelected(succeed : boolean) {
     (succeed ? autoscoreSucceed : autoscoreFail)[gridIndex].update(n => n+1);
     succeedFailScreen = false;
   }
->>>>>>> 8d1d0db16d4f66184d4839163029dfbbcbe1dd30
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
