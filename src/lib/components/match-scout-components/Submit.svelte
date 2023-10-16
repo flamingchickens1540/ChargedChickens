@@ -65,6 +65,7 @@
             tele_low_right_fail: 0,
         }
         isVisible = true
+        submitVisible = true
         hasSumbit = true
 
         Object.keys(team_matches_stores).map((key) => {
