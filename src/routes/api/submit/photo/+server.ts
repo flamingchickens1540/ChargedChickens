@@ -4,7 +4,7 @@ import { writeFile } from 'fs'
 import { randomUUID } from 'crypto'
 import type { RequestEvent, RequestHandler } from './$types'
 import type { EventKey, TeamKey } from '$lib/types'
-import { insertImage } from '$lib/server-assets/database'
+import { insertImage, getTeam, getEvent } from '$lib/server-assets/database'
 
 /**
  * Uploads a photo to the server with a random UUID
@@ -60,24 +60,20 @@ export const POST: RequestHandler = async (form_data_req: RequestEvent) => {
  * 
  * @param team_key eg. frc1540
  * @param event_key eg. 2023orore
- * @returns if they both fit their expected pattern
+ * @returns if both params exist in the database and fit their expected pattern
  */
 async function validateInput(
     team_key: TeamKey,
     event_key: EventKey
 ): Promise<boolean> {
-    // eventkey checks
-    if (event_key.match(/^\d{4}[A-Za-z]{4,6}$/) === null) return false
-    // This isn't working for me
-    // if ((await getEvent(event_key)) === null) return false
-
-    //teamkey checks
-    if (team_key.match(/^frc\d{3,5}$/) === null) return false
-    // This isn't working for me
-    // if ((await getTeam(team_key)) === null) return false
-
-    return true
-}
+    if (!await getEvent(event_key) === null && !await getTeam(team_key) === null) {
+      return (
+        !event_key.match(/^\d{4}[A-Za-z]{4,6}$/) === null &&
+        !team_key.match(/^frc\d{3,5}$/) === null
+      );
+    }
+    return false;
+  }
 
 /**
  * Regex matches the photo to make sure its not too large or an incorrect file type

@@ -1,4 +1,10 @@
 <script lang="ts">
+    /**
+     * This component is the slideshow page carousel that holds the different stages of the match.
+     * Auto
+     * Teleop
+     * Endgame
+    */
     import AutoChargeStation from '$lib/components/match-scout-components/AutoChargeStation.svelte'
     import AutoCommunity from '$lib/components/match-scout-components/AutoCommunity.svelte'
     import EndBroke from '$lib/components/match-scout-components/EndBroke.svelte'

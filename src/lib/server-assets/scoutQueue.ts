@@ -6,7 +6,7 @@ let time = Date.now();
 /**
  * Spacing between client timeouts
  */
-const timeSpace = 500;
+const timeSpacing = 500;
 const hibernationTimeout = 10000;
 let ongoingMatch = false;
 
@@ -38,16 +38,14 @@ export function endMatch() {
 }
 
 /**
- * if @this time is less than @this Date.now(), time is reset to that
- * increments @this time by @this timeSpace
- * @returns the next time a client should resend
+ * @returns the next time a client should make a request to the scout endpoint
  */
 export function getNextPollTime() {
     const currentTime = Date.now();
     
     if (currentTime > time) time = currentTime;
   
-    return ongoingMatch ? (time += timeSpace) + hibernationTimeout : time += timeSpace;
+    return ongoingMatch ? (time += timeSpacing) + hibernationTimeout : time += timeSpacing;
 }
 
 export function pollNextRobot(): RobotMatch | null {
