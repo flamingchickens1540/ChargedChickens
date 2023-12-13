@@ -55,7 +55,7 @@
      *
      * @param match
      */
-    async function sendMatch(match: AssignData) {
+    function sendMatch(match: AssignData) {
         fetch('/api/admin/assign', {
             method: 'POST',
             headers: {
